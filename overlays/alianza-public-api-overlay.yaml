@@ -1,0 +1,107 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Alianza Public API
+  version: 1.0.0
+extends: openapi/alianza-openapi-original.yml
+x-generated: '2026-08-02'
+x-method: generated
+x-source: >-
+  Derived from the enrichment pass over openapi/alianza-openapi-original.yml (harvested verbatim
+  from https://developer.alianza.com/openapi.yaml on 2026-08-02). This overlay records API
+  Evangelist observations; it never mutates the harvested original.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: alianza
+      x-apievangelist-profile: https://apis.io/providers/alianza/
+      x-apievangelist-harvested: '2026-08-02'
+      x-apievangelist-source: https://developer.alianza.com/openapi.yaml
+      x-apievangelist-reference: https://developer.alianza.com/provisioning-api
+      x-apievangelist-contact: https://developer.alianza.com/certification-process
+
+  - target: $.info
+    description: Record the cross-cutting semantics captured in conventions/alianza-conventions.yml.
+    update:
+      x-apievangelist-conventions:
+        authentication: 'apiKey on the X-AUTH-TOKEN header; token from POST /v2/authorize'
+        idempotency: none
+        pagination: 'partial - firstResultIndex/maxResult (8 ops) and pageNum/pageSize (2 ops)'
+        error_envelope: 'PublicApiException {status, messages[], data} as application/json'
+        rfc9457: false
+        rate_limit_headers: none
+        request_id_header: none
+        versioning: 'uri-path /v2'
+        async_pattern: '202 Accepted + /v2/job/{jobId} polling'
+
+  - target: $.info
+    description: Record the observed spec-quality profile of the harvested description.
+    update:
+      x-apievangelist-spec-quality:
+        operations: 471
+        paths: 315
+        tags_declared: 57
+        operations_with_summary: 471
+        operations_with_description: 431
+        operations_with_operation_id: 471
+        unique_operation_ids: 471
+        component_schemas: 259
+        security_schemes: 1
+        security_applied_globally: true
+        deprecated_operations: 50
+        responses_with_examples: 14
+        note: >-
+          Strong on identification and coverage - every operation has a summary and a unique
+          operationId, and security is applied at the document root. Weak on examples: only 14 of
+          the documented responses carry an example, and no request-body examples are published.
+
+  - target: $.info
+    description: Record the surfaces API Evangelist verified for this provider.
+    update:
+      x-apievangelist-surfaces:
+        openapi: https://developer.alianza.com/openapi.yaml
+        swagger2_deprecated: https://api.alianza.com/v2/apidocs/swagger.json
+        graphql: null
+        mcp: null
+        agent_card: null
+        asyncapi: null
+        well_known: none
+        llms_txt: null
+
+  - target: $.servers
+    description: Annotate the four published environments with their operational role.
+    update:
+      x-apievangelist-environments:
+        - {url: 'https://api.alianza.com', role: production, integrator_facing: true}
+        - {url: 'https://api.b2.alianza.com', role: beta, integrator_facing: true, note: 'the environment Alianza requires for API certification'}
+        - {url: 'https://api.q2.alianza.com', role: qa, integrator_facing: false}
+        - {url: 'https://api.d2.alianza.com', role: development, integrator_facing: false}
+
+  - target: $.components.securitySchemes['X-Auth-Token']
+    description: Document how the token is obtained, since the scheme itself only names the header.
+    update:
+      x-apievangelist-token-acquisition:
+        operation: logUserIn
+        method: POST
+        path: /v2/authorize
+        request: '{username, password} - admin-portal credentials issued by an Alianza account manager'
+        response_field: authToken
+        rotation: 'PUT /v2/authorize/logout invalidates; re-authorize on 401 "Expired Auth Token"'
+        rfc6750: false
+
+  - target: $.components.schemas.PublicApiException
+    description: Flag the dominant error envelope and its divergence from RFC 9457.
+    update:
+      x-apievangelist-error-envelope: primary
+      x-apievangelist-rfc9457: false
+      x-apievangelist-note: >-
+        Used by roughly 1,120 of the 1,176 documented 4xx/5xx responses. Served as
+        application/json, not application/problem+json, and carries no type URI or instance
+        identifier. See errors/alianza-problem-types.yml.
+
+  - target: $.tags
+    description: Flag the telecom regulatory surfaces visible in the contract.
+    update:
+      x-apievangelist-regulatory-surfaces:
+        e911: 'E911 address correction and acceptance operations on the Telephone Number tag; E911 callback fields across device, line and user schemas'
+        lnp_porting: 'the Port tag implements local number portability including LOA upload'
+        emergency_notification: 'Emergency Notification tag plus an emergency notification compliance report'

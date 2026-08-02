@@ -1,0 +1,110 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+status: candidate
+published_by_provider: false
+
+search_evidence:
+  note: >-
+    No first-party Alianza MCP server exists as of 2026-08-02. Searched the developer portal
+    (developer.alianza.com), www.alianza.com, npm (@modelcontextprotocol and alianza queries), the
+    verified alianza-dev GitHub organization (52 public repos), and general web search. No hosted
+    MCP endpoint, no stdio server package, and no MCP registry listing were found.
+  checked:
+    - {surface: 'https://developer.alianza.com/', result: 'no MCP references'}
+    - {surface: 'https://github.com/alianza-dev', result: 'no MCP repository among 52 public repos'}
+    - {surface: 'npm registry', result: 'no Alianza MCP package'}
+    - {surface: 'general web search', result: 'no Alianza MCP server'}
+
+server:
+  name: alianza
+  transport: stdio
+  url: null
+  note: >-
+    CANDIDATE ONLY. This is an API Evangelist proposal derived from Alianza's own published
+    OpenAPI 3.0.3 description - Alianza does not operate this server. Every tool below is bound to
+    a real operationId that exists verbatim in openapi/alianza-openapi-original.yml, and each
+    tool's input schema is that operation's parameters plus requestBody.
+
+authentication:
+  scheme: apiKey
+  header: X-AUTH-TOKEN
+  bootstrap_operation: logUserIn
+  note: >-
+    An MCP server would exchange operator-supplied Alianza admin credentials at POST /v2/authorize
+    (logUserIn) for an authToken, then set X-AUTH-TOKEN on every downstream call. Almost every
+    tool additionally requires a partitionId, and most require an accountId.
+
+scope_note: >-
+  The source spec exposes 471 operations. A one-tool-per-operation server would be unusable, so
+  this candidate curates 40 tools across the marquee service-provider flows. The remaining
+  operations are recorded as rest_only in mcp/alianza-tool-crosswalk.yml rather than dropped.
+
+tools:
+  # --- session ---
+  - {name: alianza_login, description: 'Exchange admin-portal credentials for an X-AUTH-TOKEN.', category: session, source_operation: 'openapi/alianza-openapi-original.yml#logUserIn'}
+  - {name: alianza_whoami, description: 'Return information about the authenticated user.', category: session, source_operation: 'openapi/alianza-openapi-original.yml#getLoginInfo'}
+  - {name: alianza_logout, description: 'Invalidate the current auth token.', category: session, source_operation: 'openapi/alianza-openapi-original.yml#logOut'}
+
+  # --- partition ---
+  - {name: alianza_get_partition, description: 'Retrieve partition data.', category: partition, source_operation: 'openapi/alianza-openapi-original.yml#retrieve_2'}
+  - {name: alianza_get_partition_settings, description: 'Get all settings for a partition.', category: partition, source_operation: 'openapi/alianza-openapi-original.yml#getAllSettings'}
+  - {name: alianza_list_inbound_carriers, description: 'List telephone carriers available to the partition.', category: partition, source_operation: 'openapi/alianza-openapi-original.yml#getInboundCarriers'}
+
+  # --- accounts ---
+  - {name: alianza_list_accounts, description: 'Retrieve all accounts in a partition.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#getAccounts'}
+  - {name: alianza_search_accounts, description: 'Search accounts within a partition.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#accountSearch'}
+  - {name: alianza_get_account, description: 'Retrieve an account by id.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#retrieveAccount'}
+  - {name: alianza_create_account, description: 'Create an account within a partition.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#createAccount'}
+  - {name: alianza_update_account, description: 'Update an account.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#updateAccount'}
+  - {name: alianza_delete_account, description: 'Delete an account.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#deleteAccount'}
+  - {name: alianza_get_account_status, description: 'Retrieve current account status.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#getStatus'}
+  - {name: alianza_prevalidate_account, description: 'Pre-validate account properties before saving.', category: account, source_operation: 'openapi/alianza-openapi-original.yml#validateAccountProperties'}
+
+  # --- users ---
+  - {name: alianza_list_end_users, description: 'Get the end-user list for an account.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#retrieveEndUserList'}
+  - {name: alianza_get_end_user, description: 'Retrieve a single end user.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#retrieveEndUser'}
+  - {name: alianza_create_end_user, description: 'Create an end user on an account.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#createEndUser'}
+  - {name: alianza_update_end_user, description: 'Update an end user.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#updateEndUser'}
+  - {name: alianza_delete_end_user, description: 'Delete an end user.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#deleteEndUser'}
+  - {name: alianza_send_welcome_email, description: 'Send the welcome email to an end user.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#sendWelcomeEmail'}
+  - {name: alianza_list_account_users, description: 'List account users (account managers) on an account.', category: user, source_operation: 'openapi/alianza-openapi-original.yml#getAccountUserList'}
+  - {name: alianza_create_account_user, description: 'Create an account user (account manager).', category: user, source_operation: 'openapi/alianza-openapi-original.yml#createAccountUser'}
+
+  # --- telephone numbers ---
+  - {name: alianza_search_telephone_numbers, description: 'Search the partition telephone-number inventory.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#tnSearch'}
+  - {name: alianza_list_tn_inventory, description: 'Retrieve telephone numbers in the partition inventory.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#listTnInventory'}
+  - {name: alianza_get_telephone_number, description: 'Retrieve a telephone number from inventory.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#retrieveTelephoneNumber'}
+  - {name: alianza_check_tn_availability, description: 'Check whether a telephone number is available.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#retrieveTelephoneNumberAvailability'}
+  - {name: alianza_reserve_telephone_number, description: 'Reserve a telephone number in inventory.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#reserve'}
+  - {name: alianza_add_telephone_number_to_account, description: 'Create a telephone number, initiate a port, or add a number to an account.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#createOrAddTelephoneNumberToAccount'}
+  - {name: alianza_list_account_telephone_numbers, description: 'Retrieve all telephone numbers on an account.', category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#retrieveAccountTelephoneNumbers'}
+  - {name: alianza_search_dynamic_inventory, description: "Search a carrier's dynamic inventory for matching telephone numbers.", category: telephone_number, source_operation: 'openapi/alianza-openapi-original.yml#retrieveTnsFromCarriersDynamicInventory'}
+
+  # --- porting ---
+  - {name: alianza_get_port, description: 'Get a port request.', category: porting, source_operation: 'openapi/alianza-openapi-original.yml#retrievePort'}
+  - {name: alianza_update_port, description: 'Update a port request.', category: porting, source_operation: 'openapi/alianza-openapi-original.yml#updatePort'}
+  - {name: alianza_trigger_port, description: 'Trigger the port with the carrier and update the service activation event.', category: porting, source_operation: 'openapi/alianza-openapi-original.yml#triggerPort'}
+  - {name: alianza_cancel_port, description: 'Cancel a port request.', category: porting, source_operation: 'openapi/alianza-openapi-original.yml#cancelPort'}
+
+  # --- devices ---
+  - {name: alianza_list_device_lines, description: 'Retrieve the device-line list for an account.', category: device, source_operation: 'openapi/alianza-openapi-original.yml#listDevices'}
+  - {name: alianza_create_device_line, description: 'Create a device line on an account.', category: device, source_operation: 'openapi/alianza-openapi-original.yml#createDevice'}
+  - {name: alianza_get_device_registration_status, description: 'Retrieve device registration status.', category: device, source_operation: 'openapi/alianza-openapi-original.yml#registrationStatus'}
+  - {name: alianza_swap_device, description: 'Swap the physical device behind a device line.', category: device, source_operation: 'openapi/alianza-openapi-original.yml#swapDevice'}
+
+  # --- sip trunking ---
+  - {name: alianza_list_sip_trunks, description: 'Retrieve the SIP trunk list for an account.', category: sip_trunk, source_operation: 'openapi/alianza-openapi-original.yml#retrieveSipTrunkList'}
+  - {name: alianza_create_sip_trunk, description: 'Create a SIP trunk on an account.', category: sip_trunk, source_operation: 'openapi/alianza-openapi-original.yml#createSipTrunk'}
+  - {name: alianza_get_sip_trunk_registration, description: 'Retrieve SIP trunk registration status.', category: sip_trunk, source_operation: 'openapi/alianza-openapi-original.yml#getRegistrationStatus'}
+
+  # --- usage + reporting ---
+  - {name: alianza_search_cdrs, description: 'Search call detail records for an account.', category: reporting, source_operation: 'openapi/alianza-openapi-original.yml#cdrSearch'}
+  - {name: alianza_get_job, description: 'Poll an asynchronous job by id.', category: reporting, source_operation: 'openapi/alianza-openapi-original.yml#getJobById'}
+  - {name: alianza_get_job_output, description: 'Retrieve the output of a completed asynchronous job.', category: reporting, source_operation: 'openapi/alianza-openapi-original.yml#getJobOutput'}
+
+safety_notes:
+  - 'No idempotency key exists on this API - a retried create tool call can duplicate an account, user, device line or telephone-number activation.'
+  - 'alianza_trigger_port and alianza_add_telephone_number_to_account have carrier-side, externally visible consequences and should require human confirmation.'
+  - 'alianza_delete_account and alianza_delete_end_user are destructive and irreversible through the API.'
+  - 'See agentic-access/alianza-agentic-access.yml for the per-operation execution contract.'

@@ -1,0 +1,221 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+format: vendor-envelope
+format_note: Alianza does NOT use RFC 9457 application/problem+json. The dominant error envelope is the PublicApiException
+  object ({status:int, messages:[string], data:{}}) returned as application/json. Four narrower envelopes are used
+  by newer subsystems.
+envelopes:
+- name: PublicApiException
+  fields:
+  - status
+  - messages[]
+  - data
+  usage: default envelope across the API (~1,120 of 1,176 documented 4xx/5xx responses)
+  schema: components.schemas.PublicApiException
+- name: BrandErrorResponse
+  fields:
+  - code
+  - description
+  usage: Brand Settings endpoints; code is an enumerated 10xxx string
+  schema: components.schemas.BrandErrorResponse
+- name: BulkOperationErrorResponse
+  fields:
+  - status
+  - message
+  - errors[]
+  - schemaErrors[]
+  usage: Bulk Operation Collection / Bulk Operation Job endpoints
+  schema: components.schemas.BulkOperationErrorResponse
+- name: SpecialtyLineErrorResponse
+  fields:
+  - errorCode
+  - message
+  - traceId
+  usage: Specialty Line endpoints; the only envelope carrying a traceId
+  schema: components.schemas.SpecialtyLineErrorResponseDto
+- name: OAuthErrorResponse
+  fields:
+  - code
+  - message
+  - details
+  usage: SSO Authentication (OAuth/SAML) callback endpoints
+  schema: components.schemas.OAuthErrorResponse
+- name: ValidationErrorResponse
+  fields:
+  - errors[]
+  usage: bean-validation failures on path/query parameters
+  schema: components.schemas.ValidationErrorResponse
+problems:
+- status: 400
+  title: Bad Request
+  occurrences: 424
+  envelope_schemas:
+  - PublicApiException
+  - BrandErrorResponse
+  - BulkOperationErrorResponse
+  - SpecialtyLineErrorResponseDto
+  - array
+  - ValidationErrorResponse
+  - OAuthErrorResponse
+  - ApiSingleException
+  media_types:
+  - application/json
+  - content
+  descriptions:
+  - Invalid request parameters
+  - Invalid request
+  - Invalid partition ID supplied
+  - Bad Request
+  - Invalid partition or account ID supplied
+  - Invalid parameters supplied
+  - Bad Request - Invalid request parameters or validation failed
+  - Invalid ID supplied
+  example_operations:
+  - GET /v2/address/state/{state}/city/{city}/zipcode#getZipCodeByCityAndState
+  - GET /v2/address/typeahead#typeAhead
+  - GET /v2/address/validate#validateAddress
+- status: 401
+  title: Unauthorized
+  occurrences: 384
+  envelope_schemas:
+  - PublicApiException
+  - OAuthErrorResponse
+  media_types:
+  - application/json
+  descriptions:
+  - Unauthorized
+  - Unauthorized - Invalid or missing X-Auth-Token
+  - Authentication failed - Invalid state or code verification failed
+  - Expired Auth Token
+  example_operations:
+  - GET /v2/address/state/{state}/city/{city}/zipcode#getZipCodeByCityAndState
+  - GET /v2/address/typeahead#typeAhead
+  - GET /v2/address/validate#validateAddress
+- status: 403
+  title: Forbidden
+  occurrences: 21
+  envelope_schemas:
+  - PublicApiException
+  - BulkOperationErrorResponse
+  - SpecialtyLineErrorResponseDto
+  media_types:
+  - application/json
+  descriptions:
+  - User does not have enough permissions
+  - Unauthorized access
+  - Partition or account not found
+  - Forbidden - insufficient permissions
+  example_operations:
+  - DELETE /v2/authn/sso/sso-linkage#unlinkSSO
+  - GET /v2/authn/sso/sso-linkage#getSSOLinkages
+  - POST /v2/bulk-user-operation/collection#create_collection
+- status: 404
+  title: Not Found
+  occurrences: 426
+  envelope_schemas:
+  - PublicApiException
+  - BrandErrorResponse
+  - BulkOperationErrorResponse
+  - SpecialtyLineErrorResponseDto
+  - string
+  - OAuthErrorResponse
+  media_types:
+  - application/json
+  - text/plain
+  descriptions:
+  - Not found
+  - PartitionId, AccountId, or MacAddress is not found
+  - Entity not found
+  - Device not found
+  - Entity not found.
+  - Not Found - SSO configuration not found
+  - Path Error, probably a bad partition ID or management user ID
+  - Not Found - Exemption not found
+  example_operations:
+  - GET /v2/address/state/{state}/city/{city}/zipcode#getZipCodeByCityAndState
+  - GET /v2/address/typeahead#typeAhead
+  - GET /v2/address/validate#validateAddress
+- status: 409
+  title: Conflict
+  occurrences: 5
+  envelope_schemas:
+  - BrandErrorResponse
+  - SpecialtyLineErrorResponseDto
+  - PublicApiException
+  media_types:
+  - application/json
+  descriptions:
+  - 'Device already exists: MAC and Port combination must be unique'
+  - 'Conflict: Brand already exists for the partition'
+  - Modification of brandingCompleted is not allowed
+  - Conflict - One or more accounts/users/groups already exempted by another exemption
+  example_operations:
+  - POST /v2/app-branding/brand-settings#createBrandByPartitionId
+  - PUT /v2/app-branding/brand-settings/{brandId}#updateBrandSettingsById
+  - POST /v2/authn/sso-config/partitions/enforced/{partitionId}/exemptions#addSSOExemptionPartitionEnforced
+- status: 412
+  title: Precondition Failed
+  occurrences: 7
+  envelope_schemas:
+  - PublicApiException
+  media_types:
+  - application/json
+  descriptions:
+  - Invalid month or year
+  example_operations:
+  - GET /v2/partition/{partitionId}/report/businesslines/csv_2#businessLinesCSVReport2
+  - GET /v2/partition/{partitionId}/report/portout/csv_2#telephoneNumberPortOutCSVReport2
+  - GET /v2/partition/{partitionId}/report/sip/csv_2#sipCSVReport2
+- status: 422
+  title: Unprocessable Content
+  occurrences: 11
+  envelope_schemas:
+  - BulkOperationErrorResponse
+  - PublicApiException
+  media_types:
+  - application/json
+  descriptions:
+  - Body missing required fields
+  - associated collection has pre-validation errors
+  - Unprocessable Content
+  - Invalid pageSize; Invalid pageNum
+  - Device Id not provided
+  - Missing deviceId/partitionId; deviceId and partitionId provided
+  - Device node assignment Id not provided
+  - Invalid search term supplied
+  example_operations:
+  - POST /v2/bulk-user-operation/collection#create_collection
+  - POST /v2/bulk-user-operation/job#create_job
+  - GET /v2/enm/edge-node#getPartitionNodes
+- status: 4XX
+  title: Client Error
+  occurrences: 1
+  envelope_schemas: []
+  media_types: []
+  descriptions:
+  - Bad request
+  example_operations:
+  - GET /v2/partition/{partitionId}/account/{accountId}/siptrunkgroup#listGroups
+- status: 500
+  title: Internal Server Error
+  occurrences: 32
+  envelope_schemas:
+  - PublicApiException
+  - string
+  media_types:
+  - application/json
+  - text/plain
+  descriptions:
+  - memberId list is null (empty list is OK)
+  - Internal Server Error - Failed to retrieve configurations
+  - Internal Server Error - Failed to update configuration
+  - Internal Server Error - Failed to enable configuration
+  - Internal Server Error - Failed to retrieve certificate
+  - Internal Server Error - Failed to delete configuration
+  - Internal Server Error - Failed to create exemption
+  - Internal Server Error - Failed to retrieve exemptions
+  example_operations:
+  - GET /v2/authn/sso-config/accounts/{accountId}#listSSOConfigsByAccountId
+  - PUT /v2/authn/sso-config/accounts/{accountId}#updateSSOConfig
+  - POST /v2/authn/sso-config/accounts/{accountId}/{ssoName}/status#enableSSO

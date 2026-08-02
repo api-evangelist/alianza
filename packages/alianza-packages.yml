@@ -1,0 +1,131 @@
+generated: '2026-08-02'
+method: searched
+source: >-
+  npm registry search + https://api.github.com/orgs/alianza-dev + PyPI, RubyGems, Packagist, NuGet,
+  crates.io lookups, and the Alianza developer portal (2026-08-02)
+
+api_client_sdks:
+  found: false
+  note: >-
+    Alianza publishes NO first-party client library for the Alianza Public API in any registry.
+    npm, PyPI, RubyGems, Packagist, NuGet and crates.io were all searched and returned no Alianza
+    API client. The developer portal ships PDF integration guides and a Swagger UI console instead
+    of SDKs, and the OpenAPI 3.0.3 description is the only machine-readable client-generation
+    input. Because no official client library exists, no SDKs pointer is emitted in apis.yml.
+
+github_organization:
+  url: https://github.com/alianza-dev
+  name: Alianza Development
+  description: Alianza Development codebase
+  homepage: https://www.alianza.com
+  created: '2015-01-04'
+  public_repos: 52
+  note: >-
+    Verified first-party (org homepage resolves to alianza.com). The public repositories are
+    internal engineering utilities, telephony/SIP libraries and forks - none is an Alianza API
+    client. github.com/alianza is an unrelated personal account and is NOT Alianza.
+
+packages:
+  - language: javascript
+    registry: npm
+    name: angular-scope-types
+    version: 1.0.0-beta.7
+    url: https://www.npmjs.com/package/angular-scope-types
+    install: npm install angular-scope-types
+    repository: https://github.com/alianza-dev/angular-scope-types
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: Checkers and other utilities for using api-check with Angular.
+  - language: javascript
+    registry: npm
+    name: echo-logger
+    version: 1.1.0
+    url: https://www.npmjs.com/package/echo-logger
+    install: npm install echo-logger
+    repository: https://github.com/alianza-dev/echo
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-16'
+    description: Browser console abstraction that adds logging conveniences.
+  - language: javascript
+    registry: npm
+    name: az-search-sorter
+    version: 1.0.4
+    url: https://www.npmjs.com/package/az-search-sorter
+    install: npm install az-search-sorter
+    repository: https://github.com/alianza-dev/az-search-sorter
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: Simple fuzzy searching.
+  - language: javascript
+    registry: npm
+    name: az-dynamic-filter
+    version: 2.0.1
+    url: https://www.npmjs.com/package/az-dynamic-filter
+    install: npm install az-dynamic-filter
+    repository: https://github.com/alianza-dev/az-dynamic-filter
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: Angular module providing a dynamic filter expression.
+  - language: javascript
+    registry: npm
+    name: az-autofocus
+    version: 1.0.0
+    url: https://www.npmjs.com/package/az-autofocus
+    install: npm install az-autofocus
+    repository: https://github.com/alianza-dev/az-autofocus
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: Angular directive for controlling element focus.
+  - language: javascript
+    registry: npm
+    name: az-trust-filter
+    version: 1.0.4
+    url: https://www.npmjs.com/package/az-trust-filter
+    install: npm install az-trust-filter
+    repository: https://github.com/alianza-dev/az-trust-filter
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: 'Angular trust filter: $sce.trustAs exposed as a filter.'
+  - language: javascript
+    registry: npm
+    name: az-highlight-search-sorter-match
+    version: 1.0.0
+    url: https://www.npmjs.com/package/az-highlight-search-sorter-match
+    install: npm install az-highlight-search-sorter-match
+    repository: https://github.com/alianza-dev/az-highlight-search-sorter-match
+    official: true
+    api_client: false
+    status: unmaintained
+    last_published: '2022-06-13'
+    description: Highlights az-search-sorter matches in a search result.
+
+registries_checked:
+  - {registry: npm, query: alianza, first_party_hits: 7, api_clients: 0}
+  - {registry: pypi, queries: [alianza, alianza-api, alianza-sdk, pyalianza], hits: 0}
+  - {registry: rubygems, query: alianza, hits: 0}
+  - {registry: packagist, query: alianza, hits: 0}
+  - {registry: nuget, query: alianza, hits: 0}
+  - {registry: crates.io, query: alianza, hits: 0}
+  - {registry: maven-central, query: alianza, hits: 0}
+
+notable_open_source:
+  note: >-
+    Not client SDKs, but real first-party telephony open source published by the org and relevant
+    to the domain.
+  repos:
+    - {name: peers, url: 'https://github.com/alianza-dev/peers', language: Java, description: Java SIP softphone}
+    - {name: efflux, url: 'https://github.com/alianza-dev/efflux', language: Java, description: Java RTP stack with RTCP support}
+    - {name: sdp, url: 'https://github.com/alianza-dev/sdp', language: Java, description: Java SDP library with ABNF strict parsing}
+    - {name: verified-callerid-demo, url: 'https://github.com/alianza-dev/verified-callerid-demo', language: JavaScript, description: Demo of verified caller ID via the X-AZ-Identity SIP header}

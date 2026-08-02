@@ -1,0 +1,161 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+docs: https://developer.alianza.com/web-services-datafeed-access
+note: >-
+  Cross-cutting request/response semantics for the Alianza Public API, derived from the published
+  OpenAPI 3.0.3 description and the provider's own Web Services page. Fields recorded as
+  supported: false are honest absences observed in the contract, not gaps to be filled in later.
+
+authentication:
+  style: opaque bearer token on a custom header
+  header: X-AUTH-TOKEN
+  scheme_name: X-Auth-Token
+  scheme_type: apiKey
+  applied: globally (root-level security requirement on the document)
+  token_endpoint: POST /v2/authorize
+  token_response_field: authToken
+  credentials: >-
+    Admin-portal username/password posted to /v2/authorize; credentials are issued by an Alianza
+    account manager, not self-service.
+  alternate_flows:
+    - POST /v2/authorize/jwt (loginWithJWT) - DEPRECATED in the current spec
+    - SSO / OAuth authorization-code exchange under /v2/authorize/sso and /v2/authn/sso/*
+  logout: PUT /v2/authorize/logout
+  token_lifetime: >-
+    Not published as a numeric TTL. The provider states the token "remains valid for an extended
+    period supporting unlimited API requests"; a 401 with "Expired Auth Token" is documented, so
+    clients must re-authorize on 401.
+  see_also: authentication/alianza-authentication.yml
+
+idempotency:
+  supported: false
+  header: null
+  evidence: >-
+    No Idempotency-Key header, no idempotency parameter, and no idempotency language appear anywhere
+    in the 471-operation OpenAPI description or on the Web Services documentation page. Retry safety
+    is therefore limited to HTTP method semantics (GET/PUT/DELETE naturally idempotent, POST not).
+  agent_guidance: >-
+    Treat every POST as unsafe to retry. Where a create operation may have partially succeeded,
+    re-query the collection (for example the account, device or telephone-number list) before
+    re-issuing the POST.
+
+pagination:
+  supported: partial
+  note: >-
+    Only a minority of collection endpoints paginate; most list operations return the full
+    collection. Two incompatible offset styles coexist.
+  styles:
+    - style: offset
+      params:
+        - {name: firstResultIndex, in: query, type: integer, default: 0, description: 'First result to display'}
+        - {name: maxResult, in: query, type: integer, default: 20, description: 'Maximum number to return'}
+      operations_using: 8
+    - style: page-number
+      params:
+        - {name: pageNum, in: query, type: integer, default: 0, description: 'defaults to 0'}
+        - {name: pageSize, in: query, type: integer, default: 100, description: 'defaults to 100'}
+      operations_using: 2
+      errors: 422 'Invalid pageSize; Invalid pageNum'
+  sorting:
+    param: sort
+    operations_using: 3
+  response_envelope: >-
+    No standard pagination envelope. Paginated responses do not publish total-count or next-link
+    fields in the spec; clients page until a short page is returned.
+
+filtering:
+  param: filter
+  note: 'Single endpoint-specific filter parameter (device listing); no generic filter grammar.'
+
+field_expansion:
+  supported: false
+  note: No expand / include / fields sparse-fieldset parameter is defined anywhere in the spec.
+
+metadata:
+  supported: false
+  note: No customer-writable metadata bag is exposed on any resource.
+
+request_tracing:
+  supported: partial
+  note: >-
+    No request-id request or response header is documented. The SpecialtyLineErrorResponse envelope
+    is the only error shape that returns a correlation value, as the traceId field.
+  fields: [traceId]
+
+versioning:
+  scheme: uri-path
+  current: v2
+  path_prefix: /v2
+  note: >-
+    Every operation in the current description sits under /v2. There is no version header, no date
+    train and no published version-negotiation mechanism. See lifecycle/alianza-lifecycle.yml.
+
+error_envelope:
+  format: vendor-envelope
+  rfc9457: false
+  primary_schema: PublicApiException
+  shape: '{status: integer, messages: [string], data: {object}}'
+  media_type: application/json
+  alternates: [BrandErrorResponse, BulkOperationErrorResponse, SpecialtyLineErrorResponse, OAuthErrorResponse, ValidationErrorResponse]
+  see_also: errors/alianza-problem-types.yml
+
+rate_limiting:
+  documented: false
+  headers: []
+  status_429_documented: false
+  evidence: >-
+    No 429 response, no RateLimit / X-RateLimit header, and no throttling language appear in the
+    OpenAPI description or on the Web Services page.
+
+async_operations:
+  supported: true
+  pattern: job tracker
+  note: >-
+    Long-running and bulk work is modelled as a job. 33 operations return 202 Accepted; the caller
+    then polls the Asynchronous JOB Tracker resource.
+  operations:
+    - {operationId: getJobInputUrl, method: POST, path: /v2/job/input}
+    - {operationId: getJobById, method: GET, path: '/v2/job/{jobId}'}
+    - {operationId: getJobInput, method: GET, path: '/v2/job/{jobId}/input'}
+    - {operationId: getJobOutput, method: GET, path: '/v2/job/{jobId}/output'}
+    - {operationId: getOutputUrl, method: GET, path: '/v2/job/{jobId}/output-url'}
+  bulk_surface: Bulk Operation Collection and Bulk Operation Job tags
+
+content_negotiation:
+  request: application/json
+  response: application/json
+  exceptions:
+    - 'Several Report operations return text/csv or application/octet-stream CSV exports'
+    - 'Media / Document Repository operations accept multipart/form-data uploads'
+
+resource_hierarchy:
+  note: >-
+    The URI path encodes platform containment; almost every operation is scoped to a partition.
+  shape: /v2/partition/{partitionId}/account/{accountId}/<resource>/{resourceId}
+  scoping_params:
+    - {name: partitionId, operations: 396}
+    - {name: accountId, operations: 281}
+
+bulk_and_datafeeds:
+  cdr_delivery: >-
+    Call Detail Records and other datafeeds are delivered out-of-band over SFTP, not over the REST
+    API. Production sftp://datafeed.alianza.com:10022, Beta sftp://datafeed.b2.alianza.com:10022.
+    SFTP credentials are issued by Alianza on request.
+  cdr_api: 'A CDRs tag also exists in the REST API for on-demand call-history search and CSV export.'
+
+certification:
+  required: true
+  note: >-
+    Alianza requires every integration to pass an API certification process before production
+    access: build and test against the Beta environment, supply raw HTTP request/response samples
+    and end-to-end test transactions, then submit the API certification checklist.
+  url: https://developer.alianza.com/certification-process
+
+cross_links:
+  authentication: authentication/alianza-authentication.yml
+  errors: errors/alianza-problem-types.yml
+  error_codes: errors/alianza-error-codes.yml
+  lifecycle: lifecycle/alianza-lifecycle.yml
+  sandbox: sandbox/alianza-sandbox.yml
+  data_model: data-model/alianza-data-model.yml

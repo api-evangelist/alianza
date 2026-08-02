@@ -1,18 +1,70 @@
 aid: alianza
 name: Alianza
-description: 'Alianza is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Alianza is a cloud communications software company founded in 2009 and
+  headquartered in Utah, providing a full-stack cloud voice and communications platform
+  to more than 1,000 communications service providers across 81 countries. Its Intelligent
+  Communications Fabric spans an experience layer, an orchestration layer, and an infrastructure
+  layer, packaged as Alianza One (multi-tenant cloud voice), Alianza Core (physical,
+  virtual and containerized network functions including MetaSphere, MaX UC, Perimeta
+  SBC and Clearwater Core IMS), and Alianza Fusion (hosted core communications systems).
+  Service providers use the platform for residential voice, business cloud communications,
+  SIP trunking, business lines, managed specialty lines (POTS replacement), business
+  text messaging, contact center, Microsoft Teams Direct Routing, robocall blocking
+  and voice interconnect. The Alianza Public API is a JSON REST API over the Alianza
+  One platform covering partition, account, end user, device, telephone number, porting,
+  SIP trunk, calling plan, voicemail, CDR and reporting orchestration.'
+image: https://www.alianza.com/wp-content/uploads/2025/03/Alianza-Basic-Images-New.png
 url: https://raw.githubusercontent.com/api-evangelist/alianza/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-02'
 modified: '2026-08-02'
 tags:
 - Company
-apis: []
+- Communications
+- Cloud Communications
+- Voice
+- VoIP
+- Telecommunications
+- UCaaS
+- SIP Trunking
+- Telephone Numbers
+- CPaaS
+- Service Providers
+apis:
+- aid: alianza:alianza-public-api
+  name: Alianza Public API
+  description: 'The Alianza Public API is the JSON REST web-service layer over the
+    Alianza One cloud communications platform. Service providers use it to create and
+    control every aspect of end-user accounts: partitions and accounts, account users
+    and end users, devices and device lines, business lines and hunt groups, SIP trunks
+    and trunk groups, calling plans and products, telephone numbers, porting and number
+    activation, specialty lines, voicemail boxes and messages, IVR, call/paging/pickup
+    groups, virtual fax, SSO configuration, security groups, bulk operations, CDRs
+    and reporting. Authentication is a token obtained from POST /v2/authorize and sent
+    on the X-AUTH-TOKEN header. The published OpenAPI 3.0.3 description covers 315
+    paths and 471 operations across 57 tags.'
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Voice
+  - Provisioning
+  - Telephone Numbers
+  - SIP Trunking
+  - Voicemail
+  - CDR
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-openapi-original.yml
+  - type: Swagger
+    url: openapi/alianza-apidocs-swagger2-original.json
+  - type: Overlay
+    url: overlays/alianza-public-api-overlay.yaml
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +72,63 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://www.alianza.com/
+- type: DeveloperPortal
+  url: https://developer.alianza.com/home
+- type: Documentation
+  url: https://developer.alianza.com/api-guides
+- type: APIReference
+  url: https://developer.alianza.com/provisioning-api
+- type: GettingStarted
+  url: https://developer.alianza.com/web-services-datafeed-access
+- type: Blog
+  url: https://www.alianza.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/alianza-dev
+- type: Support
+  url: https://www.alianza.com/contact-us/
+- type: Login
+  url: https://amp.alianza.com/
+- type: TermsOfService
+  url: https://www.alianza.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.alianza.com/privacy-policy/
+- type: Legal
+  url: https://www.alianza.com/legal/
+- type: StatusPage
+  url: https://status.alianza.com/
+- type: Lifecycle
+  url: lifecycle/alianza-lifecycle.yml
+- type: Authentication
+  url: authentication/alianza-authentication.yml
+- type: Conventions
+  url: conventions/alianza-conventions.yml
+- type: ErrorCatalog
+  url: errors/alianza-problem-types.yml
+- type: ErrorCodes
+  url: errors/alianza-error-codes.yml
+- type: DataModel
+  url: data-model/alianza-data-model.yml
+- type: Conformance
+  url: conformance/alianza-conformance.yml
+- type: Sandbox
+  url: sandbox/alianza-sandbox.yml
+- type: Packages
+  url: packages/alianza-packages.yml
+- type: WellKnown
+  url: well-known/alianza-well-known.yml
+- type: LLMsTxt
+  url: llms/alianza-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/alianza-agentic-access.yml
+- type: DomainSecurity
+  url: security/alianza-domain-security.yml
+- type: SecondaryMarketListing
   url: https://forgeglobal.com/alianza_stock/
+x-enrichment:
+  date: '2026-08-02'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

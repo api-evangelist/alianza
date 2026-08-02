@@ -1,0 +1,96 @@
+generated: '2026-08-02'
+method: generated
+source: openapi/alianza-openapi-original.yml + conventions/alianza-conventions.yml + errors/alianza-problem-types.yml
+note: Packaged Agent Skills for the marquee Alianza One provisioning flows. Alianza publishes no AGENTS.md or skill
+  files (searched developer.alianza.com and the alianza-dev GitHub org, 2026-08-02), so these are generated. Every
+  operationId referenced was verified to exist verbatim in the published OpenAPI 3.0.3 description.
+count: 5
+skills:
+- file: alianza-activate-telephone-number.md
+  name: Activate or port a telephone number
+  description: Search inventory, reserve a number, add it to an account, or initiate and trigger a port-in with
+    the losing carrier — including E911 address handling.
+  api: openapi/alianza-openapi-original.yml
+  operations:
+  - tnSearch
+  - listTnInventory
+  - retrieveTelephoneNumberAvailability
+  - reserve
+  - createOrAddTelephoneNumberToAccount
+  - retrievePort
+  - updatePort
+  - triggerPort
+  - cancelPort
+  - getE911Correction
+  - acceptE911Correction
+  - acceptOriginalE911
+  - getServiceActivationEvents
+- file: alianza-configure-sip-trunk.md
+  name: Configure a SIP trunk
+  description: Create a registration-based SIP trunk on an account, set credentials and forwarding behaviour, and
+    verify registration status.
+  api: openapi/alianza-openapi-original.yml
+  operations:
+  - validateSipTrunkIpPort
+  - createSipTrunk
+  - retrieveSipTrunk
+  - updateSipTrunk
+  - retrieveSipTrunkList
+  - getShareableCallingPlans
+  - retrieveSipTrunkForwardBehavior
+  - updateSipTrunkForwardBehavior
+  - getRegistrationStatus
+  - unlockSipTrunk
+  - deleteSipTrunk
+- file: alianza-export-usage-report.md
+  name: Search CDRs and export a usage report
+  description: Search call detail records for an account and drive Alianza's asynchronous CSV report jobs to completion.
+  api: openapi/alianza-openapi-original.yml
+  operations:
+  - cdrSearch
+  - telephoneNumberSummaryReport
+  - userSummaryReport
+  - sipSummaryReport
+  - deviceSummaryReport
+  - vFaxSummaryReport
+  - userCSVReport3
+  - deviceCSVReport3
+  - accountCSVReport3
+  - telephoneNumberCSVReport2
+  - getJobById
+  - getJobOutput
+  - getOutputUrl
+- file: alianza-provision-business-account.md
+  name: Provision a business cloud communications account
+  description: Create an Alianza One account inside a partition, add end users, attach a calling plan, and send
+    the welcome email — the core service-provider onboarding flow.
+  api: openapi/alianza-openapi-original.yml
+  operations:
+  - logUserIn
+  - validateAccountProperties
+  - createAccount
+  - getAvailableUserProductPlans
+  - createEndUser
+  - getPlans
+  - addPlan
+  - sendWelcomeEmail
+  - getStatus
+- file: alianza-provision-device-line.md
+  name: Provision and swap a device line
+  description: Create a device line on an account, pull its provisioning data, verify SIP registration, and swap
+    the physical hardware behind it.
+  api: openapi/alianza-openapi-original.yml
+  operations:
+  - listDevices
+  - createDevice
+  - getDevice
+  - provisioningInfo
+  - provisioningStatus
+  - registrationStatus
+  - swapPrevalidate
+  - swapDevice
+  - getProvisioningByMacAddress
+  - validateDeviceProperties
+  - listDeviceLinesForMac
+  - generateAdminPassword
+  - removeDevice

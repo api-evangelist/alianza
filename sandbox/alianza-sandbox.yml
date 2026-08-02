@@ -1,0 +1,94 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.alianza.com/web-services-datafeed-access
+docs:
+  web_services: https://developer.alianza.com/web-services-datafeed-access
+  certification: https://developer.alianza.com/certification-process
+  api_guides: https://developer.alianza.com/api-guides
+
+note: >-
+  Alianza runs a real pre-production environment ("Beta") that service providers are required to
+  build and certify against before production access is granted. It is not a self-service sandbox:
+  there is no public sign-up, no test-key prefix scheme and no published magic test values.
+  Credentials for every environment are issued by an Alianza account manager. Nothing below is
+  invented - only values Alianza publishes are recorded.
+
+self_service: false
+public_signup: false
+credential_issuance: >-
+  Contact your Alianza account manager for login credentials. The same admin-portal username and
+  password are exchanged for an X-AUTH-TOKEN via POST /v2/authorize in each environment.
+
+environments:
+  - name: Production
+    kind: live
+    base_url: https://api.alianza.com
+    source: web-services page and OpenAPI servers[]
+  - name: Beta
+    kind: test
+    base_url: https://api.b2.alianza.com
+    source: 'web-services page ("Development: api.b2.alianza.com") and OpenAPI servers[] ("Beta")'
+    note: The environment Alianza directs integrators to for development and API certification.
+  - name: QA
+    kind: internal
+    base_url: https://api.q2.alianza.com
+    source: OpenAPI servers[]
+  - name: Development
+    kind: internal
+    base_url: https://api.d2.alianza.com
+    source: OpenAPI servers[]
+
+datafeeds:
+  - name: CDR / datafeed SFTP (Production)
+    url: sftp://datafeed.alianza.com
+    port: 10022
+    note: Non-standard SFTP port. Username and password require contacting Alianza.
+  - name: CDR / datafeed SFTP (Beta)
+    url: sftp://datafeed.b2.alianza.com
+    port: 10022
+
+test_separation:
+  mechanism: separate hostnames per environment
+  key_prefixes: null
+  mode_flag: null
+  note: >-
+    There is no test/live key-prefix convention and no mode switch on a single host. Environment
+    selection is entirely by base URL, with distinct credentials per environment.
+
+magic_test_values:
+  published: false
+  note: >-
+    Alianza publishes no test telephone numbers, test MAC addresses, test device identifiers or
+    simulator values. Integrators are allocated real inventory in the Beta partition instead.
+
+test_clocks: {supported: false}
+fixture_tooling: {published: false}
+
+certification_process:
+  required: true
+  url: https://developer.alianza.com/certification-process
+  environment: Beta
+  requirements:
+    - Develop and test all use-case scenarios against the Beta environment.
+    - >-
+      Be able to supply fully consumable raw HTTP requests and responses (HTTP verb/method,
+      endpoint and payload) when Alianza support investigates an issue.
+    - Complete end-to-end test transactions that also exercise error handling in the logs.
+    - Submit the Alianza API certification checklist once test transactions are complete.
+
+api_guides:
+  note: The provider publishes five PDF integration guides covering the marquee provisioning flows.
+  guides:
+    - {name: Account Create, url: 'https://infrastructure.developer.alianza.com/hubfs/KB%20Resources/Guides/Alianza%20Account%20Create%20API.pdf'}
+    - {name: SIP Trunking via API, url: 'https://infrastructure.developer.alianza.com/hubfs/KB%20Resources/Guides/Alianza%20SIP%20Trunking%20via%20API.pdf'}
+    - {name: Specialty Lines via API, url: 'https://infrastructure.developer.alianza.com/hubfs/KB%20Resources/Alianza%20Specialty%20Lines%20via%20API.pdf'}
+    - {name: Account Create for BeYOC via API, url: 'https://infrastructure.developer.alianza.com/hubfs/KB%20Resources/Guides/Alianza%20Account%20Create%20for%20BeYOC%20via%20API.pdf'}
+    - {name: Phone Numbers via API, url: 'https://infrastructure.developer.alianza.com/hubfs/KB%20Resources/Guides/Alianza%20Phone%20Numbers%20via%20API.pdf'}
+
+console:
+  name: Swagger UI (Try it out)
+  url: https://developer.alianza.com/provisioning-api
+  note: >-
+    The developer portal renders the live OpenAPI 3.0.3 description in Swagger UI 5.18.3 with an
+    Authorize button for the X-AUTH-TOKEN, so operations can be executed from the browser once a
+    token has been obtained. Requests go to the server selected from the servers[] dropdown.

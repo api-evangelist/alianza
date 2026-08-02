@@ -1,0 +1,112 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+docs: https://developer.alianza.com/web-services-datafeed-access
+note: >-
+  Cross-cutting and industry standards asserted against the Alianza Public API. conforms is set from
+  observable evidence in the published OpenAPI 3.0.3 description, the developer portal, and live
+  probes. Alianza publishes no compliance/certification program page (no trust center, no SOC 2 /
+  ISO 27001 / PCI claim was found on alianza.com), so no Compliance pointer is emitted.
+
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: 'openapi: 3.0.3 document published at https://developer.alianza.com/openapi.yaml (315 paths, 471 operations, 259 schemas)'
+  - id: swagger-2.0
+    conforms: true
+    deprecated_by_provider: true
+    evidence: 'swagger: "2.0" document at https://api.alianza.com/v2/apidocs/swagger.json, self-labelled outdated by Alianza'
+  - id: rest
+    conforms: true
+    evidence: resource-oriented JSON over HTTPS with method semantics and a containment URI hierarchy under /v2/partition/{partitionId}
+  - id: oauth2
+    conforms: false
+    evidence: 'no oauth2 securityScheme in the description; the API-level scheme is apiKey (X-AUTH-TOKEN). An OAuth authorization-code exchange exists only for end-user SSO login (POST /v2/authorize/sso), not for API authorization'
+  - id: oidc
+    conforms: false
+    evidence: 'no openIdConnect securityScheme; no /.well-known/openid-configuration on any Alianza host (probed 2026-08-02, all 404)'
+  - id: saml-2.0
+    conforms: true
+    scope: administrative SSO only
+    evidence: 'SSO Configuration / SSO Authentication tags implement SP-initiated and IdP-callback SAML flows (spInitiatedAuthn, finishSSO); Alianza''s own status page authenticates via sso.alianza.com SAML'
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'errors are a vendor envelope (PublicApiException {status, messages[], data}) served as application/json; no application/problem+json response is declared anywhere in the description'
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: '/.well-known/security.txt returns 404 on api.alianza.com, api.b2.alianza.com, developer.alianza.com and www.alianza.com (probed 2026-08-02)'
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: 'deprecation is expressed only via the OpenAPI deprecated flag on 50 operations; no Sunset or Deprecation response header is documented'
+  - id: rfc8615-well-known
+    conforms: false
+    evidence: 'no /.well-known/ documents served on any host; see well-known/alianza-well-known.yml'
+  - id: rfc6749-bearer-tokens
+    conforms: false
+    evidence: 'the auth token is carried on a custom X-AUTH-TOKEN header, not an RFC 6750 Authorization: Bearer header'
+  - id: idempotency-key
+    conforms: false
+    evidence: 'no Idempotency-Key header or equivalent appears in any of the 471 operations'
+  - id: rate-limit-headers
+    conforms: false
+    evidence: 'no 429 response and no RateLimit/X-RateLimit headers are declared in the description'
+  - id: pagination
+    conforms: partial
+    evidence: 'two incompatible offset styles coexist (firstResultIndex/maxResult on 8 operations, pageNum/pageSize on 2); the large majority of collection operations return unpaginated full collections'
+  - id: json-api
+    conforms: false
+    evidence: 'plain JSON resource representations; no JSON:API media type, envelope or relationship objects'
+  - id: asyncapi
+    conforms: false
+    evidence: 'no AsyncAPI document published; asynchronous work uses an HTTP job-tracker polling pattern (202 Accepted + /v2/job/{jobId}) rather than an event stream. CDRs are delivered as SFTP datafeeds, not events'
+  - id: a2a-agent-card
+    conforms: false
+    evidence: '/.well-known/agent-card.json and /.well-known/agent.json return 404 on the API and docs hosts; www.alianza.com returns its HTML 404 page with status 200 for every path, which was rejected as a catch-all false positive'
+  - id: mcp
+    conforms: false
+    evidence: 'no first-party Model Context Protocol server was found in the docs, npm, or the alianza-dev GitHub organization'
+  - id: tls-1.3
+    conforms: true
+    evidence: 'TLSv1.3 negotiated on api.alianza.com, developer.alianza.com and www.alianza.com (probed 2026-08-02)'
+  - id: hsts
+    conforms: partial
+    evidence: 'developer.alianza.com sends Strict-Transport-Security with max-age=31536000; www.alianza.com does not, and api.alianza.com returned no HSTS header'
+  - id: dnssec
+    conforms: false
+    evidence: 'alianza.com is not DNSSEC signed (probed 2026-08-02)'
+  - id: caa
+    conforms: false
+    evidence: 'no CAA records published for alianza.com'
+  - id: spf
+    conforms: true
+    evidence: 'SPF record present for alianza.com'
+  - id: dmarc
+    conforms: true
+    policy: quarantine
+    evidence: 'DMARC record present for alianza.com with p=quarantine'
+
+telecom_regulatory:
+  note: >-
+    Alianza operates in US telecommunications, so several sector obligations are visible in the API
+    surface itself. These are observed capabilities, not certifications claimed by Alianza.
+  observed:
+    - id: e911
+      evidence: 'E911 / emergency callback number fields appear across device, line and user schemas (e911CallbackNumber, emergencyCallbackPhoneNumber, E911CallBack); an Emergency Notification tag exists'
+    - id: lnp-number-porting
+      evidence: 'a full Port tag implements LNP: port request creation, LOA upload and retrieval, validation and activation'
+    - id: robocall-mitigation
+      evidence: 'Alianza markets robocall blocking as a platform capability (https://www.alianza.com/use-cases/robocall-blocking/); no STIR/SHAKEN attestation field is exposed in the public API description'
+    - id: cdr-retention
+      evidence: 'CDRs are exported over SFTP datafeeds and searchable via the CDRs tag'
+
+published_compliance_program:
+  found: false
+  checked:
+    - {url: 'https://trust.alianza.com/', status: 403}
+    - {url: 'https://www.alianza.com/trust/', status: 200, note: 'WordPress HTML 404 page served with status 200 - not a real page'}
+    - {url: 'https://www.alianza.com/security/', status: 200, note: 'WordPress HTML 404 page served with status 200 - not a real page'}
+    - {url: 'https://www.alianza.com/legal/', status: 200, note: 'real page, but legal notices only - no certifications named'}
+  note: >-
+    No named certification (SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP, CSA STAR) was found published
+    on any Alianza public surface as of 2026-08-02. Emitting a Compliance pointer would assert a
+    program the provider does not publish.

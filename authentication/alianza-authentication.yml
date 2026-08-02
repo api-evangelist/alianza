@@ -1,0 +1,15 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: X-Auth-Token
+  type: apiKey
+  in: header
+  parameter: X-AUTH-TOKEN
+  sources:
+  - openapi/alianza-openapi-original.yml

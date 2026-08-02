@@ -1,0 +1,40 @@
+generated: '2026-08-02'
+method: derived
+source: openapi/alianza-openapi-original.yml
+registry: BrandError
+note: The only enumerated error-code registry published in the Alianza OpenAPI. Codes are returned on the BrandErrorResponse
+  envelope as {code, description} by the Brand Settings endpoints. Codes are 5-digit strings in a 10xxx namespace
+  where the low three digits echo the HTTP status for the transport-level cases (10404 -> 404, 10403 -> 403, 10500
+  -> 500).
+envelope:
+  schema: BrandErrorResponse
+  code_field: code
+  message_field: description
+count: 13
+error_codes:
+- code: '10001'
+  message: API hasn't been implemented yet
+- code: '10404'
+  message: Resource not found
+- code: '10403'
+  message: Not authorized
+- code: '10500'
+  message: Internal Server Error
+- code: '10002'
+  message: BrandDetails validation failed
+- code: '10003'
+  message: Brand already exists for the given partition
+- code: '10004'
+  message: Branding completion is readonly
+- code: '10005'
+  message: Partition mismatch
+- code: '10006'
+  message: File format is invalid
+- code: '10007'
+  message: Active build request already exists
+- code: '10008'
+  message: Brand domains setup is not completed
+- code: '10009'
+  message: Build cannot be published
+- code: '10010'
+  message: Desktop hosting feature is disabled

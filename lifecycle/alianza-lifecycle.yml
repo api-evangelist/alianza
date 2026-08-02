@@ -1,0 +1,393 @@
+generated: '2026-08-02'
+method: searched
+source: https://developer.alianza.com/openapi.yaml + https://api.alianza.com/v2/apidocs/swagger.json + https://status.alianza.com/
+versioning:
+  scheme: uri-path
+  current: v2
+  path_prefix: /v2
+  docs: https://developer.alianza.com/web-services-datafeed-access
+  note: All 471 operations in the current description are under /v2. No version header, no date-based version train,
+    no published version-negotiation mechanism.
+specification_generations:
+- generation: OpenAPI 3.0.3
+  url: https://developer.alianza.com/openapi.yaml
+  status: current
+  paths: 315
+  operations: 471
+  note: The live, maintained description, rendered by Swagger UI at https://developer.alianza.com/provisioning-api
+- generation: Swagger 2.0 / OAS 2.0
+  url: https://api.alianza.com/v2/apidocs/swagger.json
+  status: deprecated
+  paths: 264
+  operations: 383
+  note: 'Alianza states in the document itself: "This documentation of the Alianza Public API is outdated. No further
+    updates will be made to it." Retained here as evidence of the documented supersession, and because 88 operations
+    present in the OpenAPI 3.0.3 description are absent from it.'
+deprecation:
+  policy_url: https://developer.alianza.com/provisioning-api
+  mechanism: 'OpenAPI deprecated: true flag on the operation'
+  sunset_header: false
+  rfc8594: false
+  sunset_dates_published: false
+  note: Alianza marks superseded operations with the OpenAPI deprecated flag and, in several cases, ships the replacement
+    side by side under a _2 path suffix (media/media_2, deviceinventory/deviceinventory_2, report/account/csv and
+    csv_2). No RFC 8594 Sunset or Deprecation response header is documented, and no removal dates are published,
+    so consumers must diff the description to detect retirement.
+  deprecated_operation_count: 50
+  deprecated_by_tag:
+  - tag: Report
+    operations: 12
+  - tag: Device (Deprecated)
+    operations: 10
+  - tag: Account
+    operations: 8
+  - tag: Media
+    operations: 4
+  - tag: End User
+    operations: 4
+  - tag: Port
+    operations: 3
+  - tag: Device Inventory Management
+    operations: 2
+  - tag: Partition
+    operations: 2
+  - tag: Rate Center Inventory
+    operations: 2
+  - tag: Authorize
+    operations: 1
+  - tag: CDRs
+    operations: 1
+  - tag: Telephone Number
+    operations: 1
+deprecated_operations:
+- operationId: loginWithJWT
+  method: POST
+  path: /v2/authorize/jwt
+  tags:
+  - Authorize
+  summary: Login with token
+- operationId: activation
+  method: POST
+  path: /v2/partition/{partitionId}/account/activation
+  tags:
+  - Account
+  summary: Account activation
+- operationId: bulkStatusChange
+  method: POST
+  path: /v2/partition/{partitionId}/account/bulkstatuschange
+  tags:
+  - Account
+  summary: Change account status in bulk
+- operationId: changeCallingPlan
+  method: PUT
+  path: /v2/partition/{partitionId}/account/{accountId}/callingplanproduct/{callingPlanProductId}
+  tags:
+  - Account
+  summary: Change Calling Plan
+- operationId: swapCallingPlan
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/callingplanswap
+  tags:
+  - Account
+  summary: Change Calling Plan Immediately
+- operationId: cancelPendingCallingPlan
+  method: DELETE
+  path: /v2/partition/{partitionId}/account/{accountId}/cancelpendingcallingplan
+  tags:
+  - Account
+  summary: ' Cancel Pending Callingplan'
+- operationId: cdrSearchCSV
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/cdrsearch/csv
+  tags:
+  - CDRs
+  summary: CDR record search
+- operationId: listDevicesDeprecated
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/devices
+  tags:
+  - Account
+  summary: Devices on an Account
+- operationId: getDeviceDataForAccount
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/macaddress/{macAddress}
+  tags:
+  - Account
+  summary: Get device data by MAC address
+- operationId: findAllAvailableDevicesByMacAddress
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/macaddress/{macAddress}/inventory
+  tags:
+  - Account
+  summary: Determine which lines are available on a device/mac
+- operationId: add
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/media
+  tags:
+  - Media
+  summary: Add IVR prompt
+- operationId: deprecatedGetMedia
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/media/{mediaId}
+  tags:
+  - Media
+  summary: Retrieve Media of type
+- operationId: deleteHoldMusic
+  method: DELETE
+  path: /v2/partition/{partitionId}/account/{accountId}/media_2/{id}
+  tags:
+  - Media
+  summary: Delete hold music
+- operationId: update_2
+  method: PUT
+  path: /v2/partition/{partitionId}/account/{accountId}/media_2/{id}
+  tags:
+  - Media
+  summary: Choose hold music for an account
+- operationId: findLoa
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/port/{portId}/loa
+  tags:
+  - Port
+  summary: Get LOA
+- operationId: uploadLOA
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/port/{portId}/loa
+  tags:
+  - Port
+  summary: Upload LOA
+- operationId: getLoaMetadata
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/port/{portId}/loa/metadata
+  tags:
+  - Port
+  summary: Get LOA metadata
+- operationId: activation_1
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/user/activation
+  tags:
+  - End User
+  summary: End User activation
+- operationId: changeCallingPlan_2
+  method: PUT
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/callingplanproduct/{callingPlanProductId}
+  tags:
+  - End User
+  summary: Change Calling Plan
+- operationId: swapCallingPlan_2
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/callingplanswap
+  tags:
+  - End User
+  summary: Change Calling Plan Immediately
+- operationId: cancelPendingCallingPlan_2
+  method: DELETE
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/cancelpendingcallingplan
+  tags:
+  - End User
+  summary: ' Cancel Pending Callingplan'
+- operationId: listDeviceByUser
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device
+  tags:
+  - Device (Deprecated)
+  summary: Retrieve device list
+- operationId: createDevice_1
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device
+  tags:
+  - Device (Deprecated)
+  summary: Create a new device
+- operationId: validateProperties_3
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/validateproperties
+  tags:
+  - Device (Deprecated)
+  summary: Pre-validate property on the Device object
+- operationId: removeDevice_1
+  method: DELETE
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}
+  tags:
+  - Device (Deprecated)
+  summary: Delete device
+- operationId: getDevice_1
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}
+  tags:
+  - Device (Deprecated)
+  summary: Retrieve device
+- operationId: patchDevice
+  method: PATCH
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}
+  tags:
+  - Device (Deprecated)
+  summary: Update device
+- operationId: updateDevice_1
+  method: PUT
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}
+  tags:
+  - Device (Deprecated)
+  summary: Update device
+- operationId: getProvisioningStatus
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}/provisioningstatus
+  tags:
+  - Device (Deprecated)
+  summary: Retrieve device provisioning status
+- operationId: getRegistrationStatus_2
+  method: GET
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}/registrationstatus
+  tags:
+  - Device (Deprecated)
+  summary: Retrieve device registration status
+- operationId: swapDevice_1
+  method: POST
+  path: /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}/swap
+  tags:
+  - Device (Deprecated)
+  summary: Swap device
+- operationId: allTelephoneNumberCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/deviceinventory
+  tags:
+  - Device Inventory Management
+  summary: Retrieve bulk device inventory
+- operationId: importDeviceInventory_1
+  method: POST
+  path: /v2/partition/{partitionId}/deviceinventory
+  tags:
+  - Device Inventory Management
+  summary: Upload bulk device inventory
+- operationId: allTelephoneNumberCSVReport_2
+  method: GET
+  path: /v2/partition/{partitionId}/deviceinventory_2
+  tags:
+  - Partition
+  summary: Retrieve bulk device inventory
+- operationId: importDeviceInventory_2
+  method: POST
+  path: /v2/partition/{partitionId}/deviceinventory_2
+  tags:
+  - Partition
+  summary: Upload bulk device inventory
+- operationId: getInventoryPlan
+  method: GET
+  path: /v2/partition/{partitionId}/ratecenter/inventoryplan
+  tags:
+  - Rate Center Inventory
+  summary: (DEPRECATED) Retrieve rate center inventory plan in CSV format
+- operationId: importFile
+  method: POST
+  path: /v2/partition/{partitionId}/ratecenter/inventoryplan
+  tags:
+  - Rate Center Inventory
+  summary: (DEPRECATED) Import rate center inventory plan in CSV format
+- operationId: accountCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/account/csv
+  tags:
+  - Report
+  summary: Retrieve account report in CSV format
+- operationId: accountCSVReport2
+  method: GET
+  path: /v2/partition/{partitionId}/report/account/csv_2
+  tags:
+  - Report
+  summary: Retrieve account report in CSV format
+- operationId: endUserAccountHistory
+  method: GET
+  path: /v2/partition/{partitionId}/report/accounthistory/enduserchanges
+  tags:
+  - Report
+  summary: Get end user account history
+- operationId: deviceCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/device/csv
+  tags:
+  - Report
+  summary: Retrieve device report in CSV format
+- operationId: deviceCSVReport2
+  method: GET
+  path: /v2/partition/{partitionId}/report/device/csv_2
+  tags:
+  - Report
+  summary: Retrieve device report in CSV format
+- operationId: mockLineSummary
+  method: GET
+  path: /v2/partition/{partitionId}/report/line
+  tags:
+  - Report
+  summary: Line summary mock
+- operationId: telephoneNumberPortOutCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/portout/csv
+  tags:
+  - Report
+  summary: Retrieve telephone number port out in CSV format
+- operationId: sipCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/sip/csv
+  tags:
+  - Report
+  summary: Retrieve SIP summary report in CSV format
+- operationId: telephoneNumberCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/tn/csv
+  tags:
+  - Report
+  summary: Retrieve telephone number summary report in CSV format
+- operationId: userCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/user/csv
+  tags:
+  - Report
+  summary: Retrieve user summary report in CSV format
+- operationId: userCSVReport2
+  method: GET
+  path: /v2/partition/{partitionId}/report/user/csv_2
+  tags:
+  - Report
+  summary: Retrieve user summary report in CSV format
+- operationId: vFaxCSVReport
+  method: GET
+  path: /v2/partition/{partitionId}/report/vfax/csv
+  tags:
+  - Report
+  summary: Retrieve Virtual Fax report in CSV format
+- operationId: bulkInsert
+  method: POST
+  path: /v2/partition/{partitionId}/telephonenumber/bulkimport
+  tags:
+  - Telephone Number
+  summary: Bulk telephone number import
+status_page:
+  url: https://status.alianza.com/
+  platform: Atlassian Statuspage
+  canonical_host: alianzaplatform.statuspage.io
+  access: sso-gated
+  note: status.alianza.com issues a 301 to alianzaplatform.statuspage.io, which then 302s to Alianza Okta SSO (sso.alianza.com
+    SAML). The status page is real and provider-operated but visible only to authenticated service-provider customers;
+    there is no anonymous incident history or public RSS/Atom feed.
+  http_evidence:
+  - url: https://status.alianza.com/
+    status: 301
+    location: https://alianzaplatform.statuspage.io/
+  - url: https://alianzaplatform.statuspage.io/
+    status: 302
+    location: https://sso.alianza.com/app/statuspage_saml/.../sso/saml
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment is published on alianza.com or the developer portal; SLAs are contracted
+    per service-provider agreement.
+changelog:
+  url: null
+  published: false
+  note: No public API changelog, release-notes page or dated version history was found on developer.alianza.com
+    or www.alianza.com. Platform news is published as press releases (https://www.alianza.com/press-releases/) rather
+    than as an API changelog.
+certification_gate:
+  url: https://developer.alianza.com/certification-process
+  required: true
+  note: Every integration must pass Alianza API certification against the Beta environment before production access
+    is granted.

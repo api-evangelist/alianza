@@ -1,0 +1,154 @@
+generated: '2026-08-02'
+method: probed
+source: live GET of /.well-known/* on every Alianza API, docs and website host
+hosts:
+- https://api.alianza.com
+- https://api.b2.alianza.com
+- https://developer.alianza.com
+- https://www.alianza.com
+summary:
+  documents_found: 0
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: false
+  api_catalog: false
+  agent_card: false
+  note: Alianza publishes no /.well-known/ discovery surface on any host. www.alianza.com (WordPress)
+    answers 200 with its HTML 404 page for every /.well-known/* path; those responses were verified as
+    HTML and rejected as false positives rather than recorded as hits.
+documents:
+- host: api.alianza.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.alianza.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: api.b2.alianza.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: application/json; charset=utf-8
+- host: developer.alianza.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/openid-configuration
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/api-catalog
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/agent-card.json
+  status: 404
+  content_type: text/html
+- host: developer.alianza.com
+  path: /.well-known/agent.json
+  status: 404
+  content_type: text/html
+- host: www.alianza.com
+  path: /.well-known/security.txt
+  status: 404
+  content_type: text/html
+- host: www.alianza.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document
+- host: www.alianza.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html; charset=UTF-8
+  note: html-catch-all (site 404 page served with 200) - rejected, not a real document

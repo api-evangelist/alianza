@@ -1,0 +1,1033 @@
+generated: '2026-08-02'
+method: derived
+source:
+- mcp/alianza-mcp.yml
+- openapi/alianza-openapi-original.yml
+note: Binds every candidate MCP tool to the OpenAPI operationId that backs it, so each tool inherits a real inputSchema
+  (that operation parameters + requestBody) instead of a guessed one. Every operationId below was verified to exist
+  verbatim in the published spec. Alianza operates no MCP server and no GraphQL surface, so there are no mcp_only
+  rows and no graphql surface block; confidence is high on every row because each binding is 1:1 with a named operation
+  rather than inferred from a gated tools/list.
+surfaces:
+  openapi:
+    file: openapi/alianza-openapi-original.yml
+    url: https://developer.alianza.com/openapi.yaml
+    version: 3.0.3
+    operations: 471
+    gated: false
+  graphql:
+    endpoint: null
+    present: false
+    note: No GraphQL surface. https://www.alianza.com/graphql answers 200 with the site HTML 404 page (catch-all),
+      which was rejected.
+  mcp:
+    url: null
+    present: false
+    status: candidate
+    note: No provider-operated MCP server exists; the tool list is an API Evangelist proposal derived from the spec.
+coverage:
+  tools_named: 44
+  tools_bound: 44
+  tools_unbound: 0
+  mcp_only: 0
+  rest_operations_total: 471
+  rest_operations_with_a_tool: 44
+  rest_operations_without_a_tool: 427
+  rest_coverage_pct: 9.3
+crosswalk:
+- tool: alianza_login
+  category: session
+  rest:
+  - logUserIn
+  binding: rest
+  confidence: high
+  http: POST /v2/authorize
+  openapi_tags:
+  - Authorize
+- tool: alianza_whoami
+  category: session
+  rest:
+  - getLoginInfo
+  binding: rest
+  confidence: high
+  http: GET /v2/authorize/userinfo
+  openapi_tags:
+  - Authorize
+- tool: alianza_logout
+  category: session
+  rest:
+  - logOut
+  binding: rest
+  confidence: high
+  http: PUT /v2/authorize/logout
+  openapi_tags:
+  - Authorize
+- tool: alianza_get_partition
+  category: partition
+  rest:
+  - retrieve_2
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}
+  openapi_tags:
+  - Partition
+- tool: alianza_get_partition_settings
+  category: partition
+  rest:
+  - getAllSettings
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/setting
+  openapi_tags:
+  - Partition
+- tool: alianza_list_inbound_carriers
+  category: partition
+  rest:
+  - getInboundCarriers
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/inboundcarriers
+  openapi_tags:
+  - Partition
+- tool: alianza_list_accounts
+  category: account
+  rest:
+  - getAccounts
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account
+  openapi_tags:
+  - Account
+- tool: alianza_search_accounts
+  category: account
+  rest:
+  - accountSearch
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/search
+  openapi_tags:
+  - Account
+- tool: alianza_get_account
+  category: account
+  rest:
+  - retrieveAccount
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}
+  openapi_tags:
+  - Account
+- tool: alianza_create_account
+  category: account
+  rest:
+  - createAccount
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account
+  openapi_tags:
+  - Account
+- tool: alianza_update_account
+  category: account
+  rest:
+  - updateAccount
+  binding: rest
+  confidence: high
+  http: PUT /v2/partition/{partitionId}/account/{accountId}
+  openapi_tags:
+  - Account
+- tool: alianza_delete_account
+  category: account
+  rest:
+  - deleteAccount
+  binding: rest
+  confidence: high
+  http: DELETE /v2/partition/{partitionId}/account/{accountId}
+  openapi_tags:
+  - Account
+- tool: alianza_get_account_status
+  category: account
+  rest:
+  - getStatus
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/status
+  openapi_tags:
+  - Account
+- tool: alianza_prevalidate_account
+  category: account
+  rest:
+  - validateAccountProperties
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/validateproperties
+  openapi_tags:
+  - Account
+- tool: alianza_list_end_users
+  category: user
+  rest:
+  - retrieveEndUserList
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/user
+  openapi_tags:
+  - End User
+- tool: alianza_get_end_user
+  category: user
+  rest:
+  - retrieveEndUser
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/user/{userId}
+  openapi_tags:
+  - End User
+- tool: alianza_create_end_user
+  category: user
+  rest:
+  - createEndUser
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/user
+  openapi_tags:
+  - End User
+- tool: alianza_update_end_user
+  category: user
+  rest:
+  - updateEndUser
+  binding: rest
+  confidence: high
+  http: PUT /v2/partition/{partitionId}/account/{accountId}/user/{userId}
+  openapi_tags:
+  - End User
+- tool: alianza_delete_end_user
+  category: user
+  rest:
+  - deleteEndUser
+  binding: rest
+  confidence: high
+  http: DELETE /v2/partition/{partitionId}/account/{accountId}/user/{userId}
+  openapi_tags:
+  - End User
+- tool: alianza_send_welcome_email
+  category: user
+  rest:
+  - sendWelcomeEmail
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/user/{userId}/send-welcome-email
+  openapi_tags:
+  - End User
+- tool: alianza_list_account_users
+  category: user
+  rest:
+  - getAccountUserList
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/accountuser
+  openapi_tags:
+  - Account User
+- tool: alianza_create_account_user
+  category: user
+  rest:
+  - createAccountUser
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/accountuser
+  openapi_tags:
+  - Account User
+- tool: alianza_search_telephone_numbers
+  category: telephone_number
+  rest:
+  - tnSearch
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/telephonenumber/search
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_list_tn_inventory
+  category: telephone_number
+  rest:
+  - listTnInventory
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/telephonenumber
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_get_telephone_number
+  category: telephone_number
+  rest:
+  - retrieveTelephoneNumber
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/telephonenumber/{tn}
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_check_tn_availability
+  category: telephone_number
+  rest:
+  - retrieveTelephoneNumberAvailability
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/telephonenumber/{tn}/availability
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_reserve_telephone_number
+  category: telephone_number
+  rest:
+  - reserve
+  binding: rest
+  confidence: high
+  http: PUT /v2/partition/{partitionId}/telephonenumber/{tn}/reserve
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_add_telephone_number_to_account
+  category: telephone_number
+  rest:
+  - createOrAddTelephoneNumberToAccount
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/telephonenumber
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_list_account_telephone_numbers
+  category: telephone_number
+  rest:
+  - retrieveAccountTelephoneNumbers
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/telephonenumber
+  openapi_tags:
+  - Telephone Number
+- tool: alianza_search_dynamic_inventory
+  category: telephone_number
+  rest:
+  - retrieveTnsFromCarriersDynamicInventory
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/dynamic-inventory/tn-search
+  openapi_tags:
+  - Dynamic Inventory
+- tool: alianza_get_port
+  category: porting
+  rest:
+  - retrievePort
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/port/{portId}
+  openapi_tags:
+  - Port
+- tool: alianza_update_port
+  category: porting
+  rest:
+  - updatePort
+  binding: rest
+  confidence: high
+  http: PUT /v2/partition/{partitionId}/account/{accountId}/port/{portId}
+  openapi_tags:
+  - Port
+- tool: alianza_trigger_port
+  category: porting
+  rest:
+  - triggerPort
+  binding: rest
+  confidence: high
+  http: PUT /v2/partition/{partitionId}/account/{accountId}/port/{portId}/triggerport
+  openapi_tags:
+  - Port
+- tool: alianza_cancel_port
+  category: porting
+  rest:
+  - cancelPort
+  binding: rest
+  confidence: high
+  http: DELETE /v2/partition/{partitionId}/account/{accountId}/port/{portId}/cancelport
+  openapi_tags:
+  - Port
+- tool: alianza_list_device_lines
+  category: device
+  rest:
+  - listDevices
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/deviceline
+  openapi_tags:
+  - Account Device Line
+- tool: alianza_create_device_line
+  category: device
+  rest:
+  - createDevice
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/deviceline
+  openapi_tags:
+  - Account Device Line
+- tool: alianza_get_device_registration_status
+  category: device
+  rest:
+  - registrationStatus
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/registrationstatus
+  openapi_tags:
+  - Account Device Line
+- tool: alianza_swap_device
+  category: device
+  rest:
+  - swapDevice
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/swap
+  openapi_tags:
+  - Account Device Line
+- tool: alianza_list_sip_trunks
+  category: sip_trunk
+  rest:
+  - retrieveSipTrunkList
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/siptrunk_2
+  openapi_tags:
+  - SIP Trunk
+- tool: alianza_create_sip_trunk
+  category: sip_trunk
+  rest:
+  - createSipTrunk
+  binding: rest
+  confidence: high
+  http: POST /v2/partition/{partitionId}/account/{accountId}/siptrunk_2
+  openapi_tags:
+  - SIP Trunk
+- tool: alianza_get_sip_trunk_registration
+  category: sip_trunk
+  rest:
+  - getRegistrationStatus
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/registrationstatus
+  openapi_tags:
+  - SIP Trunk
+- tool: alianza_search_cdrs
+  category: reporting
+  rest:
+  - cdrSearch
+  binding: rest
+  confidence: high
+  http: GET /v2/partition/{partitionId}/account/{accountId}/cdrsearch
+  openapi_tags:
+  - CDRs
+- tool: alianza_get_job
+  category: reporting
+  rest:
+  - getJobById
+  binding: rest
+  confidence: high
+  http: GET /v2/job/{jobId}
+  openapi_tags:
+  - Asynchronous JOB Tracker
+- tool: alianza_get_job_output
+  category: reporting
+  rest:
+  - getJobOutput
+  binding: rest
+  confidence: high
+  http: GET /v2/job/{jobId}/output
+  openapi_tags:
+  - Asynchronous JOB Tracker
+mcp_only: []
+rest_only:
+- capability: Business Line
+  operations: 35
+  operationIds:
+  - bulkVoicemailMessageUpdate
+  - businessLineRegistrationStatus
+  - checkBusinessLineVoicemailBoxPinStatus
+  - createBusinessLine
+  - createBusinessLinePortAssignment
+  - createBusinessLineVoicemailBox
+  - deleteBusinessLine
+  - deleteBusinessLinePortAssignment
+  - deleteBusinessLineVoicemailBox
+  - deleteBusinessLineVoicemailMessage
+  - deleteBusinessLineVoicemailMessages
+  - getBusinessLineCallHandling
+  - getBusinessLinePortAssignment
+  - getBusinessLineSipCredentials
+  - getPushProvisioningLogs
+  - isUsernameAvailable
+  - putBusinessLineCallHandling
+  - putBusinessLineSipCredentials
+  - resetBusinessLineVoicemailBoxPinStatus
+  - retrieveBusinessLine
+  - retrieveBusinessLineExpanded
+  - retrieveBusinessLineVoicemailBox
+  - retrieveBusinessLineVoicemailBoxExpandedView
+  - retrieveBusinessLineVoicemailBoxes
+  - retrieveBusinessLineVoicemailBoxesExpandedView
+  - retrieveBusinessLineVoicemailMessage
+  - retrieveBusinessLineVoicemailMessageMedia
+  - retrieveBusinessLineVoicemailMessages
+  - retrieveBusinessLines
+  - retrieveBusinessLinesExpanded
+  - swapBusinessLinePortAssignment
+  - updateBusinessLine
+  - updateBusinessLinePortAssignment
+  - updateBusinessLineVoicemailBox
+  - updateBusinessLineVoicemailMessageRead
+- capability: Report
+  operations: 33
+  operationIds:
+  - accountCSVReport
+  - accountCSVReport2
+  - accountCSVReport3
+  - businessLinesCSVReport2
+  - contactCenterRetailReport
+  - contactCenterUsageReport
+  - deviceCSVReport
+  - deviceCSVReport2
+  - deviceCSVReport3
+  - deviceRegistrationReport
+  - deviceSummaryReport
+  - emergencyNotificationComplianceReport
+  - endUserAccountHistory
+  - endUserAccountHistory2
+  - mockLineSummary
+  - msTeamsReport
+  - sipCSVReport
+  - sipCSVReport2
+  - sipSummaryReport
+  - specialtyLinesReport
+  - telephoneNumberCSVReport
+  - telephoneNumberCSVReport2
+  - telephoneNumberPortOutCSVReport
+  - telephoneNumberPortOutCSVReport2
+  - telephoneNumberSummaryReport
+  - userCSVReport
+  - userCSVReport2
+  - userCSVReport3
+  - userProductsReport
+  - userSummaryReport
+  - vFaxCSVReport
+  - vFaxCSVReport2
+  - vFaxSummaryReport
+- capability: Telephone Number
+  operations: 30
+  operationIds:
+  - acceptE911Correction
+  - acceptOriginalE911
+  - asyncExportTnInventory
+  - bulkInsert
+  - bulkTelephoneNumberImport
+  - cancelAndRemoveDynamicInventoryReservation
+  - cooldownRecover
+  - createOrAddTelephoneNumberToAccountWithDynamicInventory
+  - createOrUpdateExternalTelephoneNumberToAccount
+  - createTelephoneNumber
+  - deleteTelephoneNumberOnAccount
+  - deleteTnFromInventory
+  - destination
+  - exportTNStatusSearch
+  - exportTNStatusSearch2
+  - exportTnInventory
+  - getDynamicInventoryActivation
+  - getE911Correction
+  - isTnOffNet
+  - patchTelephoneNumberOnAccount
+  - refreshDynamicInventoryActivation
+  - releaseReservation
+  - retrieveDynamicInventoryActivations
+  - retrieveTelephoneNumberOnAccount
+  - retrieveTelephoneNumberUsages
+  - retrieveTelephoneNumbersByUserGroups
+  - reviseAndResubmitDynamicInventoryReservation
+  - statusSearch
+  - updateTelephoneNumberOnAccount
+  - updateTelephoneNumberToAccountWithDynamicInventory
+- capability: Account
+  operations: 18
+  operationIds:
+  - accountHistoryByAccountIdSearch
+  - accountHistoryByAccountNumberSearch
+  - accountPatch
+  - activation
+  - bulkStatusChange
+  - bulkStatusChange_2
+  - cancelPendingCallingPlan
+  - changeCallingPlan
+  - findAllAvailableDevicesByMacAddress
+  - frequentlyAccessed
+  - getAvailableUserProductPlans
+  - getBulkStatusChangeDefinition
+  - getDeviceDataForAccount
+  - listDevicesDeprecated
+  - multipleActivation
+  - recentlyAccessed
+  - sendWelcomeEmailToAll
+  - swapCallingPlan
+- capability: SSO Configuration
+  operations: 16
+  operationIds:
+  - createSSOConfig
+  - createSSOConfigPartitionEnforced
+  - deleteSSOConfig
+  - deleteSSOConfigPartitionEnforced
+  - downloadSigningCertificate
+  - downloadSigningCertificatePartitionEnforced
+  - enableSSO
+  - enableSSOPartitionEnforced
+  - getSSOConfig
+  - getSSOConfigPartitionEnforced
+  - getUserValidation
+  - listSSOConfigsByAccountId
+  - listSSOConfigsByPartitionIdPartitionEnforced
+  - updateSSOConfig
+  - updateSSOConfigPartitionEnforced
+  - updateSubPartitionsList
+- capability: Voicemail Box
+  operations: 14
+  operationIds:
+  - createVoicemailBox
+  - deleteBusinessLineGreeting
+  - deleteGreeting
+  - deleteVoicemailBox
+  - patchVoicemailBox
+  - retrieveBusinessLineGreeting
+  - retrieveGreeting
+  - retrieveVoicemailBox
+  - retrieveVoicemailBoxList
+  - setPin
+  - unlockVoicemailBox
+  - updateVoicemailBox
+  - uploadBusinessLineGreeting
+  - uploadGreeting
+- capability: Business Line Hunt Group
+  operations: 13
+  operationIds:
+  - createBusinessLineHuntGroup
+  - createBusinessLineHuntGroupForwardingConfiguration
+  - deleteBusinessLineHuntGroup
+  - deleteBusinessLineHuntGroupForwardingConfiguration
+  - getAvailableStarCodes
+  - getBusinessLineHuntGroupFailoverAction
+  - getBusinessLineHuntGroupForwardingConfiguration
+  - getBusinessLineHuntGroupForwardingConfigurations
+  - retrieveBusinessLineHuntGroup
+  - retrieveBusinessLineHuntGroups
+  - updateBusinessLineHuntGroup
+  - updateBusinessLineHuntGroupFailoverAction
+  - updateBusinessLineHuntGroupForwardingConfiguration
+- capability: Management User
+  operations: 12
+  operationIds:
+  - bulkUpdateManagementUserRoles
+  - createManagementUser
+  - deleteManagementUser
+  - getManagementUser
+  - getManagementUserGroupCSV
+  - listManagementUsers
+  - managementUserSso
+  - patchManagementUser
+  - resetManagementUserPassword
+  - searchManagementUsers
+  - updateManagementUser
+  - validateManagementUserProperties
+- capability: Edge Node
+  operations: 11
+  operationIds:
+  - configureDeviceNode
+  - createNode
+  - deleteNode
+  - getDeviceNode
+  - getDeviceNodeByAssignmentId
+  - getEdgeNode
+  - getPartitionNodes
+  - removeDeviceEdgeNodeConfigByDeviceId
+  - removeDeviceEdgeNodeConfigById
+  - updateDeviceNodeConfiguration
+  - updateNode
+- capability: Account Device
+  operations: 11
+  operationIds:
+  - bulkImportDevice
+  - deleteDeviceByMac
+  - generateAdminPassword
+  - getDeviceMetadata
+  - getProvisoningRequest
+  - listDeviceLinesForMac
+  - listDevicesCSV
+  - patchDeviceMetadata
+  - resetEncryptionKey
+  - updateDeviceMetadata
+  - validateDeviceProperties
+- capability: Reference Resources
+  operations: 11
+  operationIds:
+  - getDeviceTypeById
+  - getDeviceTypes
+  - getDialPlanActions
+  - getLanguages
+  - getPermissions
+  - getRoutePlanDefinitionTemplate
+  - getSecondaryLocations
+  - getSideCarTypeById
+  - getSideCarTypes
+  - getTimeZones
+  - listDefaultMedia
+- capability: SSO Exemptions
+  operations: 10
+  operationIds:
+  - addSSOExemption
+  - addSSOExemptionPartitionEnforced
+  - deleteSSOExemption
+  - deleteSSOExemptionPartitionEnforced
+  - getSSOExemptionById
+  - getSSOExemptionByIdPartitionEnforced
+  - getSSOExemptionsByAccount
+  - getSSOExemptionsByPartition
+  - updateSSOExemption
+  - updateSSOExemptionPartitionEnforced
+- capability: End User
+  operations: 10
+  operationIds:
+  - activation_1
+  - cancelPendingCallingPlan_2
+  - changeCallingPlan_2
+  - getVoicemailData
+  - patchEndUser
+  - prevalidateEmailAddress
+  - repurposeEndUser
+  - resetEndUserPassword
+  - swapCallingPlan_2
+  - unlockVm
+- capability: Device (Deprecated)
+  operations: 10
+  operationIds:
+  - createDevice_1
+  - getDevice_1
+  - getProvisioningStatus
+  - getRegistrationStatus_2
+  - listDeviceByUser
+  - patchDevice
+  - removeDevice_1
+  - swapDevice_1
+  - updateDevice_1
+  - validateProperties_3
+- capability: Account Device Line
+  operations: 9
+  operationIds:
+  - getDevice
+  - getProvisioningByMacAddress
+  - provisioningData
+  - provisioningInfo
+  - provisioningStatus
+  - putDevice
+  - removeDevice
+  - swapPrevalidate
+  - updateDevice
+- capability: Media
+  operations: 9
+  operationIds:
+  - add
+  - deleteAccountMusicOnHold
+  - deleteHoldMusic
+  - deprecatedGetMedia
+  - getAccountHoldMusic
+  - getMediaFile
+  - updateAccountMusicOnHold
+  - update_2
+  - uploadAccountMedia
+- capability: SIP Trunk
+  operations: 9
+  operationIds:
+  - deleteSipTrunk
+  - getShareableCallingPlans
+  - patchSipTrunk
+  - retrieveSipTrunk
+  - retrieveSipTrunkForwardBehavior
+  - unlockSipTrunk
+  - updateSipTrunk
+  - updateSipTrunkForwardBehavior
+  - validateSipTrunkIpPort
+- capability: Calling Plan Product
+  operations: 9
+  operationIds:
+  - add_1
+  - add_2
+  - add_3
+  - archive
+  - get_3
+  - patch_5
+  - retrieveCallingPlanProductList
+  - telephoneNumberCSVReport_1
+  - update_5
+- capability: Sip Trunk Caller ID Mapping
+  operations: 8
+  operationIds:
+  - createCallerId
+  - createFromNumber
+  - deleteCallerId
+  - deleteFromNumber
+  - listCallerIdMappings
+  - listCallerIds
+  - listCustomFromNumbers
+  - updateFromNumber
+- capability: Rate Center Inventory
+  operations: 8
+  operationIds:
+  - getInventoryPlan
+  - getInventoryPlan2
+  - getNotificationEmails
+  - getRateCenter
+  - importFile
+  - importFile_2
+  - search_1
+  - setNotificationEmails
+- capability: Cymbus User Product
+  operations: 7
+  operationIds:
+  - changeSipCredentialsForCymbusUser
+  - prevalidateCymbusGroupName
+  - retrieveCymbusPartitionGroup
+  - retrieveSipCredentialsForCymbusUser
+  - retrieveStrettoDeviceLinesGroup
+  - updateCymbusAccountGroup
+  - updateCymbusPartitionGroup
+- capability: SIP Trunk Group
+  operations: 7
+  operationIds:
+  - createGroup
+  - deleteGroup
+  - getFailover
+  - getGroup
+  - listGroups
+  - updateFailover
+  - updateGroup
+- capability: Voicemail Message
+  operations: 7
+  operationIds:
+  - deleteMultiple
+  - delete_4
+  - getMessageContent
+  - getVoicemailMessage
+  - getVoicemailUrl
+  - list_1
+  - update_4
+- capability: Call Parking Spot
+  operations: 6
+  operationIds:
+  - createCallParkingSpot
+  - deleteCallParkingSpot
+  - getAllCallParkingSpots
+  - getCallParkingSpot
+  - patchCallParkingSpot
+  - updateCallParkingSpot
+- capability: Call Group
+  operations: 6
+  operationIds:
+  - createCallGroup
+  - deleteCallGroup
+  - getAllCallGroups
+  - getCallGroup
+  - patchCallGroup
+  - updateCallGroup
+- capability: Paging Group
+  operations: 6
+  operationIds:
+  - createPagingGroup
+  - deletePagingGroup
+  - getAllPagingGroups
+  - getPagingGroup
+  - patchPagingGroup
+  - updatePagingGroup
+- capability: Pickup Group
+  operations: 6
+  operationIds:
+  - createPickupGroup
+  - deletePickupGroup
+  - getAllPickupGroups
+  - getPickupGroup
+  - patchPickupGroup
+  - updatePickupGroup
+- capability: Specialty Line
+  operations: 6
+  operationIds:
+  - create_specialty_line
+  - delete_specialty_line
+  - retrieve_specialty_line_by_account
+  - retrieve_specialty_line_by_id
+  - update_specialty_line
+  - validate_sip_username
+- capability: Virtual Fax Line
+  operations: 6
+  operationIds:
+  - createVFax
+  - deleteVFax
+  - patchVFax
+  - retrieveVFax
+  - retrieveVFaxList
+  - updateVFax
+- capability: Security Groups
+  operations: 6
+  operationIds:
+  - createSecurityRole
+  - deleteSecurityRole
+  - listSecurityRoles
+  - patchSecurityRole
+  - retrieveSecurityRole
+  - updateSecurityRole
+- capability: Account User
+  operations: 5
+  operationIds:
+  - deleteAccountUser
+  - getAccountUser
+  - patchAccountUser
+  - resetAccountUserPassword
+  - updateAccountUser
+- capability: Emergency Notification
+  operations: 5
+  operationIds:
+  - executeEmergencyNotificationTest
+  - listEmergencyNotificationEvents
+  - listNotificationGroups
+  - retrieveNotificationGroup
+  - updateNotificationGroup
+- capability: IVR
+  operations: 5
+  operationIds:
+  - createIvr
+  - deleteIvr
+  - retrieveIvr
+  - retrieveIvrList
+  - updateIvr
+- capability: Device Inventory Management
+  operations: 5
+  operationIds:
+  - allTelephoneNumberCSVReport
+  - deleteDeviceInventory
+  - getDeviceInventory
+  - importDeviceInventory
+  - importDeviceInventory_1
+- capability: Brand Settings
+  operations: 4
+  operationIds:
+  - createBrandByPartitionId
+  - getBrandSettingsById
+  - getBrandSettingsByPartitionId
+  - updateBrandSettingsById
+- capability: SSO Authentication
+  operations: 4
+  operationIds:
+  - finishSSO
+  - getSSOLinkages
+  - spInitiatedAuthn
+  - unlinkSSO
+- capability: Calling Plan
+  operations: 4
+  operationIds:
+  - addPlan
+  - getCallingPlanDefinition
+  - getPlans
+  - removePlan
+- capability: Port
+  operations: 4
+  operationIds:
+  - findLoa
+  - getLoaMetadata
+  - patchPort
+  - uploadLOA
+- capability: Partition
+  operations: 4
+  operationIds:
+  - allTelephoneNumberCSVReport_2
+  - importDeviceInventory_2
+  - isDISupported
+  - partitionDataHistorySearch
+- capability: User Groups
+  operations: 4
+  operationIds:
+  - createUserGroup
+  - deleteUserGroup
+  - getUserGroups
+  - updateUserGroup
+- capability: Address
+  operations: 3
+  operationIds:
+  - getZipCodeByCityAndState
+  - typeAhead
+  - validateAddress
+- capability: Bulk Operation Collection
+  operations: 3
+  operationIds:
+  - create_collection
+  - get_collection
+  - get_collection_file
+- capability: Bulk Operation Job
+  operations: 3
+  operationIds:
+  - create_job
+  - get_job
+  - update_job
+- capability: Asynchronous JOB Tracker
+  operations: 3
+  operationIds:
+  - getJobInput
+  - getJobInputUrl
+  - getOutputUrl
+- capability: Account Prevalidate
+  operations: 3
+  operationIds:
+  - preValidateAccount
+  - preValidateAccountTn
+  - prevalidate
+- capability: Authorize
+  operations: 2
+  operationIds:
+  - changePassword
+  - loginWithJWT
+- capability: Single Sign On - SSO
+  operations: 2
+  operationIds:
+  - getClientId
+  - getLoginInfo_1
+- capability: CDRs
+  operations: 2
+  operationIds:
+  - cdrSearchCSV
+  - cdrSearchCSV_2
+- capability: Virtual Fax
+  operations: 2
+  operationIds:
+  - retrieveOutboundVFax
+  - updateOutboundVFax
+- capability: Inbound Rate Plan Product
+  operations: 2
+  operationIds:
+  - retrieveInboundRatePlan
+  - retrieveInboundRatePlanList
+- capability: Local Calling Areas
+  operations: 2
+  operationIds:
+  - allTelephoneNumberCSVReport_1
+  - importLocalAreas
+- capability: Document Repository
+  operations: 2
+  operationIds:
+  - getDocumentVersionById
+  - getDocumentVersionContentById
+- capability: Device
+  operations: 1
+  operationIds:
+  - deviceGraph
+- capability: Language Reference
+  operations: 1
+  operationIds:
+  - getLanguageFromHeader
+- capability: Dynamic Inventory
+  operations: 1
+  operationIds:
+  - createDynamicInventoryOrders
+- capability: Service Activation
+  operations: 1
+  operationIds:
+  - getServiceActivationEvents
+- capability: Supported Rate Centers
+  operations: 1
+  operationIds:
+  - getClosestAvailableRateCenters
