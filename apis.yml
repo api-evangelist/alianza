@@ -35,34 +35,857 @@ tags:
 - CPaaS
 - Service Providers
 apis:
-- aid: alianza:alianza-public-api
-  name: Alianza Public API
-  description: 'The Alianza Public API is the JSON REST web-service layer over the
-    Alianza One cloud communications platform. Service providers use it to create and
-    control every aspect of end-user accounts: partitions and accounts, account users
-    and end users, devices and device lines, business lines and hunt groups, SIP trunks
-    and trunk groups, calling plans and products, telephone numbers, porting and number
-    activation, specialty lines, voicemail boxes and messages, IVR, call/paging/pickup
-    groups, virtual fax, SSO configuration, security groups, bulk operations, CDRs
-    and reporting. Authentication is a token obtained from POST /v2/authorize and sent
-    on the X-AUTH-TOKEN header. The published OpenAPI 3.0.3 description covers 315
-    paths and 471 operations across 57 tags.'
+- aid: alianza:alianza-account-api
+  name: Alianza Account API
+  description: The Account API from Alianza — 22 operation(s) for account.
   humanURL: https://developer.alianza.com/provisioning-api
   baseURL: https://api.alianza.com
   tags:
-  - Voice
-  - Provisioning
-  - Telephone Numbers
-  - SIP Trunking
-  - Voicemail
-  - CDR
+  - Account
   properties:
   - type: OpenAPI
-    url: openapi/alianza-openapi-original.yml
+    url: openapi/alianza-account-api-openapi.yml
   - type: Swagger
-    url: openapi/alianza-apidocs-swagger2-original.json
-  - type: Overlay
-    url: overlays/alianza-public-api-overlay.yaml
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-account-device-api
+  name: Alianza Account Device API
+  description: The Account Device API from Alianza — 7 operation(s) for account device.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Account Device
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-account-device-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-account-device-line-api
+  name: Alianza Account Device Line API
+  description: The Account Device Line API from Alianza — 9 operation(s) for account device line.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Account Device Line
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-account-device-line-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-account-prevalidate-api
+  name: Alianza Account Prevalidate API
+  description: The Account Prevalidate API from Alianza — 3 operation(s) for account prevalidate.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Account Prevalidate
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-account-prevalidate-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-account-user-api
+  name: Alianza Account User API
+  description: The Account User API from Alianza — 3 operation(s) for account user.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Account User
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-account-user-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-address-api
+  name: Alianza Address API
+  description: The Address API from Alianza — 3 operation(s) for address.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Address
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-address-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-asynchronous-job-tracker-api
+  name: Alianza Asynchronous JOB Tracker API
+  description: >-
+    The Asynchronous JOB Tracker API from Alianza — 5 operation(s) for asynchronous job tracker.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Asynchronous JOB Tracker
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-asynchronous-job-tracker-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-authorize-api
+  name: Alianza Authorize API
+  description: The Authorize API from Alianza — 4 operation(s) for authorize.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Authorize
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-authorize-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-brand-settings-api
+  name: Alianza Brand Settings API
+  description: Brand settings toggles
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Brand Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-brand-settings-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-bulk-operation-collection-api
+  name: Alianza Bulk Operation Collection API
+  description: Manage collections used in the bulk process.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Bulk Operation Collection
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-bulk-operation-collection-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-bulk-operation-job-api
+  name: Alianza Bulk Operation Job API
+  description: Manage jobs used in the bulk process.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Bulk Operation Job
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-bulk-operation-job-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-business-line-api
+  name: Alianza Business Line API
+  description: The Business Line API from Alianza — 22 operation(s) for business line.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Business Line
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-business-line-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-business-line-hunt-group-api
+  name: Alianza Business Line Hunt Group API
+  description: >-
+    The Business Line Hunt Group API from Alianza — 6 operation(s) for business line hunt group.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Business Line Hunt Group
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-business-line-hunt-group-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-call-group-api
+  name: Alianza Call Group API
+  description: The Call Group API from Alianza — 2 operation(s) for call group.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Call Group
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-call-group-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-call-parking-spot-api
+  name: Alianza Call Parking Spot API
+  description: The Call Parking Spot API from Alianza — 2 operation(s) for call parking spot.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Call Parking Spot
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-call-parking-spot-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-calling-plan-api
+  name: Alianza Calling Plan API
+  description: The Calling Plan API from Alianza — 2 operation(s) for calling plan.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Calling Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-calling-plan-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-calling-plan-product-api
+  name: Alianza Calling Plan Product API
+  description: The Calling Plan Product API from Alianza — 5 operation(s) for calling plan product.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Calling Plan Product
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-calling-plan-product-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-cdrs-api
+  name: Alianza CD Rs API
+  description: The CDRs API from Alianza — 3 operation(s) for cdrs.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - CDRs
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-cdrs-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-cymbus-user-product-api
+  name: Alianza Cymbus User Product API
+  description: The Cymbus User Product API from Alianza — 7 operation(s) for cymbus user product.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Cymbus User Product
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-cymbus-user-product-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-device-api
+  name: Alianza Device API
+  description: Convenience operations related to devices
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Device
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-device-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-device-deprecated-api
+  name: Alianza Device (Deprecated) API
+  description: The Device (Deprecated) API from Alianza — 6 operation(s) for device (deprecated).
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Device (Deprecated)
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-device-deprecated-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-device-inventory-management-api
+  name: Alianza Device Inventory Management API
+  description: >-
+    The Device Inventory Management API from Alianza — 4 operation(s) for device inventory management.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Device Inventory Management
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-device-inventory-management-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-device-provisioning-api
+  name: Alianza Device Provisioning API
+  description: The Device Provisioning API from Alianza — 2 operation(s) for device provisioning.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Device Provisioning
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-device-provisioning-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-document-repository-api
+  name: Alianza Document Repository API
+  description: Operations for managing documents
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Document Repository
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-document-repository-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-dynamic-inventory-api
+  name: Alianza Dynamic Inventory API
+  description: The Dynamic Inventory API from Alianza — 2 operation(s) for dynamic inventory.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Dynamic Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-dynamic-inventory-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-edge-node-api
+  name: Alianza Edge Node API
+  description: Operations for managing edge nodes
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Edge Node
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-edge-node-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-emergency-notification-api
+  name: Alianza Emergency Notification API
+  description: The Emergency Notification API from Alianza — 4 operation(s) for emergency notification.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Emergency Notification
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-emergency-notification-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-end-user-api
+  name: Alianza End User API
+  description: The End User API from Alianza — 12 operation(s) for end user.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - End User
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-end-user-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-inbound-rate-plan-product-api
+  name: Alianza Inbound Rate Plan Product API
+  description: >-
+    The Inbound Rate Plan Product API from Alianza — 2 operation(s) for inbound rate plan product.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Inbound Rate Plan Product
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-inbound-rate-plan-product-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-ivr-api
+  name: Alianza IVR API
+  description: The IVR API from Alianza — 2 operation(s) for ivr.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - IVR
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-ivr-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-language-reference-api
+  name: Alianza Language Reference API
+  description: The Language Reference API from Alianza — 1 operation(s) for language reference.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Language Reference
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-language-reference-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-local-calling-areas-api
+  name: Alianza Local Calling Areas API
+  description: The Local Calling Areas API from Alianza — 2 operation(s) for local calling areas.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Local Calling Areas
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-local-calling-areas-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-management-user-api
+  name: Alianza Management User API
+  description: The Management User API from Alianza — 7 operation(s) for management user.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Management User
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-management-user-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-media-api
+  name: Alianza Media API
+  description: The Media API from Alianza — 6 operation(s) for media.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-media-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-paging-group-api
+  name: Alianza Paging Group API
+  description: The Paging Group API from Alianza — 2 operation(s) for paging group.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Paging Group
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-paging-group-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-partition-api
+  name: Alianza Partition API
+  description: The Partition API from Alianza — 6 operation(s) for partition.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Partition
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-partition-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-pickup-group-api
+  name: Alianza Pickup Group API
+  description: The Pickup Group API from Alianza — 2 operation(s) for pickup group.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Pickup Group
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-pickup-group-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-port-api
+  name: Alianza Port API
+  description: The Port API from Alianza — 5 operation(s) for port.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Port
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-port-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-rate-center-inventory-api
+  name: Alianza Rate Center Inventory API
+  description: >-
+    Operations for managing rate centers. A rate center is a geographical area used to determine the boundaries
+    for local calling, billing, and assigning specific phone numbers, which can encompass multiple area
+    codes.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Rate Center Inventory
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-rate-center-inventory-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-reference-resources-api
+  name: Alianza Reference Resources API
+  description: The Reference Resources API from Alianza — 11 operation(s) for reference resources.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Reference Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-reference-resources-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-report-api
+  name: Alianza Report API
+  description: The Report API from Alianza — 33 operation(s) for report.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Report
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-report-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-security-groups-api
+  name: Alianza Security Groups API
+  description: The Security Groups API from Alianza — 2 operation(s) for security groups.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Security Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-security-groups-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-service-activation-api
+  name: Alianza Service Activation API
+  description: The Service Activation API from Alianza — 1 operation(s) for service activation.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Service Activation
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-service-activation-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-single-sign-on-sso-api
+  name: Alianza Single Sign On - SSO API
+  description: Operations for managing SSO
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Single Sign On - SSO
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-single-sign-on-sso-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sip-trunk-api
+  name: Alianza SIP Trunk API
+  description: The SIP Trunk API from Alianza — 7 operation(s) for sip trunk.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SIP Trunk
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sip-trunk-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sip-trunk-caller-id-mapping-api
+  name: Alianza Sip Trunk Caller ID Mapping API
+  description: Operations for managing Sip Trunk Caller ID mappings
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Sip Trunk Caller ID Mapping
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sip-trunk-caller-id-mapping-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sip-trunk-group-api
+  name: Alianza SIP Trunk Group API
+  description: Operations for managing SIP trunk groups
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SIP Trunk Group
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sip-trunk-group-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-specialty-line-api
+  name: Alianza Specialty Line API
+  description: >-
+    Managed Specialty Lines uses carefully curated CPE (Customer Premises Equipment) that can replace
+    virtually any specialty use hardline for critical business and life safety systems.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Specialty Line
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-specialty-line-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sso-api
+  name: Alianza SSO API
+  description: The SSO API from Alianza — 1 operation(s) for sso.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SSO
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sso-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sso-authentication-api
+  name: Alianza SSO Authentication API
+  description: Operations for managing SSO authentication flows and callbacks
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SSO Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sso-authentication-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sso-configuration-api
+  name: Alianza SSO Configuration API
+  description: Operations for managing SSO configurations for accounts and partitions
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SSO Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sso-configuration-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-sso-exemptions-api
+  name: Alianza SSO Exemptions API
+  description: Operations for managing SSO exemptions for accounts and partitions
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - SSO Exemptions
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-sso-exemptions-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-supported-rate-centers-api
+  name: Alianza Supported Rate Centers API
+  description: >-
+    A rate center is a geographical area used to determine the boundaries for local calling, billing,
+    and assigning specific phone numbers, which can encompass multiple area codes.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Supported Rate Centers
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-supported-rate-centers-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-supported-rate-centers-by-alianza-and-specified-carrier-api
+  name: Alianza Supported Rate Centers by Alianza and specified carrier API
+  description: >-
+    The Supported Rate Centers by Alianza and specified carrier API from Alianza — 1 operation(s) for
+    supported rate centers by alianza and specified carrier.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Supported Rate Centers by Alianza and specified carrier
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-supported-rate-centers-by-alianza-and-specified-carrier-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-telephone-number-api
+  name: Alianza Telephone Number API
+  description: The Telephone Number API from Alianza — 28 operation(s) for telephone number.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Telephone Number
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-telephone-number-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-user-groups-api
+  name: Alianza User Groups API
+  description: Operations for managing user groups.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-user-groups-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-virtual-fax-api
+  name: Alianza Virtual Fax API
+  description: The Virtual Fax API from Alianza — 1 operation(s) for virtual fax.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Virtual Fax
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-virtual-fax-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-virtual-fax-line-api
+  name: Alianza Virtual Fax Line API
+  description: The Virtual Fax Line API from Alianza — 2 operation(s) for virtual fax line.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Virtual Fax Line
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-virtual-fax-line-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-voicemail-box-api
+  name: Alianza Voicemail Box API
+  description: The Voicemail Box API from Alianza — 6 operation(s) for voicemail box.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Voicemail Box
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-voicemail-box-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
+  - type: ToolCrosswalk
+    url: mcp/alianza-tool-crosswalk.yml
+- aid: alianza:alianza-voicemail-message-api
+  name: Alianza Voicemail Message API
+  description: The Voicemail Message API from Alianza — 4 operation(s) for voicemail message.
+  humanURL: https://developer.alianza.com/provisioning-api
+  baseURL: https://api.alianza.com
+  tags:
+  - Voicemail Message
+  properties:
+  - type: OpenAPI
+    url: openapi/alianza-voicemail-message-api-openapi.yml
+  - type: Swagger
+    url: openapi/_original/alianza-apidocs-swagger2-original.json
   - type: ToolCrosswalk
     url: mcp/alianza-tool-crosswalk.yml
 maintainers:
@@ -71,6 +894,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/alianza-mcp.yml
+- type: Overlay
+  url: overlays/alianza-public-api-overlay.yaml
 - type: Website
   url: https://www.alianza.com/
 - type: DeveloperPortal
