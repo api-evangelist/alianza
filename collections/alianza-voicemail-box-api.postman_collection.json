@@ -1,0 +1,2930 @@
+{
+  "item": [
+    {
+      "id": "c2675658-7f11-483f-a555-adafe4564a46",
+      "name": "Voicemail Box",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b99ffe8d-1388-47a5-a87f-e922e1d0e271",
+          "name": "Retrieve Greeting media file",
+          "request": {
+            "name": "Retrieve Greeting media file",
+            "description": {
+              "content": "Use to retrieve media file for a business-line voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "business-line",
+                "voicemail-box",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57832d06-286c-41f4-ab74-22548d741c10",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "business-line",
+                    "voicemail-box",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3490f888-0c24-4188-80da-a26dbd808c1e",
+          "name": "Upload Business-Line Greeting media file",
+          "request": {
+            "name": "Upload Business-Line Greeting media file",
+            "description": {
+              "content": "Use to upload media file for a business-line voicemail box (wav, mp3, ogg)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "business-line",
+                "voicemail-box",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Media file"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8cd621f2-c9d5-4c48-95fd-aba9cfe4cf7b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "business-line",
+                    "voicemail-box",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Media file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14c0e225-1eb7-48ed-b7c1-4166c741503f",
+          "name": "Delete Greeting media file",
+          "request": {
+            "name": "Delete Greeting media file",
+            "description": {
+              "content": "Use to delete media file for a business-line voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "business-line",
+                "voicemail-box",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "558a099e-e060-473e-9d35-ba30e263e87e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "business-line",
+                    "voicemail-box",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "640d03ae-a844-4dd4-a2a4-99f56cf5a3ce",
+          "name": "Retrieve voicemail box list",
+          "request": {
+            "name": "Retrieve voicemail box list",
+            "description": {
+              "content": "Use to retrieve a list of voicemail boxes for an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parentId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98b329da-705f-401f-9ddc-6318ebac63c5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"voicemailToEmailAddresses\": [\n      \"string\"\n    ],\n    \"voicemailToEmailEnabled\": false,\n    \"voicemailKeepAfterEmail\": false,\n    \"referencedBy\": [\n      {\n        \"type\": \"string\",\n        \"id\": \"string\"\n      }\n    ],\n    \"locale\": \"string\",\n    \"totalVoicemails\": 1129,\n    \"totalUnreadVoicemails\": 6620,\n    \"type\": \"Sub\",\n    \"subIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"parentId\": \"string\",\n    \"dtmfOption\": \"string\",\n    \"pinLockedOut\": true,\n    \"messageTranscriptionEnabled\": true,\n    \"greetings\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"createdDate\": \"2021-06-08T06:54:50.366Z\",\n        \"fromName\": \"string\",\n        \"fromNumber\": \"string\",\n        \"lengthInPages\": 8142,\n        \"lengthInSeconds\": 398,\n        \"read\": true,\n        \"sizeInBytes\": 625,\n        \"messageType\": \"VOICE\",\n        \"voicemailBoxId\": \"string\",\n        \"accountId\": \"string\",\n        \"partitionId\": \"string\",\n        \"toPhoneNumber\": \"string\",\n        \"transcriptionStatus\": \"string\",\n        \"transcriptionInfo\": \"string\",\n        \"transcriptionText\": \"string\",\n        \"storageId\": \"5ca7f01e-7ef6-5d2d-0cbc-2015839f3d21\",\n        \"audioFileAndType\": \"string\"\n      }\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"voicemailToEmailAddresses\": [\n      \"string\"\n    ],\n    \"voicemailToEmailEnabled\": true,\n    \"voicemailKeepAfterEmail\": false,\n    \"referencedBy\": [\n      {\n        \"type\": \"string\",\n        \"id\": \"string\"\n      }\n    ],\n    \"locale\": \"string\",\n    \"totalVoicemails\": 8265,\n    \"totalUnreadVoicemails\": 161,\n    \"type\": \"Normal\",\n    \"subIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"parentId\": \"string\",\n    \"dtmfOption\": \"string\",\n    \"pinLockedOut\": false,\n    \"messageTranscriptionEnabled\": false,\n    \"greetings\": {\n      \"key_0\": {\n        \"id\": \"string\",\n        \"createdDate\": \"1982-09-09T10:11:09.267Z\",\n        \"fromName\": \"string\",\n        \"fromNumber\": \"string\",\n        \"lengthInPages\": 2994,\n        \"lengthInSeconds\": 5648,\n        \"read\": false,\n        \"sizeInBytes\": 7797,\n        \"messageType\": \"VOICE\",\n        \"voicemailBoxId\": \"string\",\n        \"accountId\": \"string\",\n        \"partitionId\": \"string\",\n        \"toPhoneNumber\": \"string\",\n        \"transcriptionStatus\": \"string\",\n        \"transcriptionInfo\": \"string\",\n        \"transcriptionText\": \"string\",\n        \"storageId\": \"1d2d5018-e515-f585-fd4e-8469786c3dc2\",\n        \"audioFileAndType\": \"string\"\n      },\n      \"key_1\": {\n        \"id\": \"string\",\n        \"createdDate\": \"2014-01-27T03:01:58.154Z\",\n        \"fromName\": \"string\",\n        \"fromNumber\": \"string\",\n        \"lengthInPages\": 9141,\n        \"lengthInSeconds\": 561,\n        \"read\": true,\n        \"sizeInBytes\": 4019,\n        \"messageType\": \"VOICE\",\n        \"voicemailBoxId\": \"string\",\n        \"accountId\": \"string\",\n        \"partitionId\": \"string\",\n        \"toPhoneNumber\": \"string\",\n        \"transcriptionStatus\": \"string\",\n        \"transcriptionInfo\": \"string\",\n        \"transcriptionText\": \"string\",\n        \"storageId\": \"98ef6bc5-26ac-d28b-e729-8b69c4a51cb9\",\n        \"audioFileAndType\": \"string\"\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1435768-8048-4697-8b26-7b7413be7c0a",
+              "name": "Invalid partition, account or voicemail box supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c4fc5f4-590f-4159-a512-0908ed1d3d3a",
+          "name": "Create voicemail box",
+          "request": {
+            "name": "Create voicemail box",
+            "description": {
+              "content": "Use to create a new voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb06f058-c5d5-4f19-9bed-4d2406e59aad",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfde47af-6ef3-4e8a-b4c4-56665a3fd06d",
+              "name": "voicemail error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e0af2c-d7fe-47cc-b9c3-27a5c7707583",
+          "name": "Set a PIN for a reference using a voicemail box",
+          "request": {
+            "name": "Set a PIN for a reference using a voicemail box",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId",
+                "pin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"voicemailBoxId\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"referenceType\": \"<string>\",\n  \"pin\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c40f1f97-8f56-4e17-aa58-57908554b900",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "pin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"voicemailBoxId\": \"<string>\",\n  \"referenceId\": \"<string>\",\n  \"referenceType\": \"<string>\",\n  \"pin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad6a2f50-5c9b-423f-82c6-448e7560e5ce",
+          "name": "Retrieve User Greeting media file",
+          "request": {
+            "name": "Retrieve User Greeting media file",
+            "description": {
+              "content": "Use to retrieve media file for a users voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d23f9c7-521f-471b-b407-0f37f7199fa1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fd34d22-afe8-4288-96d0-c0640df4b129",
+          "name": "Upload User Greeting media file",
+          "request": {
+            "name": "Upload User Greeting media file",
+            "description": {
+              "content": "Use to upload media file for a users voicemail box (wav, mp3, ogg)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) Media file"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86304d68-0b13-4136-99f7-2ee9018022f7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Media file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28c7dea2-6a54-4d8a-bccc-70951d507377",
+          "name": "Delete User Greeting media file",
+          "request": {
+            "name": "Delete User Greeting media file",
+            "description": {
+              "content": "Use to delete media file for a users voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId",
+                "greetings",
+                ":greetingType",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "greetingType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aed464f-4d6a-4330-9470-1d1572835bd5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "greetings",
+                    ":greetingType",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "greetingType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e5d8094-59bd-44e4-a172-b869cf057f9e",
+          "name": "Get voicemail box",
+          "request": {
+            "name": "Get voicemail box",
+            "description": {
+              "content": "Use to retrieve a voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89137692-8853-427a-9981-d0ce4ae8952c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d494d115-fd06-46b9-947e-f8913f990c1b",
+              "name": "invalid voicemail message id supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd65b3a8-2191-4900-98e2-17d2c1dce1b2",
+              "name": "voicemail message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ce8b4c9-7cf9-4a4c-b2b1-44b2739ea355",
+          "name": "Update voicemail box",
+          "request": {
+            "name": "Update voicemail box",
+            "description": {
+              "content": "Use to update a voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    },\n    \"key_1\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2124ff3c-4d92-4381-9df7-09b24faa16b6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adb137aa-24cb-4707-b290-ca52eaf03bd9",
+              "name": "voicemail error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9501acb6-8751-4b94-b150-a6262bdf26ea",
+              "name": "voicemail box not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61ee587a-9a2a-4954-8b91-87b50348e2df",
+          "name": "Delete voicemail box",
+          "request": {
+            "name": "Delete voicemail box",
+            "description": {
+              "content": "Use to delete a voicemail box.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc6051cf-9ac7-4492-bf38-0920d1d1650f",
+              "name": "voicemail box id not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b5131b63-9b05-4687-978d-ebdd81b9198c",
+              "name": "voicemail box not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a5a9ca1-0090-4907-8746-3e10c0f73661",
+          "name": "Update voicemail box",
+          "request": {
+            "name": "Update voicemail box",
+            "description": {
+              "content": "Use to update a voicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    },\n    \"key_1\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce240e5f-1516-4f05-88cd-a529743dad00",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d67c1678-2982-4031-8082-dd1dbe727ec5",
+              "name": "voicemail error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a3b56fc8-7932-4f7b-b625-86779bd695ab",
+              "name": "voicemail box not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80ce8428-e5b8-4a9b-8995-ea600dee13ae",
+          "name": "Unlock a sub voicemailbox",
+          "request": {
+            "name": "Unlock a sub voicemailbox",
+            "description": {
+              "content": "Use to unlock the pin on a subvoicemail box",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "voicemailbox",
+                ":voicemailBoxId",
+                "unlock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resetPin",
+                  "value": "<boolean>",
+                  "description": "New voicemail Pin"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "voicemailBoxId",
+                  "description": "(Required) ID of Voicemail Box"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cefa4e3-238a-4fae-9aa1-2d1abd0b8ecb",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resetPin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"voicemailToEmailAddresses\": [\n    \"<string>\"\n  ],\n  \"voicemailToEmailEnabled\": \"<boolean>\",\n  \"voicemailKeepAfterEmail\": \"<boolean>\",\n  \"referencedBy\": [\n    {\n      \"type\": \"<string>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"locale\": \"<string>\",\n  \"totalVoicemails\": \"<integer>\",\n  \"totalUnreadVoicemails\": \"<integer>\",\n  \"type\": \"<string>\",\n  \"subIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"parentId\": \"<string>\",\n  \"dtmfOption\": \"<string>\",\n  \"pinLockedOut\": \"<boolean>\",\n  \"messageTranscriptionEnabled\": \"<boolean>\",\n  \"greetings\": {\n    \"key_0\": {\n      \"id\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"fromName\": \"<string>\",\n      \"fromNumber\": \"<string>\",\n      \"lengthInPages\": \"<integer>\",\n      \"lengthInSeconds\": \"<integer>\",\n      \"read\": \"<boolean>\",\n      \"sizeInBytes\": \"<long>\",\n      \"messageType\": \"<string>\",\n      \"voicemailBoxId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"toPhoneNumber\": \"<string>\",\n      \"transcriptionStatus\": \"<string>\",\n      \"transcriptionInfo\": \"<string>\",\n      \"transcriptionText\": \"<string>\",\n      \"storageId\": \"<uuid>\",\n      \"audioFileAndType\": \"<string>\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb03ca36-157f-4d4f-8d10-1d7fbfbee81d",
+              "name": "voicemail error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resetPin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "70d76ae2-dfed-4eb6-953d-dd3255210ea9",
+              "name": "voicemail box not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "voicemailbox",
+                    ":voicemailBoxId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resetPin",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "voicemailBoxId",
+                      "description": "(Required) ID of Voicemail Box"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "747345c4-93a2-4970-8f60-21f87d4b0f96",
+    "name": "Alianza Voicemail Box API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Voicemail Box across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Local Calling Areas API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Local Calling Areas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "allTelephoneNumberCSVReport_1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/localprefixes/export/csv",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "importLocalAreas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/localprefixes/import",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

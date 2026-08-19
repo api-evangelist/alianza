@@ -1,0 +1,612 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public SSO Exemptions API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: SSO Exemptions
+  description: Operations for managing SSO exemptions for accounts and partitions
+paths:
+  /v2/authn/sso-config/accounts/{accountId}/exemptions:
+    post:
+      tags:
+      - SSO Exemptions
+      summary: Add SSO exemption
+      description: 'Creates an SSO exemption for specific users or groups in an account.
+
+
+        Exemptions allow designated users or groups to bypass SSO requirements
+
+        and use traditional authentication.
+
+        '
+      operationId: addSSOExemption
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Exemption details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOExemptionRequest'
+      responses:
+        '201':
+          description: Exemption created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+                exemptionId: exempt-abc-123
+                partitionId: partition-789
+                accountId: account-456
+                accountName: Acme Corporation
+                exemptionName: emergency-admins
+                exemptionType: USER
+                exemptions:
+                - user-123
+                - api-service-account
+        '400':
+          description: Bad Request - Invalid exemption data or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Account or SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to create exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    get:
+      tags:
+      - SSO Exemptions
+      summary: List SSO exemptions
+      description: Retrieves all SSO exemptions for an account.
+      operationId: getSSOExemptionsByAccount
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Exemptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+              - exemptionId: exempt-abc-123
+                partitionId: partition-789
+                accountId: account-456
+                accountName: Acme Corporation
+                exemptionName: emergency-admins
+                exemptionType: USER
+                exemptions:
+                - user-123
+                - api-service-account
+              - exemptionId: exempt-def-456
+                partitionId: partition-789
+                accountId: account-456
+                accountName: Acme Corporation
+                exemptionName: contractor-group
+                exemptionType: GROUP
+                exemptions:
+                - group-external-contractors
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - No exemptions found for the account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve exemptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/accounts/{accountId}/exemptions/{exemptionId}:
+    get:
+      tags:
+      - SSO Exemptions
+      summary: Get SSO exemption
+      description: Retrieves a specific SSO exemption by ID.
+      operationId: getSSOExemptionById
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Exemption found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - SSO Exemptions
+      summary: Update SSO exemption
+      description: Updates an existing SSO exemption.
+      operationId: updateSSOExemption
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Updated exemption details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOExemptionRequest'
+      responses:
+        '200':
+          description: Exemption updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+                exemptionId: exempt-abc-123
+                partitionId: partition-789
+                accountId: account-456
+                exemptionName: emergency-admins
+                exemptionType: USER
+                exemptions:
+                - user-123
+                - user-456
+                - new-admin-789
+        '400':
+          description: Bad Request - Invalid exemption data or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to update exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    delete:
+      tags:
+      - SSO Exemptions
+      summary: Delete SSO exemption
+      description: Removes an SSO exemption.
+      operationId: deleteSSOExemption
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Exemption deleted successfully - no content returned
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to delete exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}/exemptions:
+    post:
+      tags:
+      - SSO Exemptions
+      summary: Add enforced SSO exemption
+      description: 'Creates an SSO exemption for entire accounts in a partition with enforced SSO.
+
+        '
+      operationId: addSSOExemptionPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Exemption configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOExemptionRequest'
+      responses:
+        '201':
+          description: Exemption created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+                exemptionId: exempt-pesso-789
+                partitionId: partition-123
+                exemptionName: pilot-accounts
+                exemptionType: ACCOUNT
+                exemptions:
+                - acc-pilot-dept
+                - acc-test-group
+        '400':
+          description: Bad Request - Invalid exemption data or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Partition or SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '409':
+          description: Conflict - One or more accounts/users/groups already exempted by another exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to create exemption
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    get:
+      tags:
+      - SSO Exemptions
+      summary: List enforced SSO exemptions
+      description: Retrieves all SSO exemptions for a partition with enforced SSO.
+      operationId: getSSOExemptionsByPartition
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Exemptions retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+              - exemptionId: exempt-pesso-789
+                partitionId: partition-123
+                exemptionName: pilot-accounts
+                exemptionType: ACCOUNT
+                exemptions:
+                - acc-pilot-dept
+                - acc-test-group
+              - exemptionId: exempt-pesso-456
+                partitionId: partition-123
+                exemptionName: emergency-admins
+                exemptionType: USER
+                exemptions:
+                - user-emergency-1
+                - api-service-account
+              - exemptionId: exempt-pesso-123
+                partitionId: partition-123
+                exemptionName: contractor-teams
+                exemptionType: GROUP
+                exemptions:
+                - group-external-contractors
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - No exemptions found for the partition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve exemptions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}/exemptions/{exemptionId}:
+    get:
+      tags:
+      - SSO Exemptions
+      summary: Get specific enforced SSO exemption
+      description: Retrieves a specific SSO exemption by ID for enforced SSO.
+      operationId: getSSOExemptionByIdPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Exemption found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - SSO Exemptions
+      summary: Update enforced SSO exemption
+      description: Updates an existing SSO exemption for enforced SSO.
+      operationId: updateSSOExemptionPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Updated exemption configuration
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOExemptionRequest'
+      responses:
+        '200':
+          description: Exemption updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOExemptionResponse'
+              example:
+                exemptionId: exempt-pesso-789
+                partitionId: partition-123
+                exemptionName: pilot-accounts
+                exemptionType: ACCOUNT
+                exemptions:
+                - acc-pilot-dept
+                - acc-test-group
+                - acc-new-pilot
+        '400':
+          description: Bad Request - Invalid exemption data or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    delete:
+      tags:
+      - SSO Exemptions
+      summary: Delete enforced SSO exemption
+      description: Removes an SSO exemption from enforced SSO configuration.
+      operationId: deleteSSOExemptionPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: exemptionId
+        in: path
+        required: true
+        description: Exemption identifier
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Exemption deleted successfully - no content returned
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Exemption not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+components:
+  schemas:
+    SSOExemptionResponse:
+      type: object
+      properties:
+        exemptionId:
+          type: string
+          description: Unique identifier for the exemption
+        partitionId:
+          type: string
+          description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        accountId:
+          type: string
+          description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        accountName:
+          type: string
+          description: Name of the account
+        exemptionName:
+          type: string
+          description: Name of the exemption configuration
+        exemptionType:
+          $ref: '#/components/schemas/ExemptionType'
+        exemptions:
+          type: array
+          description: List of exempted identifiers
+          items:
+            type: string
+    ExemptionType:
+      type: string
+      description: Type of exemption target
+      enum:
+      - USER
+      - GROUP
+      - ACCOUNT
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    SSOExemptionRequest:
+      type: object
+      required:
+      - exemptionType
+      - exemptions
+      properties:
+        partitionId:
+          type: string
+          description: 'ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+
+            Required for PSSO/PESSO flows; not required for ACCSSO.
+
+            '
+        accountId:
+          type: string
+          description: 'ID of account, refers to <a href="#/~schema/Account">account.id</a>
+
+            Required for ACCSSO flows.
+
+            '
+        exemptionName:
+          type: string
+          description: Exemption name
+        exemptionType:
+          $ref: '#/components/schemas/ExemptionType'
+        exemptions:
+          type: array
+          minItems: 1
+          description: List of IDs to exempt (USER/GROUP/ACCOUNT depending on exemptionType).
+          items:
+            type: string
+          uniqueItems: true
+        scope:
+          enum:
+          - ACCOUNT_LEVEL_SSO
+          - PARTITION_ENFORCED_SSO
+          - PARTITION_SSO
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

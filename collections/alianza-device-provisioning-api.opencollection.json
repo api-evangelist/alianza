@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Device Provisioning API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Provisioning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve provisioning information for a specified device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/deviceprovisioning/:macAddress",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "macAddress",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Provisioning Information"
+        },
+        {
+          "info": {
+            "name": "Retrieve provisioning information for a specified deviceid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/deviceprovisioning/account/:accountid/device/:deviceid",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Provisioning Information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

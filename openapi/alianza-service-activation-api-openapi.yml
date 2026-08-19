@@ -1,0 +1,249 @@
+openapi: 3.2.0
+info:
+  title: Alianza Service Activation API
+  version: '2'
+  description: 'Operations tagged Service Activation across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Service Activation
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/reference/{referenceId}/type/{serviceType}:
+    get:
+      tags:
+      - Service Activation
+      summary: Retrieve a service activation event on an account
+      description: Use to retrieve a specific service activation event on an account
+      operationId: retrieve_7
+      parameters:
+      - name: referenceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: serviceType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - PORT_REQUEST
+          - CSR_CHANGE_REQUEST
+          - ACTIVATION
+          - NINE_ONE_ONE_ADDRESS
+          - DISCONNECT
+          - DYNAMIC_RESERVATION
+          - BYOTN_REQUEST
+          - SERVICE_PROVIDER_TN
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ServiceActivationEventX
+            $ref: '#/components/schemas/ServiceActivationEventX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ServiceActivationEventX
+                $ref: '#/components/schemas/ServiceActivationEventX_2'
+        '400':
+          description: Invalid partition or account
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ServiceActivationEventX
+            $ref: '#/components/schemas/ServiceActivationEventX_2'
+          schema:
+            originalRef: ServiceActivationEventX
+            $ref: '#/components/schemas/ServiceActivationEventX_2'
+        '400':
+          description: Invalid partition or account
+components:
+  schemas:
+    ServiceActivationEventLogX:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        actionDate:
+          type: string
+          format: date-time
+        code:
+          type: string
+        message:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        generatedTicketId:
+          type: string
+    ServiceActivationEventX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        serviceType:
+          type: string
+          enum:
+          - PORT_REQUEST
+          - CSR_CHANGE_REQUEST
+          - ACTIVATION
+          - NINE_ONE_ONE_ADDRESS
+          - DISCONNECT
+          - DYNAMIC_RESERVATION
+          - BYOTN_REQUEST
+          - SERVICE_PROVIDER_TN
+        referenceType:
+          type: string
+          enum:
+          - TELEPHONE
+          - PORT
+          - DYNAMIC_INVENTORY
+          - BYOTN
+          - BYOTN_PORT
+        referenceId:
+          type: string
+        activationStatusType:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        focDate:
+          type: string
+          format: date-time
+        crdDate:
+          type: string
+          format: date-time
+        city:
+          type: string
+        mainTelephoneNumber:
+          type: string
+        subTelephoneNumbers:
+          type: array
+          items:
+            type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        state:
+          type: string
+        l3Reaction:
+          type: string
+          enum:
+          - IGNORE
+          - RESUBMIT
+          - CANCEL
+          - SEND_EMAIL
+        parentOrderId:
+          type: string
+        editableFieldTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - crdDate
+            - wirelessAccountNumber
+            - wirelessPin
+            - name
+        losingCarrier:
+          type: string
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        logs:
+          type: array
+          items:
+            originalRef: ServiceActivationEventLogX
+            $ref: '#/components/schemas/ServiceActivationEventLogX'
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

@@ -1,0 +1,265 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Bulk Operation Job API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Bulk Operation Job
+  description: Manage jobs used in the bulk process.
+paths:
+  /v2/bulk-user-operation/job:
+    post:
+      tags:
+      - Bulk Operation Job
+      summary: Create new job
+      description: Create a new job. This endpoint can take two content types -- application/json and multipart/form-data. Please see the request body examples for the content type you will be using.
+      operationId: create_job
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobDTO'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JobFormDTO'
+            examples:
+              jobRequest:
+                $ref: '#/components/examples/CreateJobExample'
+        required: true
+      responses:
+        '200':
+          description: Job created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobDTO'
+        '400':
+          description: Invalid job details supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+  /v2/bulk-user-operation/job/{jobId}:
+    get:
+      tags:
+      - Bulk Operation Job
+      summary: Get job details
+      description: Get job details by ID
+      operationId: get_job
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Job retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobDTO'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '404':
+          description: Job not found; Invalid JobId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+    put:
+      tags:
+      - Bulk Operation Job
+      summary: Update existing job
+      description: Update an existing job
+      operationId: update_job
+      parameters:
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobDTO'
+        required: true
+      responses:
+        '200':
+          description: Job updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobDTO'
+        '400':
+          description: Invalid job details supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+components:
+  examples:
+    CreateJobExample:
+      summary: Create a Job (multipart/form-data)
+      value:
+        transformObjectType: CreateUserInput
+        transformObjectFile: <file to upload>
+        targetAccountId: 0123948534
+        jobTypeId: create users
+  schemas:
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
+    JobOutputCollectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the output collection
+      required:
+      - id
+    JobStatusDTO:
+      type: string
+      enum:
+      - CREATED
+      - STARTED
+      - ABORTED
+      - COMPLETED
+    JobDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the job
+        ownerId:
+          type: string
+          description: Owner identifier of the job
+        jobTypeId:
+          type: string
+          description: Type identifier of the job
+          example: create users | delete users | create telephone numbers | delete telephone numbers
+        targetAccountId:
+          type: string
+          description: Target account identifier for the job
+          example: '456'
+        inputCollectionId:
+          type: string
+          description: Input collection identifier for the job
+          example: '789'
+        jobStatus:
+          $ref: '#/components/schemas/JobStatusDTO'
+        executionStatus:
+          $ref: '#/components/schemas/JobStatusDTO'
+        updatedDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of the last update in ISO 8601 format
+        outputCollections:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/JobOutputCollectionDTO'
+        abortAfter:
+          type: integer
+          description: Time after which the job should be aborted
+      required:
+      - jobTypeId
+      - targetAccountId
+      - inputCollectionId
+    JobFormDTO:
+      type: object
+      properties:
+        transformObjectType:
+          type: string
+          enum:
+          - CreateUserInput
+          - CreateTelephoneNumberInput
+          - DeleteUserInput
+          - DeleteTelephoneNumberInput
+        transformObjectFile:
+          type: string
+          format: binary
+          description: valid data file that corresponds to the transform object type definition
+        targetAccountId:
+          type: string
+          description: account that this data will go into
+        jobTypeId:
+          type: string
+          enum:
+          - create users
+          - create telephone numbers
+          - delete users
+          - delete telephone numbers
+      required:
+      - transformObjectType
+      - transformObjectFile
+      - targetAccountId
+      - jobTypeId
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

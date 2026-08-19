@@ -1,0 +1,1382 @@
+{
+  "item": [
+    {
+      "id": "fb08abf7-99e4-4582-9cdb-78bf415fc89b",
+      "name": "IVR",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7441b449-1284-47b2-97e5-d11dd0deca79",
+          "name": "Retrieve IVR",
+          "request": {
+            "name": "Retrieve IVR",
+            "description": {
+              "content": "Use to retrieve an IVR",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "ivr",
+                ":ivrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ivrId",
+                  "description": "(Required) ID of IVR"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63f51ce5-c172-4449-83fa-8df3bb3dddf2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"accountId\": \"string\",\n  \"partitionId\": \"string\",\n  \"name\": \"string\",\n  \"top\": \"string\",\n  \"left\": \"string\",\n  \"fixedPosition\": false,\n  \"ivrComponents\": [\n    {\n      \"id\": \"string\",\n      \"left\": \"string\",\n      \"top\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"FORWARD\"\n    },\n    {\n      \"id\": \"string\",\n      \"left\": \"string\",\n      \"top\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"SCHEDULE\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"string\",\n      \"toIvrComponentId\": \"string\"\n    },\n    {\n      \"fromIvrComponentId\": \"string\",\n      \"toIvrComponentId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6341fc5c-d241-444e-b192-03093977c9cc",
+              "name": "Invalid account ID or IVR ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bf67ca7-98ef-4b50-9954-cae8403d6c17",
+              "name": "IVR not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9edf796d-263f-41b1-979b-37773f429a71",
+          "name": "Update IVR",
+          "request": {
+            "name": "Update IVR",
+            "description": {
+              "content": "Use to update an IVR",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "ivr",
+                ":ivrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ivrId",
+                  "description": "(Required) ID of IVR"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "899275fc-5298-4613-8b77-13164593ece0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c31e863-772a-4228-b677-76efee45d553",
+              "name": "Invalid IVR ID or invalid IVR object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b560e6ae-5480-47f7-8b36-682065901abd",
+              "name": "IVR not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dbdf88c-c752-49a5-afe1-f2bc5873333f",
+          "name": "Delete IVR",
+          "request": {
+            "name": "Delete IVR",
+            "description": {
+              "content": "Use to delete an IVR",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "ivr",
+                ":ivrId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ivrId",
+                  "description": "(Required) ID of IVR"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec98dbd3-3de5-41ce-b6f0-d09be6ccd2d9",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09a8596a-843f-49ed-ade3-29bf7a8508a4",
+              "name": "Invalid IVR ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acdf38b7-aa82-4d9d-9c45-ef046e52731f",
+              "name": "IVR not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr",
+                    ":ivrId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ivrId",
+                      "description": "(Required) ID of IVR"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eac666c2-d6f2-4e8d-bcdb-724eacd5d5ca",
+          "name": "Retrieve all IVRs for account",
+          "request": {
+            "name": "Retrieve all IVRs for account",
+            "description": {
+              "content": "Use to retrieve a list of all IVRs for a account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "ivr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b643a78a-ba00-45a9-93cc-155ef509531f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"top\": \"<string>\",\n    \"left\": \"<string>\",\n    \"fixedPosition\": \"<boolean>\",\n    \"ivrComponents\": [\n      {\n        \"id\": \"<string>\",\n        \"left\": \"<string>\",\n        \"top\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"left\": \"<string>\",\n        \"top\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"ivrComponentMappings\": [\n      {\n        \"fromIvrComponentId\": \"<string>\",\n        \"toIvrComponentId\": \"<string>\"\n      },\n      {\n        \"fromIvrComponentId\": \"<string>\",\n        \"toIvrComponentId\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"name\": \"<string>\",\n    \"top\": \"<string>\",\n    \"left\": \"<string>\",\n    \"fixedPosition\": \"<boolean>\",\n    \"ivrComponents\": [\n      {\n        \"id\": \"<string>\",\n        \"left\": \"<string>\",\n        \"top\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"left\": \"<string>\",\n        \"top\": \"<string>\",\n        \"name\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ],\n    \"ivrComponentMappings\": [\n      {\n        \"fromIvrComponentId\": \"<string>\",\n        \"toIvrComponentId\": \"<string>\"\n      },\n      {\n        \"fromIvrComponentId\": \"<string>\",\n        \"toIvrComponentId\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b11096ff-0322-4e53-8ece-1a7321d790a7",
+              "name": "Invalid partition ID or account ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08dc9047-bb04-46ee-a6f5-3a429aeef11e",
+              "name": "IVRs not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11f18735-70a9-4aff-934a-f44a4c9f6cd6",
+          "name": "Create IVR",
+          "request": {
+            "name": "Create IVR",
+            "description": {
+              "content": "Use to create an IVR",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "ivr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa93ca83-0cdb-40f3-8b7b-4930c2a6fba8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef44e8c5-ed35-47ca-b8b5-55ab1c9f0403",
+              "name": "Invalid IVR object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e0fe8ff-0b49-4a14-9b81-6d66cb03be6d",
+              "name": "IVR not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "ivr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"top\": \"<string>\",\n  \"left\": \"<string>\",\n  \"fixedPosition\": \"<boolean>\",\n  \"ivrComponents\": [\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"left\": \"<string>\",\n      \"top\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ivrComponentMappings\": [\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    },\n    {\n      \"fromIvrComponentId\": \"<string>\",\n      \"toIvrComponentId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "39aac2f8-c2fa-4555-8d8f-14112e4336bf",
+    "name": "Alianza IVR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged IVR across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

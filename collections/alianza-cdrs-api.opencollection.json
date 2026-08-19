@@ -1,0 +1,381 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza CD Rs API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CDRs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CDR record search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/cdrsearch/csv",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "firstResultIndex",
+                "value": "",
+                "type": "query",
+                "description": "First result to display, defaults to 0"
+              },
+              {
+                "name": "maxResult",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number to return, defaults to 20"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "minCost",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the minimum cost of the CDR"
+              },
+              {
+                "name": "callType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call type [INBOUND|OUTBOUND]"
+              },
+              {
+                "name": "callFlagType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call flag type"
+              },
+              {
+                "name": "callCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call category"
+              },
+              {
+                "name": "origNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on origination number"
+              },
+              {
+                "name": "dialedNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on dialed number"
+              },
+              {
+                "name": "termNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on termination number"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on start time"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on end time"
+              }
+            ]
+          },
+          "docs": "Use to search for CDR records"
+        },
+        {
+          "info": {
+            "name": "CDR record search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/cdrsearch/csv_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "firstResultIndex",
+                "value": "",
+                "type": "query",
+                "description": "First result to display, defaults to 0"
+              },
+              {
+                "name": "maxResult",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number to return, defaults to 20"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "minCost",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the minimum cost of the CDR"
+              },
+              {
+                "name": "callType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call type [INBOUND|OUTBOUND]"
+              },
+              {
+                "name": "callFlagType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call flag type"
+              },
+              {
+                "name": "callCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call category"
+              },
+              {
+                "name": "origNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on origination number"
+              },
+              {
+                "name": "dialedNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on dialed number"
+              },
+              {
+                "name": "termNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on termination number"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on start time"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on end time"
+              }
+            ]
+          },
+          "docs": "Use to search for CDR records"
+        },
+        {
+          "info": {
+            "name": "CDR record search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/cdrsearch",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "firstResultIndex",
+                "value": "",
+                "type": "query",
+                "description": "First result to display, defaults to 0"
+              },
+              {
+                "name": "maxResult",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number to return, defaults to 20"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              },
+              {
+                "name": "minCost",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the minimum cost of the CDR"
+              },
+              {
+                "name": "callType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call type [INBOUND|OUTBOUND]"
+              },
+              {
+                "name": "callFlagType",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call flag type"
+              },
+              {
+                "name": "callCategory",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on call category"
+              },
+              {
+                "name": "origNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on origination number"
+              },
+              {
+                "name": "dialedNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on dialed number"
+              },
+              {
+                "name": "termNumber",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on termination number"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on start time"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter based on end time"
+              }
+            ]
+          },
+          "docs": "Use to search for CDR records"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

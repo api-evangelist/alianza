@@ -1,0 +1,409 @@
+openapi: 3.2.0
+info:
+  title: Alianza Pickup Group API
+  version: '2'
+  description: 'Operations tagged Pickup Group across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Pickup Group
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/grouppickup/{pickupGroupId}:
+    get:
+      tags:
+      - Pickup Group
+      summary: Retrieve pickup group
+      description: Use to retrieve a pickup group
+      operationId: getPickupGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: pickupGroupId
+        in: path
+        description: ID of pickup group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PickupGroupX
+                $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid account ID or pickup group ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          schema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid account ID or pickup group ID
+        '404':
+          description: Not found
+    put:
+      tags:
+      - Pickup Group
+      summary: Update pickup group
+      description: Use to update a pickup group
+      operationId: updatePickupGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: pickupGroupId
+        in: path
+        description: ID of pickup group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PickupGroupX
+                $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group ID or pickup group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          schema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group ID or pickup group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+        description: Pickup group object
+        required: true
+    delete:
+      tags:
+      - Pickup Group
+      summary: Delete pickup group
+      description: Use to delete a pickup group
+      operationId: deletePickupGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: pickupGroupId
+        in: path
+        description: ID of pickup group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid pickup group ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid pickup group ID
+        '404':
+          description: Not found
+    patch:
+      tags:
+      - Pickup Group
+      summary: Update pickup group
+      description: Use to update a pickup group
+      operationId: patchPickupGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: pickupGroupId
+        in: path
+        description: ID of pickup group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PickupGroupX
+                $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group ID or pickup group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          schema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group ID or pickup group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+        description: Pickup group object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/grouppickup:
+    get:
+      tags:
+      - Pickup Group
+      summary: Get pickup group list
+      description: Use to retrieve a list of pickup groups.
+      operationId: getAllPickupGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: PickupGroupX
+                  $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid partition or account ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+          schema:
+            type: array
+            items:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid partition or account ID
+        '404':
+          description: Not found
+    post:
+      tags:
+      - Pickup Group
+      summary: Create pickup group
+      description: Use to create a pickup group
+      operationId: createPickupGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PickupGroupX
+                $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+          schema:
+            originalRef: PickupGroupX
+            $ref: '#/components/schemas/PickupGroupX_2'
+        '400':
+          description: Invalid pickup group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PickupGroupX
+              $ref: '#/components/schemas/PickupGroupX_2'
+        description: Pickup group object
+        required: true
+components:
+  schemas:
+    PickupGroupX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        groupIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

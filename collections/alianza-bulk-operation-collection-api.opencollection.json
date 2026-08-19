@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Bulk Operation Collection API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bulk Operation Collection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/bulk-user-operation/collection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new collection. This endpoint can take two content types -- application/json and multipart/form-data. Please see the request body examples for the content type you will be using."
+        },
+        {
+          "info": {
+            "name": "Get collection details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/bulk-user-operation/collection/:collectionId",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get collection details by ID"
+        },
+        {
+          "info": {
+            "name": "Get collection file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/bulk-user-operation/collection/:collectionId/:extension",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "extension",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get collection file by ID and extension"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

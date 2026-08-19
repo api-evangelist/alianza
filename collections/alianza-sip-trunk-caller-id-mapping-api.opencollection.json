@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Sip Trunk Caller ID Mapping API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sip Trunk Caller ID Mapping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of all Custom FROM Numbers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/fromnumber",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of all Custom FROM Numbers for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Create a FROM Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/fromnumber",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a FROM Number for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Delete a FROM Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/fromnumber/:fromNumber",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              },
+              {
+                "name": "fromNumber",
+                "value": "",
+                "type": "path",
+                "description": "exact FROM Telephone Number or wildcard"
+              }
+            ]
+          },
+          "docs": "Use to delete the FROM Number for the specified account ID, partition ID and FROM Number."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of all FROM Number to Caller ID mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/mapping",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of all FROM Number to Caller ID mappings for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Update a FROM Number to Caller ID mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/mapping",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a FROM Number to Caller ID mapping by setting Custom Caller ID Number or set it to null to remove mapping for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of all Caller IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/callerid",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of all Caller IDs for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Create a Caller ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/callerid",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a Caller ID for the specified account ID and partition ID."
+        },
+        {
+          "info": {
+            "name": "Delete a Caller ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/cid/callerid/:callerId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              },
+              {
+                "name": "callerId",
+                "value": "",
+                "type": "path",
+                "description": "Custom Caller ID Number"
+              }
+            ]
+          },
+          "docs": "Use to delete the Caller ID for the specified account ID, partition ID and Custom Caller ID Number with automatic cleanup of related mappings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,301 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Calling Plan Product API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calling Plan Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve calling plan product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a calling plan product"
+        },
+        {
+          "info": {
+            "name": "Update calling plan product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path",
+                "description": "ID of calling plan product"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update calling plan product"
+        },
+        {
+          "info": {
+            "name": "Update calling plan product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path",
+                "description": "ID of calling plan product"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update calling plan product"
+        },
+        {
+          "info": {
+            "name": "Retrieve calling plan product list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "includeArchived",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of calling plan products"
+        },
+        {
+          "info": {
+            "name": "Add calling plan product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to add a calling plan product"
+        },
+        {
+          "info": {
+            "name": "add_1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/import",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Archive calling plan product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId/archive-callingplan",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to archive calling plan product to make them unusable for future assignment"
+        },
+        {
+          "info": {
+            "name": "Retrieve the calling plan definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId/callingplanproductdefinition",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path",
+                "description": "ID of calling plan product"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Use to download the current calling plan definition"
+        },
+        {
+          "info": {
+            "name": "Add calling plan rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/callingplanproduct/:cppId/callingplanproductdefinition",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "cppId",
+                "value": "",
+                "type": "path",
+                "description": "ID of calling plan product"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Use to add calling plan rates"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

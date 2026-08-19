@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Specialty Line API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Specialty Line",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve specialty lines by account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/specialty-line",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of specialty lines associated with an account"
+        },
+        {
+          "info": {
+            "name": "Create a specialty line",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/specialty-line",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new specialty line on an account"
+        },
+        {
+          "info": {
+            "name": "Retrieve a specialty line by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/specialty-line/:lineId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "ID of specialty line, refers to <a href=\"#/~schema/SpecialtyLineResponseDto\">specialityLineX.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a specialty line by id"
+        },
+        {
+          "info": {
+            "name": "Update a specialty line",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/specialty-line/:lineId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "ID of specialty line, refers to <a href=\"#/~schema/SpecialtyLineResponseDto\">specialityLineX.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a specialty line"
+        },
+        {
+          "info": {
+            "name": "Delete a specialty line",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/specialty-line/:lineId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "lineId",
+                "value": "",
+                "type": "path",
+                "description": "ID of specialty line, refers to <a href=\"#/~schema/SpecialtyLineResponseDto\">specialityLineX.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ]
+          },
+          "docs": "Use to delete a specialty line"
+        },
+        {
+          "info": {
+            "name": "Validate a SIP username",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/rpc/specialty-line/validate-sip-username",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to validate the availability of a SIP username"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

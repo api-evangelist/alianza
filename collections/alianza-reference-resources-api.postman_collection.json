@@ -1,0 +1,1052 @@
+{
+  "item": [
+    {
+      "id": "411fda90-7022-43ce-aa2c-cbe2d9250f38",
+      "name": "Reference Resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62b198d1-a20a-4c03-8b17-05d34dafb213",
+          "name": "DeviceType",
+          "request": {
+            "name": "DeviceType",
+            "description": {
+              "content": "Retrieve a specific DeviceType",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "devicetype",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d267b85a-4b15-4fef-b9bd-0ac4888be6b7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "devicetype",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"numLines\": 3984,\n  \"deviceTypeManufacturer\": \"CISCO_LINKSYS_SIPURA\",\n  \"acceptsRemoteResync\": true,\n  \"faxSupported\": false,\n  \"macAddressRequired\": false,\n  \"showProvisionStatus\": false,\n  \"enforceUniqueAdminPassword\": false,\n  \"customEncryptionKeys\": false,\n  \"sipPagingEnabled\": false,\n  \"distinctiveRingInfo\": \"string\",\n  \"smbDevice\": true,\n  \"sideCarTypeIds\": [\n    \"string\",\n    \"string\"\n  ],\n  \"maxSideCars\": 5587,\n  \"ringTypeAlertInfo\": [\n    {\n      \"alertInfoHeaderValue\": \"string\",\n      \"ringType\": \"StandardRing\"\n    },\n    {\n      \"alertInfoHeaderValue\": \"string\",\n      \"ringType\": \"Ring5\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce9ff50b-0a98-44e7-bbca-6332c4b38309",
+          "name": "DeviceTypes List",
+          "request": {
+            "name": "DeviceTypes List",
+            "description": {
+              "content": "Retrieve a list of device types available to the given partition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "devicetype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partitionid",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6b2565e-7bc1-4fe2-990b-1fcb2f3b1e38",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "devicetype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"numLines\": 839,\n    \"deviceTypeManufacturer\": \"CLEARLY_IP\",\n    \"acceptsRemoteResync\": true,\n    \"faxSupported\": false,\n    \"macAddressRequired\": true,\n    \"showProvisionStatus\": false,\n    \"enforceUniqueAdminPassword\": false,\n    \"customEncryptionKeys\": false,\n    \"sipPagingEnabled\": false,\n    \"distinctiveRingInfo\": \"string\",\n    \"smbDevice\": true,\n    \"sideCarTypeIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"maxSideCars\": 4724,\n    \"ringTypeAlertInfo\": [\n      {\n        \"alertInfoHeaderValue\": \"string\",\n        \"ringType\": \"Ring7\"\n      },\n      {\n        \"alertInfoHeaderValue\": \"string\",\n        \"ringType\": \"Ring6\"\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"numLines\": 8850,\n    \"deviceTypeManufacturer\": \"MEDIATRIX\",\n    \"acceptsRemoteResync\": false,\n    \"faxSupported\": true,\n    \"macAddressRequired\": true,\n    \"showProvisionStatus\": false,\n    \"enforceUniqueAdminPassword\": true,\n    \"customEncryptionKeys\": true,\n    \"sipPagingEnabled\": false,\n    \"distinctiveRingInfo\": \"string\",\n    \"smbDevice\": false,\n    \"sideCarTypeIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"maxSideCars\": 7010,\n    \"ringTypeAlertInfo\": [\n      {\n        \"alertInfoHeaderValue\": \"string\",\n        \"ringType\": \"Ring1\"\n      },\n      {\n        \"alertInfoHeaderValue\": \"string\",\n        \"ringType\": \"Ring1\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0efd315e-3c41-43d3-8c47-3424b2227503",
+          "name": "DialPlanActionTypes List",
+          "request": {
+            "name": "DialPlanActionTypes List",
+            "description": {
+              "content": "Retrieve a list of available dial plan action types",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "dialplan",
+                "actiontypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeRestricted",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba7626b2-3680-4394-9645-defb8b763a9b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "dialplan",
+                    "actiontypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeRestricted",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": [\n    \"TranslateAndReapplyDialPlan\",\n    \"ParkCallRetrieval\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df3be050-c931-44a6-af1a-32233dc12c2b",
+          "name": "Language List",
+          "request": {
+            "name": "Language List",
+            "description": {
+              "content": "Retrieve a list of supported Languages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "language"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f84495c4-1cc9-452d-b861-a7129c7d69b1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "language"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"country\": \"string\",\n    \"language\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"country\": \"string\",\n    \"language\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8922ab2-2396-4950-9ed1-4d7cc6dcc7c9",
+          "name": "PermissionType and Access List",
+          "request": {
+            "name": "PermissionType and Access List",
+            "description": {
+              "content": "Retrieve a list of available Permission Types and their max Access level for a given UserType",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "usertype",
+                  "value": "ManagementUser"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d6f70ba-38ff-4f7a-9e53-d1b80b2bcf13",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "usertype",
+                      "value": "ManagementUser"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"EU_LineHuntGroup\",\n    \"maxAccessType\": \"CREATE_MYUSER\"\n  },\n  {\n    \"type\": \"EU_LineHardware\",\n    \"maxAccessType\": \"DENIED\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03d3cf71-4ff5-4dab-9aee-c9458b0dcf5e",
+          "name": "RoutePlan default template",
+          "request": {
+            "name": "RoutePlan default template",
+            "description": {
+              "content": "Get the default rates csv for a RoutePlan",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "routeplan-definition-template"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1da99fbd-c714-492c-ac0a-2da46042e89d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "routeplan-definition-template"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee25ce8c-0bbf-4f26-94bd-9226aa31715f",
+          "name": "Address - SecondaryLocationType List",
+          "request": {
+            "name": "Address - SecondaryLocationType List",
+            "description": {
+              "content": "Get a list of available SecondaryLocationTypes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "secondary-location-types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0bf8ad34-56ff-49bc-896c-7ffb74655e86",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "secondary-location-types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": [\n    \"\",\n    \"TRAILER\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8a55db1-2891-43ce-ac7f-8ce6957d0cbe",
+          "name": "Device - SideCarType",
+          "request": {
+            "name": "Device - SideCarType",
+            "description": {
+              "content": "Get a given SideCarType",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "sidecartype",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5841c87a-a7c8-468d-a729-38ee560b1fa6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "sidecartype",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"numLinesPerPage\": 3844,\n  \"numPages\": 7698\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "450513a9-f8b0-4ad3-866c-05fb91863798",
+          "name": "Device - SideCarType List",
+          "request": {
+            "name": "Device - SideCarType List",
+            "description": {
+              "content": "Get a list of available SideCarTypes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "sidecartype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74ac3654-f3c3-4958-852a-dccdd85a22ff",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "sidecartype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"numLinesPerPage\": 3153,\n    \"numPages\": 3462\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"numLinesPerPage\": 3447,\n    \"numPages\": 2102\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "351b4d9d-54af-479a-a6d8-0b72005fa9d1",
+          "name": "get List",
+          "request": {
+            "name": "get List",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "system-default-media",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7062575c-1af1-44fd-aea4-29666ea7f3b5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "system-default-media",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"storageId\": \"string\",\n    \"subType\": \"string\",\n    \"title\": \"string\",\n    \"url\": \"string\"\n  },\n  {\n    \"storageId\": \"string\",\n    \"subType\": \"string\",\n    \"title\": \"string\",\n    \"url\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "794bbfe1-6ca7-4c5e-9e30-dc18cf4c77e8",
+          "name": "TimeZone List",
+          "request": {
+            "name": "TimeZone List",
+            "description": {
+              "content": "Get a list of supported TimeZones",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "ref",
+                "timezones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "708eccff-553b-4b61-b35b-2bfd64501f89",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "ref",
+                    "timezones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": [\n    \"US/Mountain\",\n    \"US/Eastern\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c5eb488-af81-47f5-ac3d-6d2019b12318",
+    "name": "Alianza Reference Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Reference Resources across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

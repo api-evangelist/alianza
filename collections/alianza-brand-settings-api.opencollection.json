@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Brand Settings API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brand Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the general settings for all app brands of a partition.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/app-branding/brand-settings",
+            "params": [
+              {
+                "name": "partition",
+                "value": "",
+                "type": "query",
+                "description": "PartitionId for brands being retrieved."
+              }
+            ]
+          },
+          "docs": "Retrieve the general settings for all app brands of a partition."
+        },
+        {
+          "info": {
+            "name": "Provision general settings associated to app branding for a new brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/app-branding/brand-settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provision general settings associated to app branding for a new brand."
+        },
+        {
+          "info": {
+            "name": "Retrieve the general settings associated to a specific brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/app-branding/brand-settings/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "ID of brand to return"
+              }
+            ]
+          },
+          "docs": "Retrieve the general settings associated to a specific brand."
+        },
+        {
+          "info": {
+            "name": "Provision the general settings associated to a specific brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/app-branding/brand-settings/:brandId",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "path",
+                "description": "ID of brand whose settings are being updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provision the general settings associated to a specific brand."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

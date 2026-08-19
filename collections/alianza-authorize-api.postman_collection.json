@@ -1,0 +1,631 @@
+{
+  "item": [
+    {
+      "id": "33db5e48-e25e-4d4b-abc1-47a1e495f8b1",
+      "name": "Authorize",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4b570124-5f1d-488f-aa61-2cee21a64720",
+          "name": "User Information",
+          "request": {
+            "name": "User Information",
+            "description": {
+              "content": "Return user information for a given token in the header",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize",
+                "userinfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07bfaee7-d847-49d6-8162-d564e6ea6e72",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "userinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"AccountUser\",\n  \"endUserType\": \"SUPER_ADMIN\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"DELETE\",\n    \"key_1\": \"READ_MYUSER\",\n    \"key_2\": \"CREATE\",\n    \"key_3\": \"READ\"\n  },\n  \"featureToggles\": {\n    \"key_0\": false\n  },\n  \"mustChangePassword\": true,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"pwdHash\": \"string\",\n  \"mustAddEmail\": true,\n  \"maxLifeInHours\": 2016,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "402b5601-e871-4fa1-82e9-892b10dc9e58",
+              "name": "ExpiredAuthToken, if invalid token is sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "userinfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "471ac43e-d3e9-4952-a0bf-93d484441606",
+          "name": "Log out a user",
+          "request": {
+            "name": "Log out a user",
+            "description": {
+              "content": "Log out user for the given token in the header",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d76e8323-bd66-403f-abb5-449c58acb212",
+              "name": "ExpiredAuthToken, if invalid token is sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a926d515-9a35-421b-98a2-ff24e6299f4f",
+          "name": "Login with token",
+          "request": {
+            "name": "Login with token",
+            "description": {
+              "content": "Takes a jwt and returns login token if successfully validates. For validating a jwt, Alianza needs your public key, please contact your account manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize",
+                "jwt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3b065094-889a-4386-b533-387063fd75ef",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "jwt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"ManagementUser\",\n  \"endUserType\": \"ADMIN\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"CREATE_MYUSER\",\n    \"key_1\": \"READ_MYUSER\"\n  },\n  \"featureToggles\": {\n    \"key_0\": false,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"mustChangePassword\": false,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"pwdHash\": \"string\",\n  \"mustAddEmail\": true,\n  \"maxLifeInHours\": 5320,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7a48ddb-4783-4fac-92b1-0ba8b8edbbd2",
+              "name": " Invalid Login ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "jwt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c26ca5c8-f981-4df9-bbc6-37be3b8534f5",
+          "name": "Login with login credentials",
+          "request": {
+            "name": "Login with login credentials",
+            "description": {
+              "content": "Takes login credentials and returns token if successfully validates ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "36a02f05-98cf-439f-b370-56fd633fc7d3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"ManagementUser\",\n  \"endUserType\": \"ADMIN\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"CREATE_MYUSER\",\n    \"key_1\": \"READ_MYUSER\"\n  },\n  \"featureToggles\": {\n    \"key_0\": false,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"mustChangePassword\": false,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"pwdHash\": \"string\",\n  \"mustAddEmail\": true,\n  \"maxLifeInHours\": 5320,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "785e56cd-e3b8-4cec-9f7b-01f8d7bb0339",
+              "name": " Invalid Login ",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d9cf757-ea17-4fb2-8f2f-fc8d38cec1e3",
+          "name": "Update password",
+          "request": {
+            "name": "Update password",
+            "description": {
+              "content": "Used to update an existing password",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66da2c3b-c786-4623-94eb-8827853c81de",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"ManagementUser\",\n  \"endUserType\": \"ADMIN\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"CREATE_MYUSER\",\n    \"key_1\": \"READ_MYUSER\"\n  },\n  \"featureToggles\": {\n    \"key_0\": false,\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"mustChangePassword\": false,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"pwdHash\": \"string\",\n  \"mustAddEmail\": true,\n  \"maxLifeInHours\": 5320,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75113986-34b0-4e60-ad89-511f5a5ac692",
+              "name": "FailedToUpdate, When new password doesnt satisfies password requirements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"changePassword\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d41f004f-10cc-462b-a560-307ca2c1b487",
+    "name": "Alianza Authorize API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Authorize across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

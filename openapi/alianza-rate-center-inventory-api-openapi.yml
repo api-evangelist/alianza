@@ -1,0 +1,564 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Rate Center Inventory API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Rate Center Inventory
+  description: Operations for managing rate centers. A rate center is a geographical area used to determine the boundaries for local calling, billing, and assigning specific phone numbers, which can encompass multiple area codes.
+paths:
+  /v2/partition/{partitionId}/ratecenter/inventoryplan:
+    get:
+      tags:
+      - Rate Center Inventory
+      summary: (DEPRECATED) Retrieve rate center inventory plan in CSV format
+      operationId: getInventoryPlan
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/StreamingOutput'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      deprecated: true
+    post:
+      tags:
+      - Rate Center Inventory
+      summary: (DEPRECATED) Import rate center inventory plan in CSV format
+      operationId: importFile
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MultipartFormDataInput'
+        required: false
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FileImportValidationErrorX'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      deprecated: true
+      x-codegen-request-body-name: body
+  /v2/partition/{partitionId}/ratecenter/inventoryplan_2:
+    get:
+      tags:
+      - Rate Center Inventory
+      summary: Initiates the creation of a rate center inventory plan CSV file
+      description: 'Creates an <a href="#/~schema/Job">asynchronous job</a> that generates a CSV file for download.
+
+        <span hidden>Please refer to <a href="jobs.html#monitor-job-progress">monitoring job progress</a> and <a href="jobs.html#get-job-output">retrieving job output</a> for instructions on retrieving the report.</span>
+
+        '
+      operationId: getInventoryPlan2
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '202':
+          description: Use Jobs API to check status
+          content: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    post:
+      tags:
+      - Rate Center Inventory
+      summary: Upload a CSV file containing the rate center inventory plan
+      operationId: importFile_2
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Use Jobs API to upload file
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobUploadKey'
+        required: false
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '202':
+          description: Use Jobs API to check status
+          content: {}
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      x-codegen-request-body-name: body
+  /v2/partition/{partitionId}/ratecenter/reordernotification:
+    get:
+      tags:
+      - Rate Center Inventory
+      summary: Retrieve email addresses that will be sent reorder notifications
+      operationId: getNotificationEmails
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - Rate Center Inventory
+      summary: Update email addresses that will be sent reorder notifications
+      operationId: setNotificationEmails
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        required: false
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      x-codegen-request-body-name: body
+  /v2/partition/{partitionId}/ratecenter/tnsearch:
+    get:
+      tags:
+      - Rate Center Inventory
+      summary: Telephone number search grouped by rate centers
+      description: Use to search for available telephone numbers available to activate by postal code or lat/long
+      operationId: search_1
+      parameters:
+      - name: distanceunit
+        in: query
+        description: Distance Unit (miles, kilometers, radians)
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        description: Latitude
+        schema:
+          type: string
+      - name: longitude
+        in: query
+        description: Longitude
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: searchterm
+        in: query
+        description: Search Term (postal code)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelephoneNumberViewX'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/partition/{partitionId}/ratecenter/{tn}:
+    get:
+      tags:
+      - Rate Center Inventory
+      summary: Retrieve rate center associated with the telephone number
+      operationId: getRateCenter
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateCenterX'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+components:
+  schemas:
+    TelephoneNumberViewX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        phoneNumber:
+          type: string
+        rateCenter:
+          type: string
+        rateCenterReorderName:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        prefix:
+          type: string
+        accountId:
+          type: string
+        carrierId:
+          type: string
+          description: The <a href="#/~schema/InboundCarrierX">inboundCarrierX.id</a> that services the telephone number.
+        cooldownExpireDate:
+          type: string
+          format: date-time
+        cooldownRecoveredDate:
+          type: string
+          format: date-time
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        claimTicketId:
+          type: string
+          deprecated: true
+        matchesZip:
+          type: boolean
+          description: When this object is returned as part of a <a href="#/~operation/Telephone%20Number/tnSearch">search</a> that uses a zip code, results for nearby zip codes are also returned.  This field indicates if the returned data matches the queried zip code.
+        distance:
+          type: number
+          format: float
+          description: When this object is returned as part of a <a href="#/~operation/Telephone%20Number/tnSearch">search</a> that uses a zip code, results for nearby zip codes are also returned. This field represents the distance (in miles) from the specified zip code.
+        byotn:
+          type: boolean
+          description: Bring Your Own Telephone Number (byotn) is a feature that allows the service provider to manage the rate center footprint coverage for a number.
+        activationDate:
+          type: integer
+          format: int64
+        isInInventory:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        id:
+          type: string
+        port:
+          type: boolean
+    StreamingOutput:
+      type: object
+    MultipartFormDataInput:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    RateCenterX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        reorderName:
+          type: string
+        originalReorderName:
+          type: string
+        name:
+          type: string
+        abbrName:
+          type: string
+        msa:
+          type: string
+        zips:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        wireless:
+          type: boolean
+        state:
+          type: string
+        country:
+          type: string
+        portable:
+          type: boolean
+        serviceAvailable:
+          type: boolean
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

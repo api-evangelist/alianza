@@ -1,0 +1,398 @@
+openapi: 3.2.0
+info:
+  title: Alianza Emergency Notification API
+  version: '2'
+  description: 'Operations tagged Emergency Notification across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Emergency Notification
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/emergency-notifications/events:
+    get:
+      tags:
+      - Emergency Notification
+      summary: Retrieve notification event list
+      description: Use to retrieve all NotificationEvents for an account
+      operationId: retrieveNotificationEvent
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: NotificationEvent
+              $ref: '#/components/schemas/NotificationEvent'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: NotificationEvent
+                  $ref: '#/components/schemas/NotificationEvent'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: NotificationEvent
+              $ref: '#/components/schemas/NotificationEvent'
+          schema:
+            type: array
+            items:
+              originalRef: NotificationEvent
+              $ref: '#/components/schemas/NotificationEvent'
+  /v2/partition/{partitionId}/account/{accountId}/emergency-notifications/groups:
+    get:
+      tags:
+      - Emergency Notification
+      summary: Retrieve notification group list
+      description: Use to retrieve a list of notification group associated to an account
+      operationId: listNotificationGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: NotificationGroup
+              $ref: '#/components/schemas/NotificationGroup_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: NotificationGroup
+                  $ref: '#/components/schemas/NotificationGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: NotificationGroup
+              $ref: '#/components/schemas/NotificationGroup_2'
+          schema:
+            type: array
+            items:
+              originalRef: NotificationGroup
+              $ref: '#/components/schemas/NotificationGroup_2'
+  /v2/partition/{partitionId}/account/{accountId}/emergency-notifications/groups/{type}/{groupId}:
+    get:
+      tags:
+      - Emergency Notification
+      summary: Retrieve notification group
+      description: Use to retrieve a specific NotificationGroup (include Compliance & configurations) for id/type
+      operationId: retrieveNotificationGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACCOUNT
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+          content:
+            application/json:
+              schema:
+                originalRef: NotificationGroup
+                $ref: '#/components/schemas/NotificationGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+          schema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+    put:
+      tags:
+      - Emergency Notification
+      summary: Update notification group
+      description: Use to update specific NotificationGroup (only Compliance & configurations) for id/type
+      operationId: updateNotificationGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACCOUNT
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+          content:
+            application/json:
+              schema:
+                originalRef: NotificationGroup
+                $ref: '#/components/schemas/NotificationGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+          schema:
+            originalRef: NotificationGroup
+            $ref: '#/components/schemas/NotificationGroup_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: NotificationGroup
+              $ref: '#/components/schemas/NotificationGroup_2'
+        description: Notification Group object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/emergency-notifications/groups/{type}/{groupId}/execute-test:
+    post:
+      tags:
+      - Emergency Notification
+      summary: Execute test
+      description: Execute a test of all NotificationConfigurations associated with the specified NotificationGroup
+      operationId: executeTest
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACCOUNT
+      - name: groupId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationEvent
+            $ref: '#/components/schemas/NotificationEvent'
+          content:
+            application/json:
+              schema:
+                originalRef: NotificationEvent
+                $ref: '#/components/schemas/NotificationEvent'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: NotificationEvent
+            $ref: '#/components/schemas/NotificationEvent'
+          schema:
+            originalRef: NotificationEvent
+            $ref: '#/components/schemas/NotificationEvent'
+components:
+  schemas:
+    NotificationGroup_2:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - ACCOUNT
+        name:
+          type: string
+        compliance:
+          originalRef: ComplianceConfiguration
+          $ref: '#/components/schemas/ComplianceConfiguration_2'
+        timeZoneId:
+          type: string
+    NotificationEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        callTime:
+          type: integer
+          format: int64
+        timeZoneId:
+          type: string
+        groupId:
+          type: string
+        groupType:
+          type: string
+          enum:
+          - ACCOUNT
+        triggerType:
+          type: string
+          enum:
+          - EMERGENCY_CALL
+          - EMERGENCY_TEST_CALL
+          - EMERGENCY_TEXT
+          - EMERGENCY_TEST_TEXT
+          - NOTIFICATION_TEST
+        triggeringPhoneNumber:
+          type: string
+        status:
+          type: string
+          enum:
+          - SENT
+          - FAILED
+          - PARTIAL
+        emailNotificationRecipients:
+          type: array
+          items:
+            originalRef: RecipientStatus
+            $ref: '#/components/schemas/RecipientStatus_2'
+        smsNotificationRecipients:
+          type: array
+          items:
+            originalRef: RecipientStatus
+            $ref: '#/components/schemas/RecipientStatus_2'
+    ComplianceConfiguration_2:
+      type: object
+      properties:
+        installDate:
+          type: string
+          format: date-time
+        usingAlternativeSolution:
+          type: boolean
+        emailRecipients:
+          type: array
+          items:
+            type: string
+        smsRecipients:
+          type: array
+          items:
+            type: string
+        inCompliance:
+          type: boolean
+    RecipientStatus_2:
+      type: object
+      properties:
+        recipient:
+          type: string
+        status:
+          type: string
+          enum:
+          - SENT
+          - FAILED
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

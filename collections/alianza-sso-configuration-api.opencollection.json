@@ -1,0 +1,406 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public SSO Configuration API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSO Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SSO configurations for account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              }
+            ]
+          },
+          "docs": "Retrieves all SSO configurations associated with a specific account."
+        },
+        {
+          "info": {
+            "name": "Update SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing SSO configuration for an account."
+        },
+        {
+          "info": {
+            "name": "Enable SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/:ssoName/status",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Set true to enable SSO config"
+              }
+            ]
+          },
+          "docs": "Enables or disables the SSO configuration for an account."
+        },
+        {
+          "info": {
+            "name": "Download signing certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/signing-certificate",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Certificate format"
+              }
+            ]
+          },
+          "docs": "Downloads the service provider signing certificate for SAML configuration."
+        },
+        {
+          "info": {
+            "name": "Validate user against account SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/user-validation",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "query",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Validates the user context for the account-level SSO configuration."
+        },
+        {
+          "info": {
+            "name": "Create account SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new SSO configuration for an account to enable SAML-based authentication."
+        },
+        {
+          "info": {
+            "name": "Get specific SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/:ssoName",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific SSO configuration by name for an account."
+        },
+        {
+          "info": {
+            "name": "Delete SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/:ssoName",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              }
+            ]
+          },
+          "docs": "Removes an SSO configuration from an account."
+        },
+        {
+          "info": {
+            "name": "Create partition enforced SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Partition Enforced SSO (PESSO) configuration."
+        },
+        {
+          "info": {
+            "name": "List partition SSO configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ]
+          },
+          "docs": "Retrieves all SSO configurations for a specific partition."
+        },
+        {
+          "info": {
+            "name": "Update SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing Partition Enforced SSO configuration with Identity Provider details.\n"
+        },
+        {
+          "info": {
+            "name": "Get specific SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/:ssoName",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific SSO configuration by name for a partition."
+        },
+        {
+          "info": {
+            "name": "Delete SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/:ssoName",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              }
+            ]
+          },
+          "docs": "Permanently removes an SSO configuration from a partition."
+        },
+        {
+          "info": {
+            "name": "Update enforced sub-partitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/sub-partitions/:ssoName",
+            "params": [
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the list of sub-partitions enforced by a PESSO configuration (merge/add-only)."
+        },
+        {
+          "info": {
+            "name": "Enable SSO configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/:ssoName/status",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "ssoName",
+                "value": "",
+                "type": "path",
+                "description": "SSO configuration name"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Enables SSO config"
+              }
+            ]
+          },
+          "docs": "Enables or disables the SSO configuration for a partition."
+        },
+        {
+          "info": {
+            "name": "Download signing certificate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/signing-certificate",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Certificate format"
+              }
+            ]
+          },
+          "docs": "Downloads the service provider signing certificate for SAML configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

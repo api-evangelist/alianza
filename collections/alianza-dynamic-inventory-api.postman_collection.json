@@ -1,0 +1,484 @@
+{
+  "item": [
+    {
+      "id": "cf34cebf-5a70-4aab-94f8-000fe2824bc7",
+      "name": "Dynamic Inventory",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "217b3941-ac4b-41b1-88c4-ae246c9be326",
+          "name": "Retrieve telephone number list matching query parameters from carrier's dynamic inventory ",
+          "request": {
+            "name": "Retrieve telephone number list matching query parameters from carrier's dynamic inventory ",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "dynamic-inventory",
+                "tn-search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "npa",
+                  "value": "<string>",
+                  "description": "The three-digit number that identifies the telephone service region"
+                },
+                {
+                  "disabled": false,
+                  "key": "npa-nxx",
+                  "value": "<string>",
+                  "description": "A six-digit code that is used to identify telephone numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "qty",
+                  "value": "<integer>",
+                  "description": "Desired quantity of telephone numbers"
+                },
+                {
+                  "disabled": false,
+                  "key": "sequential",
+                  "value": "true",
+                  "description": "When true to returns sequential numbers"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe875223-61ae-4df2-a316-691a149d6eb6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "dynamic-inventory",
+                    "tn-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "npa",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npa-nxx",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sequential",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"carrierId\": \"string\",\n    \"orderId\": \"string\",\n    \"tns\": [\n      {\n        \"tn\": \"string\",\n        \"id\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  },\n  {\n    \"carrierId\": \"string\",\n    \"orderId\": \"string\",\n    \"tns\": [\n      {\n        \"tn\": \"string\",\n        \"id\": \"string\"\n      }\n    ],\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67a0e4bf-6e3b-4c1d-bc87-03fdfe5beb40",
+              "name": "Invalid account ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "dynamic-inventory",
+                    "tn-search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "npa",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npa-nxx",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sequential",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0145b853-7102-419d-b7c9-5059090cd2cf",
+          "name": "Creates Dynamic inventory orders, those orders eventually will activate telephone numbers received on a request",
+          "request": {
+            "name": "Creates Dynamic inventory orders, those orders eventually will activate telephone numbers received on a request",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "dynamic-inventory",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"carrierId\": \"<string>\",\n  \"orderId\": \"<string>\",\n  \"tnQuantity\": \"<integer>\",\n  \"deviceId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"tnSettings\": {\n    \"phoneNumber\": \"<string>\",\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"functionType\": \"<string>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"operationalStatus\": \"<string>\",\n    \"portId\": \"<string>\",\n    \"servicePackageType\": \"<string>\",\n    \"tollFree\": \"<boolean>\",\n    \"id\": \"<string>\"\n  },\n  \"ringType\": \"<string>\",\n  \"archived\": \"<boolean>\",\n  \"alianzaOrderId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8240bff-84e7-4d3e-9c6b-389e66e87158",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "dynamic-inventory",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"carrierId\": \"<string>\",\n  \"orderId\": \"<string>\",\n  \"tnQuantity\": \"<integer>\",\n  \"deviceId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"tnSettings\": {\n    \"phoneNumber\": \"<string>\",\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"functionType\": \"<string>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"operationalStatus\": \"<string>\",\n    \"portId\": \"<string>\",\n    \"servicePackageType\": \"<string>\",\n    \"tollFree\": \"<boolean>\",\n    \"id\": \"<string>\"\n  },\n  \"ringType\": \"<string>\",\n  \"archived\": \"<boolean>\",\n  \"alianzaOrderId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"inventory\": [\n    {\n      \"carrierId\": \"string\",\n      \"orderId\": \"string\",\n      \"tns\": [\n        {\n          \"tn\": \"string\",\n          \"id\": \"string\"\n        }\n      ],\n      \"id\": \"string\"\n    }\n  ],\n  \"id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc9b11af-b561-4987-a17d-7890632dd4d6",
+              "name": "Invalid carrierId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "dynamic-inventory",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"carrierId\": \"<string>\",\n  \"orderId\": \"<string>\",\n  \"tnQuantity\": \"<integer>\",\n  \"deviceId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\",\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"tnSettings\": {\n    \"phoneNumber\": \"<string>\",\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"functionType\": \"<string>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"operationalStatus\": \"<string>\",\n    \"portId\": \"<string>\",\n    \"servicePackageType\": \"<string>\",\n    \"tollFree\": \"<boolean>\",\n    \"id\": \"<string>\"\n  },\n  \"ringType\": \"<string>\",\n  \"archived\": \"<boolean>\",\n  \"alianzaOrderId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c155c68-1902-4638-8055-5a52e94bd6a2",
+    "name": "Alianza Dynamic Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Dynamic Inventory across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

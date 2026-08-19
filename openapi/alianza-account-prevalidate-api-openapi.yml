@@ -1,0 +1,816 @@
+openapi: 3.2.0
+info:
+  title: Alianza Account Prevalidate API
+  version: '2'
+  description: 'Operations tagged Account Prevalidate across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Account Prevalidate
+paths:
+  /v2/partition/{partitionId}/account/prevalidate:
+    post:
+      tags:
+      - Account Prevalidate
+      summary: Prevalidate a phone number
+      description: Use to prevalidate a telephone number
+      operationId: preValidateAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAvailabilityResponseV2X
+            $ref: '#/components/schemas/PortAvailabilityResponseV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAvailabilityResponseV2X
+                $ref: '#/components/schemas/PortAvailabilityResponseV2X_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAvailabilityResponseV2X
+            $ref: '#/components/schemas/PortAvailabilityResponseV2X_2'
+          schema:
+            originalRef: PortAvailabilityResponseV2X
+            $ref: '#/components/schemas/PortAvailabilityResponseV2X_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Telephone number not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberActivationsV2X
+              $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        description: Telephone number activation object
+        required: true
+  /v2/partition/{partitionId}/account/e911/prevalidate:
+    put:
+      tags:
+      - Account Prevalidate
+      summary: Prevalidate an address for 911
+      description: Use to prevalidate an address for 911
+      operationId: preValidateAccountTn
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: E911PrevalidateResponseX
+            $ref: '#/components/schemas/E911PrevalidateResponseX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: E911PrevalidateResponseX
+                $ref: '#/components/schemas/E911PrevalidateResponseX_2'
+        '400':
+          description: Invalid telephone number
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: E911PrevalidateResponseX
+            $ref: '#/components/schemas/E911PrevalidateResponseX_2'
+          schema:
+            originalRef: E911PrevalidateResponseX
+            $ref: '#/components/schemas/E911PrevalidateResponseX_2'
+        '400':
+          description: Invalid telephone number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberActivationsV2X
+              $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        description: Telephone number activation object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/product/prevalidate:
+    post:
+      tags:
+      - Account Prevalidate
+      summary: Prevalidate an account product
+      description: Use to prevalidate an account product
+      operationId: prevalidate
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid telephone number object supplied
+      responsesObject:
+        '400':
+          description: Invalid telephone number object supplied
+components:
+  schemas:
+    PortAvailabilityResponseV2X_2:
+      type: object
+      properties:
+        id:
+          type: string
+        businessPartnerTicketID:
+          type: string
+        carrierTicketId:
+          type: string
+        requestedActivation:
+          originalRef: TelephoneNumberActivationsV2X
+          $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        serviceAvailable:
+          type: boolean
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        earliestCRD:
+          type: string
+          format: date
+        latestCRD:
+          type: string
+          format: date
+        availabilityList:
+          type: array
+          items:
+            type: string
+            format: date
+        resultCSRs:
+          type: array
+          items:
+            originalRef: CustomerServiceRecordX
+            $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        exception:
+          type: string
+        thirdPartyResultCode:
+          type: string
+        thirdPartyResultContext:
+          type: string
+        thirdPartyResultMessage:
+          type: string
+        directoryListingAllowed:
+          type: boolean
+        wirelessPort:
+          type: boolean
+        lnp:
+          type: boolean
+    E911AddressX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        latitude:
+          type: string
+          description: -90 through 90, 4-6 decimals
+        longitude:
+          type: string
+          description: -180 through 180, 4-6 decimals
+        language:
+          type: string
+          description: Optional, see /v2/ref/language for supported languages
+    L3SettingsX_2:
+      type: object
+      properties:
+        servicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
+          type: array
+          items:
+            type: string
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
+          type: string
+        customerServiceName:
+          type: string
+        bizOrg:
+          type: string
+    TnData:
+      type: object
+      properties:
+        tn:
+          type: string
+        rateCenter:
+          type: string
+        wireless:
+          type: boolean
+    PortX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: telephoneNumber
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        sendLoa:
+          type: boolean
+        loaSaved:
+          type: boolean
+        carrierId:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        crdDate:
+          type: string
+          format: date-time
+        billingTelephoneNumber:
+          type: string
+        portingWireType:
+          type: string
+          enum:
+          - Wireless
+          - Wireline
+        portingAuthorizedName:
+          type: string
+        wirelessAccountNumber:
+          type: string
+        wirelessPin:
+          type: string
+        focDate:
+          type: string
+          format: date-time
+        focDateTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        createdDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        cancelType:
+          type: string
+          enum:
+          - NORMAL
+          - EXPIDITED
+          - BY_CARRIER
+        telecomSettings:
+          originalRef: TelecomSettingsX
+          $ref: '#/components/schemas/TelecomSettingsX_2'
+        hotCutPortId:
+          type: string
+        portNow:
+          type: boolean
+        canAcceptSMS:
+          type: boolean
+        smsCallbackUrl:
+          type: string
+    TelecomSettingsX_2:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            originalRef: TnData
+            $ref: '#/components/schemas/TnData'
+    TelephoneNumberActivationsV2X_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        port:
+          originalRef: PortX
+          $ref: '#/components/schemas/PortX_2'
+        l3Settings:
+          originalRef: L3SettingsX
+          $ref: '#/components/schemas/L3SettingsX_2'
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        holdActivation:
+          type: boolean
+          description: Use this when activating phone numbers to prevent carrier activation until a later date
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            xml:
+              name: telephoneNumber
+            originalRef: TelephoneNumberAccountBareX
+            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+        byotnCarrierId:
+          type: string
+        id:
+          type: string
+    DirectoryListingX_2:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX_2'
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+    E911PrevalidateResponseX_2:
+      type: object
+      properties:
+        valid:
+          type: string
+          enum:
+          - VALID
+          - INVALID
+          - UNKNOWN
+        errors:
+          type: array
+          items:
+            type: string
+        addressAlternatives:
+          type: array
+          items:
+            originalRef: AddressX
+            $ref: '#/components/schemas/AddressX_2'
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX_2'
+    TelephoneNumberAccountBareX:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        tollFree:
+          type: boolean
+        id:
+          type: string
+    AddressX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

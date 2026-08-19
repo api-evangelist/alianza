@@ -1,0 +1,326 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Voicemail Message API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Voicemail Message",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get voicemail message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage/:messageId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "MessageId"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a voicemail message"
+        },
+        {
+          "info": {
+            "name": "Update voicemail message",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage/:messageId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "MessageId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a voicemail message; can only update read status"
+        },
+        {
+          "info": {
+            "name": "Delete voicemail message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage/:messageId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "MessageId"
+              }
+            ]
+          },
+          "docs": "Use to delete a voicemail message"
+        },
+        {
+          "info": {
+            "name": "Retrieve voicemail message list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of voicemail messages in a voicemail box"
+        },
+        {
+          "info": {
+            "name": "Delete multiple voicemails",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to delete multiple voicemails in a single call"
+        },
+        {
+          "info": {
+            "name": "Get contents of voicemail message. Will return a 302 redirect to the actual image location. Pass query param mediatype=mp3 or wav",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage/:messageId/content_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "ID of voicemail message"
+              },
+              {
+                "name": "mediatype",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use to retrieve Media of a given type"
+        },
+        {
+          "info": {
+            "name": "get contents of a voicemail message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/voicemailmessage/:messageId/content",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "ID of voicemail message"
+              },
+              {
+                "name": "fileName",
+                "value": "",
+                "type": "query",
+                "description": "Name of prompt"
+              }
+            ]
+          },
+          "docs": "Use to get contents of a voicemail message"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

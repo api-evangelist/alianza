@@ -1,0 +1,59 @@
+openapi: 3.2.0
+info:
+  title: Alianza Language Reference API
+  version: '2'
+  description: 'Operations tagged Language Reference across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Language Reference
+paths:
+  /v2/language:
+    get:
+      tags:
+      - Language Reference
+      operationId: getLanguageFromHeader
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: LanguageX
+            $ref: '#/components/schemas/LanguageX'
+          content:
+            application/json:
+              schema:
+                originalRef: LanguageX
+                $ref: '#/components/schemas/LanguageX'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: LanguageX
+            $ref: '#/components/schemas/LanguageX'
+          schema:
+            originalRef: LanguageX
+            $ref: '#/components/schemas/LanguageX'
+components:
+  schemas:
+    LanguageX:
+      type: object
+      properties:
+        prefLang:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

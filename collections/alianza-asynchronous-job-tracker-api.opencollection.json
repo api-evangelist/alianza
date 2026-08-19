@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Asynchronous JOB Tracker API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Asynchronous JOB Tracker",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/job/:jobId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the specified job"
+        },
+        {
+          "info": {
+            "name": "Get input url",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/job/input",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a presigned url to upload data to. Also gets a key needed to create the job after the data is uploaded."
+        },
+        {
+          "info": {
+            "name": "Job Input",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/job/:jobId/input",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download the job input"
+        },
+        {
+          "info": {
+            "name": "Job Output",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/job/:jobId/output",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download the job results output"
+        },
+        {
+          "info": {
+            "name": "Job Output url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/job/:jobId/output-url",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return the job download url"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

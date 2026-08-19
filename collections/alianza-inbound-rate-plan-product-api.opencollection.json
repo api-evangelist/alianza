@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Inbound Rate Plan Product API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Rate Plan Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve an inbound rate plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/inboundrateplanproduct/:ratePlanId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "ratePlanId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve an inbound rate plan"
+        },
+        {
+          "info": {
+            "name": "Retrieve inbound rate plan list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/inboundrateplanproduct",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of inbound rate plans available to a partition"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

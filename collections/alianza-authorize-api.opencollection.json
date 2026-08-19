@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Authorize API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorize",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "User Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authorize/userinfo",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Return user information for a given token in the header"
+        },
+        {
+          "info": {
+            "name": "Log out a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authorize/logout",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Log out user for the given token in the header"
+        },
+        {
+          "info": {
+            "name": "Login with token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authorize/jwt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a jwt and returns login token if successfully validates. For validating a jwt, Alianza needs your public key, please contact your account manager."
+        },
+        {
+          "info": {
+            "name": "Login with login credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes login credentials and returns token if successfully validates "
+        },
+        {
+          "info": {
+            "name": "Update password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Used to update an existing password"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

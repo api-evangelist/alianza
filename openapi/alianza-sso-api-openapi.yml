@@ -1,0 +1,172 @@
+openapi: 3.2.0
+info:
+  description: '**This documentation of the Alianza Public API is outdated. No further updates will be
+    made to it.**
+
+
+    You are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at
+    [https://developer.alianza.com/](https://developer.alianza.com/)'
+  version: '2'
+  title: Alianza Public SSO API
+tags:
+- name: SSO
+paths:
+  /v2/authorize/sso:
+    get:
+      tags:
+      - SSO
+      summary: Get SSO data
+      description: Returns data needed for the UI to initiate Single Sign On
+      operationId: getClientId
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SsoDataX
+            $ref: '#/components/schemas/SsoDataX'
+          content:
+            application/json:
+              schema:
+                originalRef: SsoDataX
+                $ref: '#/components/schemas/SsoDataX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SsoDataX
+            $ref: '#/components/schemas/SsoDataX'
+          schema:
+            originalRef: SsoDataX
+            $ref: '#/components/schemas/SsoDataX'
+    post:
+      tags:
+      - SSO
+      summary: Authorization Code Exchange
+      description: Pass the SSO response authorization code here to exchange it for a api authorization
+        token
+      operationId: getLoginInfo_1
+      parameters:
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          content:
+            application/json:
+              schema:
+                originalRef: LoginTokenX
+                $ref: '#/components/schemas/LoginTokenX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          schema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+components:
+  schemas:
+    SsoDataX:
+      type: object
+      properties:
+        clientId:
+          type: string
+        ssoUrl:
+          type: string
+    LoginTokenX:
+      type: object
+      properties:
+        authToken:
+          type: string
+        userId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        endUserType:
+          type: string
+          enum:
+          - ADMIN
+          - ADVANCED_ADMIN
+          - BASIC_ADMIN
+          - STANDARD
+          - STANDARD_ADMIN
+          - SUPER_ADMIN
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        partitionId:
+          type: string
+        partitionName:
+          type: string
+        accountId:
+          type: string
+        permissions:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - NONE
+            - READ_MYUSER
+            - READ
+            - EDIT_MYUSER
+            - EDIT
+            - CREATE_MYUSER
+            - CREATE
+            - DELETE_MYUSER
+            - DELETE
+            - DENIED
+        featureToggles:
+          type: object
+          additionalProperties:
+            type: boolean
+        mustChangePassword:
+          type: boolean
+        subPartitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tokenSource:
+          type: string
+        grantedAuthorities:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        mustAddEmail:
+          type: boolean
+        pwdHash:
+          type: string
+        maxLifeInHours:
+          type: integer
+          format: int32
+        groupId:
+          type: string
+        groupName:
+          type: string
+servers:
+- url: https://api.d2.alianza.com
+  description: Base URL reconciled from _original

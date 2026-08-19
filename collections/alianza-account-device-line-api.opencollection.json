@@ -1,0 +1,512 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Account Device Line API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Device Line",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve device provisioning status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId/provisioningstatus",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device's provisioning status"
+        },
+        {
+          "info": {
+            "name": "Provisioning info for this device line",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId/provisioning",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ]
+          },
+          "docs": "It is preferable if you use the device/{macAddress}/provisioning to get this information"
+        },
+        {
+          "info": {
+            "name": "Retrieve device registration status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId/registrationstatus",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device's registration status"
+        },
+        {
+          "info": {
+            "name": "Pre-validate Device Line MacAddress.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId/swap/prevalidate",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "macaddress",
+                "value": "",
+                "type": "query",
+                "description": "Mac address"
+              }
+            ]
+          },
+          "docs": "Pre-validate Device Line MacAddress."
+        },
+        {
+          "info": {
+            "name": "Retrieve device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "deviceId"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device"
+        },
+        {
+          "info": {
+            "name": "Update device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a device"
+        },
+        {
+          "info": {
+            "name": "Update device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a device"
+        },
+        {
+          "info": {
+            "name": "Delete device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              }
+            ]
+          },
+          "docs": "Use to delete a device"
+        },
+        {
+          "info": {
+            "name": "Retrieve device list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter used in conjunction with filtertype to only return specific devices on the account"
+              },
+              {
+                "name": "filterType",
+                "value": "",
+                "type": "query",
+                "description": "Used in conjunction with filter to return only specific devices on the account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of devices associated to an account.  NOTE: if the user making the request in an EndUser and they only have myUser access then you MUST pass filter=userid and filterType=OWNING_USERID or filterType=REFERENCED_USERID or else you will get a NotPermitted error."
+        },
+        {
+          "info": {
+            "name": "Create a new device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new device on a user"
+        },
+        {
+          "info": {
+            "name": "Swap device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/deviceline/:deviceId/swap",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to replace an existing device with a new device"
+        },
+        {
+          "info": {
+            "name": "Retrieve device provisioning data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/deviceprovisioning/account/:accountId/device/:deviceId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, reference to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId, reference to <a href=\"#/~schema/DeviceX\">device.id</a>"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, reference to <a href=\"#/~schema/Account\">account.partitionId</a>"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-AUTH-TOKEN",
+              "value": "{{X-AUTH-TOKEN}}",
+              "placement": "header"
+            }
+          },
+          "docs": "<p>Use to retrieve a device's provisioning data by <a href=\"#/~schema/DeviceX\">device.id</a>. Device.id actually identifies an Account Device Line, while the data returned by this call is best thought of as being one level higher, a list of related lines which will include the line searched by. (if present)</p> <p>This is the canonical way to request the SIP credentials of a device line, but it requires extra work on your part; you will have to dig down into the lines array and search it by line"
+        },
+        {
+          "info": {
+            "name": "Retrieve provisioning information for a specified device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/deviceprovisioning/:macAddress",
+            "params": [
+              {
+                "name": "macAddress",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-AUTH-TOKEN",
+              "value": "{{X-AUTH-TOKEN}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Provisioning Information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

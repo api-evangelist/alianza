@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Supported Rate Centers by Alianza and specified carrier API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supported Rate Centers by Alianza and specified carrier",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get carrier-supported rate centers by proximity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/supported-rate-centers",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distanceUnit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "busOrgId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get carrier-supported rate centers by proximity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

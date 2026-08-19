@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public SIP Trunk Group API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SIP Trunk Group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the groups on the account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve the SIP trunk groups created for the specified account ID and partition ID"
+        },
+        {
+          "info": {
+            "name": "Create a new SIP trunk group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new SIP trunk group for the specified account ID and partition ID"
+        },
+        {
+          "info": {
+            "name": "Retrieve a DIP trunk group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup/:groupId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "id of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "id of the account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "id group"
+              }
+            ]
+          },
+          "docs": "Use to retrieve the SIP trunk group for the specified account ID, partition ID and group ID"
+        },
+        {
+          "info": {
+            "name": "Update a SIP trunk group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup/:groupId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "id of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "id of the account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "id group"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a SIP trunk group created for the specified account ID, partition ID and group ID"
+        },
+        {
+          "info": {
+            "name": "Delete a SIP trunk group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup/:groupId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "id of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "id of the account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "id group"
+              }
+            ]
+          },
+          "docs": "Use to delete the SIP trunk group for the specified account ID, partition ID and group ID"
+        },
+        {
+          "info": {
+            "name": "Retrieves the forwarding rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup/:groupId/forward",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "id of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "id of the account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "id group"
+              }
+            ]
+          },
+          "docs": "Use to retrieve the SIP trunk group forwarding rules for the specified account ID, partition ID and group ID"
+        },
+        {
+          "info": {
+            "name": "Updates the forwarding rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunkgroup/:groupId/forward",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "id of the partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "id of the account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "id group"
+              }
+            ]
+          },
+          "docs": "Use to update the SIP trunk group forwarding rules created for the specified account ID, partition ID and group ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,410 @@
+{
+  "item": [
+    {
+      "id": "3e890a00-b052-4783-95e2-92c9559ead45",
+      "name": "Supported Rate Centers",
+      "description": {
+        "content": "A rate center is a geographical area used to determine the boundaries for local calling, billing, and assigning specific phone numbers, which can encompass multiple area codes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b542f1b2-3558-4db1-a905-f6bb955716ae",
+          "name": "Get carrier-supported rate centers by proximity",
+          "request": {
+            "name": "Get carrier-supported rate centers by proximity",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "supported-rate-centers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "busOrgId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "distanceUnit",
+                  "value": "MILES"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "5"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5880303e-ef21-43e3-b809-11574ba74de2",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "supported-rate-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "busOrgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distanceUnit",
+                      "value": "MILES"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "5"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"abbrName\": \"string\",\n  \"reorderName\": \"string\",\n  \"reorderNameAlias\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"latitude\": 9232.438099567737,\n  \"longitude\": 9383.854897914176,\n  \"msa\": \"string\",\n  \"zips\": [\n    \"string\"\n  ],\n  \"prefixes\": [\n    {\n      \"prefix\": \"string\",\n      \"wireless\": false,\n      \"wirelessBlockNumbers\": [\n        \"WI5TqJniAoA2CRREeubjmYQF0k9KR6+05gyU\",\n        \"kAah1s7v\"\n      ]\n    },\n    {\n      \"prefix\": \"string\",\n      \"wireless\": true,\n      \"wirelessBlockNumbers\": [\n        \"3U9x5NK2eIh4q+w/LiVHMHL5aoJCxpWkeIhjM/==\",\n        \"eqK8hP0c65TJzqsDxlAWZRx1k5wK/+MTLvOC\"\n      ]\n    }\n  ],\n  \"distance\": 5972.743088911328\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d9661fe-0409-4b7f-9833-7e5a2ba36ffb",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "supported-rate-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "busOrgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distanceUnit",
+                      "value": "MILES"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "5"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 5502,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e632a60-8d8d-4838-9cb2-9e10f37a6183",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "supported-rate-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "busOrgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distanceUnit",
+                      "value": "MILES"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "5"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8159,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "359b94e0-3dac-41fe-abe5-4c8357fd8102",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "supported-rate-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "busOrgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "distanceUnit",
+                      "value": "MILES"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "5"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8159,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ebe6c74-e9ad-4f59-bb23-6eb3cef0eb32",
+    "name": "Alianza Public Supported Rate Centers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Dynamic Inventory API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dynamic Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve telephone number list matching query parameters from carrier's dynamic inventory ",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/dynamic-inventory/tn-search",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "npa",
+                "value": "",
+                "type": "query",
+                "description": "The three-digit number that identifies the telephone service region"
+              },
+              {
+                "name": "npa-nxx",
+                "value": "",
+                "type": "query",
+                "description": "A six-digit code that is used to identify telephone numbers"
+              },
+              {
+                "name": "qty",
+                "value": "",
+                "type": "query",
+                "description": "Desired quantity of telephone numbers"
+              },
+              {
+                "name": "sequential",
+                "value": "",
+                "type": "query",
+                "description": "When true to returns sequential numbers"
+              }
+            ]
+          },
+          "docs": "Retrieve telephone number list matching query parameters from carrier's dynamic inventory "
+        },
+        {
+          "info": {
+            "name": "Creates Dynamic inventory orders, those orders eventually will activate telephone numbers received on a request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/dynamic-inventory/orders",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates Dynamic inventory orders, those orders eventually will activate telephone numbers received on a request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

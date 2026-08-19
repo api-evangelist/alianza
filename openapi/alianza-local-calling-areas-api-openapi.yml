@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  title: Alianza Local Calling Areas API
+  version: '2'
+  description: 'Operations tagged Local Calling Areas across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Local Calling Areas
+paths:
+  /v2/partition/{partitionId}/localprefixes/export/csv:
+    get:
+      tags:
+      - Local Calling Areas
+      operationId: allTelephoneNumberCSVReport_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: StreamingOutput
+            $ref: '#/components/schemas/StreamingOutput'
+          content:
+            text/csv:
+              schema:
+                originalRef: StreamingOutput
+                $ref: '#/components/schemas/StreamingOutput'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: StreamingOutput
+            $ref: '#/components/schemas/StreamingOutput'
+          schema:
+            originalRef: StreamingOutput
+            $ref: '#/components/schemas/StreamingOutput'
+  /v2/partition/{partitionId}/localprefixes/import:
+    post:
+      tags:
+      - Local Calling Areas
+      operationId: importLocalAreas
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: FileImportValidationErrorX
+                  $ref: '#/components/schemas/FileImportValidationErrorX'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+          schema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+        description: 'List of prefix allowables - EX: 801,801|485|901'
+        required: true
+components:
+  schemas:
+    StreamingOutput:
+      type: object
+    MultipartFormDataInput_2:
+      type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

@@ -1,0 +1,1270 @@
+{
+  "item": [
+    {
+      "id": "0c29de6c-9ede-4924-a471-8f9e27ad9a35",
+      "name": "Port",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1dd78e9-33ba-43ee-b993-2cd7125af2b5",
+          "name": "find Loa",
+          "request": {
+            "name": "find Loa",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId",
+                "loa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a99a970-20f9-4846-a3fb-d4b18d646dc4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId",
+                    "loa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c4d6f62-6db5-4c40-8294-c7abb06f0794",
+          "name": "upload LOA",
+          "request": {
+            "name": "upload LOA",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId",
+                "loa"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "0",
+                  "value": "<",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "1",
+                  "value": "o",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "2",
+                  "value": "b",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "3",
+                  "value": "j",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "4",
+                  "value": "e",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "5",
+                  "value": "c",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "6",
+                  "value": "t",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "7",
+                  "value": ">",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ce4ea7d0-bb5e-4987-ae9a-5c1fec58c1e2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId",
+                    "loa"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "0",
+                      "value": "<",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "1",
+                      "value": "o",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "2",
+                      "value": "b",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "3",
+                      "value": "j",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "4",
+                      "value": "e",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "5",
+                      "value": "c",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "6",
+                      "value": "t",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "7",
+                      "value": ">",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7017863-4706-4fe1-aea7-757b9c63ef0a",
+          "name": "get Loa Metadata",
+          "request": {
+            "name": "get Loa Metadata",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId",
+                "loa",
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce2bfe12-3454-4b49-8c52-d1fef1d68ec3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId",
+                    "loa",
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"data\": [\n    \"string\",\n    \"string\"\n  ],\n  \"extension\": \"string\",\n  \"date\": 922,\n  \"contentType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac01ba29-7ac6-40a9-b539-601fbfcf6405",
+          "name": "Updates a service activation event on an account and triggers the port with the carrier",
+          "request": {
+            "name": "Updates a service activation event on an account and triggers the port with the carrier",
+            "description": {
+              "content": "Use to update a specific service activation event on an account as a port request for the purpose of triggering a port with the carrier",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId",
+                "triggerport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8abd9096-5ec7-4aeb-ae3a-bbbabac4c213",
+              "name": "Invalid partition or account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId",
+                    "triggerport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7cd2bcf-f122-4680-9e66-8a44d899fa16",
+          "name": "retrieve Port",
+          "request": {
+            "name": "retrieve Port",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e72160c-e6d3-41ec-97df-98c90d3f9f8a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"telephoneNumbers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"status\": \"INVENTORY\",\n  \"sendLoa\": true,\n  \"loaSaved\": true,\n  \"carrierId\": \"string\",\n  \"carrierType\": \"TELUS_ONEVOICE\",\n  \"customerServiceRecord\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"middleInitial\": \"string\",\n    \"lastName\": \"string\",\n    \"businessName\": \"string\",\n    \"streetNumber\": \"string\",\n    \"streetNumberSuffix\": \"string\",\n    \"preDirectional\": \"\",\n    \"streetName\": \"string\",\n    \"streetSuffix\": \"string\",\n    \"postDirectional\": \"W\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"country\": \"string\",\n    \"postalCode\": \"string\",\n    \"secondaryLocationDescription\": \"APARTMENT\",\n    \"unit\": \"string\",\n    \"customerType\": \"BUSINESS\",\n    \"firstNameSecondary\": \"string\",\n    \"blockCustomerName\": true,\n    \"customerName\": \"string\"\n  },\n  \"crdDate\": \"1983-01-27T22:37:29.403Z\",\n  \"billingTelephoneNumber\": \"string\",\n  \"portingWireType\": \"Wireline\",\n  \"portingAuthorizedName\": \"string\",\n  \"wirelessAccountNumber\": \"string\",\n  \"wirelessPin\": \"string\",\n  \"focDate\": \"2016-08-15T22:31:59.015Z\",\n  \"focDateTimeZone\": \"US/Pacific\",\n  \"createdDate\": \"2025-07-22T11:28:32.429Z\",\n  \"completedDate\": \"1989-09-17T11:01:49.071Z\",\n  \"cancelType\": \"NORMAL\",\n  \"telecomSettings\": {\n    \"notes\": \"string\",\n    \"currentCarrier\": \"string\",\n    \"currentCarrierName\": \"string\",\n    \"localReseller\": \"string\",\n    \"loaDate\": \"2006-02-25T03:39:03.335Z\",\n    \"disconnectInternetService\": false,\n    \"disconnectTelevisionService\": false,\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"string\",\n        \"rateCenter\": \"string\",\n        \"wireless\": false\n      },\n      \"key_1\": {\n        \"tn\": \"string\",\n        \"rateCenter\": \"string\",\n        \"wireless\": false\n      }\n    }\n  },\n  \"hotCutPortId\": \"string\",\n  \"portNow\": false,\n  \"canAcceptSMS\": false,\n  \"smsCallbackUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d26aa337-7b88-4f4f-a42b-5e43da233144",
+          "name": "update Port",
+          "request": {
+            "name": "update Port",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_3\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec57ed81-5b74-42fb-82ba-f08fffd3dd3c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f04b802d-e8ca-405d-8d6a-c5809a325dc8",
+          "name": "patch Port",
+          "request": {
+            "name": "patch Port",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_2\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_3\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3fa08cec-464a-4c47-af07-ff285b341aea",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\",\n  \"sendLoa\": \"<boolean>\",\n  \"loaSaved\": \"<boolean>\",\n  \"carrierId\": \"<string>\",\n  \"carrierType\": \"<string>\",\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"crdDate\": \"<dateTime>\",\n  \"billingTelephoneNumber\": \"<string>\",\n  \"portingWireType\": \"<string>\",\n  \"portingAuthorizedName\": \"<string>\",\n  \"wirelessAccountNumber\": \"<string>\",\n  \"wirelessPin\": \"<string>\",\n  \"focDate\": \"<dateTime>\",\n  \"focDateTimeZone\": \"<string>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"cancelType\": \"<string>\",\n  \"telecomSettings\": {\n    \"notes\": \"<string>\",\n    \"currentCarrier\": \"<string>\",\n    \"currentCarrierName\": \"<string>\",\n    \"localReseller\": \"<string>\",\n    \"loaDate\": \"<dateTime>\",\n    \"disconnectInternetService\": \"<boolean>\",\n    \"disconnectTelevisionService\": \"<boolean>\",\n    \"tnData\": {\n      \"key_0\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"tn\": \"<string>\",\n        \"rateCenter\": \"<string>\",\n        \"wireless\": \"<boolean>\"\n      }\n    }\n  },\n  \"hotCutPortId\": \"<string>\",\n  \"portNow\": \"<boolean>\",\n  \"canAcceptSMS\": \"<boolean>\",\n  \"smsCallbackUrl\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70fca63b-f8d2-46a5-bd68-f3dbd2f123dc",
+          "name": "cancel Port",
+          "request": {
+            "name": "cancel Port",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "port",
+                ":portId",
+                "cancelport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "portId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cc398de-eda2-459f-a474-14185449526f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "port",
+                    ":portId",
+                    "cancelport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "portId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "21817725-9371-424e-8627-4b42f6e7927b",
+    "name": "Alianza Port API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Port across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

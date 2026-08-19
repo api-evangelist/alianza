@@ -1,0 +1,646 @@
+openapi: 3.2.0
+info:
+  title: Alianza Port API
+  version: '2'
+  description: 'Operations tagged Port across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Port
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/port/{portId}/loa:
+    get:
+      tags:
+      - Port
+      operationId: findLoa
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+    post:
+      tags:
+      - Port
+      operationId: uploadLOA
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+  /v2/partition/{partitionId}/account/{accountId}/port/{portId}/loa/metadata:
+    get:
+      tags:
+      - Port
+      operationId: getLoaMetadata
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: LOAX
+            $ref: '#/components/schemas/LOAX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: LOAX
+                $ref: '#/components/schemas/LOAX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: LOAX
+            $ref: '#/components/schemas/LOAX_2'
+          schema:
+            originalRef: LOAX
+            $ref: '#/components/schemas/LOAX_2'
+  /v2/partition/{partitionId}/account/{accountId}/port/{portId}/triggerport:
+    put:
+      tags:
+      - Port
+      summary: Updates a service activation event on an account and triggers the port with the carrier
+      description: Use to update a specific service activation event on an account as a port request for the purpose of triggering a port with the carrier
+      operationId: triggerPort
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid partition or account
+      responsesObject:
+        '400':
+          description: Invalid partition or account
+  /v2/partition/{partitionId}/account/{accountId}/port/{portId}:
+    get:
+      tags:
+      - Port
+      operationId: retrievePort
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PortX
+                $ref: '#/components/schemas/PortX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          schema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+    put:
+      tags:
+      - Port
+      operationId: updatePort
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PortX
+                $ref: '#/components/schemas/PortX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          schema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PortX
+              $ref: '#/components/schemas/PortX_2'
+    patch:
+      tags:
+      - Port
+      operationId: patchPort
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PortX
+                $ref: '#/components/schemas/PortX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+          schema:
+            originalRef: PortX
+            $ref: '#/components/schemas/PortX_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PortX
+              $ref: '#/components/schemas/PortX_2'
+  /v2/partition/{partitionId}/account/{accountId}/port/{portId}/cancelport:
+    delete:
+      tags:
+      - Port
+      operationId: cancelPort
+      parameters:
+      - name: portId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+components:
+  schemas:
+    LOAX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: array
+          items:
+            type: string
+            format: byte
+        extension:
+          type: string
+        date:
+          type: integer
+          format: int64
+        contentType:
+          type: string
+    MultipartFormDataInput_2:
+      type: object
+    TnData:
+      type: object
+      properties:
+        tn:
+          type: string
+        rateCenter:
+          type: string
+        wireless:
+          type: boolean
+    PortX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: telephoneNumber
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        sendLoa:
+          type: boolean
+        loaSaved:
+          type: boolean
+        carrierId:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        crdDate:
+          type: string
+          format: date-time
+        billingTelephoneNumber:
+          type: string
+        portingWireType:
+          type: string
+          enum:
+          - Wireless
+          - Wireline
+        portingAuthorizedName:
+          type: string
+        wirelessAccountNumber:
+          type: string
+        wirelessPin:
+          type: string
+        focDate:
+          type: string
+          format: date-time
+        focDateTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        createdDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        cancelType:
+          type: string
+          enum:
+          - NORMAL
+          - EXPIDITED
+          - BY_CARRIER
+        telecomSettings:
+          originalRef: TelecomSettingsX
+          $ref: '#/components/schemas/TelecomSettingsX_2'
+        hotCutPortId:
+          type: string
+        portNow:
+          type: boolean
+        canAcceptSMS:
+          type: boolean
+        smsCallbackUrl:
+          type: string
+    TelecomSettingsX_2:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            originalRef: TnData
+            $ref: '#/components/schemas/TnData'
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

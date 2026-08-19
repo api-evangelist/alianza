@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "a235766b-4d74-4c80-8518-52dcfb3a77d1",
+      "name": "Account Prevalidate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "37f5e98f-b824-4e79-926a-19ce663f8281",
+          "name": "Prevalidate a phone number",
+          "request": {
+            "name": "Prevalidate a phone number",
+            "description": {
+              "content": "Use to prevalidate a telephone number",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                "prevalidate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53b42f2c-7b2c-43ff-a84e-296a43ea34f2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"businessPartnerTicketID\": \"string\",\n  \"carrierTicketId\": \"string\",\n  \"requestedActivation\": {\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"port\": {\n      \"id\": \"<string>\",\n      \"partitionId\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"telephoneNumbers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"<string>\",\n      \"sendLoa\": \"<boolean>\",\n      \"loaSaved\": \"<boolean>\",\n      \"carrierId\": \"<string>\",\n      \"carrierType\": \"<string>\",\n      \"customerServiceRecord\": {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"businessName\": \"<string>\",\n        \"streetNumber\": \"<string>\",\n        \"streetNumberSuffix\": \"<string>\",\n        \"preDirectional\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetSuffix\": \"<string>\",\n        \"postDirectional\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"secondaryLocationDescription\": \"<string>\",\n        \"unit\": \"<string>\",\n        \"customerType\": \"<string>\",\n        \"firstNameSecondary\": \"<string>\",\n        \"blockCustomerName\": \"<boolean>\",\n        \"customerName\": \"<string>\"\n      },\n      \"crdDate\": \"<dateTime>\",\n      \"billingTelephoneNumber\": \"<string>\",\n      \"portingWireType\": \"<string>\",\n      \"portingAuthorizedName\": \"<string>\",\n      \"wirelessAccountNumber\": \"<string>\",\n      \"wirelessPin\": \"<string>\",\n      \"focDate\": \"<dateTime>\",\n      \"focDateTimeZone\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"cancelType\": \"<string>\",\n      \"telecomSettings\": {\n        \"notes\": \"<string>\",\n        \"currentCarrier\": \"<string>\",\n        \"currentCarrierName\": \"<string>\",\n        \"localReseller\": \"<string>\",\n        \"loaDate\": \"<dateTime>\",\n        \"disconnectInternetService\": \"<boolean>\",\n        \"disconnectTelevisionService\": \"<boolean>\",\n        \"tnData\": {\n          \"key_0\": {\n            \"tn\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rateCenter\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"wireless\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"hotCutPortId\": \"<string>\",\n      \"portNow\": \"<boolean>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"smsCallbackUrl\": \"<string>\"\n    },\n    \"l3Settings\": {\n      \"servicePackage\": \"<string>\",\n      \"availableServicePackages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"seasonalSuspendServicePackage\": \"<string>\",\n      \"b2BPartnerID\": \"<string>\",\n      \"customerServiceName\": \"<string>\",\n      \"bizOrg\": \"<string>\"\n    },\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"directoryListing\": {\n      \"listed\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"address\": {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"middleInitial\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"businessName\": \"<string>\",\n        \"streetNumber\": \"<string>\",\n        \"streetNumberSuffix\": \"<string>\",\n        \"preDirectional\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetSuffix\": \"<string>\",\n        \"postDirectional\": \"<string>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string>\",\n        \"country\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"secondaryLocationDescription\": \"<string>\",\n        \"unit\": \"<string>\"\n      }\n    },\n    \"e911Address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\",\n      \"language\": \"<string>\"\n    },\n    \"holdActivation\": \"<boolean>\",\n    \"telephoneNumbers\": [\n      {\n        \"phoneNumber\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"functionType\": \"<string>\",\n        \"canAcceptSMS\": \"<boolean>\",\n        \"operationalStatus\": \"<string>\",\n        \"portId\": \"<string>\",\n        \"servicePackageType\": \"<string>\",\n        \"tollFree\": \"<boolean>\",\n        \"id\": \"<string>\"\n      },\n      {\n        \"phoneNumber\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"functionType\": \"<string>\",\n        \"canAcceptSMS\": \"<boolean>\",\n        \"operationalStatus\": \"<string>\",\n        \"portId\": \"<string>\",\n        \"servicePackageType\": \"<string>\",\n        \"tollFree\": \"<boolean>\",\n        \"id\": \"<string>\"\n      }\n    ],\n    \"byotnCarrierId\": \"<string>\",\n    \"id\": \"<string>\"\n  },\n  \"serviceAvailable\": true,\n  \"carrierType\": \"E911\",\n  \"earliestCRD\": \"1953-08-28\",\n  \"latestCRD\": \"1961-10-20\",\n  \"availabilityList\": [\n    \"1950-04-12\",\n    \"2015-10-06\"\n  ],\n  \"resultCSRs\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    }\n  ],\n  \"exception\": \"string\",\n  \"thirdPartyResultCode\": \"string\",\n  \"thirdPartyResultContext\": \"string\",\n  \"thirdPartyResultMessage\": \"string\",\n  \"directoryListingAllowed\": false,\n  \"wirelessPort\": false,\n  \"lnp\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4746069-181b-4063-acc0-60e611731496",
+              "name": "Invalid telephone number object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30ceae61-a728-4205-9512-52bd119a8ff6",
+              "name": "Telephone number not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02150928-e149-4b95-985e-603cc60430bb",
+          "name": "Prevalidate an address for 911",
+          "request": {
+            "name": "Prevalidate an address for 911",
+            "description": {
+              "content": "Use to prevalidate an address for 911",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                "e911",
+                "prevalidate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f69c31c-4358-40c6-83ef-759f2d302197",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    "e911",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": \"VALID\",\n  \"errors\": [\n    \"string\",\n    \"string\"\n  ],\n  \"addressAlternatives\": [\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  ],\n  \"address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9cd67bd-dc1e-4e36-bdaa-8fc543327d57",
+              "name": "Invalid telephone number",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    "e911",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"port\": {\n    \"id\": \"<string>\",\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"status\": \"<string>\",\n    \"sendLoa\": \"<boolean>\",\n    \"loaSaved\": \"<boolean>\",\n    \"carrierId\": \"<string>\",\n    \"carrierType\": \"<string>\",\n    \"customerServiceRecord\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"customerType\": \"<string>\",\n      \"firstNameSecondary\": \"<string>\",\n      \"blockCustomerName\": \"<boolean>\",\n      \"customerName\": \"<string>\"\n    },\n    \"crdDate\": \"<dateTime>\",\n    \"billingTelephoneNumber\": \"<string>\",\n    \"portingWireType\": \"<string>\",\n    \"portingAuthorizedName\": \"<string>\",\n    \"wirelessAccountNumber\": \"<string>\",\n    \"wirelessPin\": \"<string>\",\n    \"focDate\": \"<dateTime>\",\n    \"focDateTimeZone\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"completedDate\": \"<dateTime>\",\n    \"cancelType\": \"<string>\",\n    \"telecomSettings\": {\n      \"notes\": \"<string>\",\n      \"currentCarrier\": \"<string>\",\n      \"currentCarrierName\": \"<string>\",\n      \"localReseller\": \"<string>\",\n      \"loaDate\": \"<dateTime>\",\n      \"disconnectInternetService\": \"<boolean>\",\n      \"disconnectTelevisionService\": \"<boolean>\",\n      \"tnData\": {\n        \"key_0\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        },\n        \"key_1\": {\n          \"tn\": \"<string>\",\n          \"rateCenter\": \"<string>\",\n          \"wireless\": \"<boolean>\"\n        }\n      }\n    },\n    \"hotCutPortId\": \"<string>\",\n    \"portNow\": \"<boolean>\",\n    \"canAcceptSMS\": \"<boolean>\",\n    \"smsCallbackUrl\": \"<string>\"\n  },\n  \"l3Settings\": {\n    \"servicePackage\": \"<string>\",\n    \"availableServicePackages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"seasonalSuspendServicePackage\": \"<string>\",\n    \"b2BPartnerID\": \"<string>\",\n    \"customerServiceName\": \"<string>\",\n    \"bizOrg\": \"<string>\"\n  },\n  \"customerServiceRecord\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"firstNameSecondary\": \"<string>\",\n    \"blockCustomerName\": \"<boolean>\",\n    \"customerName\": \"<string>\"\n  },\n  \"directoryListing\": {\n    \"listed\": \"<boolean>\",\n    \"type\": \"<string>\",\n    \"address\": {\n      \"id\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"middleInitial\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"businessName\": \"<string>\",\n      \"streetNumber\": \"<string>\",\n      \"streetNumberSuffix\": \"<string>\",\n      \"preDirectional\": \"<string>\",\n      \"streetName\": \"<string>\",\n      \"streetSuffix\": \"<string>\",\n      \"postDirectional\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"secondaryLocationDescription\": \"<string>\",\n      \"unit\": \"<string>\"\n    }\n  },\n  \"e911Address\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"middleInitial\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"businessName\": \"<string>\",\n    \"streetNumber\": \"<string>\",\n    \"streetNumberSuffix\": \"<string>\",\n    \"preDirectional\": \"<string>\",\n    \"streetName\": \"<string>\",\n    \"streetSuffix\": \"<string>\",\n    \"postDirectional\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"country\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"secondaryLocationDescription\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"customerType\": \"<string>\",\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\",\n    \"language\": \"<string>\"\n  },\n  \"holdActivation\": \"<boolean>\",\n  \"telephoneNumbers\": [\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    },\n    {\n      \"phoneNumber\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"functionType\": \"<string>\",\n      \"canAcceptSMS\": \"<boolean>\",\n      \"operationalStatus\": \"<string>\",\n      \"portId\": \"<string>\",\n      \"servicePackageType\": \"<string>\",\n      \"tollFree\": \"<boolean>\",\n      \"id\": \"<string>\"\n    }\n  ],\n  \"byotnCarrierId\": \"<string>\",\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fdab528-6995-465b-9ecd-05db094423f6",
+          "name": "Prevalidate an account product",
+          "request": {
+            "name": "Prevalidate an account product",
+            "description": {
+              "content": "Use to prevalidate an account product",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "product",
+                "prevalidate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aef7e82c-f3c9-493b-9881-2b33c3284481",
+              "name": "Invalid telephone number object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "product",
+                    "prevalidate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "52fc2bb5-1d09-4db7-bfd6-7eda65d7fc2b",
+    "name": "Alianza Account Prevalidate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Account Prevalidate across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

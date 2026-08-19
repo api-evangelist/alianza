@@ -1,0 +1,946 @@
+{
+  "item": [
+    {
+      "id": "2665ed3e-7c1a-47a2-9034-3596ddeb7c1f",
+      "name": "Brand Settings",
+      "description": {
+        "content": "Brand settings toggles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47809072-0130-46d5-976b-038e1e01e289",
+          "name": "Retrieve the general settings for all app brands of a partition.",
+          "request": {
+            "name": "Retrieve the general settings for all app brands of a partition.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "app-branding",
+                "brand-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partition",
+                  "value": "<string>",
+                  "description": "PartitionId for brands being retrieved."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff300fe1-3a15-4704-bc30-d9f2d6803d2e",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"brandId\": \"bfdb9feb-4e4a-e564-f799-8a7a0c94f3b5\",\n    \"brandName\": \"string\",\n    \"brandingCompleted\": true,\n    \"brandingEnabled\": false,\n    \"partitionId\": \"string\",\n    \"selfSigningEnabled\": false,\n    \"desktopHostingEnabled\": true\n  },\n  {\n    \"brandId\": \"a6b5b23d-a0a5-6a88-89a5-b6c56955caa9\",\n    \"brandName\": \"string\",\n    \"brandingCompleted\": false,\n    \"brandingEnabled\": false,\n    \"partitionId\": \"string\",\n    \"selfSigningEnabled\": true,\n    \"desktopHostingEnabled\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "557840a8-644b-4cf7-b211-0e8b571d3194",
+              "name": "Invalid Partition ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45b44a9b-92d1-489f-9f2e-21a2a2948954",
+              "name": "Partition not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partition",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45781810-82cc-4966-a0db-52d860cbbe87",
+          "name": "Provision general settings associated to app branding for a new brand.",
+          "request": {
+            "name": "Provision general settings associated to app branding for a new brand.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "app-branding",
+                "brand-settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2562142-0419-4fa5-aff3-590f12aa3876",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"brandId\": \"95540d5b-2d36-e5db-5a8e-395db6b76784\",\n  \"brandName\": \"string\",\n  \"brandingCompleted\": false,\n  \"brandingEnabled\": false,\n  \"partitionId\": \"string\",\n  \"selfSigningEnabled\": true,\n  \"desktopHostingEnabled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68129d12-a385-42e5-978c-a4997cf7cb7e",
+              "name": "Invalid Partition ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a98080f-a8ee-4296-a402-aafe73e99777",
+              "name": "Partition not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6f36d76-9533-4a73-965a-60e4294f03fa",
+              "name": "Conflict: Brand already exists for the partition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91678e81-9770-4ccd-8ba7-2424c5c89c13",
+          "name": "Retrieve the general settings associated to a specific brand.",
+          "request": {
+            "name": "Retrieve the general settings associated to a specific brand.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "app-branding",
+                "brand-settings",
+                ":brandId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "brandId",
+                  "description": "(Required) ID of brand to return"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04641e8a-aa79-4b6f-9abf-b71d32ee4478",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"brandId\": \"95540d5b-2d36-e5db-5a8e-395db6b76784\",\n  \"brandName\": \"string\",\n  \"brandingCompleted\": false,\n  \"brandingEnabled\": false,\n  \"partitionId\": \"string\",\n  \"selfSigningEnabled\": true,\n  \"desktopHostingEnabled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71ed0ecf-38b5-4c22-b74f-3745e032f347",
+              "name": "Invalid ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "209d5e0e-7325-402c-8703-6afe7af05f24",
+              "name": "Brand not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "714abc38-00de-47fa-b2cf-db06e1193ec3",
+          "name": "Provision the general settings associated to a specific brand.",
+          "request": {
+            "name": "Provision the general settings associated to a specific brand.",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "app-branding",
+                "brand-settings",
+                ":brandId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "brandId",
+                  "description": "(Required) ID of brand whose settings are being updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brandId\": \"<uuid>\",\n  \"brandName\": \"<string>\",\n  \"brandingCompleted\": \"<boolean>\",\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f8bdfa6-c9e9-4eac-b177-1d2c0431f7b9",
+              "name": "Settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand whose settings are being updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandId\": \"<uuid>\",\n  \"brandName\": \"<string>\",\n  \"brandingCompleted\": \"<boolean>\",\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"brandId\": \"<uuid>\",\n  \"brandName\": \"<string>\",\n  \"brandingCompleted\": \"<boolean>\",\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af1409ff-15d8-4180-9f39-9aa14f60a992",
+              "name": "Brand not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand whose settings are being updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandId\": \"<uuid>\",\n  \"brandName\": \"<string>\",\n  \"brandingCompleted\": \"<boolean>\",\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66e6e7d3-8190-4c01-8318-501478062089",
+              "name": "Modification of brandingCompleted is not allowed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "app-branding",
+                    "brand-settings",
+                    ":brandId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "brandId",
+                      "description": "(Required) ID of brand whose settings are being updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brandId\": \"<uuid>\",\n  \"brandName\": \"<string>\",\n  \"brandingCompleted\": \"<boolean>\",\n  \"brandingEnabled\": \"<boolean>\",\n  \"partitionId\": \"<string>\",\n  \"selfSigningEnabled\": \"<boolean>\",\n  \"desktopHostingEnabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"10404 - Resource not found\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2fe03d98-8a13-4dff-ae0a-c77f747fe917",
+    "name": "Alianza Public Brand Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

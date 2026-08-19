@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "d0464bfb-e4c1-4441-8616-76827c6a49cc",
+      "name": "Supported Rate Centers by Alianza and specified carrier",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d9b173f-940b-454a-97eb-f669d3b0326c",
+          "name": "Get carrier-supported rate centers by proximity",
+          "request": {
+            "name": "Get carrier-supported rate centers by proximity",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "supported-rate-centers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "5"
+                },
+                {
+                  "disabled": false,
+                  "key": "distanceUnit",
+                  "value": "MILES"
+                },
+                {
+                  "disabled": false,
+                  "key": "busOrgId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b28724f-f4c1-4c9a-b3b6-5fde42cf191d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "supported-rate-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "5"
+                    },
+                    {
+                      "key": "distanceUnit",
+                      "value": "MILES"
+                    },
+                    {
+                      "key": "busOrgId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"abbrName\": \"string\",\n  \"reorderName\": \"string\",\n  \"reorderNameAlias\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"latitude\": 1225.377827723374,\n  \"longitude\": 3857.5666965753994,\n  \"msa\": \"string\",\n  \"zips\": [\n    \"string\"\n  ],\n  \"prefixes\": [\n    {\n      \"prefix\": \"string\",\n      \"wireless\": false,\n      \"wirelessBlockNumbers\": [\n        \"string\"\n      ]\n    },\n    {\n      \"prefix\": \"string\",\n      \"wireless\": false,\n      \"wirelessBlockNumbers\": [\n        \"string\"\n      ]\n    }\n  ],\n  \"distance\": 5431.750264083973\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "715a2d4f-92b4-4a13-80cf-59cf0400fda4",
+    "name": "Alianza Public Supported Rate Centers by Alianza and specified carrier API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This documentation of the Alianza Public API is outdated. No further updates will be made to it.**\n\nYou are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at [https://developer.alianza.com/](https://developer.alianza.com/)",
+      "type": "text/plain"
+    }
+  }
+}

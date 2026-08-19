@@ -1,0 +1,458 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Device (Deprecated) Device (Deprecated) API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device (Deprecated)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve device list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of devices associated to an account and a user, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Create a new device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new device on a user, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Pre-validate property on the Device object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/validateproperties",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              },
+              {
+                "name": "macaddress",
+                "value": "",
+                "type": "query",
+                "description": "Mac Address"
+              },
+              {
+                "name": "lineno",
+                "value": "",
+                "type": "query",
+                "description": "Line Number"
+              }
+            ]
+          },
+          "docs": "DEPRECATED use /v2/partition/{id}/account/{id}/device/{macaddress}/validateproperties endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Retrieve device provisioning status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId/provisioningstatus",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device's provisioning status, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id}/provisioningstatus endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Retrieve device registration status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId/registrationstatus",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device's registration status, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id}/registrationstatus endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Retrieve device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a device, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id} endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Update device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a device, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id} endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Update device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a device, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id} endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Delete device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to delete a device, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id} endpoint instead"
+        },
+        {
+          "info": {
+            "name": "Swap device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/user/:userId/device/:deviceId/swap",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "DeviceId"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to replace an existing device with a new device, DEPRECATED use /v2/partition/{id}/account/{id}/deviceline/{id}/swap endpoint instead"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

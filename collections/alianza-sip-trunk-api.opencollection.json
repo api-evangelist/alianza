@@ -1,0 +1,472 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza SIP Trunk API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SIP Trunk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Update SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Update SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Delete SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ]
+          },
+          "docs": "Use to delete a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Validate IP and port",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/validate",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "trunkId",
+                "value": "",
+                "type": "query",
+                "description": "When the SIP Trunk is already created we need the ID to make sure we skip the trunk itself to validate IP is unique"
+              },
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address to be verified"
+              },
+              {
+                "name": "port",
+                "value": "",
+                "type": "query",
+                "description": "The port number to be verified"
+              }
+            ]
+          },
+          "docs": "Use to verify that combination of IP and port is unique"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of SIP trunks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of all SIP trunks on an account"
+        },
+        {
+          "info": {
+            "name": "Create a SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Get Forward behavior for a SipTrunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId/forward",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ]
+          },
+          "docs": "Get Forward behavior for a SipTrunk"
+        },
+        {
+          "info": {
+            "name": "Update Forward behavior for a SipTrunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId/forward",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Forward behavior for a SipTrunk"
+        },
+        {
+          "info": {
+            "name": "Unlock SIP trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId/unlock",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ]
+          },
+          "docs": "Use to unlock a SIP trunk"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of shareable calling plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/shared-plan-lookup",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ]
+          },
+          "docs": "Use to retrieve calling plans that can be shared between sip trunks"
+        },
+        {
+          "info": {
+            "name": "Retrieve SIP trunk registration status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/siptrunk_2/:sipTrunkId/registrationstatus",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "sipTrunkId",
+                "value": "",
+                "type": "path",
+                "description": "SIP trunk ID"
+              }
+            ]
+          },
+          "docs": "Use to retrieve SIP trunk registration status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

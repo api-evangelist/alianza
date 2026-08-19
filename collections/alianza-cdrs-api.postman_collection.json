@@ -1,0 +1,1601 @@
+{
+  "item": [
+    {
+      "id": "ce64a3fa-bccb-4059-a88e-26b9c82c4f99",
+      "name": "CDRs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8ab09a4-56dc-456c-8c97-d33556c163b1",
+          "name": "CDR record search",
+          "request": {
+            "name": "CDR record search",
+            "description": {
+              "content": "Use to search for CDR records",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "cdrsearch",
+                "csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "(Required) Start date"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "(Required) End date"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstResultIndex",
+                  "value": "0",
+                  "description": "First result to display, defaults to 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResult",
+                  "value": "20",
+                  "description": "Maximum number to return, defaults to 20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "minCost",
+                  "value": "<double>",
+                  "description": "Specifies the minimum cost of the CDR"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "origNumber",
+                  "value": "<string>",
+                  "description": "Filter based on origination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "dialedNumber",
+                  "value": "<string>",
+                  "description": "Filter based on dialed number"
+                },
+                {
+                  "disabled": false,
+                  "key": "termNumber",
+                  "value": "<string>",
+                  "description": "Filter based on termination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "Filter based on start time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>",
+                  "description": "Filter based on end time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0efd16cf-76af-4a42-978a-60716e7527d0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "130bc465-7beb-4f44-b637-ebd8f81dd8af",
+              "name": "Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c34e380-a1ba-45ae-aa86-b3ead7170a72",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e491c590-d738-4378-94e2-fbc2b29b9cce",
+          "name": "CDR record search",
+          "request": {
+            "name": "CDR record search",
+            "description": {
+              "content": "Use to search for CDR records",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "cdrsearch",
+                "csv_2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "(Required) Start date"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "(Required) End date"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstResultIndex",
+                  "value": "0",
+                  "description": "First result to display, defaults to 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResult",
+                  "value": "20",
+                  "description": "Maximum number to return, defaults to 20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "minCost",
+                  "value": "<double>",
+                  "description": "Specifies the minimum cost of the CDR"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "origNumber",
+                  "value": "<string>",
+                  "description": "Filter based on origination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "dialedNumber",
+                  "value": "<string>",
+                  "description": "Filter based on dialed number"
+                },
+                {
+                  "disabled": false,
+                  "key": "termNumber",
+                  "value": "<string>",
+                  "description": "Filter based on termination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "Filter based on start time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>",
+                  "description": "Filter based on end time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88b76862-dbf7-43a5-97a8-287cae05b0b8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch",
+                    "csv_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "308e8488-c7f7-4618-be3a-8768f35d1e88",
+              "name": "Use Jobs API to check status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch",
+                    "csv_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "286e7e4b-27a8-4954-9e3f-368331a0e70c",
+          "name": "CDR record search",
+          "request": {
+            "name": "CDR record search",
+            "description": {
+              "content": "Use to search for CDR records",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "cdrsearch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>",
+                  "description": "(Required) Start date"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>",
+                  "description": "(Required) End date"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstResultIndex",
+                  "value": "0",
+                  "description": "First result to display, defaults to 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResult",
+                  "value": "20",
+                  "description": "Maximum number to return, defaults to 20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<string>",
+                  "description": "Sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "minCost",
+                  "value": "<double>",
+                  "description": "Specifies the minimum cost of the CDR"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callType",
+                  "value": "<string>",
+                  "description": "Filter based on call type [INBOUND|OUTBOUND]"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callFlagType",
+                  "value": "<string>",
+                  "description": "Filter based on call flag type"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "callCategory",
+                  "value": "<string>",
+                  "description": "Filter based on call category"
+                },
+                {
+                  "disabled": false,
+                  "key": "origNumber",
+                  "value": "<string>",
+                  "description": "Filter based on origination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "dialedNumber",
+                  "value": "<string>",
+                  "description": "Filter based on dialed number"
+                },
+                {
+                  "disabled": false,
+                  "key": "termNumber",
+                  "value": "<string>",
+                  "description": "Filter based on termination number"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<string>",
+                  "description": "Filter based on start time"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<string>",
+                  "description": "Filter based on end time"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e44d432-a42e-486a-b119-b8a82aca9e72",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 3765,\n  \"results\": [\n    {\n      \"id\": \"0e54676d-0e95-b118-f925-7600b4e7a0ab\",\n      \"partitionId\": \"string\",\n      \"startTime\": 4905,\n      \"connectTime\": 8699,\n      \"endTime\": 9568,\n      \"createdDate\": 3594,\n      \"actualCallLengthSeconds\": 5739,\n      \"billCallLengthSeconds\": 3138,\n      \"ratePerMinute\": 2880.3130844117395,\n      \"cost\": 8050.750617197745,\n      \"inPlan\": true,\n      \"dialedNumber\": \"string\",\n      \"origNumber\": \"string\",\n      \"origLocation\": \"string\",\n      \"origCityName\": \"string\",\n      \"origAbbrRCName\": \"string\",\n      \"origState\": \"string\",\n      \"origCountry\": \"string\",\n      \"origCarrier\": \"string\",\n      \"origCallCategory\": \"OnNet\",\n      \"identityAttestLevel\": \"string\",\n      \"identityOriginationId\": \"string\",\n      \"identitySignOrganization\": \"string\",\n      \"identitySignSPCode\": \"string\",\n      \"verstat\": \"TN_VALIDATION_PASSED\",\n      \"verstatReason\": \"UNSUPPORTED_CREDENTIAL\",\n      \"correlationData\": {\n        \"key_0\": [\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\"\n        ],\n        \"key_2\": [\n          \"string\"\n        ],\n        \"key_3\": [\n          \"string\"\n        ]\n      },\n      \"accountCode\": \"string\",\n      \"termNumber\": \"string\",\n      \"termLocation\": \"string\",\n      \"termCityName\": \"string\",\n      \"termAbbrRCName\": \"string\",\n      \"termState\": \"string\",\n      \"termCountry\": \"string\",\n      \"termCarrier\": \"string\",\n      \"termCallCategory\": \"NonEmergencyServices\",\n      \"forwardingNumber\": \"string\",\n      \"forwardingNumberCityName\": \"string\",\n      \"forwardingNumberAbbrRCName\": \"string\",\n      \"forwardingNumberLocation\": \"string\",\n      \"forwardingNumberState\": \"string\",\n      \"forwardingNumberCountry\": \"string\",\n      \"mediaServerType\": \"string\",\n      \"legType\": \"Forward\",\n      \"callType\": \"INBOUND\",\n      \"callFlagType\": \"ANSWERED\",\n      \"disconnectType\": \"HangUpOther\",\n      \"metroServiceArea\": \"string\",\n      \"rateType\": \"OnPlanMinutes\",\n      \"rateLocalFromNumber\": \"string\",\n      \"serviceType\": \"INTERSTATE\",\n      \"local\": false,\n      \"sessionId\": \"string\",\n      \"accountBillableNumber\": \"string\",\n      \"accountBillableCityName\": \"string\",\n      \"accountBillableAbbrRCName\": \"string\",\n      \"accountBillableLocation\": \"string\",\n      \"accountBillableState\": \"string\",\n      \"accountBillableCountry\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"SIP_TRUNK\",\n      \"referenceName\": \"string\",\n      \"acctId\": \"string\",\n      \"accountId\": \"string\",\n      \"callingPlanProductId\": \"string\",\n      \"callingPlanProductName\": \"string\",\n      \"accountNumber\": \"string\",\n      \"accountCustomField\": \"string\",\n      \"partitionBillingCode\": \"string\",\n      \"accountBillingCycleDay\": 3745,\n      \"accountTimeZone\": \"string\",\n      \"sipCallIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"meanOpinionScoreAverage\": 3936.075103063038,\n      \"meanOpinionScores\": {\n        \"key_0\": 9509.820705927832\n      },\n      \"callPickupFromId\": \"string\",\n      \"callPickupById\": \"string\",\n      \"applicationData\": {},\n      \"origCnam\": \"string\",\n      \"termCnam\": \"string\",\n      \"forwardingCnam\": \"string\",\n      \"origNumberTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"termNumberTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"remoteChargeInfo\": \"string\"\n    },\n    {\n      \"id\": \"6d0950fa-0b7a-f368-e7a3-4be7568fc260\",\n      \"partitionId\": \"string\",\n      \"startTime\": 8238,\n      \"connectTime\": 8468,\n      \"endTime\": 2277,\n      \"createdDate\": 5236,\n      \"actualCallLengthSeconds\": 5297,\n      \"billCallLengthSeconds\": 3711,\n      \"ratePerMinute\": 5685.6922242085875,\n      \"cost\": 3938.7347069108937,\n      \"inPlan\": false,\n      \"dialedNumber\": \"string\",\n      \"origNumber\": \"string\",\n      \"origLocation\": \"string\",\n      \"origCityName\": \"string\",\n      \"origAbbrRCName\": \"string\",\n      \"origState\": \"string\",\n      \"origCountry\": \"string\",\n      \"origCarrier\": \"string\",\n      \"origCallCategory\": \"TeleRelayService\",\n      \"identityAttestLevel\": \"string\",\n      \"identityOriginationId\": \"string\",\n      \"identitySignOrganization\": \"string\",\n      \"identitySignSPCode\": \"string\",\n      \"verstat\": \"NO_TN_VALIDATION\",\n      \"verstatReason\": \"UNSUPPORTED_CREDENTIAL\",\n      \"correlationData\": {\n        \"key_0\": [\n          \"string\"\n        ],\n        \"key_1\": [\n          \"string\"\n        ]\n      },\n      \"accountCode\": \"string\",\n      \"termNumber\": \"string\",\n      \"termLocation\": \"string\",\n      \"termCityName\": \"string\",\n      \"termAbbrRCName\": \"string\",\n      \"termState\": \"string\",\n      \"termCountry\": \"string\",\n      \"termCarrier\": \"string\",\n      \"termCallCategory\": \"PhoneSupport\",\n      \"forwardingNumber\": \"string\",\n      \"forwardingNumberCityName\": \"string\",\n      \"forwardingNumberAbbrRCName\": \"string\",\n      \"forwardingNumberLocation\": \"string\",\n      \"forwardingNumberState\": \"string\",\n      \"forwardingNumberCountry\": \"string\",\n      \"mediaServerType\": \"string\",\n      \"legType\": \"Termination\",\n      \"callType\": \"OUTBOUND\",\n      \"callFlagType\": \"OTHER\",\n      \"disconnectType\": \"NoAnswer\",\n      \"metroServiceArea\": \"string\",\n      \"rateType\": \"_411\",\n      \"rateLocalFromNumber\": \"string\",\n      \"serviceType\": \"INTERNATIONAL\",\n      \"local\": false,\n      \"sessionId\": \"string\",\n      \"accountBillableNumber\": \"string\",\n      \"accountBillableCityName\": \"string\",\n      \"accountBillableAbbrRCName\": \"string\",\n      \"accountBillableLocation\": \"string\",\n      \"accountBillableState\": \"string\",\n      \"accountBillableCountry\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"ACCOUNT\",\n      \"referenceName\": \"string\",\n      \"acctId\": \"string\",\n      \"accountId\": \"string\",\n      \"callingPlanProductId\": \"string\",\n      \"callingPlanProductName\": \"string\",\n      \"accountNumber\": \"string\",\n      \"accountCustomField\": \"string\",\n      \"partitionBillingCode\": \"string\",\n      \"accountBillingCycleDay\": 1367,\n      \"accountTimeZone\": \"string\",\n      \"sipCallIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"meanOpinionScoreAverage\": 1681.173788133552,\n      \"meanOpinionScores\": {\n        \"key_0\": 222.16176798447452\n      },\n      \"callPickupFromId\": \"string\",\n      \"callPickupById\": \"string\",\n      \"applicationData\": {},\n      \"origCnam\": \"string\",\n      \"termCnam\": \"string\",\n      \"forwardingCnam\": \"string\",\n      \"origNumberTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"termNumberTags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"remoteChargeInfo\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef61e41c-63da-462e-990d-5d22649698cf",
+              "name": "Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcb2165f-6473-4cf1-bf55-77f117ed7787",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "cdrsearch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minCost",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callFlagType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "callCategory",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "origNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dialedNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f3aa0e1d-8617-457f-8827-d39ff0605d57",
+    "name": "Alianza CD Rs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged CDRs across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

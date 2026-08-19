@@ -1,0 +1,520 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Edge Node API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Edge Node
+  description: Operations for managing edge nodes
+paths:
+  /v2/enm/edge-node:
+    get:
+      tags:
+      - Edge Node
+      summary: Get Edge Nodes
+      description: List edge nodes for a partition ID
+      operationId: getPartitionNodes
+      parameters:
+      - name: partitionId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: default
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If true, the list will contain only the partition's default node
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: defaults to 100
+      - name: pageNum
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: defaults to 0
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeQueryResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '422':
+          description: Invalid pageSize; Invalid pageNum
+    post:
+      tags:
+      - Edge Node
+      summary: Create Edge Node
+      description: Create Edge Node
+      operationId: createNode
+      parameters:
+      - name: default
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Set node as default for new accounts. Defaults to false.
+      requestBody:
+        description: Create an Edge Node
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpsert'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Partition not found
+        '422':
+          description: Body missing required fields
+      x-codegen-request-body-name: body
+  /v2/enm/edge-node/{nodeId}:
+    delete:
+      tags:
+      - Edge Node
+      summary: Delete Edge Node
+      description: Delete edge node
+      operationId: deleteNode
+      parameters:
+      - name: nodeId
+        in: path
+        description: ID of Edge Node
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Node not found
+    get:
+      tags:
+      - Edge Node
+      summary: Get Edge Node
+      description: Get edge node by node ID
+      operationId: getEdgeNode
+      parameters:
+      - name: nodeId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Partition not found
+    put:
+      tags:
+      - Edge Node
+      summary: Update Edge Node
+      description: Update edge node
+      operationId: updateNode
+      parameters:
+      - name: nodeId
+        in: path
+        description: ID of Edge Node
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Update an Edge Node
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpsert'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Partition not found; Node not found
+        '422':
+          description: Body missing required fields
+      x-codegen-request-body-name: body
+  /v2/enm/edge-node-assignment:
+    delete:
+      tags:
+      - Edge Node
+      summary: Remove Edge Node configuration for a device
+      description: Remove Edge Node configuration for a device
+      operationId: removeDeviceEdgeNodeConfigByDeviceId
+      parameters:
+      - name: deviceId
+        in: query
+        description: ID of device
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Device not found
+        '422':
+          description: Device Id not provided
+    get:
+      tags:
+      - Edge Node
+      summary: Get device Edge Node
+      description: Get device Edge Node
+      operationId: getDeviceNode
+      parameters:
+      - name: deviceId
+        in: query
+        description: Return device assignment, (partitionId parameter must be blank)
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: query
+        description: Return all assignments on partition (deviceId parameter must be blank)
+        required: false
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: defaults to 100
+      - name: pageNum
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: defaults to 0
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeAssignmentQueryResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '422':
+          description: Missing deviceId/partitionId; deviceId and partitionId provided
+    post:
+      tags:
+      - Edge Node
+      summary: Configure Edge Node for a device
+      description: Configure Edge Node for a device
+      operationId: configureDeviceNode
+      requestBody:
+        description: Configure Edge Node for a device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeAssignmentUpsert'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeAssignment'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Device not found; Node not found
+        '422':
+          description: Body missing required fields
+      x-codegen-request-body-name: body
+  /v2/enm/edge-node-assignment/{nodeAssignmentId}:
+    delete:
+      tags:
+      - Edge Node
+      summary: Remove Edge Node configuration
+      description: Remove Edge Node configuration
+      operationId: removeDeviceEdgeNodeConfigById
+      parameters:
+      - name: nodeAssignmentId
+        in: path
+        description: Device node assignment id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Device node assignment not found
+        '422':
+          description: Device node assignment Id not provided
+    get:
+      tags:
+      - Edge Node
+      summary: Get device Edge Node
+      description: Get device Edge Node
+      operationId: getDeviceNodeByAssignmentId
+      parameters:
+      - name: nodeAssignmentId
+        in: path
+        description: Return device assignment
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeAssignment'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Device Assignment not found
+    put:
+      tags:
+      - Edge Node
+      summary: Update Edge Node configuration for a device
+      description: Update Edge Node configuration for a device
+      operationId: updateDeviceNodeConfiguration
+      parameters:
+      - name: nodeAssignmentId
+        in: path
+        description: Device node assignment id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Update Edge Node configuration for a device
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeAssignmentUpsert'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeAssignment'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Device not found; Node not found
+        '422':
+          description: Body missing required fields
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    Node:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: ed41b6ee-6e00-40d1-b159-508d283c4495
+        authToken:
+          type: string
+          format: uuid
+          description: Token used to obtain edge node file from external endpoint
+        displayName:
+          type: string
+          example: company12
+        proxyAddress:
+          type: string
+        partitionId:
+          type: string
+        default:
+          type: boolean
+          description: Default node for partition
+      required:
+      - displayName
+      - proxyAddress
+      - partitionId
+    NodeQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 0
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        count:
+          type: integer
+          example: 1
+    NodeAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+        proxyAddress:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    NodeAssignmentQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 1
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeAssignment'
+        count:
+          type: integer
+          example: 1
+    NodeUpsert:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: company12
+        proxyAddress:
+          type: string
+        partitionId:
+          type: string
+        default:
+          type: boolean
+          description: Default node for partition
+        resetAuthToken:
+          type: boolean
+          description: Generate a new authToken
+      required:
+      - displayName
+      - proxyAddress
+      - partitionId
+    NodeAssignmentUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

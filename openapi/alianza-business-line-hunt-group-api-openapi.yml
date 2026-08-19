@@ -1,0 +1,833 @@
+openapi: 3.2.0
+info:
+  title: Alianza Business Line Hunt Group API
+  version: '2'
+  description: 'Operations tagged Business Line Hunt Group across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Business Line Hunt Group
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group:
+    get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve business line hunt group list
+      description: Use to retrieve a list of business lines hunt groups associated to an account
+      operationId: retrieveBusinessLineHuntGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: HuntGroup
+              $ref: '#/components/schemas/HuntGroup_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: HuntGroup
+                  $ref: '#/components/schemas/HuntGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: HuntGroup
+              $ref: '#/components/schemas/HuntGroup_2'
+          schema:
+            type: array
+            items:
+              originalRef: HuntGroup
+              $ref: '#/components/schemas/HuntGroup_2'
+    post:
+      tags:
+      - Business Line Hunt Group
+      summary: Create a new business line hunt group
+      description: Use to create a new business line hunt group on an account.
+      operationId: createBusinessLineHuntGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          content:
+            application/json:
+              schema:
+                originalRef: HuntGroup
+                $ref: '#/components/schemas/HuntGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          schema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: HuntGroup
+              $ref: '#/components/schemas/HuntGroup_2'
+        description: Business line hunt group object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group/{huntGroupId}/failover-action/{reason}:
+    get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve business line hunt group failover action for the specified reason
+      description: Use to retrieve a failover action for a business lines hunt group
+      operationId: getBusinessLineHuntGroupFailoverAction
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: reason
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - NO_ANSWER
+          - BUSY
+          - UNREGISTERED
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+          content:
+            application/json:
+              schema:
+                originalRef: FailoverAction
+                $ref: '#/components/schemas/FailoverAction_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+          schema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+    put:
+      tags:
+      - Business Line Hunt Group
+      summary: Update business line hunt group failover action for the specified reason
+      description: Use to update the failvover action for a business line hunt group
+      operationId: updateBusinessLineHuntGroupFailoverAction
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: reason
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - NO_ANSWER
+          - BUSY
+          - UNREGISTERED
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+          content:
+            application/json:
+              schema:
+                originalRef: FailoverAction
+                $ref: '#/components/schemas/FailoverAction_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+          schema:
+            originalRef: FailoverAction
+            $ref: '#/components/schemas/FailoverAction_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: FailoverAction
+              $ref: '#/components/schemas/FailoverAction_2'
+        description: Business line hunt group failover action object
+        required: true
+  ? /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group/{huntGroupId}/forward-configuration/{id}/constraints/star-code
+  : get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve a list of available star codes to forward the hunt group
+      description: Use to retrieve a list of available star codes to assign to business line hunt group including the current star code assigned to this hunt group's forwarding configuration. Use '*' to search without a forward configuration id
+      operationId: getAvailableStarCodes
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PartitionStarCodes
+            $ref: '#/components/schemas/PartitionStarCodes'
+          content:
+            application/json:
+              schema:
+                originalRef: PartitionStarCodes
+                $ref: '#/components/schemas/PartitionStarCodes'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PartitionStarCodes
+            $ref: '#/components/schemas/PartitionStarCodes'
+          schema:
+            originalRef: PartitionStarCodes
+            $ref: '#/components/schemas/PartitionStarCodes'
+  /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group/{huntGroupId}/forward-configuration:
+    get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve business line hunt group forwarding configuration list
+      description: Use to retrieve a list of forwarding configurations on a business lines hunt group
+      operationId: getBusinessLineHuntGroupForwardingConfigurations
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: ForwardConfiguration
+              $ref: '#/components/schemas/ForwardConfiguration'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: ForwardConfiguration
+                  $ref: '#/components/schemas/ForwardConfiguration'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: ForwardConfiguration
+              $ref: '#/components/schemas/ForwardConfiguration'
+          schema:
+            type: array
+            items:
+              originalRef: ForwardConfiguration
+              $ref: '#/components/schemas/ForwardConfiguration'
+    post:
+      tags:
+      - Business Line Hunt Group
+      summary: Create a new business line hunt group forwarding configuration
+      description: Use to create a new forwarding configuration on a business line hunt group.
+      operationId: createBusinessLineHuntGroupForwardingConfiguration
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          content:
+            application/json:
+              schema:
+                originalRef: ForwardConfiguration
+                $ref: '#/components/schemas/ForwardConfiguration'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          schema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ForwardConfiguration
+              $ref: '#/components/schemas/ForwardConfiguration'
+        description: Business line hunt group forwarding configuration object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group/{huntGroupId}/forward-configuration/{id}:
+    get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve business line hunt group forwarding configuration
+      description: Use to get the forwarding configuration for a business line hunt group
+      operationId: getBusinessLineHuntGroupForwardingConfiguration
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          content:
+            application/json:
+              schema:
+                originalRef: ForwardConfiguration
+                $ref: '#/components/schemas/ForwardConfiguration'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          schema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+    put:
+      tags:
+      - Business Line Hunt Group
+      summary: Update business line hunt group forwarding configuration
+      description: Use to update the forwarding configuration for a business line hunt group
+      operationId: updateBusinessLineHuntGroupForwardingConfiguration
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          content:
+            application/json:
+              schema:
+                originalRef: ForwardConfiguration
+                $ref: '#/components/schemas/ForwardConfiguration'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+          schema:
+            originalRef: ForwardConfiguration
+            $ref: '#/components/schemas/ForwardConfiguration'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ForwardConfiguration
+              $ref: '#/components/schemas/ForwardConfiguration'
+        description: Business line hunt group forwarding configuration object
+        required: true
+    delete:
+      tags:
+      - Business Line Hunt Group
+      summary: Delete business line hunt group forwarding configuration
+      description: Use to delete the forwarding configuration for a business line hunt group
+      operationId: deleteBusinessLineHuntGroupForwardingConfiguration
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line-hunt-group/{huntGroupId}:
+    get:
+      tags:
+      - Business Line Hunt Group
+      summary: Retrieve business line hunt group
+      description: Use to retrieve a business line hunt group
+      operationId: retrieveBusinessLineHuntGroup
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          content:
+            application/json:
+              schema:
+                originalRef: HuntGroup
+                $ref: '#/components/schemas/HuntGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          schema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+    put:
+      tags:
+      - Business Line Hunt Group
+      summary: Update business line hunt group
+      description: Use to update a business line hunt group
+      operationId: updateBusinessLineHuntGroup
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          content:
+            application/json:
+              schema:
+                originalRef: HuntGroup
+                $ref: '#/components/schemas/HuntGroup_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+          schema:
+            originalRef: HuntGroup
+            $ref: '#/components/schemas/HuntGroup_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: HuntGroup
+              $ref: '#/components/schemas/HuntGroup_2'
+        description: Business line hunt group object
+        required: true
+    delete:
+      tags:
+      - Business Line Hunt Group
+      summary: Delete business line hunt group
+      description: Use to delete a business line hunt group
+      operationId: deleteBusinessLineHuntGroup
+      parameters:
+      - name: huntGroupId
+        in: path
+        description: ID of Business Line Hunt Group
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+components:
+  schemas:
+    HuntingConfiguration_2:
+      type: object
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LinearHuntingConfiguration
+          - SequentialHuntingConfiguration
+          - SimultaneousHuntingConfiguration
+    FailoverAction_2:
+      type: object
+      required:
+      - '@type'
+      - failoverReason
+      discriminator:
+        propertyName: '@type'
+      properties:
+        failoverReason:
+          type: string
+          enum:
+          - BUSY
+          - NO_ANSWER
+          - UNREGISTERED
+        '@type':
+          type: string
+          enum:
+          - BusyFailoverAction
+          - ForwardFailoverAction
+          - VoicemailFailoverAction
+    PartitionStarCodes:
+      type: object
+      properties:
+        constraintType:
+          type: string
+        constraintValue:
+          type: array
+          items:
+            type: string
+    ForwardConfiguration:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        starCode:
+          type: string
+          pattern: \*d+
+        huntGroupId:
+          type: string
+          format: uuid
+        forwardConfigurationType:
+          type: string
+          enum:
+          - VARIABLE
+          - FIXED
+        forwardToPhoneNumber:
+          type: string
+          pattern: \d+
+        name:
+          type: string
+      required:
+      - forwardConfigurationType
+      - forwardToPhoneNumber
+      - huntGroupId
+      - name
+      - starCode
+    HuntGroup_2:
+      type: object
+      required:
+      - accountId
+      - huntingConfiguration
+      - name
+      - partitionId
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        huntingConfiguration:
+          originalRef: HuntingConfiguration
+          $ref: '#/components/schemas/HuntingConfiguration_2'
+        activeForwardConfigurationId:
+          type: string
+          format: uuid
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

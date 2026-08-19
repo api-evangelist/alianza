@@ -1,0 +1,230 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Brand Settings API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Brand Settings
+  description: Brand settings toggles
+paths:
+  /v2/app-branding/brand-settings:
+    get:
+      tags:
+      - Brand Settings
+      summary: Retrieve the general settings for all app brands of a partition.
+      operationId: getBrandSettingsByPartitionId
+      parameters:
+      - name: partition
+        in: query
+        description: PartitionId for brands being retrieved.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BrandSettingsDTO'
+        '400':
+          description: Invalid Partition ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+        '404':
+          description: Partition not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+    post:
+      tags:
+      - Brand Settings
+      summary: Provision general settings associated to app branding for a new brand.
+      operationId: createBrandByPartitionId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBrandSettings'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandSettingsDTO'
+        '400':
+          description: Invalid Partition ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+        '404':
+          description: Partition not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+        '409':
+          description: 'Conflict: Brand already exists for the partition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+  /v2/app-branding/brand-settings/{brandId}:
+    get:
+      tags:
+      - Brand Settings
+      summary: Retrieve the general settings associated to a specific brand.
+      operationId: getBrandSettingsById
+      parameters:
+      - name: brandId
+        in: path
+        description: ID of brand to return
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandSettingsDTO'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+        '404':
+          description: Brand not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+    put:
+      tags:
+      - Brand Settings
+      summary: Provision the general settings associated to a specific brand.
+      operationId: updateBrandSettingsById
+      parameters:
+      - name: brandId
+        in: path
+        description: ID of brand whose settings are being updated
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandSettingsDTO'
+      responses:
+        '200':
+          description: Settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandSettingsDTO'
+        '404':
+          description: Brand not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+        '409':
+          description: Modification of brandingCompleted is not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandErrorResponse'
+components:
+  schemas:
+    BrandSettingsDTO:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        brandId:
+          type: string
+          format: uuid
+        brandName:
+          type: string
+        brandingEnabled:
+          type: boolean
+        brandingCompleted:
+          type: boolean
+        selfSigningEnabled:
+          type: boolean
+        desktopHostingEnabled:
+          type: boolean
+      required:
+      - brandId
+      - brandName
+      - brandingCompleted
+      - brandingEnabled
+      - partitionId
+      - selfSigningEnabled
+    BrandError:
+      type: string
+      format: int32
+      example: 10404 - Resource not found
+      enum:
+      - 10001 - API hasn't been implemented yet
+      - 10404 - Resource not found
+      - 10403 - Not authorized
+      - 10500 - Internal Server Error
+      - 10002 - BrandDetails validation failed
+      - 10003 - Brand already exists for the given partition
+      - 10004 - Branding completion is readonly
+      - 10005 - Partition mismatch
+      - 10006 - File format is invalid
+      - 10007 - Active build request already exists
+      - 10008 - Brand domains setup is not completed
+      - 10009 - Build cannot be published
+      - 10010 - Desktop hosting feature is disabled
+    BrandErrorResponse:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/BrandError'
+        description:
+          type: string
+    CreateBrandSettings:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        brandingEnabled:
+          type: boolean
+        selfSigningEnabled:
+          type: boolean
+        desktopHostingEnabled:
+          type: boolean
+      required:
+      - brandingEnabled
+      - partitionId
+      - selfSigningEnabled
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

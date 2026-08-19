@@ -1,0 +1,1029 @@
+{
+  "item": [
+    {
+      "id": "980cf88c-4c2a-46ee-a997-30c347873254",
+      "name": "Partition",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8260fbc-8a45-46db-95dd-b586ef6a3078",
+          "name": "retrieve 2",
+          "request": {
+            "name": "retrieve 2",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d747ddd6-73ba-42e9-b7ea-b1e7fd7844ee",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"customerServiceNumber\": \"string\",\n  \"parentId\": \"string\",\n  \"useAccountNumberDefault\": false,\n  \"bypassVoicemailPINValidationFromDevice\": false,\n  \"billingCode\": \"string\",\n  \"country\": \"string\",\n  \"reorderNotifications\": [\n    \"string\",\n    \"string\"\n  ],\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"useOwnCarrier\": true,\n  \"availableInboundCarrierId\": [\n    \"string\",\n    \"string\"\n  ],\n  \"defaultRoutePlanId\": \"263e060f-88e3-d6f9-680c-191e170a3f4d\",\n  \"tnDeleteCooldownDays\": 7251,\n  \"defaultTimeZone\": \"US/Central\",\n  \"tempTnThreshold\": 2302,\n  \"serviceDialPlanRules\": [\n    {\n      \"partitionId\": \"string\",\n      \"mask\": \"string\",\n      \"actionType\": \"ReservedForHuntGroup\",\n      \"callNumber\": \"string\",\n      \"endingMinimumLength\": 9777,\n      \"endingMaximumLength\": 1833,\n      \"translationMacro\": \"string\",\n      \"disableCallerId\": false,\n      \"callerIdVisibilityOverride\": \"UseDestinationCallerIdEnabledSetting\",\n      \"disableCallWaiting\": true,\n      \"overwriteCallerIdNumber\": \"string\",\n      \"bypassAuthorization\": false,\n      \"outboundNumberFunction\": \"NONURGENT_TELEHEALTH_SERVICES\",\n      \"id\": \"string\"\n    },\n    {\n      \"partitionId\": \"string\",\n      \"mask\": \"string\",\n      \"actionType\": \"CallForwardingOnUnregistered\",\n      \"callNumber\": \"string\",\n      \"endingMinimumLength\": 4877,\n      \"endingMaximumLength\": 526,\n      \"translationMacro\": \"string\",\n      \"disableCallerId\": true,\n      \"callerIdVisibilityOverride\": \"Unblocked\",\n      \"disableCallWaiting\": false,\n      \"overwriteCallerIdNumber\": \"string\",\n      \"bypassAuthorization\": true,\n      \"outboundNumberFunction\": \"NONURGENT_MUNICIPAL_GOVERNMENT_SERVICES\",\n      \"id\": \"string\"\n    }\n  ],\n  \"mediaFriends\": {\n    \"enabled\": true,\n    \"host\": \"string\",\n    \"toNumber\": \"string\"\n  },\n  \"defaultSimpleDialingBehaviorType\": \"DIAL_NINE_SEVEN_DIGIT\",\n  \"defaultAdvancedDialingBehaviorType\": \"TEN_DIGIT\",\n  \"defaultDirectoryListingType\": \"PORTED\",\n  \"portPushDays\": 2431,\n  \"allowedDeviceTypes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"defaultHoldTimeoutSeconds\": 5786,\n  \"allowLoginByAccountNumber\": true,\n  \"requiresDeviceInventory\": true,\n  \"usesTrammellE911Verification\": false,\n  \"showComplexListing\": false,\n  \"defaultExtensionLength\": 6988,\n  \"autoAssignCallerId\": true,\n  \"byotnCarrierId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97c6355d-5589-498b-a033-f45118ff9f74",
+          "name": "Checks if dynamic inventory enabled for the specified partition",
+          "request": {
+            "name": "Checks if dynamic inventory enabled for the specified partition",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "is-di-supported"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06c73cab-c3fb-44d8-a402-9a591aced632",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "is-di-supported"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "true",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23556c1d-2de1-473b-8654-1abc7d84bf46",
+          "name": "Get all settings for this partition",
+          "request": {
+            "name": "Get all settings for this partition",
+            "description": {
+              "content": "Use to retrieve a map containing partition specific settings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "setting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16e8da99-bc60-4d76-9b03-e96aaaabf3b9",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"partitionId\": \"string\",\n    \"type\": \"MAX_BURST_CALL_PERCENTAGE\",\n    \"value\": {}\n  },\n  \"key_1\": {\n    \"partitionId\": \"string\",\n    \"type\": \"REGULATORY_TYPE\",\n    \"value\": {}\n  },\n  \"key_2\": {\n    \"partitionId\": \"string\",\n    \"type\": \"IntegrationNotificationEmail\",\n    \"value\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06e6a6c2-dc8d-4a54-ba08-3205c4768965",
+          "name": "Telephone Carriers",
+          "request": {
+            "name": "Telephone Carriers",
+            "description": {
+              "content": "the inbound carrier list available to this partition",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "inboundcarriers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d59c28c-9893-406f-b44d-8b1938cdd302",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "inboundcarriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"carrierType\": \"PROVTEL\",\n    \"partitionAvailability\": [\n      \"string\"\n    ],\n    \"l3Settings\": {\n      \"servicePackage\": \"PrimaryLocalFlatRate\",\n      \"availableServicePackages\": [\n        \"SecondaryLocalAndDomesticLDFlatRate\",\n        \"PrimaryLocalAndDomesticLDFlatRate\"\n      ],\n      \"seasonalSuspendServicePackage\": \"PrimaryLocalFlatRate\",\n      \"b2BPartnerID\": \"string\",\n      \"customerServiceName\": \"string\",\n      \"bizOrg\": \"string\"\n    },\n    \"supportsCSRUpdate\": false,\n    \"supportCNAMChange\": false,\n    \"supportDirectoryListing\": true,\n    \"supportPorting\": false,\n    \"supportHotCutPorting\": false,\n    \"hasTNs\": true,\n    \"e911Account\": {\n      \"e911ProviderType\": \"DISABLED\",\n      \"accountId\": \"string\",\n      \"authToken\": \"string\"\n    },\n    \"smsCallbackUrl\": \"string\",\n    \"portPushDays\": 7697,\n    \"bandwidthSettings\": {\n      \"accountId\": \"string\",\n      \"siteId\": \"string\",\n      \"peerId\": \"string\"\n    },\n    \"enableDynamicInventory\": true,\n    \"enableByotn\": false,\n    \"sinchSettings\": {\n      \"serviceType\": \"ALL_IN_TN\",\n      \"routingOption\": \"string\",\n      \"apiKey\": \"string\",\n      \"apiSecret\": \"string\"\n    },\n    \"cnamCarrierType\": \"VERIZON_CARIANZA\",\n    \"dlCarrierType\": \"LUMEN_VOICE_LI_ELS\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"carrierType\": \"TELUS_ONEVOICE\",\n    \"partitionAvailability\": [\n      \"string\"\n    ],\n    \"l3Settings\": {\n      \"servicePackage\": \"SecondaryLocalAndDomesticLDFlatRate\",\n      \"availableServicePackages\": [\n        \"Usage\",\n        \"Usage\"\n      ],\n      \"seasonalSuspendServicePackage\": \"SecondaryLocalFlatRate\",\n      \"b2BPartnerID\": \"string\",\n      \"customerServiceName\": \"string\",\n      \"bizOrg\": \"string\"\n    },\n    \"supportsCSRUpdate\": false,\n    \"supportCNAMChange\": true,\n    \"supportDirectoryListing\": true,\n    \"supportPorting\": false,\n    \"supportHotCutPorting\": true,\n    \"hasTNs\": true,\n    \"e911Account\": {\n      \"e911ProviderType\": \"WEST\",\n      \"accountId\": \"string\",\n      \"authToken\": \"string\"\n    },\n    \"smsCallbackUrl\": \"string\",\n    \"portPushDays\": 3430,\n    \"bandwidthSettings\": {\n      \"accountId\": \"string\",\n      \"siteId\": \"string\",\n      \"peerId\": \"string\"\n    },\n    \"enableDynamicInventory\": true,\n    \"enableByotn\": false,\n    \"sinchSettings\": {\n      \"serviceType\": \"USAGE_TN\",\n      \"routingOption\": \"string\",\n      \"apiKey\": \"string\",\n      \"apiSecret\": \"string\"\n    },\n    \"cnamCarrierType\": \"SERVICE_PROVIDER_CARRIER\",\n    \"dlCarrierType\": \"E911\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff9957c0-f0fe-4719-b9d8-11a62c422b68",
+              "name": "Invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "inboundcarriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be7f969c-d368-44e1-bee9-1dfeeacd9e37",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "inboundcarriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fe4f84e-61ba-4535-b350-ac38b18e26cf",
+          "name": "Retrieve bulk device inventory",
+          "request": {
+            "name": "Retrieve bulk device inventory",
+            "description": {
+              "content": "Use to retrieve a bulk file containing the partition's device inventory",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "deviceinventory_2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a64ca27d-57a4-42ac-87d8-df9a228f52a2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "deviceinventory_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"userId\": \"string\",\n  \"status\": \"FAILED\",\n  \"errors\": [\n    {\n      \"error\": \"string\",\n      \"lineNumber\": 3463,\n      \"column\": \"string\",\n      \"input\": \"string\"\n    },\n    {\n      \"error\": \"string\",\n      \"lineNumber\": 6022,\n      \"column\": \"string\",\n      \"input\": \"string\"\n    }\n  ],\n  \"inputKey\": \"string\",\n  \"outputKey\": \"string\",\n  \"start\": 9351,\n  \"lastUpdated\": 154\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "390c31e1-e6bc-4291-90ed-f3d5a29096f7",
+              "name": "Use Jobs API to check status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "deviceinventory_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "debb9954-6e0c-45bf-957e-8075c1026ba0",
+          "name": "Upload bulk device inventory",
+          "request": {
+            "name": "Upload bulk device inventory",
+            "description": {
+              "content": "Use to upload a bulk file containing the partition's device inventory",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "deviceinventory_2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8a24b51-6ed4-4fad-8e62-94d7ede3ac7d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "deviceinventory_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"userId\": \"string\",\n  \"status\": \"FAILED\",\n  \"errors\": [\n    {\n      \"error\": \"string\",\n      \"lineNumber\": 6601,\n      \"column\": \"string\",\n      \"input\": \"string\"\n    },\n    {\n      \"error\": \"string\",\n      \"lineNumber\": 3455,\n      \"column\": \"string\",\n      \"input\": \"string\"\n    }\n  ],\n  \"inputKey\": \"string\",\n  \"outputKey\": \"string\",\n  \"start\": 1558,\n  \"lastUpdated\": 8527\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ed3a486-0d5e-4d8f-8bae-2890f9203f1e",
+              "name": "Use Jobs API to check status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "deviceinventory_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64d7c204-2bc7-47a4-b191-dc5036212f8b",
+          "name": "partition Data History Search",
+          "request": {
+            "name": "partition Data History Search",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "data-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstResultIndex",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResult",
+                  "value": "20"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fbd79f1-59d7-4166-b2bb-6c3dc2f411d5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "data-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstResultIndex",
+                      "value": "0"
+                    },
+                    {
+                      "key": "maxResult",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRecords\": 1789,\n  \"results\": [\n    {\n      \"partitionId\": \"string\",\n      \"id\": \"string\",\n      \"type\": \"PARTITION\",\n      \"createdDate\": \"1960-01-05T10:59:35.902Z\",\n      \"userId\": \"string\",\n      \"userName\": \"string\",\n      \"userType\": \"ManagementUser\",\n      \"searchTags\": [\n        \"string\"\n      ],\n      \"actionType\": \"string\",\n      \"relatedDataId\": \"string\",\n      \"relatedDataType\": \"string\",\n      \"relatedDataDisplayName\": \"string\",\n      \"oldValue\": \"string\",\n      \"newValue\": \"string\"\n    },\n    {\n      \"partitionId\": \"string\",\n      \"id\": \"string\",\n      \"type\": \"ROUTE_PLAN\",\n      \"createdDate\": \"1960-06-19T04:05:32.465Z\",\n      \"userId\": \"string\",\n      \"userName\": \"string\",\n      \"userType\": \"AlianzaUser\",\n      \"searchTags\": [\n        \"string\"\n      ],\n      \"actionType\": \"string\",\n      \"relatedDataId\": \"string\",\n      \"relatedDataType\": \"string\",\n      \"relatedDataDisplayName\": \"string\",\n      \"oldValue\": \"string\",\n      \"newValue\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f0ead745-10cf-42bf-b432-0e054cdcae9d",
+    "name": "Alianza Partition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Partition across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

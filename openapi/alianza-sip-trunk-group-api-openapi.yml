@@ -1,0 +1,344 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public SIP Trunk Group API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: SIP Trunk Group
+  description: Operations for managing SIP trunk groups
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/siptrunkgroup:
+    get:
+      tags:
+      - SIP Trunk Group
+      summary: Retrieve the groups on the account
+      description: Use to retrieve the SIP trunk groups created for the specified account ID and partition ID
+      operationId: listGroups
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SipTrunkGroup'
+        4XX:
+          description: Bad request
+    post:
+      tags:
+      - SIP Trunk Group
+      summary: Create a new SIP trunk group
+      description: Use to create a new SIP trunk group for the specified account ID and partition ID
+      operationId: createGroup
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SipTrunkGroup'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipTrunkGroup'
+        '400':
+          description: Bad Request
+      x-codegen-request-body-name: body
+  /v2/partition/{partitionId}/account/{accountId}/siptrunkgroup/{groupId}:
+    delete:
+      tags:
+      - SIP Trunk Group
+      summary: Delete a SIP trunk group
+      description: Use to delete the SIP trunk group for the specified account ID, partition ID and group ID
+      operationId: deleteGroup
+      parameters:
+      - name: partitionId
+        in: path
+        description: id of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: id of the account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: id group
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '404':
+          description: Not Found
+    get:
+      tags:
+      - SIP Trunk Group
+      summary: Retrieve a DIP trunk group
+      description: Use to retrieve the SIP trunk group for the specified account ID, partition ID and group ID
+      operationId: getGroup
+      parameters:
+      - name: partitionId
+        in: path
+        description: id of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: id of the account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: id group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipTrunkGroup'
+        '404':
+          description: Not found
+    put:
+      tags:
+      - SIP Trunk Group
+      summary: Update a SIP trunk group
+      description: Use to update a SIP trunk group created for the specified account ID, partition ID and group ID
+      operationId: updateGroup
+      parameters:
+      - name: partitionId
+        in: path
+        description: id of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: id of the account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: id group
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SipTrunkGroup'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipTrunkGroup'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      x-codegen-request-body-name: body
+  /v2/partition/{partitionId}/account/{accountId}/siptrunkgroup/{groupId}/forward:
+    get:
+      tags:
+      - SIP Trunk Group
+      summary: Retrieves the forwarding rules
+      description: Use to retrieve the SIP trunk group forwarding rules for the specified account ID, partition ID and group ID
+      operationId: getFailover
+      parameters:
+      - name: partitionId
+        in: path
+        description: id of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: id of the account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: id group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipTrunkGroupForwardRules'
+        '404':
+          description: Not found
+    put:
+      tags:
+      - SIP Trunk Group
+      summary: Updates the forwarding rules
+      description: Use to update the SIP trunk group forwarding rules created for the specified account ID, partition ID and group ID
+      operationId: updateFailover
+      parameters:
+      - name: partitionId
+        in: path
+        description: id of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: id of the account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: id group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SipTrunkGroupForwardRules'
+        '404':
+          description: Not found
+components:
+  schemas:
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
+    SipTrunkForwardReference:
+      type: object
+      required:
+      - referenceType
+      properties:
+        referenceId:
+          type: string
+          description: id of the entity to forward the calls to
+        referenceType:
+          $ref: '#/components/schemas/ReferenceType'
+    SipTrunkGroupForwardRules:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkGroupId:
+          type: string
+        unconditionalForward:
+          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
+        unreachableForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        capacityForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+    SipTrunkGroup:
+      type: object
+      required:
+      - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: name of the group
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        unconditionalForward:
+          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
+        unreachableForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        capacityForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        sipTrunksIds:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Address API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Address",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validates a address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/address/validate",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Address to parse"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Valid country (current values are USA and CAN"
+              },
+              {
+                "name": "postalCode",
+                "value": "",
+                "type": "query",
+                "description": "Postal / Zip code of address"
+              }
+            ]
+          },
+          "docs": "Use to validate a address"
+        },
+        {
+          "info": {
+            "name": "Retrieves a list of addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/address/typeahead",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Address to parse"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Valid country (current values are USA and CAN"
+              },
+              {
+                "name": "postalCode",
+                "value": "",
+                "type": "query",
+                "description": "Postal / Zip code of address"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a single account"
+        },
+        {
+          "info": {
+            "name": "Retrieves a Set of ZipcodeX objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/address/state/:state/city/:city/zipcode",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "city",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a zipcodes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

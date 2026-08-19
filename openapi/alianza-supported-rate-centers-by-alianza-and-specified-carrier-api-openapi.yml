@@ -1,0 +1,160 @@
+openapi: 3.2.0
+info:
+  description: '**This documentation of the Alianza Public API is outdated. No further updates will be
+    made to it.**
+
+
+    You are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at
+    [https://developer.alianza.com/](https://developer.alianza.com/)'
+  version: '2'
+  title: Alianza Public Supported Rate Centers by Alianza and specified carrier API
+tags:
+- name: Supported Rate Centers by Alianza and specified carrier
+paths:
+  /v2/supported-rate-centers:
+    get:
+      tags:
+      - Supported Rate Centers by Alianza and specified carrier
+      summary: Get carrier-supported rate centers by proximity
+      description: ''
+      operationId: getClosestAvailableRateCenters
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+      - name: latitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: longitude
+        in: query
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 5
+      - name: distanceUnit
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - MILES
+          - KILOMETERS
+          - RADIANS
+          default: MILES
+      - name: busOrgId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RateCenterSearchViewX
+            $ref: '#/components/schemas/RateCenterSearchViewX'
+          content:
+            application/json:
+              schema:
+                originalRef: RateCenterSearchViewX
+                $ref: '#/components/schemas/RateCenterSearchViewX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RateCenterSearchViewX
+            $ref: '#/components/schemas/RateCenterSearchViewX'
+          schema:
+            originalRef: RateCenterSearchViewX
+            $ref: '#/components/schemas/RateCenterSearchViewX'
+components:
+  schemas:
+    RateCenterSearchViewX:
+      type: object
+      properties:
+        name:
+          type: string
+        abbrName:
+          type: string
+        reorderName:
+          type: string
+        reorderNameAlias:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        msa:
+          type: string
+        zips:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        prefixes:
+          type: array
+          items:
+            originalRef: TelephoneNumberPrefixViewX
+            $ref: '#/components/schemas/TelephoneNumberPrefixViewX'
+        distance:
+          type: number
+          format: double
+    TelephoneNumberPrefixViewX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        wireless:
+          type: boolean
+        wirelessBlockNumbers:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: byte
+servers:
+- url: https://api.d2.alianza.com
+  description: Base URL reconciled from _original

@@ -1,0 +1,601 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Voicemail Box API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Voicemail Box",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/business-line/voicemail-box/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve media file for a business-line voicemail box"
+        },
+        {
+          "info": {
+            "name": "Upload Business-Line Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/business-line/voicemail-box/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use to upload media file for a business-line voicemail box (wav, mp3, ogg)"
+        },
+        {
+          "info": {
+            "name": "Delete Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/business-line/voicemail-box/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to delete media file for a business-line voicemail box"
+        },
+        {
+          "info": {
+            "name": "Retrieve voicemail box list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "parentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a list of voicemail boxes for an account"
+        },
+        {
+          "info": {
+            "name": "Create voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new voicemail box"
+        },
+        {
+          "info": {
+            "name": "Set a PIN for a reference using a voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/pin",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a PIN for a reference using a voicemail box"
+        },
+        {
+          "info": {
+            "name": "Retrieve User Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve media file for a users voicemail box"
+        },
+        {
+          "info": {
+            "name": "Upload User Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Use to upload media file for a users voicemail box (wav, mp3, ogg)"
+        },
+        {
+          "info": {
+            "name": "Delete User Greeting media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/greetings/:greetingType/media",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "greetingType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to delete media file for a users voicemail box"
+        },
+        {
+          "info": {
+            "name": "Get voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a voicemail box"
+        },
+        {
+          "info": {
+            "name": "Update voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a voicemail box"
+        },
+        {
+          "info": {
+            "name": "Update voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a voicemail box"
+        },
+        {
+          "info": {
+            "name": "Delete voicemail box",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              }
+            ]
+          },
+          "docs": "Use to delete a voicemail box."
+        },
+        {
+          "info": {
+            "name": "Unlock a sub voicemailbox",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/voicemailbox/:voicemailBoxId/unlock",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "voicemailBoxId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Voicemail Box"
+              },
+              {
+                "name": "resetPin",
+                "value": "",
+                "type": "query",
+                "description": "New voicemail Pin"
+              }
+            ]
+          },
+          "docs": "Use to unlock the pin on a subvoicemail box"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

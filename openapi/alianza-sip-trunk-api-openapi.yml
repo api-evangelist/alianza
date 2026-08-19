@@ -1,0 +1,897 @@
+openapi: 3.2.0
+info:
+  title: Alianza SIP Trunk API
+  version: '2'
+  description: 'Operations tagged SIP Trunk across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: SIP Trunk
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Retrieve SIP trunk
+      description: Use to retrieve a SIP trunk
+      operationId: retrieveSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunk
+                $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+    put:
+      tags:
+      - SIP Trunk
+      summary: Update SIP trunk
+      description: Use to update a SIP trunk
+      operationId: updateSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunk
+                $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID or SIP trunk object supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID or SIP trunk object supplied
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+        description: SIP trunk object
+        required: true
+    delete:
+      tags:
+      - SIP Trunk
+      summary: Delete SIP trunk
+      description: Use to delete a SIP trunk
+      operationId: deleteSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+    patch:
+      tags:
+      - SIP Trunk
+      summary: Update SIP trunk
+      description: Use to update a SIP trunk
+      operationId: patchSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunk
+                $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID or SIP trunk object supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID or SIP trunk object supplied
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+        description: SIP trunk object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/validate:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Validate IP and port
+      description: Use to verify that combination of IP and port is unique
+      operationId: validate
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: trunkId
+        in: query
+        description: When the SIP Trunk is already created we need the ID to make sure we skip the trunk itself to validate IP is unique
+        required: false
+        schema:
+          type: string
+      - name: ip
+        in: query
+        description: The IP address to be verified
+        required: true
+        schema:
+          type: string
+      - name: port
+        in: query
+        description: The port number to be verified
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Retrieve list of SIP trunks
+      description: Use to retrieve a list of all SIP trunks on an account
+      operationId: retrieveSipTrunkList
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: SipTrunk
+                  $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid partition or account ID supplied
+        '404':
+          description: List not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid partition or account ID supplied
+        '404':
+          description: List not found
+    post:
+      tags:
+      - SIP Trunk
+      summary: Create a SIP trunk
+      description: Use to create a SIP trunk
+      operationId: createSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunk
+                $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk object supplied
+        '404':
+          description: Partition or account not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk object supplied
+        '404':
+          description: Partition or account not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/forward:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Get Forward behavior for a SipTrunk
+      description: Get Forward behavior for a SipTrunk
+      operationId: retrieveSipTrunkForwardBehavior
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunkForwardRules
+            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunkForwardRules
+                $ref: '#/components/schemas/SipTrunkForwardRules_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunkForwardRules
+            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+          schema:
+            originalRef: SipTrunkForwardRules
+            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+    put:
+      tags:
+      - SIP Trunk
+      summary: Update Forward behavior for a SipTrunk
+      description: Update Forward behavior for a SipTrunk
+      operationId: updateSipTrunkForwardBehavior
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid SIP trunk ID supplied
+      responsesObject:
+        '400':
+          description: Invalid SIP trunk ID supplied
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SipTrunkForwardRules
+              $ref: '#/components/schemas/SipTrunkForwardRules_2'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/unlock:
+    put:
+      tags:
+      - SIP Trunk
+      summary: Unlock SIP trunk
+      description: Use to unlock a SIP trunk
+      operationId: unlockSipTrunk
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SipTrunk
+                $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            originalRef: SipTrunk
+            $ref: '#/components/schemas/SipTrunk_2'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/shared-plan-lookup:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Retrieve list of shareable calling plans
+      description: Use to retrieve calling plans that can be shared between sip trunks
+      operationId: getShareableCallingPlans
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: SipTrunk
+                  $ref: '#/components/schemas/SipTrunk_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+          schema:
+            type: array
+            items:
+              originalRef: SipTrunk
+              $ref: '#/components/schemas/SipTrunk_2'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/registrationstatus:
+    get:
+      tags:
+      - SIP Trunk
+      summary: Retrieve SIP trunk registration status
+      description: Use to retrieve SIP trunk registration status
+      operationId: getRegistrationStatus
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: sipTrunkId
+        in: path
+        description: SIP trunk ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+          content:
+            application/json:
+              schema:
+                originalRef: RegistrationStatus
+                $ref: '#/components/schemas/RegistrationStatus'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+          schema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+        '400':
+          description: Invalid SIP trunk ID supplied
+        '404':
+          description: Not found
+components:
+  schemas:
+    ForwardReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+    SipTrunkForwardRules_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          originalRef: ForwardAlwaysReference
+          $ref: '#/components/schemas/ForwardAlwaysReference'
+        forwardOnFailure:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+    SbcEndpoint:
+      type: object
+      properties:
+        site:
+          type: string
+        address:
+          type: string
+        port:
+          type: integer
+          format: int32
+        protocol:
+          type: string
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
+    CallingPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
+          type: integer
+          format: int32
+        secondsRemaining:
+          type: integer
+          format: int64
+    SetupCallingPlan_2:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        callingPlanType:
+          type: string
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
+    SipTrunk_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        trunkName:
+          type: string
+        id:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+        callbackNumber:
+          type: string
+        concurrentCalls:
+          type: integer
+          format: int32
+        maxBurstCalls:
+          type: integer
+          format: int32
+        callingPlans:
+          type: array
+          items:
+            originalRef: CallingPlan
+            $ref: '#/components/schemas/CallingPlan'
+        telephoneNumbers:
+          type: array
+          items:
+            type: string
+        sipProxyServer:
+          type: string
+        lockedOut:
+          type: boolean
+        localServicesEnabled:
+          type: boolean
+        primaryTn:
+          type: string
+        extensionPatterns:
+          type: array
+          items:
+            type: string
+        externalChargeNumber:
+          type: string
+        newCppId:
+          type: string
+        setupCallingPlan:
+          originalRef: SetupCallingPlan
+          $ref: '#/components/schemas/SetupCallingPlan_2'
+        provisioningStatus:
+          type: string
+        ipBasedAuthEnabled:
+          type: boolean
+        ipAddress:
+          type: string
+        portNumber:
+          type: integer
+          format: int32
+        accessEndpoints:
+          type: array
+          items:
+            originalRef: SbcEndpoint
+            $ref: '#/components/schemas/SbcEndpoint'
+        sipTrunkGroupId:
+          type: string
+        pbxTnDigits:
+          type: integer
+          format: int32
+        languageTag:
+          type: string
+    ForwardAlwaysReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+        enabled:
+          type: boolean
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

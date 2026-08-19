@@ -1,0 +1,949 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public SSO Configuration API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: SSO Configuration
+  description: Operations for managing SSO configurations for accounts and partitions
+paths:
+  /v2/authn/sso-config/accounts/{accountId}:
+    get:
+      tags:
+      - SSO Configuration
+      summary: List SSO configurations for account
+      description: Retrieves all SSO configurations associated with a specific account.
+      operationId: listSSOConfigsByAccountId
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SSO configurations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SSOConfigResponse'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Account not found or no SSO configurations exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve configurations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - SSO Configuration
+      summary: Update SSO configuration
+      description: Updates an existing SSO configuration for an account.
+      operationId: updateSSOConfig
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Updated SSO configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteSSOConfigRequest'
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - ssoName
+              - identityProviderSignInUrl
+              - externalIdAttributeFieldMapping
+              - identityProviderSigningCertificate
+              properties:
+                ssoName:
+                  type: string
+                  description: SSO configuration name
+                identityProviderSignInUrl:
+                  type: string
+                  format: uri
+                  description: Identity provider sign-in endpoint URL
+                externalIdAttributeFieldMapping:
+                  type: string
+                  description: External ID attribute field mapping in SAML response
+                externalEmailAttributeFieldMapping:
+                  type: string
+                  description: External email attribute field mapping in SAML response
+                identityProviderSigningCertificate:
+                  type: string
+                  format: binary
+                  description: IdP signing certificate file (PEM or CER format)
+                samlRequestProtocolBinding:
+                  $ref: '#/components/schemas/SAMLRequestProtocolBinding'
+      responses:
+        '200':
+          description: SSO configuration updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to update configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/accounts/{accountId}/{ssoName}/status:
+    post:
+      tags:
+      - SSO Configuration
+      summary: Enable SSO configuration
+      description: Enables or disables the SSO configuration for an account.
+      operationId: enableSSO
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      - name: enabled
+        in: query
+        required: false
+        description: Set true to enable SSO config
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: SSO configuration enabled successfully
+        '400':
+          description: Bad Request - Invalid status transition or configuration incomplete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to enable configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/accounts/{accountId}/signing-certificate:
+    get:
+      tags:
+      - SSO Configuration
+      summary: Download signing certificate
+      description: Downloads the service provider signing certificate for SAML configuration.
+      operationId: downloadSigningCertificate
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        description: Certificate format
+        schema:
+          type: string
+          enum:
+          - pem
+          - cer
+          default: pem
+      responses:
+        '200':
+          description: Certificate downloaded successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Account or certificate not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve certificate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/accounts/{accountId}/user-validation:
+    get:
+      tags:
+      - SSO Configuration
+      summary: Validate user against account SSO configuration
+      description: Validates the user context for the account-level SSO configuration.
+      operationId: getUserValidation
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: partitionId
+        in: query
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: userId
+        in: query
+        required: false
+        description: ID of end-user
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserValidationResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /v2/authn/sso-config/accounts:
+    post:
+      tags:
+      - SSO Configuration
+      summary: Create account SSO configuration
+      description: Creates a new SSO configuration for an account to enable SAML-based authentication.
+      operationId: createSSOConfig
+      requestBody:
+        required: true
+        description: SSO configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOConfigCreateRequest'
+      responses:
+        '201':
+          description: SSO configuration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigCreateResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Account or partition not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/accounts/{accountId}/{ssoName}:
+    get:
+      tags:
+      - SSO Configuration
+      summary: Get specific SSO configuration
+      description: Retrieves a specific SSO configuration by name for an account.
+      operationId: getSSOConfig
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SSO configuration found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Account or partition not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    delete:
+      tags:
+      - SSO Configuration
+      summary: Delete SSO configuration
+      description: Removes an SSO configuration from an account.
+      operationId: deleteSSOConfig
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      responses:
+        '204':
+          description: SSO configuration deleted successfully
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to delete configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced:
+    post:
+      tags:
+      - SSO Configuration
+      summary: Create partition enforced SSO configuration
+      description: Creates a new Partition Enforced SSO (PESSO) configuration.
+      operationId: createSSOConfigPartitionEnforced
+      requestBody:
+        required: true
+        description: SSO configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SSOConfigCreateRequest'
+      responses:
+        '201':
+          description: SSO configuration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigCreateResponse'
+              example:
+                scope: PARTITION_ENFORCED_SSO
+                scopeId: partition-123
+                ssoName: enterprise-sso-def456
+                assertionConsumerResponseUrl: https://api.alianza.com/v2/sso/callback
+                serviceProviderEntityId: urn:amazon:cognito:sp:us-east-1_ABC123
+                serviceProviderSigningCertificate: '-----BEGIN CERTIFICATE-----...'
+                createdAt: '2025-10-01T12:00:00Z'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Partition not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}:
+    get:
+      tags:
+      - SSO Configuration
+      summary: List partition SSO configurations
+      description: Retrieves all SSO configurations for a specific partition.
+      operationId: listSSOConfigsByPartitionIdPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SSO configurations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SSOConfigResponse'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Partition not found or no SSO configurations exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve configurations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - SSO Configuration
+      summary: Update SSO configuration
+      description: 'Updates an existing Partition Enforced SSO configuration with Identity Provider details.
+
+        '
+      operationId: updateSSOConfigPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: Updated SSO configuration details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompleteSSOConfigRequest'
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - ssoName
+              - identityProviderSignInUrl
+              - externalIdAttributeFieldMapping
+              - identityProviderSigningCertificate
+              - userIdAttributeFieldMapping
+              properties:
+                ssoName:
+                  type: string
+                  description: SSO configuration name
+                identityProviderSignInUrl:
+                  type: string
+                  format: uri
+                  description: Identity provider sign-in endpoint URL
+                externalIdAttributeFieldMapping:
+                  type: string
+                  description: External ID attribute field mapping in SAML response
+                externalEmailAttributeFieldMapping:
+                  type: string
+                  description: External email attribute field mapping in SAML response
+                userIdAttributeFieldMapping:
+                  type: string
+                  description: Alianza user id attribute field mapping in SAML response
+                identityProviderSigningCertificate:
+                  type: string
+                  format: binary
+                  description: IdP signing certificate file (PEM or CER format)
+                samlRequestProtocolBinding:
+                  $ref: '#/components/schemas/SAMLRequestProtocolBinding'
+                idpLogoutUrl:
+                  type: string
+                  format: uri
+                  description: Identity Provider logout URL where SAML logout requests are sent (optional)
+      responses:
+        '200':
+          description: SSO configuration updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigResponse'
+        '400':
+          description: Bad Request - Invalid request parameters or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to update configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}/{ssoName}:
+    get:
+      tags:
+      - SSO Configuration
+      summary: Get specific SSO configuration
+      description: Retrieves a specific SSO configuration by name for a partition.
+      operationId: getSSOConfigPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SSO configuration found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SSOConfigResponse'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    delete:
+      tags:
+      - SSO Configuration
+      summary: Delete SSO configuration
+      description: Permanently removes an SSO configuration from a partition.
+      operationId: deleteSSOConfigPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      responses:
+        '204':
+          description: SSO configuration deleted successfully
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to delete configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/sub-partitions/{ssoName}:
+    put:
+      tags:
+      - SSO Configuration
+      summary: Update enforced sub-partitions
+      description: Updates the list of sub-partitions enforced by a PESSO configuration (merge/add-only).
+      operationId: updateSubPartitionsList
+      parameters:
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSubPartitionsRequest'
+            example:
+              enforcedSubPartitions:
+              - sub-partition-1
+              - sub-partition-2
+              allowAlianzaAuthentication: false
+              allowSpInitiatedAuthenticationFlow: true
+      responses:
+        '204':
+          description: Sub-partitions updated successfully
+        '400':
+          description: Bad Request - Invalid sub-partition provided or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}/{ssoName}/status:
+    post:
+      tags:
+      - SSO Configuration
+      summary: Enable SSO configuration
+      description: Enables or disables the SSO configuration for a partition.
+      operationId: enableSSOPartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: ssoName
+        in: path
+        required: true
+        description: SSO configuration name
+        schema:
+          type: string
+      - name: enabled
+        in: query
+        required: false
+        description: Enables SSO config
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: SSO configuration enabled successfully
+        '400':
+          description: Bad Request - Invalid status transition or configuration incomplete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - SSO configuration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to enable configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso-config/partitions/enforced/{partitionId}/signing-certificate:
+    get:
+      tags:
+      - SSO Configuration
+      summary: Download signing certificate
+      description: Downloads the service provider signing certificate for SAML configuration.
+      operationId: downloadSigningCertificatePartitionEnforced
+      parameters:
+      - name: partitionId
+        in: path
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        description: Certificate format
+        schema:
+          type: string
+          enum:
+          - pem
+          - cer
+          default: pem
+      responses:
+        '200':
+          description: Certificate downloaded successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - Invalid or missing X-Auth-Token
+        '404':
+          description: Not Found - Partition or certificate not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to retrieve certificate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+components:
+  schemas:
+    SAMLRequestProtocolBinding:
+      type: string
+      enum:
+      - POST
+      - REDIRECT
+      description: SAML Request Protocol Binding.
+    SSOConfigCreateRequest:
+      type: object
+      required:
+      - ssoName
+      properties:
+        partitionId:
+          type: string
+          description: Partition identifier. Required for partition-enforced/partition SSO configurations.
+        accountId:
+          type: string
+          description: Account identifier. Required for account-level SSO configurations.
+        ssoName:
+          type: string
+          description: SSO configuration name.
+          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
+          minLength: 4
+          maxLength: 36
+    CompleteSSOConfigRequest:
+      type: object
+      required:
+      - identityProviderSignInUrl
+      - identityProviderSigningCertificate
+      - externalIdAttributeFieldMapping
+      - ssoName
+      properties:
+        identityProviderSignInUrl:
+          type: string
+          format: uri
+          description: Identity Provider sign-in endpoint URL where SAML authentication requests are sent.
+        identityProviderSigningCertificate:
+          type: string
+          description: Identity Provider signing certificate in PEM or CER format.
+        userIdAttributeFieldMapping:
+          type: string
+          description: SAML attribute name that contains the Alianza user ID.
+        externalIdAttributeFieldMapping:
+          type: string
+          description: SAML attribute name containing the user's unique identifier in the IdP.
+        externalEmailAttributeFieldMapping:
+          type: string
+          description: SAML attribute name containing the user's email address.
+        ssoName:
+          type: string
+        identityProviderLogoutUrl:
+          type: string
+          format: uri
+        samlRequestProtocolBinding:
+          $ref: '#/components/schemas/SAMLRequestProtocolBinding'
+        enforcedSubPartitions:
+          type: array
+          items:
+            type: string
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          default: true
+        allowAlianzaAuthentication:
+          type: boolean
+    SSOConfigCreateResponse:
+      type: object
+      properties:
+        scope:
+          type: string
+          enum:
+          - ACCOUNT_LEVEL_SSO
+          - PARTITION_ENFORCED_SSO
+          - PARTITION_SSO
+        scopeId:
+          type: string
+        ssoName:
+          type: string
+        assertionConsumerResponseUrl:
+          type: string
+          format: uri
+        serviceProviderEntityId:
+          type: string
+        serviceProviderSigningCertificate:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    UpdateSubPartitionsRequest:
+      type: object
+      required:
+      - enforcedSubPartitions
+      properties:
+        enforcedSubPartitions:
+          type: array
+          items:
+            type: string
+          description: List of sub-partition IDs to enforce. Merged with existing (union).
+        allowAlianzaAuthentication:
+          type: boolean
+          description: Allow Alianza authentication. Default true.
+          default: true
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          description: Allow SP-initiated authentication flow. Default true.
+          default: true
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    UserValidationResult:
+      type: string
+      enum:
+      - LINKED_USER
+      - EXEMPTED_USER
+      - ACC_SSO_CONFIGURED
+      - P_E_SSO_CONFIGURED
+      - P_SSO_CONFIGURED
+      - NO_ACTIVE_CONFIG
+      - ACTIVE_CONFIG_ALZ_AUTHN_ALLOWED
+    SSOConfigResponse:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type:
+          - string
+          - 'null'
+        ssoName:
+          type: string
+        assertionConsumerResponseUrl:
+          type: string
+          format: uri
+        serviceProviderEntityId:
+          type: string
+        serviceProviderSigningCertificate:
+          type: string
+        identityProviderUserId:
+          type: string
+        identityProviderUserEmail:
+          type: string
+        alianzaUserIdFieldMapping:
+          type: string
+        identityProviderSignInUrl:
+          type: string
+          format: uri
+        identityProviderLogoutUrl:
+          type: string
+          format: uri
+        identityProviderSigningKeyName:
+          type: string
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - READY
+          - ENABLED
+          - DISABLED
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        validated:
+          type: boolean
+        allowAlianzaAuthentication:
+          type: boolean
+          default: true
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          default: true
+        enforcedSubPartitions:
+          type: array
+          items:
+            type: string
+    UserValidationResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/UserValidationResult'
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

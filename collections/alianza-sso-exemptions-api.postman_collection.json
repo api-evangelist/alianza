@@ -1,0 +1,3302 @@
+{
+  "item": [
+    {
+      "id": "ee36218c-4495-47f4-a69b-213ac461ad74",
+      "name": "SSO Exemptions",
+      "description": {
+        "content": "Operations for managing SSO exemptions for accounts and partitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfe87dcf-e412-424b-8a56-5d96e30e6740",
+          "name": "Add SSO exemption",
+          "request": {
+            "name": "Add SSO exemption",
+            "description": {
+              "content": "Creates an SSO exemption for specific users or groups in an account.\n\nExemptions allow designated users or groups to bypass SSO requirements\nand use traditional authentication.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "accounts",
+                ":accountId",
+                "exemptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a33d2d6-c671-4397-bb8e-2c29fb79f7cf",
+              "name": "Exemption created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"exempt-abc-123\",\n  \"partitionId\": \"partition-789\",\n  \"accountId\": \"account-456\",\n  \"accountName\": \"Acme Corporation\",\n  \"exemptionName\": \"emergency-admins\",\n  \"exemptionType\": \"USER\",\n  \"exemptions\": [\n    \"user-123\",\n    \"api-service-account\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7512964-938a-454b-af65-80f858b689eb",
+              "name": "Bad Request - Invalid exemption data or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7275,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7847dec7-f67a-4743-92e6-9d73acd43fb1",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c97faf97-f0b0-4cd7-92dd-d848757d032f",
+              "name": "Not Found - Account or SSO configuration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c236ca71-9a81-484a-a101-2c6b1f55b787",
+              "name": "Internal Server Error - Failed to create exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "155e22f1-b9df-49e4-a220-ee907833158f",
+          "name": "List SSO exemptions",
+          "request": {
+            "name": "List SSO exemptions",
+            "description": {
+              "content": "Retrieves all SSO exemptions for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "accounts",
+                ":accountId",
+                "exemptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cee08a3e-04c3-4115-8779-22e9959e5452",
+              "name": "Exemptions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"exemptionId\": \"exempt-abc-123\",\n    \"partitionId\": \"partition-789\",\n    \"accountId\": \"account-456\",\n    \"accountName\": \"Acme Corporation\",\n    \"exemptionName\": \"emergency-admins\",\n    \"exemptionType\": \"USER\",\n    \"exemptions\": [\n      \"user-123\",\n      \"api-service-account\"\n    ]\n  },\n  {\n    \"exemptionId\": \"exempt-def-456\",\n    \"partitionId\": \"partition-789\",\n    \"accountId\": \"account-456\",\n    \"accountName\": \"Acme Corporation\",\n    \"exemptionName\": \"contractor-group\",\n    \"exemptionType\": \"GROUP\",\n    \"exemptions\": [\n      \"group-external-contractors\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6a83884-9a41-401f-82bc-ac4544515b04",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad3c6896-1e4e-4fc1-8847-afbd870557ad",
+              "name": "Not Found - No exemptions found for the account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "243ce5ca-a937-46c5-b3a1-3d67bb7a4172",
+              "name": "Internal Server Error - Failed to retrieve exemptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96faed91-dc25-4a14-bbc0-eda46333d616",
+          "name": "Get SSO exemption",
+          "request": {
+            "name": "Get SSO exemption",
+            "description": {
+              "content": "Retrieves a specific SSO exemption by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "accounts",
+                ":accountId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52166cbe-fdb0-468e-8275-0c9b3cf3c0ae",
+              "name": "Exemption found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"string\",\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"accountName\": \"string\",\n  \"exemptionName\": \"string\",\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ab4f575-c0d6-4474-b4e6-22ff2724406a",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68762a4a-76c6-436a-bf36-dd6c331f0d6f",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f94dce7-2656-432e-8ca2-e24292161837",
+              "name": "Internal Server Error - Failed to retrieve exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57bfd3a8-59de-417f-9e3a-bbcc59c990f4",
+          "name": "Update SSO exemption",
+          "request": {
+            "name": "Update SSO exemption",
+            "description": {
+              "content": "Updates an existing SSO exemption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "accounts",
+                ":accountId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b10335a2-ae05-492d-b5d0-98f1bad51421",
+              "name": "Exemption updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"exempt-abc-123\",\n  \"partitionId\": \"partition-789\",\n  \"accountId\": \"account-456\",\n  \"exemptionName\": \"emergency-admins\",\n  \"exemptionType\": \"USER\",\n  \"exemptions\": [\n    \"user-123\",\n    \"user-456\",\n    \"new-admin-789\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5d385bc-d3b5-4b2c-8c42-5e3959b54e5a",
+              "name": "Bad Request - Invalid exemption data or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8be9993-bdb2-45ad-ab9a-116c8896d809",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00cfd374-a814-4ab2-a1af-204157e1e05f",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d38c61a3-88b4-45b4-8164-3dd134871019",
+              "name": "Internal Server Error - Failed to update exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5e76c7f-91f9-4813-80a7-b323c9824c32",
+          "name": "Delete SSO exemption",
+          "request": {
+            "name": "Delete SSO exemption",
+            "description": {
+              "content": "Removes an SSO exemption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "accounts",
+                ":accountId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "587d83db-8362-4d34-8f09-e4a9d28bea81",
+              "name": "Exemption deleted successfully - no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f303c68b-07af-4925-a38e-63069b7a01fe",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7171697a-d3ff-4ebc-8ad4-767d41c53f7c",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e0fa363-86e1-4407-9206-7eb20eb38a06",
+              "name": "Internal Server Error - Failed to delete exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "accounts",
+                    ":accountId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ddfe670-6a05-4be4-b9a6-96c13ce7f5e3",
+          "name": "Add enforced SSO exemption",
+          "request": {
+            "name": "Add enforced SSO exemption",
+            "description": {
+              "content": "Creates an SSO exemption for entire accounts in a partition with enforced SSO.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "partitions",
+                "enforced",
+                ":partitionId",
+                "exemptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6b697e3-db5f-4758-882e-516b5b794d77",
+              "name": "Exemption created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"exempt-pesso-789\",\n  \"partitionId\": \"partition-123\",\n  \"exemptionName\": \"pilot-accounts\",\n  \"exemptionType\": \"ACCOUNT\",\n  \"exemptions\": [\n    \"acc-pilot-dept\",\n    \"acc-test-group\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8fac4960-d526-4386-806c-2b72146a633e",
+              "name": "Bad Request - Invalid exemption data or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c34c9f8-24ee-41b5-9ecc-229274d17a7c",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "047ba651-52c1-40b0-ac75-466b018a9314",
+              "name": "Not Found - Partition or SSO configuration not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f021bc9-0640-40e3-8302-a05526592a7a",
+              "name": "Conflict - One or more accounts/users/groups already exempted by another exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13ce6a0c-d8ba-402c-95f8-b4d7e88edf67",
+              "name": "Internal Server Error - Failed to create exemption",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d447abd7-8101-496e-81a9-641bc4286a9e",
+          "name": "List enforced SSO exemptions",
+          "request": {
+            "name": "List enforced SSO exemptions",
+            "description": {
+              "content": "Retrieves all SSO exemptions for a partition with enforced SSO.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "partitions",
+                "enforced",
+                ":partitionId",
+                "exemptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0bf1e72-69f6-4d53-8ec0-4eab499d7e5a",
+              "name": "Exemptions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"exemptionId\": \"exempt-pesso-789\",\n    \"partitionId\": \"partition-123\",\n    \"exemptionName\": \"pilot-accounts\",\n    \"exemptionType\": \"ACCOUNT\",\n    \"exemptions\": [\n      \"acc-pilot-dept\",\n      \"acc-test-group\"\n    ]\n  },\n  {\n    \"exemptionId\": \"exempt-pesso-456\",\n    \"partitionId\": \"partition-123\",\n    \"exemptionName\": \"emergency-admins\",\n    \"exemptionType\": \"USER\",\n    \"exemptions\": [\n      \"user-emergency-1\",\n      \"api-service-account\"\n    ]\n  },\n  {\n    \"exemptionId\": \"exempt-pesso-123\",\n    \"partitionId\": \"partition-123\",\n    \"exemptionName\": \"contractor-teams\",\n    \"exemptionType\": \"GROUP\",\n    \"exemptions\": [\n      \"group-external-contractors\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44357655-1be9-481c-98f1-f82c21c0fe56",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f828f91-1b1a-4e9c-9906-6b25dbc7b9b3",
+              "name": "Not Found - No exemptions found for the partition",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9686375e-6b30-4a5d-bbc5-99297efd9791",
+              "name": "Internal Server Error - Failed to retrieve exemptions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a45ce2a7-9c5f-4076-9b2b-284dd95845c8",
+          "name": "Get specific enforced SSO exemption",
+          "request": {
+            "name": "Get specific enforced SSO exemption",
+            "description": {
+              "content": "Retrieves a specific SSO exemption by ID for enforced SSO.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "partitions",
+                "enforced",
+                ":partitionId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43960c7a-2918-4662-badf-3e04b83dccf0",
+              "name": "Exemption found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"string\",\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"accountName\": \"string\",\n  \"exemptionName\": \"string\",\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed2647da-5c4b-423e-99cd-58fdcf1b760d",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc423c4a-7fa8-4c54-aaf4-986bc15278ca",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e893e59d-3d28-4d9f-88ad-f101ea56ebc8",
+          "name": "Update enforced SSO exemption",
+          "request": {
+            "name": "Update enforced SSO exemption",
+            "description": {
+              "content": "Updates an existing SSO exemption for enforced SSO.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "partitions",
+                "enforced",
+                ":partitionId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f49e5604-1e51-4065-baf7-329367c0493a",
+              "name": "Exemption updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exemptionId\": \"exempt-pesso-789\",\n  \"partitionId\": \"partition-123\",\n  \"exemptionName\": \"pilot-accounts\",\n  \"exemptionType\": \"ACCOUNT\",\n  \"exemptions\": [\n    \"acc-pilot-dept\",\n    \"acc-test-group\",\n    \"acc-new-pilot\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "850c96f8-4c3c-424f-abd4-56ecb06539fb",
+              "name": "Bad Request - Invalid exemption data or validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32c0ec20-b431-4463-a090-504b37cbc6c5",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64808510-687a-4fa9-9c3d-c667fa5a3a2c",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"exemptionType\": \"<string>\",\n  \"exemptions\": [\n    \"<string>\"\n  ],\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"exemptionName\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc7dd74d-8a61-463a-8278-c5c61dfada8b",
+          "name": "Delete enforced SSO exemption",
+          "request": {
+            "name": "Delete enforced SSO exemption",
+            "description": {
+              "content": "Removes an SSO exemption from enforced SSO configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso-config",
+                "partitions",
+                "enforced",
+                ":partitionId",
+                "exemptions",
+                ":exemptionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exemptionId",
+                  "description": "(Required) Exemption identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe1e58b7-8af8-4250-a582-08185c0ec977",
+              "name": "Exemption deleted successfully - no content returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1f21f43-0bf5-473b-8698-bbd9c1260b45",
+              "name": "Unauthorized - Invalid or missing X-Auth-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a895b0f3-4cf5-42b0-a4a8-8912bb9bb715",
+              "name": "Not Found - Exemption not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso-config",
+                    "partitions",
+                    "enforced",
+                    ":partitionId",
+                    "exemptions",
+                    ":exemptionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exemptionId",
+                      "description": "(Required) Exemption identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 6932,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a107fcfb-091c-4703-9dc0-26a82a233f6b",
+    "name": "Alianza Public SSO Exemptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

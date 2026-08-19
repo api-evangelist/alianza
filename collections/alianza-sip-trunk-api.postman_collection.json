@@ -1,0 +1,2870 @@
+{
+  "item": [
+    {
+      "id": "5f0d7f95-bf6d-4dbc-9341-49147145b78c",
+      "name": "SIP Trunk",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f6db0ed0-e473-4a43-b482-5459f6e0afdb",
+          "name": "Retrieve SIP trunk",
+          "request": {
+            "name": "Retrieve SIP trunk",
+            "description": {
+              "content": "Use to retrieve a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cff2d08-a26a-402b-be47-2cc196565f70",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"trunkName\": \"string\",\n  \"id\": \"string\",\n  \"sipPassword\": \"string\",\n  \"sipUsername\": \"string\",\n  \"callbackNumber\": \"string\",\n  \"concurrentCalls\": 8438,\n  \"maxBurstCalls\": 4564,\n  \"callingPlans\": [\n    {\n      \"id\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"callingPlanProductId\": \"string\",\n      \"endDate\": \"1994-01-03T18:40:15.027Z\",\n      \"startDate\": \"1985-10-19T20:37:00.331Z\",\n      \"planMinutes\": 4117,\n      \"secondsRemaining\": 5787\n    },\n    {\n      \"id\": \"string\",\n      \"referenceId\": \"string\",\n      \"referenceType\": \"string\",\n      \"callingPlanProductId\": \"string\",\n      \"endDate\": \"2014-11-05T03:49:13.071Z\",\n      \"startDate\": \"2003-01-15T14:09:04.027Z\",\n      \"planMinutes\": 7943,\n      \"secondsRemaining\": 3018\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"sipProxyServer\": \"string\",\n  \"lockedOut\": false,\n  \"localServicesEnabled\": false,\n  \"primaryTn\": \"string\",\n  \"extensionPatterns\": [\n    \"string\",\n    \"string\"\n  ],\n  \"externalChargeNumber\": \"string\",\n  \"newCppId\": \"string\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"string\",\n    \"callingPlanType\": \"SHARED_CALLING_PLAN\"\n  },\n  \"provisioningStatus\": \"string\",\n  \"ipBasedAuthEnabled\": true,\n  \"ipAddress\": \"string\",\n  \"portNumber\": 2252,\n  \"accessEndpoints\": [\n    {\n      \"site\": \"string\",\n      \"address\": \"string\",\n      \"port\": 806,\n      \"protocol\": \"string\"\n    },\n    {\n      \"site\": \"string\",\n      \"address\": \"string\",\n      \"port\": 7156,\n      \"protocol\": \"string\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"string\",\n  \"pbxTnDigits\": 7193,\n  \"languageTag\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1e6248f-0db5-48c7-9179-25869893d77a",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c800cb39-d435-4630-9444-d39893d9da01",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f8c243-8a54-4d4c-9c7c-1f6b7f8e1746",
+          "name": "Update SIP trunk",
+          "request": {
+            "name": "Update SIP trunk",
+            "description": {
+              "content": "Use to update a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81b3bd5c-1d0a-470c-97ea-46a44dff4863",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2baeb21b-ce5b-4620-ba34-e625cd6514ef",
+              "name": "Invalid SIP trunk ID or SIP trunk object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f585f13-490e-43b0-87cd-ff441f8ede42",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d35cde8a-d230-499a-ae6e-0ab3939070ac",
+          "name": "Delete SIP trunk",
+          "request": {
+            "name": "Delete SIP trunk",
+            "description": {
+              "content": "Use to delete a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e632261-3691-4151-bf9c-b4863729f6da",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57828a5c-c451-412f-8332-6604342a42ec",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "767151e6-517d-41ef-b67c-96d6ff14c319",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "839be200-0c95-45c5-bf34-add2d983542b",
+          "name": "Update SIP trunk",
+          "request": {
+            "name": "Update SIP trunk",
+            "description": {
+              "content": "Use to update a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04e01e40-34ce-4e38-afc5-91dacea47eb2",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "122e8818-676a-4926-8ed3-cc509af457ae",
+              "name": "Invalid SIP trunk ID or SIP trunk object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d55a09a8-6b05-4060-ba37-40fb9e283ccb",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7c6d205-c6ca-406b-a256-3a42499ba6b2",
+          "name": "Validate IP and port",
+          "request": {
+            "name": "Validate IP and port",
+            "description": {
+              "content": "Use to verify that combination of IP and port is unique",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "trunkId",
+                  "value": "<string>",
+                  "description": "When the SIP Trunk is already created we need the ID to make sure we skip the trunk itself to validate IP is unique"
+                },
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) The IP address to be verified"
+                },
+                {
+                  "disabled": false,
+                  "key": "port",
+                  "value": "<string>",
+                  "description": "(Required) The port number to be verified"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dcc06f7-2c92-4e95-a7ec-022267e956b5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "trunkId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "port",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "true",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddcf50e5-0ed2-4c6a-b6b8-c4f3f0434474",
+          "name": "Retrieve list of SIP trunks",
+          "request": {
+            "name": "Retrieve list of SIP trunks",
+            "description": {
+              "content": "Use to retrieve a list of all SIP trunks on an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff2f037d-462d-45ed-8173-2a751dbee176",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"trunkName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"sipPassword\": \"<string>\",\n    \"sipUsername\": \"<string>\",\n    \"callbackNumber\": \"<string>\",\n    \"concurrentCalls\": \"<integer>\",\n    \"maxBurstCalls\": \"<integer>\",\n    \"callingPlans\": [\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      }\n    ],\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sipProxyServer\": \"<string>\",\n    \"lockedOut\": \"<boolean>\",\n    \"localServicesEnabled\": \"<boolean>\",\n    \"primaryTn\": \"<string>\",\n    \"extensionPatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"externalChargeNumber\": \"<string>\",\n    \"newCppId\": \"<string>\",\n    \"setupCallingPlan\": {\n      \"referenceId\": \"<string>\",\n      \"callingPlanType\": \"<string>\"\n    },\n    \"provisioningStatus\": \"<string>\",\n    \"ipBasedAuthEnabled\": \"<boolean>\",\n    \"ipAddress\": \"<string>\",\n    \"portNumber\": \"<integer>\",\n    \"accessEndpoints\": [\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      },\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      }\n    ],\n    \"sipTrunkGroupId\": \"<string>\",\n    \"pbxTnDigits\": \"<integer>\",\n    \"languageTag\": \"<string>\"\n  },\n  {\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"trunkName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"sipPassword\": \"<string>\",\n    \"sipUsername\": \"<string>\",\n    \"callbackNumber\": \"<string>\",\n    \"concurrentCalls\": \"<integer>\",\n    \"maxBurstCalls\": \"<integer>\",\n    \"callingPlans\": [\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      }\n    ],\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sipProxyServer\": \"<string>\",\n    \"lockedOut\": \"<boolean>\",\n    \"localServicesEnabled\": \"<boolean>\",\n    \"primaryTn\": \"<string>\",\n    \"extensionPatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"externalChargeNumber\": \"<string>\",\n    \"newCppId\": \"<string>\",\n    \"setupCallingPlan\": {\n      \"referenceId\": \"<string>\",\n      \"callingPlanType\": \"<string>\"\n    },\n    \"provisioningStatus\": \"<string>\",\n    \"ipBasedAuthEnabled\": \"<boolean>\",\n    \"ipAddress\": \"<string>\",\n    \"portNumber\": \"<integer>\",\n    \"accessEndpoints\": [\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      },\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      }\n    ],\n    \"sipTrunkGroupId\": \"<string>\",\n    \"pbxTnDigits\": \"<integer>\",\n    \"languageTag\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8153b600-1ffe-4188-8f8a-d359c2ebbdb1",
+              "name": "Invalid partition or account ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "725acf36-485c-4f1c-8e6e-ea3a039dd380",
+              "name": "List not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e749e2bf-a225-4b41-b48b-360c4643d2b0",
+          "name": "Create a SIP trunk",
+          "request": {
+            "name": "Create a SIP trunk",
+            "description": {
+              "content": "Use to create a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc3054cc-0645-4617-97c3-5241b534c192",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a396748-ea27-4813-9c99-eace30e6b6b7",
+              "name": "Invalid SIP trunk object supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb0e50e7-1a23-4d8c-a712-fe2a28094458",
+              "name": "Partition or account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f538742-2bdf-4818-ab68-0df87cd2bfa3",
+          "name": "Get Forward behavior for a SipTrunk",
+          "request": {
+            "name": "Get Forward behavior for a SipTrunk",
+            "description": {
+              "content": "Get Forward behavior for a SipTrunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId",
+                "forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc8ea7c6-3d33-4bcd-a3ac-ded35128c1e5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"sipTrunkId\": \"string\",\n  \"forwardAlways\": {\n    \"referenceType\": \"IVR\",\n    \"referenceId\": \"string\",\n    \"enabled\": true\n  },\n  \"forwardOnFailure\": [\n    {\n      \"referenceType\": \"IVR\",\n      \"referenceId\": \"string\"\n    },\n    {\n      \"referenceType\": \"AUTO_ATTENDANT\",\n      \"referenceId\": \"string\"\n    }\n  ],\n  \"forwardOnCapacityExceeded\": [\n    {\n      \"referenceType\": \"SIP_TRUNK\",\n      \"referenceId\": \"string\"\n    },\n    {\n      \"referenceType\": \"IVR\",\n      \"referenceId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d643cb57-586f-4145-8435-a2ab8e375971",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92c5bf75-aa6c-4010-8ef7-db9d6c6b68d9",
+          "name": "Update Forward behavior for a SipTrunk",
+          "request": {
+            "name": "Update Forward behavior for a SipTrunk",
+            "description": {
+              "content": "Update Forward behavior for a SipTrunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId",
+                "forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"sipTrunkId\": \"<string>\",\n  \"forwardAlways\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"forwardOnFailure\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"forwardOnCapacityExceeded\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74648b9f-5738-4e02-9ebd-2de493dd7ea9",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"sipTrunkId\": \"<string>\",\n  \"forwardAlways\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"forwardOnFailure\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"forwardOnCapacityExceeded\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43c45db6-d870-4563-8031-64d692ca838b",
+          "name": "Unlock SIP trunk",
+          "request": {
+            "name": "Unlock SIP trunk",
+            "description": {
+              "content": "Use to unlock a SIP trunk",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId",
+                "unlock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e07b64ee-c5d0-4ace-b963-fdf2ccdb4020",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"trunkName\": \"<string>\",\n  \"id\": \"<string>\",\n  \"sipPassword\": \"<string>\",\n  \"sipUsername\": \"<string>\",\n  \"callbackNumber\": \"<string>\",\n  \"concurrentCalls\": \"<integer>\",\n  \"maxBurstCalls\": \"<integer>\",\n  \"callingPlans\": [\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"referenceType\": \"<string>\",\n      \"callingPlanProductId\": \"<string>\",\n      \"endDate\": \"<dateTime>\",\n      \"startDate\": \"<dateTime>\",\n      \"planMinutes\": \"<integer>\",\n      \"secondsRemaining\": \"<long>\"\n    }\n  ],\n  \"telephoneNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sipProxyServer\": \"<string>\",\n  \"lockedOut\": \"<boolean>\",\n  \"localServicesEnabled\": \"<boolean>\",\n  \"primaryTn\": \"<string>\",\n  \"extensionPatterns\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"externalChargeNumber\": \"<string>\",\n  \"newCppId\": \"<string>\",\n  \"setupCallingPlan\": {\n    \"referenceId\": \"<string>\",\n    \"callingPlanType\": \"<string>\"\n  },\n  \"provisioningStatus\": \"<string>\",\n  \"ipBasedAuthEnabled\": \"<boolean>\",\n  \"ipAddress\": \"<string>\",\n  \"portNumber\": \"<integer>\",\n  \"accessEndpoints\": [\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    },\n    {\n      \"site\": \"<string>\",\n      \"address\": \"<string>\",\n      \"port\": \"<integer>\",\n      \"protocol\": \"<string>\"\n    }\n  ],\n  \"sipTrunkGroupId\": \"<string>\",\n  \"pbxTnDigits\": \"<integer>\",\n  \"languageTag\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e31e676-2ab0-452e-b10c-4a76f9d8380d",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2f6a4ab1-a7dd-4bbe-a5f0-3833bde110cc",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "unlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "205fc8c1-7f82-4070-aa28-187991672720",
+          "name": "Retrieve list of shareable calling plans",
+          "request": {
+            "name": "Retrieve list of shareable calling plans",
+            "description": {
+              "content": "Use to retrieve calling plans that can be shared between sip trunks",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                "shared-plan-lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19d34d1e-9bc8-4d11-adc4-fd2339b2eb2e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    "shared-plan-lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"trunkName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"sipPassword\": \"<string>\",\n    \"sipUsername\": \"<string>\",\n    \"callbackNumber\": \"<string>\",\n    \"concurrentCalls\": \"<integer>\",\n    \"maxBurstCalls\": \"<integer>\",\n    \"callingPlans\": [\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      }\n    ],\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sipProxyServer\": \"<string>\",\n    \"lockedOut\": \"<boolean>\",\n    \"localServicesEnabled\": \"<boolean>\",\n    \"primaryTn\": \"<string>\",\n    \"extensionPatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"externalChargeNumber\": \"<string>\",\n    \"newCppId\": \"<string>\",\n    \"setupCallingPlan\": {\n      \"referenceId\": \"<string>\",\n      \"callingPlanType\": \"<string>\"\n    },\n    \"provisioningStatus\": \"<string>\",\n    \"ipBasedAuthEnabled\": \"<boolean>\",\n    \"ipAddress\": \"<string>\",\n    \"portNumber\": \"<integer>\",\n    \"accessEndpoints\": [\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      },\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      }\n    ],\n    \"sipTrunkGroupId\": \"<string>\",\n    \"pbxTnDigits\": \"<integer>\",\n    \"languageTag\": \"<string>\"\n  },\n  {\n    \"partitionId\": \"<string>\",\n    \"accountId\": \"<string>\",\n    \"trunkName\": \"<string>\",\n    \"id\": \"<string>\",\n    \"sipPassword\": \"<string>\",\n    \"sipUsername\": \"<string>\",\n    \"callbackNumber\": \"<string>\",\n    \"concurrentCalls\": \"<integer>\",\n    \"maxBurstCalls\": \"<integer>\",\n    \"callingPlans\": [\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"referenceId\": \"<string>\",\n        \"referenceType\": \"<string>\",\n        \"callingPlanProductId\": \"<string>\",\n        \"endDate\": \"<dateTime>\",\n        \"startDate\": \"<dateTime>\",\n        \"planMinutes\": \"<integer>\",\n        \"secondsRemaining\": \"<long>\"\n      }\n    ],\n    \"telephoneNumbers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sipProxyServer\": \"<string>\",\n    \"lockedOut\": \"<boolean>\",\n    \"localServicesEnabled\": \"<boolean>\",\n    \"primaryTn\": \"<string>\",\n    \"extensionPatterns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"externalChargeNumber\": \"<string>\",\n    \"newCppId\": \"<string>\",\n    \"setupCallingPlan\": {\n      \"referenceId\": \"<string>\",\n      \"callingPlanType\": \"<string>\"\n    },\n    \"provisioningStatus\": \"<string>\",\n    \"ipBasedAuthEnabled\": \"<boolean>\",\n    \"ipAddress\": \"<string>\",\n    \"portNumber\": \"<integer>\",\n    \"accessEndpoints\": [\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      },\n      {\n        \"site\": \"<string>\",\n        \"address\": \"<string>\",\n        \"port\": \"<integer>\",\n        \"protocol\": \"<string>\"\n      }\n    ],\n    \"sipTrunkGroupId\": \"<string>\",\n    \"pbxTnDigits\": \"<integer>\",\n    \"languageTag\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "528325a8-053f-436b-994f-0b511430765d",
+          "name": "Retrieve SIP trunk registration status",
+          "request": {
+            "name": "Retrieve SIP trunk registration status",
+            "description": {
+              "content": "Use to retrieve SIP trunk registration status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunk_2",
+                ":sipTrunkId",
+                "registrationstatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sipTrunkId",
+                  "description": "(Required) SIP trunk ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2af213cd-f672-4b21-8265-225b63f939fb",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "registrationstatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registered\": false,\n  \"lockedOut\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c102a701-d5d9-47fb-afcf-be89f8f7e102",
+              "name": "Invalid SIP trunk ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "registrationstatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54b3bef7-7a1f-4ff0-b48a-6ac6d4ddcffd",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunk_2",
+                    ":sipTrunkId",
+                    "registrationstatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sipTrunkId",
+                      "description": "(Required) SIP trunk ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c6659ea9-64b0-454f-b109-f90c37af1826",
+    "name": "Alianza SIP Trunk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged SIP Trunk across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

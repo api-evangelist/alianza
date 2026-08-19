@@ -1,0 +1,721 @@
+openapi: 3.2.0
+info:
+  title: Alianza Account Device API
+  version: '2'
+  description: 'Operations tagged Account Device across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Account Device
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}:
+    get:
+      tags:
+      - Account Device
+      summary: List DeviceLines by MacAddress
+      description: List DeviceLines by macAddress
+      operationId: listDevices_1
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: DeviceX
+                  $ref: '#/components/schemas/DeviceX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+    post:
+      tags:
+      - Account Device
+      summary: Bulk Import Device Lines
+      description: 'Use to bulk import lines for a given device.  Note: To use this you must already have a device line defined for this MacAddress'
+      operationId: bulkImportDevice
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: FileImportValidationErrorX
+                  $ref: '#/components/schemas/FileImportValidationErrorX'
+      responsesObject:
+        '201':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+          schema:
+            type: array
+            items:
+              originalRef: FileImportValidationErrorX
+              $ref: '#/components/schemas/FileImportValidationErrorX'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+        description: CSV list of device lines (LINE_NUMBER, LINE_TYPE, REFERENCED_USER_EXTENSION, SPEED_DIAL, SPEED_DIAL_DISPLAY_NAME)
+        required: true
+    delete:
+      tags:
+      - Account Device
+      summary: Delete all devicelines (by mac)
+      description: Use to delete a device and all its lines using the macaddress
+      operationId: deleteDeviceByMac
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Device not found
+      responsesObject:
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/csv:
+    get:
+      tags:
+      - Account Device
+      summary: CSV export of device lines
+      description: CSV Export of device lines
+      operationId: listDevicesCSV
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/metadata:
+    get:
+      tags:
+      - Account Device
+      summary: Device (by mac) Metadata
+      description: Use to retrieve device (mac) metadata
+      operationId: getDeviceMetadata
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceMetadataX
+                $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          schema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+    put:
+      tags:
+      - Account Device
+      summary: Device (by mac) Metadata
+      description: Use to update device (mac) metadata
+      operationId: updateDeviceMetadata
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceMetadataX
+                $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          schema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceMetadataX
+              $ref: '#/components/schemas/DeviceMetadataX_2'
+        description: Device Metadata
+        required: true
+    patch:
+      tags:
+      - Account Device
+      summary: Device (by mac) Metadata
+      description: Use to update device (mac) metadata
+      operationId: patchDeviceMetadata
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceMetadataX
+                $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          schema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceMetadataX
+              $ref: '#/components/schemas/DeviceMetadataX_2'
+        description: Device Metadata
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/provisioning:
+    get:
+      tags:
+      - Account Device
+      summary: Provisioning info for this device
+      description: Provisioning info for this device
+      operationId: getProvisoningRequest
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ProvisioningRequestX
+                $ref: '#/components/schemas/ProvisioningRequestX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+          schema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/metadata/generateadminpassword:
+    post:
+      tags:
+      - Account Device
+      summary: Device (by mac) Metadata
+      description: Use to update device (mac) metadata
+      operationId: generateAdminPassword
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceMetadataX
+                $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+          schema:
+            originalRef: DeviceMetadataX
+            $ref: '#/components/schemas/DeviceMetadataX_2'
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/metadata/resetencryptionkey:
+    post:
+      tags:
+      - Account Device
+      summary: Device (by mac) Metadata
+      description: Use to reset the current encryption key as though the device has been factory reset and needs to start over
+      operationId: resetEncryptionKey
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Device not found
+      responsesObject:
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/validateproperties:
+    get:
+      tags:
+      - Account Device
+      summary: Pre-validate property on the Device object
+      description: ''
+      operationId: validateProperties_2
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: lineno
+        in: query
+        description: Line Number
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+components:
+  schemas:
+    MultipartFormDataInput_2:
+      type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    ProvisioningRequestX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+    DeviceX_2:
+      type: object
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      properties:
+        id:
+          type: string
+        deviceTypeId:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        macAddress:
+          type: string
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+        state:
+          type: string
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
+    DeviceMetadataX_2:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        deviceTypeId:
+          type: string
+        sideCarTypeId:
+          type: string
+        numSideCars:
+          type: integer
+          format: int32
+        adminPassword:
+          type: string
+        provisionerType:
+          type: string
+          enum:
+          - ALIANZA
+          - PHONISM
+        id:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

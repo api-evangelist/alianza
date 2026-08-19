@@ -1,0 +1,305 @@
+openapi: 3.2.0
+info:
+  title: Alianza Asynchronous JOB Tracker API
+  version: '2'
+  description: 'Operations tagged Asynchronous JOB Tracker across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Asynchronous JOB Tracker
+paths:
+  /v2/job/{jobId}:
+    get:
+      tags:
+      - Asynchronous JOB Tracker
+      summary: Job
+      description: Return the specified job
+      operationId: get
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id
+  /v2/job/input:
+    post:
+      tags:
+      - Asynchronous JOB Tracker
+      summary: Get input url
+      description: Get a presigned url to upload data to. Also gets a key needed to create the job after the data is uploaded.
+      operationId: input
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: JobUpload
+            $ref: '#/components/schemas/JobUpload_2'
+          content:
+            application/json:
+              schema:
+                originalRef: JobUpload
+                $ref: '#/components/schemas/JobUpload_2'
+        '401':
+          description: Invalid User
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: JobUpload
+            $ref: '#/components/schemas/JobUpload_2'
+          schema:
+            originalRef: JobUpload
+            $ref: '#/components/schemas/JobUpload_2'
+        '401':
+          description: Invalid User
+  /v2/job/{jobId}/input:
+    get:
+      tags:
+      - Asynchronous JOB Tracker
+      summary: Job Input
+      description: Download the job input
+      operationId: getInput
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+          content:
+            application/octet-stream:
+              schema:
+                originalRef: InputStream
+                $ref: '#/components/schemas/InputStream'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no input
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+          schema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no input
+  /v2/job/{jobId}/output:
+    get:
+      tags:
+      - Asynchronous JOB Tracker
+      summary: Job Output
+      description: Download the job results output
+      operationId: getOutput
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+          content:
+            application/octet-stream:
+              schema:
+                originalRef: InputStream
+                $ref: '#/components/schemas/InputStream'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no output
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+          schema:
+            originalRef: InputStream
+            $ref: '#/components/schemas/InputStream'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no output
+  /v2/job/{jobId}/output-url:
+    get:
+      tags:
+      - Asynchronous JOB Tracker
+      summary: Job Output url
+      description: Return the job download url
+      operationId: getOutputUrl
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: JobOutputUrl
+            $ref: '#/components/schemas/JobOutputUrl'
+          content:
+            application/json:
+              schema:
+                originalRef: JobOutputUrl
+                $ref: '#/components/schemas/JobOutputUrl'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no output
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: JobOutputUrl
+            $ref: '#/components/schemas/JobOutputUrl'
+          schema:
+            originalRef: JobOutputUrl
+            $ref: '#/components/schemas/JobOutputUrl'
+        '401':
+          description: Invalid User
+        '404':
+          description: EntityNotFound when there is no job with the given Id or if the job has no output
+components:
+  schemas:
+    InputStream:
+      type: object
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    JobOutputUrl:
+      type: object
+      properties:
+        url:
+          type: string
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+    JobUpload_2:
+      type: object
+      properties:
+        url:
+          type: string
+        key:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

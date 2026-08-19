@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Rate Center Inventory API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rate Center Inventory",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "(DEPRECATED) Retrieve rate center inventory plan in CSV format",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/inventoryplan",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "(DEPRECATED) Retrieve rate center inventory plan in CSV format"
+        },
+        {
+          "info": {
+            "name": "(DEPRECATED) Import rate center inventory plan in CSV format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/inventoryplan",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "(DEPRECATED) Import rate center inventory plan in CSV format"
+        },
+        {
+          "info": {
+            "name": "Initiates the creation of a rate center inventory plan CSV file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/inventoryplan_2",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Creates an <a href=\"#/~schema/Job\">asynchronous job</a> that generates a CSV file for download.\n<span hidden>Please refer to <a href=\"jobs.html#monitor-job-progress\">monitoring job progress</a> and <a href=\"jobs.html#get-job-output\">retrieving job output</a> for instructions on retrieving the report.</span>\n"
+        },
+        {
+          "info": {
+            "name": "Upload a CSV file containing the rate center inventory plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/inventoryplan_2",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload a CSV file containing the rate center inventory plan"
+        },
+        {
+          "info": {
+            "name": "Retrieve email addresses that will be sent reorder notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/reordernotification",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Retrieve email addresses that will be sent reorder notifications"
+        },
+        {
+          "info": {
+            "name": "Update email addresses that will be sent reorder notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/reordernotification",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update email addresses that will be sent reorder notifications"
+        },
+        {
+          "info": {
+            "name": "Telephone number search grouped by rate centers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/tnsearch",
+            "params": [
+              {
+                "name": "distanceunit",
+                "value": "",
+                "type": "query",
+                "description": "Distance Unit (miles, kilometers, radians)"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "searchterm",
+                "value": "",
+                "type": "query",
+                "description": "Search Term (postal code)"
+              }
+            ]
+          },
+          "docs": "Use to search for available telephone numbers available to activate by postal code or lat/long"
+        },
+        {
+          "info": {
+            "name": "Retrieve rate center associated with the telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/ratecenter/:tn",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve rate center associated with the telephone number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

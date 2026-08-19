@@ -1,0 +1,1006 @@
+openapi: 3.2.0
+info:
+  title: Alianza Account Device Line API
+  version: '2'
+  description: 'Operations tagged Account Device Line across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Account Device Line
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/provisioningstatus:
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve device provisioning status
+      description: Use to retrieve a device's provisioning status
+      operationId: provisioningStatus
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceStatusX
+            $ref: '#/components/schemas/DeviceStatusX'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceStatusX
+                $ref: '#/components/schemas/DeviceStatusX'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceStatusX
+            $ref: '#/components/schemas/DeviceStatusX'
+          schema:
+            originalRef: DeviceStatusX
+            $ref: '#/components/schemas/DeviceStatusX'
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/provisioning:
+    get:
+      tags:
+      - Account Device Line
+      summary: Provisioning info for this device line
+      description: It is preferable if you use the device/{macAddress}/provisioning to get this information
+      operationId: provisioningInfo
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ProvisioningRequestX
+                $ref: '#/components/schemas/ProvisioningRequestX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+          schema:
+            originalRef: ProvisioningRequestX
+            $ref: '#/components/schemas/ProvisioningRequestX_2'
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/registrationstatus:
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve device registration status
+      description: Use to retrieve a device's registration status
+      operationId: registrationStatus
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatusX
+            $ref: '#/components/schemas/RegistrationStatusX'
+          content:
+            application/json:
+              schema:
+                originalRef: RegistrationStatusX
+                $ref: '#/components/schemas/RegistrationStatusX'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatusX
+            $ref: '#/components/schemas/RegistrationStatusX'
+          schema:
+            originalRef: RegistrationStatusX
+            $ref: '#/components/schemas/RegistrationStatusX'
+        '404':
+          description: Device not found
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/swap/prevalidate:
+    get:
+      tags:
+      - Account Device Line
+      summary: Pre-validate Device Line MacAddress.
+      description: ''
+      operationId: swapPrevalidate
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: macaddress
+        in: query
+        description: Mac address
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}:
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve device
+      description: Use to retrieve a device
+      operationId: getDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: deviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceX
+                $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid partition, account or user ID supplied
+        '404':
+          description: User not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid partition, account or user ID supplied
+        '404':
+          description: User not found
+    put:
+      tags:
+      - Account Device Line
+      summary: Update device
+      description: Use to update a device
+      operationId: putDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceX
+                $ref: '#/components/schemas/DeviceX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+        '404':
+          description: Device not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+        description: Device object
+        required: true
+    delete:
+      tags:
+      - Account Device Line
+      summary: Delete device
+      description: Use to delete a device
+      operationId: removeDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '404':
+          description: Device not found
+    patch:
+      tags:
+      - Account Device Line
+      summary: Update device
+      description: Use to update a device
+      operationId: updateDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceX
+                $ref: '#/components/schemas/DeviceX_2'
+        '404':
+          description: Device not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+        '404':
+          description: Device not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+        description: Device object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/deviceline:
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve device list
+      description: 'Use to retrieve a list of devices associated to an account.  NOTE: if the user making the request in an EndUser and they only have myUser access then you MUST pass filter=userid and filterType=OWNING_USERID or filterType=REFERENCED_USERID or else you will get a NotPermitted error.'
+      operationId: listDevices
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: Filter used in conjunction with filtertype to only return specific devices on the account
+        required: false
+        schema:
+          type: string
+      - name: filterType
+        in: query
+        description: Used in conjunction with filter to return only specific devices on the account
+        required: false
+        schema:
+          type: string
+          enum:
+          - MAC_ADDRESS
+          - MAC_ADDRESS_INVENTORY
+          - OWNING_USERID
+          - REFERENCED_USERID
+          - ACCOUNT
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: DeviceX
+                  $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid partition, account or user ID supplied
+        '404':
+          description: User not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            type: array
+            items:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid partition, account or user ID supplied
+        '404':
+          description: User not found
+    post:
+      tags:
+      - Account Device Line
+      summary: Create a new device
+      description: Use to create a new device on a user
+      operationId: createDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceX
+                $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid device object supplied
+        '404':
+          description: Not found
+      responsesObject:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid device object supplied
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceX
+              $ref: '#/components/schemas/DeviceX_2'
+        description: Device object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/deviceline/{deviceId}/swap:
+    post:
+      tags:
+      - Account Device Line
+      summary: Swap device
+      description: Use to replace an existing device with a new device
+      operationId: swapDevice
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceX
+                $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid MAC or device type supplied
+      responsesObject:
+        '201':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+          schema:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX_2'
+        '400':
+          description: Invalid MAC or device type supplied
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceSwapX
+              $ref: '#/components/schemas/DeviceSwapX_2'
+        description: DeviceSwap object containing the new macAddress and deviceTypeId
+        required: true
+  /v2/partition/{partitionId}/deviceprovisioning/account/{accountId}/device/{deviceId}:
+    servers:
+    - url: https://api.d2.alianza.com
+      description: Development
+    - url: https://api.q2.alianza.com
+      description: QA
+    - url: https://api.b2.alianza.com
+      description: Beta
+    - url: https://api.alianza.com
+      description: Production
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve device provisioning data
+      description: <p>Use to retrieve a device's provisioning data by <a href="#/~schema/DeviceX">device.id</a>. Device.id actually identifies an Account Device Line, while the data returned by this call is best thought of as being one level higher, a list of related lines which will include the line searched by. (if present)</p> <p>This is the canonical way to request the SIP credentials of a device line, but it requires extra work on your part; you will have to dig down into the lines array and search it by line.lineNumber == <a href="#/~schema/DeviceX">device.lineNumber</a>.</p>
+      operationId: provisioningData
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, reference to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: deviceId
+        in: path
+        description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, reference to <a href="#/~schema/Account">account.partitionId</a>
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceData'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      security:
+      - X-Auth-Token: []
+  /v2/partition/{partitionId}/deviceprovisioning/{macAddress}:
+    servers:
+    - url: https://api.d2.alianza.com
+      description: Development
+    - url: https://api.q2.alianza.com
+      description: QA
+    - url: https://api.b2.alianza.com
+      description: Beta
+    - url: https://api.alianza.com
+      description: Production
+    get:
+      tags:
+      - Account Device Line
+      summary: Retrieve provisioning information for a specified device
+      description: Provisioning Information
+      operationId: getProvisioningByMacAddress
+      parameters:
+      - name: macAddress
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestedDeviceX'
+        '400':
+          description: User not found, partition not found or lack of permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      security:
+      - X-Auth-Token: []
+components:
+  schemas:
+    RegistrationStatusX:
+      type: object
+      properties:
+        registered:
+          type: boolean
+    DeviceSwapX_2:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+        deviceName:
+          type: string
+    RequestedDeviceLineX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        displayName:
+          type: string
+        sipUsername:
+          type: string
+        sipPassword:
+          type: string
+        dialPlan:
+          type: string
+        server:
+          type: string
+        serverPort:
+          type: string
+        emergencyNumber:
+          type: string
+        enabled:
+          type: boolean
+        faxEnabled:
+          type: boolean
+    DeviceStatusX:
+      type: object
+      properties:
+        success:
+          type: boolean
+        failureMessage:
+          type: string
+        macAddress:
+          type: string
+        request:
+          type: object
+          additionalProperties:
+            type: string
+        response:
+          type: object
+          additionalProperties:
+            type: string
+        updated:
+          type: string
+          format: date-time
+    DeviceData:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+          description: Reference to <a href="#/~schema/DeviceX">device.deviceTypeId</a> -> <a href="#/~schema/DeviceTypeX">deviceType.id</a> -> <a href="#/~schema/DeviceTypeX">deviceType.name</a>.  For possible values, query <a href="#/~operation/Reference%20Resources/getDeviceTypes">getDevicetypes</a>.
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+          description: This is a dial plan string which instructs a phone when to consider dialing "complete"; in other words, when the phone should send the digits to the switch. For example, it usually instructs a device to immediately send 911, and can also help the phone determine that an extension is being dialed, so it should send after the extension length has been reached. These rules are encoded in a language of sorts and are only really understood by the phone itself.
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
+          type: array
+          items:
+            type: object
+            properties:
+              macAddress:
+                type: string
+              lineNumber:
+                type: integer
+                format: int32
+              userId:
+                type: string
+              displayName:
+                type: string
+              sipUsername:
+                type: string
+              sipPassword:
+                type: string
+              server:
+                type: string
+              serverPort:
+                type: string
+              emergencyNumber:
+                type: string
+              enabled:
+                type: boolean
+              faxEnabled:
+                type: boolean
+    RequestedDeviceX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestedDeviceLineX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DeviceX_2:
+      type: object
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      properties:
+        id:
+          type: string
+        deviceTypeId:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        macAddress:
+          type: string
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+        state:
+          type: string
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
+    ProvisioningRequestX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

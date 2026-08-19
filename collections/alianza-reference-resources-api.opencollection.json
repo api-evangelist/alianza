@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Reference Resources API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DeviceType",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/devicetype/:id",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific DeviceType"
+        },
+        {
+          "info": {
+            "name": "DeviceTypes List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/devicetype",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of device types available to the given partition"
+        },
+        {
+          "info": {
+            "name": "DialPlanActionTypes List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/dialplan/actiontypes",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "includeRestricted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available dial plan action types"
+        },
+        {
+          "info": {
+            "name": "Language List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/language",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve a list of supported Languages"
+        },
+        {
+          "info": {
+            "name": "PermissionType and Access List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/permissions",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "usertype",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available Permission Types and their max Access level for a given UserType"
+        },
+        {
+          "info": {
+            "name": "RoutePlan default template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/routeplan-definition-template",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get the default rates csv for a RoutePlan"
+        },
+        {
+          "info": {
+            "name": "Address - SecondaryLocationType List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/secondary-location-types",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of available SecondaryLocationTypes"
+        },
+        {
+          "info": {
+            "name": "Device - SideCarType",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/sidecartype/:id",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a given SideCarType"
+        },
+        {
+          "info": {
+            "name": "Device - SideCarType List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/sidecartype",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of available SideCarTypes"
+        },
+        {
+          "info": {
+            "name": "getList",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/system-default-media/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "TimeZone List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ref/timezones",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of supported TimeZones"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,268 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public SSO Exemptions API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSO Exemptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SSO exemptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/exemptions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              }
+            ]
+          },
+          "docs": "Retrieves all SSO exemptions for an account."
+        },
+        {
+          "info": {
+            "name": "Add SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/exemptions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an SSO exemption for specific users or groups in an account.\n\nExemptions allow designated users or groups to bypass SSO requirements\nand use traditional authentication.\n"
+        },
+        {
+          "info": {
+            "name": "Get SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific SSO exemption by ID."
+        },
+        {
+          "info": {
+            "name": "Update SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing SSO exemption."
+        },
+        {
+          "info": {
+            "name": "Delete SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/accounts/:accountId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ]
+          },
+          "docs": "Removes an SSO exemption."
+        },
+        {
+          "info": {
+            "name": "List enforced SSO exemptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/exemptions",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ]
+          },
+          "docs": "Retrieves all SSO exemptions for a partition with enforced SSO."
+        },
+        {
+          "info": {
+            "name": "Add enforced SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/exemptions",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an SSO exemption for entire accounts in a partition with enforced SSO.\n"
+        },
+        {
+          "info": {
+            "name": "Get specific enforced SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific SSO exemption by ID for enforced SSO."
+        },
+        {
+          "info": {
+            "name": "Update enforced SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing SSO exemption for enforced SSO."
+        },
+        {
+          "info": {
+            "name": "Delete enforced SSO exemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/authn/sso-config/partitions/enforced/:partitionId/exemptions/:exemptionId",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "exemptionId",
+                "value": "",
+                "type": "path",
+                "description": "Exemption identifier"
+              }
+            ]
+          },
+          "docs": "Removes an SSO exemption from enforced SSO configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

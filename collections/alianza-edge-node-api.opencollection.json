@@ -1,0 +1,277 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Edge Node API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Edge Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Edge Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "default",
+                "value": "",
+                "type": "query",
+                "description": "If true, the list will contain only the partition's default node"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "defaults to 100"
+              },
+              {
+                "name": "pageNum",
+                "value": "",
+                "type": "query",
+                "description": "defaults to 0"
+              }
+            ]
+          },
+          "docs": "List edge nodes for a partition ID"
+        },
+        {
+          "info": {
+            "name": "Create Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node",
+            "params": [
+              {
+                "name": "default",
+                "value": "",
+                "type": "query",
+                "description": "Set node as default for new accounts. Defaults to false."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Edge Node"
+        },
+        {
+          "info": {
+            "name": "Get Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node/:nodeId",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get edge node by node ID"
+        },
+        {
+          "info": {
+            "name": "Update Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node/:nodeId",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Edge Node"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update edge node"
+        },
+        {
+          "info": {
+            "name": "Delete Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node/:nodeId",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "path",
+                "description": "ID of Edge Node"
+              }
+            ]
+          },
+          "docs": "Delete edge node"
+        },
+        {
+          "info": {
+            "name": "Get device Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "query",
+                "description": "Return device assignment, (partitionId parameter must be blank)"
+              },
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "query",
+                "description": "Return all assignments on partition (deviceId parameter must be blank)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "defaults to 100"
+              },
+              {
+                "name": "pageNum",
+                "value": "",
+                "type": "query",
+                "description": "defaults to 0"
+              }
+            ]
+          },
+          "docs": "Get device Edge Node"
+        },
+        {
+          "info": {
+            "name": "Configure Edge Node for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Configure Edge Node for a device"
+        },
+        {
+          "info": {
+            "name": "Remove Edge Node configuration for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "query",
+                "description": "ID of device"
+              }
+            ]
+          },
+          "docs": "Remove Edge Node configuration for a device"
+        },
+        {
+          "info": {
+            "name": "Get device Edge Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment/:nodeAssignmentId",
+            "params": [
+              {
+                "name": "nodeAssignmentId",
+                "value": "",
+                "type": "path",
+                "description": "Return device assignment"
+              }
+            ]
+          },
+          "docs": "Get device Edge Node"
+        },
+        {
+          "info": {
+            "name": "Update Edge Node configuration for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment/:nodeAssignmentId",
+            "params": [
+              {
+                "name": "nodeAssignmentId",
+                "value": "",
+                "type": "path",
+                "description": "Device node assignment id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Edge Node configuration for a device"
+        },
+        {
+          "info": {
+            "name": "Remove Edge Node configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/enm/edge-node-assignment/:nodeAssignmentId",
+            "params": [
+              {
+                "name": "nodeAssignmentId",
+                "value": "",
+                "type": "path",
+                "description": "Device node assignment id"
+              }
+            ]
+          },
+          "docs": "Remove Edge Node configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

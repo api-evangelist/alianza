@@ -1,0 +1,1537 @@
+{
+  "item": [
+    {
+      "id": "a8232663-8085-4303-ab2a-7620235a3ddf",
+      "name": "SIP Trunk Group",
+      "description": {
+        "content": "Operations for managing SIP trunk groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "826833f0-db81-43bf-a38a-934ef310bea1",
+          "name": "Retrieve the groups on the account",
+          "request": {
+            "name": "Retrieve the groups on the account",
+            "description": {
+              "content": "Use to retrieve the SIP trunk groups created for the specified account ID and partition ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82c4d9fb-7f01-4efb-a15e-ea6bf66132f1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"unconditionalForward\": {\n      \"referenceType\": \"AUTO_ATTENDANT\",\n      \"referenceId\": \"string\",\n      \"enabled\": true\n    },\n    \"unreachableForward\": [\n      {\n        \"referenceType\": \"BUSY\",\n        \"referenceId\": \"string\"\n      },\n      {\n        \"referenceType\": \"AUTO_ATTENDANT\",\n        \"referenceId\": \"string\"\n      }\n    ],\n    \"capacityForward\": [\n      {\n        \"referenceType\": \"VOICEMAIL\",\n        \"referenceId\": \"string\"\n      },\n      {\n        \"referenceType\": \"TELEPHONE\",\n        \"referenceId\": \"string\"\n      }\n    ],\n    \"sipTrunksIds\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"unconditionalForward\": {\n      \"referenceType\": \"VOICEMAIL\",\n      \"referenceId\": \"string\",\n      \"enabled\": true\n    },\n    \"unreachableForward\": [\n      {\n        \"referenceType\": \"SIP_TRUNK\",\n        \"referenceId\": \"string\"\n      },\n      {\n        \"referenceType\": \"AUTO_ATTENDANT\",\n        \"referenceId\": \"string\"\n      }\n    ],\n    \"capacityForward\": [\n      {\n        \"referenceType\": \"SIP_TRUNK\",\n        \"referenceId\": \"string\"\n      },\n      {\n        \"referenceType\": \"VOICEMAIL\",\n        \"referenceId\": \"string\"\n      }\n    ],\n    \"sipTrunksIds\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "885f9876-5b1a-48b8-b8a2-0192029678ec",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ac0e556-b600-40be-a71e-25cc8cca6bf7",
+          "name": "Create a new SIP trunk group",
+          "request": {
+            "name": "Create a new SIP trunk group",
+            "description": {
+              "content": "Use to create a new SIP trunk group for the specified account ID and partition ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea581d7c-4483-450f-bd86-d855340c0805",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53a68410-3f5f-40aa-af39-e0d9d988290b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8b4cf0d-5bb1-4971-a772-469559ab755a",
+          "name": "Delete a SIP trunk group",
+          "request": {
+            "name": "Delete a SIP trunk group",
+            "description": {
+              "content": "Use to delete the SIP trunk group for the specified account ID, partition ID and group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) id of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) id of the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) id group"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "deff4321-107b-43d9-8b3b-82aa41c57c51",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40393c9e-a654-4490-abe6-5298ec1a3435",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16789aa3-c1c2-46c8-ab5c-9cbf8c7c2638",
+          "name": "Retrieve a DIP trunk group",
+          "request": {
+            "name": "Retrieve a DIP trunk group",
+            "description": {
+              "content": "Use to retrieve the SIP trunk group for the specified account ID, partition ID and group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) id of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) id of the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) id group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c9681ca-6ee7-4ca4-946e-a7c8bb542429",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5b5b75d-0dd1-4a81-8716-cc4c70457980",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "326a9cd7-e5c7-49f6-b1bb-e7871121f5b1",
+          "name": "Update a SIP trunk group",
+          "request": {
+            "name": "Update a SIP trunk group",
+            "description": {
+              "content": "Use to update a SIP trunk group created for the specified account ID, partition ID and group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) id of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) id of the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) id group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf794ad1-8535-4cab-b2f6-fcc774624c30",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb2d4cd-3c5e-4480-b913-7591744460f3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d41abb9-77f8-454a-b328-3b74bc0378f2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"partitionId\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"sipTrunksIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e019b4f9-79d4-4fd6-91dc-eacb8684f0ec",
+          "name": "Retrieves the forwarding rules",
+          "request": {
+            "name": "Retrieves the forwarding rules",
+            "description": {
+              "content": "Use to retrieve the SIP trunk group forwarding rules for the specified account ID, partition ID and group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup",
+                ":groupId",
+                "forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) id of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) id of the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) id group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88ae5f6f-8439-40b9-b6b8-e4fea0a5362f",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"sipTrunkGroupId\": \"string\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82792624-d3dc-4dc4-911e-06ae5f39b740",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "109b0f04-11dc-44d5-9990-e403cffe6b15",
+          "name": "Updates the forwarding rules",
+          "request": {
+            "name": "Updates the forwarding rules",
+            "description": {
+              "content": "Use to update the SIP trunk group forwarding rules created for the specified account ID, partition ID and group ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "siptrunkgroup",
+                ":groupId",
+                "forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) id of the partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) id of the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) id group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d223d233-2d6c-40a9-b4f2-348de982830a",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"sipTrunkGroupId\": \"string\",\n  \"unconditionalForward\": {\n    \"referenceType\": \"<string>\",\n    \"referenceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  \"unreachableForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ],\n  \"capacityForward\": [\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    },\n    {\n      \"referenceType\": \"<string>\",\n      \"referenceId\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1147533-7285-44da-8d2e-9ff6145892da",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "siptrunkgroup",
+                    ":groupId",
+                    "forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) id of the partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) id of the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) id group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04d2ebe8-c011-4ea9-89e0-34cea1c5f7a2",
+    "name": "Alianza Public SIP Trunk Group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

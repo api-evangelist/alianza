@@ -1,0 +1,995 @@
+openapi: 3.2.0
+info:
+  title: Alianza Voicemail Box API
+  version: '2'
+  description: 'Operations tagged Voicemail Box across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Voicemail Box
+paths:
+  ? /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/greetings/{greetingType}/media
+  : get:
+      tags:
+      - Voicemail Box
+      summary: Retrieve Greeting media file
+      description: Use to retrieve media file for a business-line voicemail box
+      operationId: retrieveBusinessLineGreeting
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            application/octet-stream:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+    put:
+      tags:
+      - Voicemail Box
+      summary: Upload Business-Line Greeting media file
+      description: Use to upload media file for a business-line voicemail box (wav, mp3, ogg)
+      operationId: uploadBusinessLineGreeting
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: Media file
+                  format: binary
+              required:
+              - file
+    delete:
+      tags:
+      - Voicemail Box
+      summary: Delete Greeting media file
+      description: Use to delete media file for a business-line voicemail box
+      operationId: deleteBusinessLineGreeting
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox:
+    get:
+      tags:
+      - Voicemail Box
+      summary: Retrieve voicemail box list
+      description: Use to retrieve a list of voicemail boxes for an account
+      operationId: retrieveVoicemailBoxList
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: parentId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: VoicemailBoxX
+                  $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            type: array
+            items:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+    post:
+      tags:
+      - Voicemail Box
+      summary: Create voicemail box
+      description: Use to create a new voicemail box
+      operationId: createVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxX
+                $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+        description: voicemail message object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/pin:
+    put:
+      tags:
+      - Voicemail Box
+      summary: Set a PIN for a reference using a voicemail box
+      description: ''
+      operationId: setPin
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PinChange
+              $ref: '#/components/schemas/PinChange'
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/greetings/{greetingType}/media:
+    get:
+      tags:
+      - Voicemail Box
+      summary: Retrieve User Greeting media file
+      description: Use to retrieve media file for a users voicemail box
+      operationId: retrieveGreeting
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            application/octet-stream:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+    put:
+      tags:
+      - Voicemail Box
+      summary: Upload User Greeting media file
+      description: Use to upload media file for a users voicemail box (wav, mp3, ogg)
+      operationId: uploadGreeting
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: Media file
+                  format: binary
+              required:
+              - file
+    delete:
+      tags:
+      - Voicemail Box
+      summary: Delete User Greeting media file
+      description: Use to delete media file for a users voicemail box
+      operationId: deleteGreeting
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: greetingType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - Personal
+          - PersonalNoAnswer
+          - PersonalBusy
+          - PersonalName
+          - PrimaryGreeting
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}:
+    get:
+      tags:
+      - Voicemail Box
+      summary: Get voicemail box
+      description: Use to retrieve a voicemail box
+      operationId: retrieveVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxX
+                $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: invalid voicemail message id supplied
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: invalid voicemail message id supplied
+        '404':
+          description: voicemail message not found
+    put:
+      tags:
+      - Voicemail Box
+      summary: Update voicemail box
+      description: Use to update a voicemail box
+      operationId: updateVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxX
+                $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+        description: voicemail message object
+        required: true
+    delete:
+      tags:
+      - Voicemail Box
+      summary: Delete voicemail box
+      description: Use to delete a voicemail box.
+      operationId: deleteVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: voicemail box id not found
+        '404':
+          description: voicemail box not found
+      responsesObject:
+        '400':
+          description: voicemail box id not found
+        '404':
+          description: voicemail box not found
+    patch:
+      tags:
+      - Voicemail Box
+      summary: Update voicemail box
+      description: Use to update a voicemail box
+      operationId: patchVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxX
+                $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailBoxX
+              $ref: '#/components/schemas/VoicemailBoxX_2'
+        description: voicemail message object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/unlock:
+    put:
+      tags:
+      - Voicemail Box
+      summary: Unlock a sub voicemailbox
+      description: Use to unlock the pin on a subvoicemail box
+      operationId: unlockVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: resetPin
+        in: query
+        description: New voicemail Pin
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxX
+                $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+          schema:
+            originalRef: VoicemailBoxX
+            $ref: '#/components/schemas/VoicemailBoxX_2'
+        '400':
+          description: voicemail error
+        '404':
+          description: voicemail box not found
+components:
+  schemas:
+    PinChange:
+      type: object
+      properties:
+        accountId:
+          type: string
+        voicemailBoxId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        pin:
+          type: string
+    VoicemailBoxX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: name of the box
+        partitionId:
+          type: string
+          description: partitionid of the account
+        accountId:
+          type: string
+          description: accountid of the voicemail box
+        voicemailToEmailAddresses:
+          type: array
+          description: email addresses to forward all voicemail messages to
+          uniqueItems: true
+          items:
+            type: string
+        voicemailToEmailEnabled:
+          type: boolean
+          description: enables voicemail to email
+        voicemailKeepAfterEmail:
+          type: boolean
+          description: keep or delete the voicemail after being emailed
+        referencedBy:
+          type: array
+          description: References that point at this voicemail box
+          uniqueItems: true
+          items:
+            originalRef: VoicemailReferencedByX
+            $ref: '#/components/schemas/VoicemailReferencedByX'
+        locale:
+          type: string
+          description: Locale of the voicemail box
+        totalVoicemails:
+          type: integer
+          format: int32
+          description: Total voicemails on the box
+        totalUnreadVoicemails:
+          type: integer
+          format: int32
+          description: Total unread voicemails on the box
+        type:
+          type: string
+          description: Type of voicemail
+          enum:
+          - Normal
+          - Sub
+          - Primary
+          - BUSINESS_LINE
+        subIds:
+          type: array
+          description: List of sub voicemail ids, this will be populated only if this voicemail box is primary
+          items:
+            type: string
+        parentId:
+          type: string
+          description: Parent id for this voicemail box. Applicable if this voicemail box is a sub
+        dtmfOption:
+          type: string
+          description: DTMF option for this voicemail box.  If this voicemail box is a sub, options are 2 through 8 otherwise option must be 1
+        pinLockedOut:
+          type: boolean
+          description: Marks whether the pin on this sub voicemailbox has been locked out
+        messageTranscriptionEnabled:
+          type: boolean
+          description: Specifies whether voicemail messages will be transcribed to text after a voicemail message is left
+        greetings:
+          type: object
+          description: Map of voicemail box greetings
+          additionalProperties:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+    VoicemailMessageX:
+      type: object
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+          description: date the message was left
+        fromName:
+          type: string
+          description: callerId name of caller that left message, if available
+        fromNumber:
+          type: string
+          description: callerId number of caller that left message, if available
+        lengthInPages:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a FAX
+        lengthInSeconds:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a VOICE message
+        read:
+          type: boolean
+          description: has the message been seen / opened / read
+        sizeInBytes:
+          type: integer
+          format: int64
+          description: size of message in bytes
+        messageType:
+          type: string
+          description: type of message
+          enum:
+          - FAX
+          - VOICE
+        voicemailBoxId:
+          type: string
+          description: voicemail box id
+        accountId:
+          type: string
+          description: Account of the voicemail box
+        partitionId:
+          type: string
+          description: Partition of the account
+        toPhoneNumber:
+          type: string
+          description: The to number associated with the voicemail message
+        transcriptionStatus:
+          type: string
+          description: The status of the transcription
+        transcriptionInfo:
+          type: string
+          description: Details (quality, etc...) about the transcription
+        transcriptionText:
+          type: string
+          description: The resulting text of the transcribed message
+        storageId:
+          type: string
+          format: uuid
+          description: The storage id of audio file
+        audioFileAndType:
+          type: string
+          description: The type of audio file
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

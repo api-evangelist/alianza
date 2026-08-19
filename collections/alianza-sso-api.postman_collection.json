@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "1d1f52da-c3c8-4ee5-adba-454486af9475",
+      "name": "SSO",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c541808c-0680-42d5-9b6d-6e5e71abda2d",
+          "name": "Get SSO data",
+          "request": {
+            "name": "Get SSO data",
+            "description": {
+              "content": "Returns data needed for the UI to initiate Single Sign On",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize",
+                "sso"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd4742c6-dc6f-4846-9502-2025d7ba7455",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"clientId\": \"string\",\n  \"ssoUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52f9de50-34c5-487a-9721-323449b285a9",
+          "name": "Authorization Code Exchange",
+          "request": {
+            "name": "Authorization Code Exchange",
+            "description": {
+              "content": "Pass the SSO response authorization code here to exchange it for a api authorization token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authorize",
+                "sso"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddf00ee2-0ea5-43a7-b7a8-032981cfb159",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authorize",
+                    "sso"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"EndUser\",\n  \"endUserType\": \"SUPER_ADMIN\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"DELETE\"\n  },\n  \"featureToggles\": {\n    \"key_0\": true\n  },\n  \"mustChangePassword\": true,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"mustAddEmail\": false,\n  \"pwdHash\": \"string\",\n  \"maxLifeInHours\": 4457,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6fd94da1-06dc-40b3-974e-9fc3bab25290",
+    "name": "Alianza Public SSO API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This documentation of the Alianza Public API is outdated. No further updates will be made to it.**\n\nYou are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at [https://developer.alianza.com/](https://developer.alianza.com/)",
+      "type": "text/plain"
+    }
+  }
+}

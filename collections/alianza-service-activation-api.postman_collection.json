@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "3d7e9604-cd83-431d-afa1-6ff9269fa73b",
+      "name": "Service Activation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "794a95ab-0d3e-4e3a-beb3-6bc5a2c6ca0a",
+          "name": "Retrieve a service activation event on an account",
+          "request": {
+            "name": "Retrieve a service activation event on an account",
+            "description": {
+              "content": "Use to retrieve a specific service activation event on an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "reference",
+                ":referenceId",
+                "type",
+                ":serviceType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f6f929c-16b0-4bca-9347-be5a3f868fd3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "reference",
+                    ":referenceId",
+                    "type",
+                    ":serviceType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"partitionId\": \"string\",\n  \"accountId\": \"string\",\n  \"serviceType\": \"CSR_CHANGE_REQUEST\",\n  \"referenceType\": \"BYOTN_PORT\",\n  \"referenceId\": \"string\",\n  \"activationStatusType\": \"IN_PROGRESS\",\n  \"createdDate\": \"2001-11-27T10:26:03.602Z\",\n  \"lastUpdatedDate\": \"2002-02-21T09:15:43.998Z\",\n  \"focDate\": \"1994-06-05T03:33:38.784Z\",\n  \"crdDate\": \"1950-01-01T19:53:01.487Z\",\n  \"city\": \"string\",\n  \"mainTelephoneNumber\": \"string\",\n  \"subTelephoneNumbers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"companyName\": \"string\",\n  \"state\": \"string\",\n  \"l3Reaction\": \"CANCEL\",\n  \"parentOrderId\": \"string\",\n  \"editableFieldTypes\": [\n    \"crdDate\",\n    \"wirelessAccountNumber\"\n  ],\n  \"losingCarrier\": \"string\",\n  \"inboundCarrierType\": \"TELUS\",\n  \"logs\": [\n    {\n      \"status\": \"FOC_RECEIVED\",\n      \"actionDate\": \"2021-10-22T23:10:09.608Z\",\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"creationDate\": \"2007-03-30T03:04:40.416Z\",\n      \"generatedTicketId\": \"string\"\n    },\n    {\n      \"status\": \"RESELLER_PENDING\",\n      \"actionDate\": \"1956-11-15T12:54:08.108Z\",\n      \"code\": \"string\",\n      \"message\": \"string\",\n      \"creationDate\": \"1960-10-14T20:09:12.283Z\",\n      \"generatedTicketId\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ecfcb2e-8bd1-4d96-ab9e-f898015fa5f0",
+              "name": "Invalid partition or account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "reference",
+                    ":referenceId",
+                    "type",
+                    ":serviceType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "64e3744a-0f64-4009-9899-6a62b690bc74",
+    "name": "Alianza Service Activation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Service Activation across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

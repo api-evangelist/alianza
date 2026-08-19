@@ -1,0 +1,322 @@
+openapi: 3.2.0
+info:
+  title: Alianza Calling Plan API
+  version: '2'
+  description: 'Operations tagged Calling Plan across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Calling Plan
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/callingplan:
+    get:
+      tags:
+      - Calling Plan
+      summary: Get Calling Plans for a given reference
+      description: will get a callingplan
+      operationId: getPlans
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+      - name: referenceId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: CallingPlanX
+              $ref: '#/components/schemas/CallingPlanX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: CallingPlanX
+                  $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: CallingPlanX
+              $ref: '#/components/schemas/CallingPlanX'
+          schema:
+            type: array
+            items:
+              originalRef: CallingPlanX
+              $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+    put:
+      tags:
+      - Calling Plan
+      summary: Add Calling Plan for a given reference
+      description: will add a callingplan
+      operationId: addPlan
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+          content:
+            application/json:
+              schema:
+                originalRef: CallingPlanX
+                $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+          schema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ModifyCallingPlanX
+              $ref: '#/components/schemas/ModifyCallingPlanX_2'
+    delete:
+      tags:
+      - Calling Plan
+      summary: Remove Calling Plan for a given reference
+      description: will remove a callingplan
+      operationId: removePlan
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+          content:
+            application/json:
+              schema:
+                originalRef: CallingPlanX
+                $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+          schema:
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Reference or Calling Plan Product not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ModifyCallingPlanX
+              $ref: '#/components/schemas/ModifyCallingPlanX_2'
+  /v2/ref/default-callingplan-definition:
+    get:
+      tags:
+      - Calling Plan
+      summary: Retrieve the default calling plan definition file
+      description: Use to retrieve the default calling plan definition file
+      operationId: getCallingPlanDefinition
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Invalid
+        '404':
+          description: File not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid
+        '404':
+          description: File not found
+components:
+  schemas:
+    ModifyCallingPlanX_2:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        callingPlanProductId:
+          type: string
+          description: Deprecated. Use the callingPlanReferenceId
+        callingPlanReferenceId:
+          type: string
+          description: When modifying an existing calling plan list, this is the calling plan product id. When opting to share an existing calling plan list, this is the the reference id that has the calling plan list that the new reference would share.
+        callingPlanType:
+          type: string
+          description: Indicates if the request is for a change to an existing calling plan list, share a calling plan list with another reference, or stop sharing the configured list with other references.
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
+        pending:
+          type: boolean
+          description: If false then the calling plan change will apply immediately.   If true then the change will take place at the account billing date. Does not apply when the request is to share a calling plan.
+        minutesUsed:
+          type: integer
+          format: int32
+          description: Only used on add. Will only be applied to new plans. Will not be applied to pending plans plans. Does not apply when the request is to share a calling plan.
+    CallingPlanX:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
+          type: integer
+          format: int32
+        secondsRemaining:
+          type: integer
+          format: int64
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

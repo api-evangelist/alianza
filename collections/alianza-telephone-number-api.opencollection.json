@@ -1,0 +1,1437 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Telephone Number API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Telephone Number",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieve_5",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Create telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a telephone number"
+        },
+        {
+          "info": {
+            "name": "Retrieve telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to retrieve information about a telephone number"
+        },
+        {
+          "info": {
+            "name": "Delete telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to delete a telephone number"
+        },
+        {
+          "info": {
+            "name": "Telephone number search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/search",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query Field: q=18015551212, q=84062, q=ALBANY, q=ALBANY.NY, LAT_LONG does not use this field"
+              },
+              {
+                "name": "functiontype",
+                "value": "",
+                "type": "query",
+                "description": "Function Type, default ELS"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Search Type, default POSTALCODE_OR_TN"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude, requires type=LAT_LONG"
+              },
+              {
+                "name": "long",
+                "value": "",
+                "type": "query",
+                "description": "Latitude, requires type=LAT_LONG"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return"
+              }
+            ]
+          },
+          "docs": "Use to search for a telephone number"
+        },
+        {
+          "info": {
+            "name": "Retrieve telephone number availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn/availability",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to retrieve information about a telephone number availability"
+        },
+        {
+          "info": {
+            "name": "Bulk telephone number import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/bulkimport",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Use to import telephone numbers in bulk"
+        },
+        {
+          "info": {
+            "name": "Bulk telephone number import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/bulkimport_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to import telephone numbers in bulk"
+        },
+        {
+          "info": {
+            "name": "Export as CSV telephone number status search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/exportstatussearch",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "dateType",
+                "value": "",
+                "type": "query",
+                "description": "Type of data"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "statusType",
+                "value": "",
+                "type": "query",
+                "description": "Status type"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Service activation event type"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Account ID"
+              },
+              {
+                "name": "telephoneNumber",
+                "value": "",
+                "type": "query",
+                "description": "Telephone number"
+              },
+              {
+                "name": "includeSubTns",
+                "value": "",
+                "type": "query",
+                "description": "Include Sub Tns"
+              }
+            ]
+          },
+          "docs": "Use to export the searched status of a telephone number as a CSV file"
+        },
+        {
+          "info": {
+            "name": "Export as CSV telephone number status search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/exportstatussearch_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "dateType",
+                "value": "",
+                "type": "query",
+                "description": "Type of data"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "statusType",
+                "value": "",
+                "type": "query",
+                "description": "Status type"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Service activation event type"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Account ID"
+              },
+              {
+                "name": "telephoneNumber",
+                "value": "",
+                "type": "query",
+                "description": "Telephone number"
+              },
+              {
+                "name": "includeSubTns",
+                "value": "",
+                "type": "query",
+                "description": "Include Sub Tns"
+              }
+            ]
+          },
+          "docs": "Use to export the searched status of a telephone number as a CSV file"
+        },
+        {
+          "info": {
+            "name": "Delete telephone number cooldown",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn/cooldown/recover",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to delete a cooldown for a telephone number"
+        },
+        {
+          "info": {
+            "name": "Reserve a telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn/reserve",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to reserve a telephone number so another use cannot get it"
+        },
+        {
+          "info": {
+            "name": "Delete a reserve on telephone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn/reserve",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to delete a reservation on a telephone number making it available for use by another"
+        },
+        {
+          "info": {
+            "name": "Telephone number status search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/statussearch",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "dateType",
+                "value": "",
+                "type": "query",
+                "description": "Type of data"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "End date"
+              },
+              {
+                "name": "statusType",
+                "value": "",
+                "type": "query",
+                "description": "Status type"
+              },
+              {
+                "name": "eventType",
+                "value": "",
+                "type": "query",
+                "description": "Service activation event type"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Account ID"
+              },
+              {
+                "name": "telephoneNumber",
+                "value": "",
+                "type": "query",
+                "description": "Telephone number"
+              },
+              {
+                "name": "firstResultIndex",
+                "value": "",
+                "type": "query",
+                "description": "First result index"
+              },
+              {
+                "name": "maxResult",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Use to search for the status of a telephone number"
+        },
+        {
+          "info": {
+            "name": "isTnOffNet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/:tn/fmfmcheck",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "getInventoryPlan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/export",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Export telephone numbers as csv",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/telephonenumber/export_2",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Export telephone numbers as csv"
+        },
+        {
+          "info": {
+            "name": "Retrieve a telephone number on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to retrieve a specific telephone number on an account"
+        },
+        {
+          "info": {
+            "name": "Update telephone number on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a telephone number on an account"
+        },
+        {
+          "info": {
+            "name": "Update telephone number on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update a telephone number on an account"
+        },
+        {
+          "info": {
+            "name": "Delete telephone number on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Use to delete a telephone number on an account"
+        },
+        {
+          "info": {
+            "name": "Retrieve all telephone numbers on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "limitedData",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use to retrieve all telephone numbers on an account. limitedData is provided to enable large result sets retreived without long retrieval times"
+        },
+        {
+          "info": {
+            "name": "Create a telephone number or add telephone number to an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new telephone number or add an existing number to an account. Unit field in the CSR Address should be no greater than 10 character, anything more than 10 characters is ignored. "
+        },
+        {
+          "info": {
+            "name": "Retrieve all telephone number for end users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/groupid/:groupId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "Group ID"
+              }
+            ]
+          },
+          "docs": "Use to retrieve all telephone numbers on an account for user groups. If group is provided only the numbers for the users on this group will be returned"
+        },
+        {
+          "info": {
+            "name": "Accept original E911 address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn/911-address/original/accept",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "E911 address latitude"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "E911 address latitude"
+              }
+            ]
+          },
+          "docs": "Accept original E911 address"
+        },
+        {
+          "info": {
+            "name": "Get all unfinished or archived activations with dynamic inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "getAll",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all unfinished or archived activations with dynamic inventory"
+        },
+        {
+          "info": {
+            "name": "Activate a tn that will be requested dynamically from carrier. TN is not known at the moment of initiating of activation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a tn that will be requested dynamically from carrier. TN is not known at the moment of initiating of activation"
+        },
+        {
+          "info": {
+            "name": "Get activation with dynamic inventory regardless of status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests/:orderId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Dynamic reservation order id"
+              }
+            ]
+          },
+          "docs": "Get activation with dynamic inventory regardless of status"
+        },
+        {
+          "info": {
+            "name": "Updates dynamic reservation object",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests/:orderId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path",
+                "description": "Dynamic reservation order id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates dynamic reservation object"
+        },
+        {
+          "info": {
+            "name": "Cancel and remove reservation object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests/actions/cancel",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel and remove reservation object"
+        },
+        {
+          "info": {
+            "name": "Revise and resubmit dynamic reservation object",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests/actions/resubmit",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revise and resubmit dynamic reservation object"
+        },
+        {
+          "info": {
+            "name": "Refresh dynamic activation status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/tn-requests/:orderId/refresh",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh dynamic activation status"
+        },
+        {
+          "info": {
+            "name": "Retrieve a telephone number usages on an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn/911-address/usages",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number usages"
+              }
+            ]
+          },
+          "docs": "Use to retrieve usages of a specific telephone number on an account"
+        },
+        {
+          "info": {
+            "name": "Get adjusted E911 address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn/911-address/correction",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Get adjusted E911 address"
+        },
+        {
+          "info": {
+            "name": "Accept adjusted E911 address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn/911-address/correction/accept",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path",
+                "description": "Telephone number"
+              }
+            ]
+          },
+          "docs": "Accept adjusted E911 address"
+        },
+        {
+          "info": {
+            "name": "Create or updates already activated telephone number to an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/external",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to create a new telephone number or update an existing number to an account. Unit field in the CSR Address should be no greater than 10 character, anything more than 10 characters is ignored. "
+        },
+        {
+          "info": {
+            "name": "destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/partition/:partitionId/account/:accountId/telephonenumber/:tn/destination",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of account"
+              },
+              {
+                "name": "tn",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

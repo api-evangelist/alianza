@@ -1,0 +1,1211 @@
+{
+  "item": [
+    {
+      "id": "09fc70a5-a319-415f-86bc-3e22929ff45b",
+      "name": "SSO Authentication",
+      "description": {
+        "content": "Operations for managing SSO authentication flows and callbacks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26b983b1-68e7-45b9-8dff-697a15fb4f93",
+          "name": "Initiate SSO Authentication (Service Provider-Initiated Flow)",
+          "request": {
+            "name": "Initiate SSO Authentication (Service Provider-Initiated Flow)",
+            "description": {
+              "content": "Initiates the SSO authentication process by redirecting the user to their configured Identity Provider (IdP).\n\nWhat this endpoint does:\n1. Looks up the SSO configuration based on the user's email domain\n2. Generates a SAML authentication request\n3. Returns the SAML request in a 200 or 303 response depending on request parameters\n\nNote: This does not authenticate the user directly. It starts the redirect flow to the IdP.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso",
+                ":emailAddress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "redirect",
+                  "value": "true",
+                  "description": "When true, returns HTTP 303 and may include a Location header.\nWhen false, returns HTTP 200 with the redirect URL in the response body.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<email>",
+                  "key": "emailAddress",
+                  "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                "key": "X-AUTH-REDIRECT-OVERRIDE",
+                "value": "<uri>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62d205f1-a7f2-40bf-a35a-e16ca7237953",
+              "name": "Redirect URI generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    ":emailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "emailAddress",
+                      "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                    "key": "X-AUTH-REDIRECT-OVERRIDE",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"redirectUri\": \"https://idp.example.com/login?SAMLRequest=abc123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4804ac8c-7dee-452c-882f-b47ff3d603d5",
+              "name": "See Other - redirect URL returned in the response body and optionally in the Location header.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    ":emailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "emailAddress",
+                      "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                    "key": "X-AUTH-REDIRECT-OVERRIDE",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "See Other",
+              "code": 303,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Optional redirect URL to SSO provider login page.\nPresent when `redirect=true` and User-Agent is not AUCA.\n",
+                  "key": "Location",
+                  "value": "http://FOs.ltqyg.ob1,TfYA6ofywTNdEj9K8bbTReYwhARN8Ii4-Yg7l+PPQmbE0fDNk"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"redirectUri\": \"https://idp.example.com/login?SAMLRequest=abc123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a8be1ff-0b91-48f5-92c0-12dad7977c87",
+              "name": "Bad Request - Invalid email or request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    ":emailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "emailAddress",
+                      "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                    "key": "X-AUTH-REDIRECT-OVERRIDE",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    \"path param emailAddress must be a well-formed email address\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b9545c2-4c06-4d8a-a1be-fdd9d6ef170b",
+              "name": "Not Found - SSO configuration not found for email domain",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    ":emailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "emailAddress",
+                      "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                    "key": "X-AUTH-REDIRECT-OVERRIDE",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7668,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95524a1c-c07c-4f7d-aa06-0b81cffcc458",
+              "name": "Internal Server Error - Failed to build Auth0 URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    ":emailAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "redirect",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<email>",
+                      "key": "emailAddress",
+                      "description": "(Required) The user's email address, used to identify the SSO configuration by email domain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional redirect URL override for specific applications.\nIf provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.\n",
+                    "key": "X-AUTH-REDIRECT-OVERRIDE",
+                    "value": "<uri>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 9997,\n  \"messages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"data\": {\n    \"key\": \"value\",\n    \"key2\": \"value2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fafd5c03-f067-4786-899a-72bb85144710",
+          "name": "Complete SSO Authentication (IdP Callback)",
+          "request": {
+            "name": "Complete SSO Authentication (IdP Callback)",
+            "description": {
+              "content": "Completes the SSO authentication flow after the user has authenticated with their Identity Provider.\n\nFlow:\n1. User authenticates at the IdP\n2. IdP sends SAML assertion to Auth0\n3. Auth0 exchanges it for an authorization code\n4. This endpoint receives the code and exchanges it for user tokens\n5. Returns a LoginTokenX object for authenticated API use\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso",
+                "login-callback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) Authorization code from Auth0 after successful IdP authentication"
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Must exactly match the URI used in the initial authentication request"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) State token for session tracking and CSRF protection.\nContains the SSO configuration scope level.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d48d5de-d21b-4477-ba8b-9a8261c83be3",
+              "name": "Authentication successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "login-callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"string\",\n  \"userId\": \"string\",\n  \"userType\": \"AlianzaUser\",\n  \"endUserType\": \"STANDARD\",\n  \"username\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"emailAddress\": \"string\",\n  \"partitionId\": \"string\",\n  \"partitionName\": \"string\",\n  \"accountId\": \"string\",\n  \"permissions\": {\n    \"key_0\": \"EDIT\",\n    \"key_1\": \"READ_MYUSER\"\n  },\n  \"featureToggles\": {\n    \"key_0\": false,\n    \"key_1\": false,\n    \"key_2\": true\n  },\n  \"mustChangePassword\": true,\n  \"subPartitionIds\": [\n    \"string\"\n  ],\n  \"tokenSource\": \"string\",\n  \"grantedAuthorities\": [\n    \"string\"\n  ],\n  \"pwdHash\": \"string\",\n  \"mustAddEmail\": true,\n  \"maxLifeInHours\": 5527,\n  \"groupId\": \"string\",\n  \"groupName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "492aee74-fb46-4deb-b8bc-89be8d317f29",
+              "name": "Bad Request - Invalid or malformed parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "login-callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_AUTHORIZATION_CODE\",\n  \"message\": \"Authorization code is invalid or has expired\",\n  \"details\": {\n    \"code\": \"eyJhbGci...\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ca15380-950e-4786-8870-f8b869150ef7",
+              "name": "Authentication failed - Invalid state or code verification failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "login-callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_STATE\",\n  \"message\": \"State token validation failed - possible CSRF attack\",\n  \"details\": {\n    \"state\": \"ACCOUNT_LEVEL_SSO\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88c50a70-77a5-4c34-9815-8cb075a7c111",
+              "name": "State not found or session expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "login-callback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SESSION_EXPIRED\",\n  \"message\": \"Authentication session has expired. Please initiate SSO login again.\",\n  \"details\": {\n    \"maxSessionAge\": \"15 minutes\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63e3b4eb-4365-44ba-9dec-248d1c7605ec",
+          "name": "Unlink SSO for a user",
+          "request": {
+            "name": "Unlink SSO for a user",
+            "description": {
+              "content": "Removes the SSO linkage for a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso",
+                "sso-linkage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partitionId",
+                  "value": "<string>",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) ID of end-user to unlink"
+                }
+              ],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86db72a4-c85e-4744-b307-b397b1bd6d13",
+              "name": "SSO linkage removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "27ea5932-1ac2-4daf-b2fa-0fb238850682",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98d9279f-8519-46ab-8e84-73bd41eeb5de",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0fb85a3c-7182-43e5-80f9-83a3c097b695",
+              "name": "SSO linkage not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e217bb10-1b01-46e7-a74a-e6ded6778db2",
+          "name": "Get SSO linkages",
+          "request": {
+            "name": "Get SSO linkages",
+            "description": {
+              "content": "Retrieves SSO linkage information for specified SSO configurations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authn",
+                "sso",
+                "sso-linkage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "partitionId",
+                  "value": "<string>",
+                  "description": "(Required) ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+                },
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "(Required) ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54f2c297-98fd-4ec2-8dfb-073f431c0c6b",
+              "name": "SSO linkages retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ssoName\": \"string\",\n    \"emailAddress\": \"8K7KQHK7VwmHNtP@TOteAVspOfzguKBmbdMlpik.yu\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"userId\": \"string\",\n    \"externalId\": \"string\",\n    \"externalEmail\": \"MTizb@YyNjoADHXQQIofXwqrmfGf.eo\"\n  },\n  {\n    \"ssoName\": \"string\",\n    \"emailAddress\": \"7vk@spRMtOKYSyUuAOYUrsgtNaK.dv\",\n    \"partitionId\": \"string\",\n    \"accountId\": \"string\",\n    \"userId\": \"string\",\n    \"externalId\": \"string\",\n    \"externalEmail\": \"FloUuM-BDy@FLNckOcHkinWyRKmGdoQO.zcj\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b472921-72e0-4ae9-a7f6-b1aee55090ce",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8858b165-9759-4e3f-b356-df78d298286b",
+              "name": "Forbidden - insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authn",
+                    "sso",
+                    "sso-linkage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "partitionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "031aca39-22da-481b-b7cc-184801d5f60e",
+    "name": "Alianza Public SSO Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

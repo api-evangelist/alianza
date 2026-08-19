@@ -1,0 +1,489 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Sip Trunk Caller ID Mapping API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Sip Trunk Caller ID Mapping
+  description: Operations for managing Sip Trunk Caller ID mappings
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/cid/fromnumber:
+    get:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Retrieve list of all Custom FROM Numbers
+      description: Use to retrieve a list of all Custom FROM Numbers for the specified account ID and partition ID.
+      operationId: listCustomFromNumbers
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FromTelephoneNumberResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    post:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Create a FROM Number
+      description: Use to create a FROM Number for the specified account ID and partition ID.
+      operationId: createFromNumber
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FromTelephoneNumberRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FromTelephoneNumberResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/cid/fromnumber/{fromNumber}:
+    delete:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Delete a FROM Number
+      description: Use to delete the FROM Number for the specified account ID, partition ID and FROM Number.
+      operationId: deleteFromNumber
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      - name: fromNumber
+        in: path
+        description: exact FROM Telephone Number or wildcard
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/cid/mapping:
+    get:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Retrieve list of all FROM Number to Caller ID mappings
+      description: Use to retrieve a list of all FROM Number to Caller ID mappings for the specified account ID and partition ID.
+      operationId: listCallerIdMappings
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CidMappingResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    put:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Update a FROM Number to Caller ID mapping
+      description: Use to update a FROM Number to Caller ID mapping by setting Custom Caller ID Number or set it to null to remove mapping for the specified account ID and partition ID.
+      operationId: updateFromNumber
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CidMappingRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CidMappingResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/cid/callerid:
+    get:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Retrieve list of all Caller IDs
+      description: Use to retrieve a list of all Caller IDs for the specified account ID and partition ID.
+      operationId: listCallerIds
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomCallerIdNumberResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+    post:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Create a Caller ID
+      description: Use to create a Caller ID for the specified account ID and partition ID.
+      operationId: createCallerId
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomCallerIdNumberRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomCallerIdNumberResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/cid/callerid/{callerId}:
+    delete:
+      tags:
+      - Sip Trunk Caller ID Mapping
+      summary: Delete a Caller ID
+      description: Use to delete the Caller ID for the specified account ID, partition ID and Custom Caller ID Number with automatic cleanup of related mappings.
+      operationId: deleteCallerId
+      parameters:
+      - name: partitionId
+        in: path
+        description: ID of the partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of the account
+        required: true
+        schema:
+          type: string
+      - name: callerId
+        in: path
+        description: Custom Caller ID Number
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Successful operation
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '403':
+          description: User does not have enough permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+components:
+  schemas:
+    CustomCallerIdNumberResponse:
+      type: object
+      required:
+      - customCallerIdNumber
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        customCallerIdNumber:
+          type: string
+    CustomCallerIdNumberRequest:
+      type: object
+      required:
+      - customCallerIdNumber
+      properties:
+        customCallerIdNumber:
+          type: string
+    CidMappingResponse:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        fromWildcard:
+          type: string
+        customCallerIdNumber:
+          type: string
+        isCustom:
+          type: boolean
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    FromTelephoneNumberRequest:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        fromWildcard:
+          type: string
+    CidMappingRequest:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        fromWildcard:
+          type: string
+        customCallerIdNumber:
+          type: string
+    FromTelephoneNumberResponse:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        fromWildcard:
+          type: string
+        isCustom:
+          type: boolean
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

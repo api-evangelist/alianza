@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Cymbus User Product API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cymbus User Product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Cymbus group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/cymbus/partition-group/:partitionId",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "path",
+                "description": "ID of partition"
+              }
+            ]
+          },
+          "docs": "Use to retrieve the Cymbus group associated to a partition"
+        },
+        {
+          "info": {
+            "name": "Update Cymbus group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/cymbus/partition-group",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update specific Cymbus group (only support email and name"
+        },
+        {
+          "info": {
+            "name": "Update Cymbus account group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/cymbus/account-group",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use to update Cymbus account group"
+        },
+        {
+          "info": {
+            "name": "Retrieve Cymbus account group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/cymbus/account-group/:accountid",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "accountid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Use to retrieve the Cymbus group associated to an account"
+        },
+        {
+          "info": {
+            "name": "Prevalidate Cymbus account name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/cymbus/account-group/prevalidate",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "groupName",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Use to verify that the chosen name is available"
+        },
+        {
+          "info": {
+            "name": "Retrieve sip credentials for Cymbus user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/cymbus/:userid/sipcredentials",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userid",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to retrieve sip creds for both lines associated to an account"
+        },
+        {
+          "info": {
+            "name": "Change sip password for Cymbus user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.d2.alianza.com/v2/cymbus/:userid/sipcredentials/change",
+            "headers": [
+              {
+                "name": "X-AUTH-TOKEN",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "userid",
+                "value": "",
+                "type": "path",
+                "description": "ID of end-user"
+              }
+            ]
+          },
+          "docs": "Use to change sip password for both Cymbus user lines"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

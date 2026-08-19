@@ -1,0 +1,563 @@
+openapi: 3.2.0
+info:
+  title: Alianza Voicemail Message API
+  version: '2'
+  description: 'Operations tagged Voicemail Message across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Voicemail Message
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/voicemailmessage/{messageId}:
+    get:
+      tags:
+      - Voicemail Message
+      summary: Get voicemail message
+      description: Use to retrieve a voicemail message
+      operationId: retrieve_8
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        description: MessageId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailMessageX
+                $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: invalid voicemail message id supplied
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+          schema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: invalid voicemail message id supplied
+        '404':
+          description: voicemail message not found
+    put:
+      tags:
+      - Voicemail Message
+      summary: Update voicemail message
+      description: Use to update a voicemail message; can only update read status
+      operationId: update_4
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        description: MessageId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailMessageX
+                $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: voicemail message not found
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+          schema:
+            originalRef: VoicemailMessageX
+            $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: voicemail message not found
+        '404':
+          description: voicemail message not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailMessageX
+              $ref: '#/components/schemas/VoicemailMessageX'
+        description: voicemail message object
+        required: true
+    delete:
+      tags:
+      - Voicemail Message
+      summary: Delete voicemail message
+      description: Use to delete a voicemail message
+      operationId: delete_4
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        description: MessageId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: voicemail message id not found or invalid voicemail message object supplied
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: voicemail message id not found or invalid voicemail message object supplied
+        '404':
+          description: voicemail message not found
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/voicemailmessage:
+    get:
+      tags:
+      - Voicemail Message
+      summary: Retrieve voicemail message list
+      description: Use to retrieve a list of voicemail messages in a voicemail box
+      operationId: list_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: VoicemailMessageX
+              $ref: '#/components/schemas/VoicemailMessageX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: VoicemailMessageX
+                  $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: VoicemailMessageX
+              $ref: '#/components/schemas/VoicemailMessageX'
+          schema:
+            type: array
+            items:
+              originalRef: VoicemailMessageX
+              $ref: '#/components/schemas/VoicemailMessageX'
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+    delete:
+      tags:
+      - Voicemail Message
+      summary: Delete multiple voicemails
+      description: Use to delete multiple voicemails in a single call
+      operationId: deleteMultiple
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+      responsesObject:
+        '400':
+          description: Invalid partition, account or voicemail box supplied
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/voicemailmessage/{messageId}/content_2:
+    get:
+      tags:
+      - Voicemail Message
+      summary: Get contents of voicemail message. Will return a 302 redirect to the actual image location. Pass query param mediatype=mp3 or wav
+      description: Use to retrieve Media of a given type
+      operationId: getVoicemailUrl
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        description: ID of voicemail message
+        required: true
+        schema:
+          type: string
+      - name: mediatype
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            audio/mpeg:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+            audio/wave:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Invalid id
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+        '400':
+          description: Invalid id
+        '404':
+          description: voicemail message not found
+  /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/voicemailmessage/{messageId}/content:
+    get:
+      tags:
+      - Voicemail Message
+      summary: get contents of a voicemail message
+      description: Use to get contents of a voicemail message
+      operationId: getMessageContent
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        description: ID of voicemail message
+        required: true
+        schema:
+          type: string
+      - name: fileName
+        in: query
+        description: Name of prompt
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            audio/mpeg:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+            audio/wave:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Invalid id
+        '404':
+          description: voicemail message not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+        '400':
+          description: Invalid id
+        '404':
+          description: voicemail message not found
+components:
+  schemas:
+    VoicemailMessageX:
+      type: object
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+          description: date the message was left
+        fromName:
+          type: string
+          description: callerId name of caller that left message, if available
+        fromNumber:
+          type: string
+          description: callerId number of caller that left message, if available
+        lengthInPages:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a FAX
+        lengthInSeconds:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a VOICE message
+        read:
+          type: boolean
+          description: has the message been seen / opened / read
+        sizeInBytes:
+          type: integer
+          format: int64
+          description: size of message in bytes
+        messageType:
+          type: string
+          description: type of message
+          enum:
+          - FAX
+          - VOICE
+        voicemailBoxId:
+          type: string
+          description: voicemail box id
+        accountId:
+          type: string
+          description: Account of the voicemail box
+        partitionId:
+          type: string
+          description: Partition of the account
+        toPhoneNumber:
+          type: string
+          description: The to number associated with the voicemail message
+        transcriptionStatus:
+          type: string
+          description: The status of the transcription
+        transcriptionInfo:
+          type: string
+          description: Details (quality, etc...) about the transcription
+        transcriptionText:
+          type: string
+          description: The resulting text of the transcribed message
+        storageId:
+          type: string
+          format: uuid
+          description: The storage id of audio file
+        audioFileAndType:
+          type: string
+          description: The type of audio file
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

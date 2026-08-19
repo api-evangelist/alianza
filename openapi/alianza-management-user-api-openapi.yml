@@ -1,0 +1,732 @@
+openapi: 3.2.0
+info:
+  title: Alianza Management User API
+  version: '2'
+  description: 'Operations tagged Management User across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Management User
+paths:
+  /v2/partition/{partitionId}/managementuser/{id}:
+    get:
+      tags:
+      - Management User
+      summary: Retrieve a management user
+      description: Use to retrieve a management user
+      operationId: retrieve
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserX
+                $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+    put:
+      tags:
+      - Management User
+      summary: Update a management user
+      description: Use to update a management user
+      operationId: update
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserX
+                $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+        description: Management user object
+        required: true
+    delete:
+      tags:
+      - Management User
+      summary: Delete management user
+      description: Use to delete a management user
+      operationId: delete
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+    patch:
+      tags:
+      - Management User
+      summary: Update a management user
+      description: Use to update a management user
+      operationId: patch
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserX
+                $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+        description: Management user object
+        required: true
+  /v2/partition/{partitionId}/managementuser:
+    get:
+      tags:
+      - Management User
+      operationId: retrieve_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: ManagementUserX
+                  $ref: '#/components/schemas/ManagementUserX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            type: array
+            items:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+    post:
+      tags:
+      - Management User
+      summary: Create a management user
+      description: Use to create a management user
+      operationId: create
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserX
+                $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user object
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user object
+        '404':
+          description: Error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ManagementUserX
+              $ref: '#/components/schemas/ManagementUserX_2'
+        description: Management user object
+        required: true
+  /v2/partition/{partitionId}/managementuser/search:
+    get:
+      tags:
+      - Management User
+      summary: Search for management users
+      description: Use to search for management users
+      operationId: search
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: sortColumn
+        in: query
+        description: Sort column
+        required: true
+        schema:
+          type: string
+          enum:
+          - firstName
+          - lastName
+          - username
+      - name: searchString
+        in: query
+        description: Search string
+        required: true
+        schema:
+          type: string
+      - name: descending
+        in: query
+        description: Ordering
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: firstResultIndex
+        in: query
+        description: First result to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: maxResult
+        in: query
+        description: Maximum number of results
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserSearchResponseX
+            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserSearchResponseX
+                $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+        '400':
+          description: Invalid information supplied
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserSearchResponseX
+            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+          schema:
+            originalRef: ManagementUserSearchResponseX
+            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+        '400':
+          description: Invalid information supplied
+        '404':
+          description: Management user not found
+  /v2/partition/{partitionId}/managementuser/usergroups:
+    get:
+      tags:
+      - Management User
+      summary: Retrieve list of management user groups
+      description: Use to retrieve a list of management user groups
+      operationId: getUserGroupCSV
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Invalid partition ID
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid partition ID
+        '404':
+          description: Error
+    post:
+      tags:
+      - Management User
+      summary: Create or Update management user groups
+      description: Use to create or update management user groups
+      operationId: bulkUpdateUserGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Invalid management user list
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          schema:
+            type: array
+            items:
+              type: string
+        '400':
+          description: Invalid management user list
+        '404':
+          description: Error
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+        description: List of management user groups
+        required: true
+  /v2/partition/{partitionId}/managementuser/validateproperties:
+    get:
+      tags:
+      - Management User
+      summary: Pre-validate property on the ManagementUser object
+      description: ''
+      operationId: validateProperties
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: Email to validate
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/managementuser/{id}/resetpassword:
+    put:
+      tags:
+      - Management User
+      summary: Reset management user password
+      description: Use to reset the password of a management user
+      operationId: resetPassword
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ManagementUserX
+                $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+          schema:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+        '400':
+          description: Invalid management user ID
+        '404':
+          description: Management user not found
+  /v2/partition/{partitionId}/managementuser/{id}/sso:
+    get:
+      tags:
+      - Management User
+      summary: Get a management user's sso status
+      description: Use to retrieve a management user's sso status
+      operationId: sso
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Management user ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SsoUserX
+            $ref: '#/components/schemas/SsoUserX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SsoUserX
+                $ref: '#/components/schemas/SsoUserX_2'
+        '404':
+          description: Management user not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SsoUserX
+            $ref: '#/components/schemas/SsoUserX_2'
+          schema:
+            originalRef: SsoUserX
+            $ref: '#/components/schemas/SsoUserX_2'
+        '404':
+          description: Management user not found
+components:
+  schemas:
+    MultipartFormDataInput_2:
+      type: object
+    ManagementUserX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        mustChangePassword:
+          type: boolean
+        languageTag:
+          type: string
+        partitionId:
+          type: string
+        roles:
+          type: array
+          xml:
+            wrapped: true
+          uniqueItems: true
+          items:
+            type: string
+            xml:
+              name: role
+        groupIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+    ManagementUserSearchResponseX_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX_2'
+    SsoUserX_2:
+      type: object
+      properties:
+        ssoStatus:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

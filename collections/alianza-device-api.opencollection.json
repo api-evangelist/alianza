@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public Device API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Device Graph",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/ces/deviceGraph/:macaddress",
+            "params": [
+              {
+                "name": "limited",
+                "value": "",
+                "type": "query",
+                "description": "Whether the phone information is limited.<br/>If false, this returns a <a href=\"#/~schema/DeviceGraphUnlimited\">DeviceGraphUnlimited</a> which contains extensive information about the telephone number and account.<br/>If true this returns a <a href=\"#/~schema/DeviceGraphLimited\">DeviceGraphLimited</a> which only lists the phone numbers."
+              },
+              {
+                "name": "macaddress",
+                "value": "",
+                "type": "path",
+                "description": "The mac address of the phone interface"
+              }
+            ]
+          },
+          "docs": "Use to search for a deviceGraph, which is defined as information about a specific physical phone interface, plus information about all of the phone numbers which ring that device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

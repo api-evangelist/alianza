@@ -1,0 +1,176 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Supported Rate Centers API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Supported Rate Centers
+  description: A rate center is a geographical area used to determine the boundaries for local calling, billing, and assigning specific phone numbers, which can encompass multiple area codes.
+paths:
+  /v2/supported-rate-centers:
+    get:
+      tags:
+      - Supported Rate Centers
+      summary: Get carrier-supported rate centers by proximity
+      operationId: getClosestAvailableRateCenters
+      parameters:
+      - name: busOrgId
+        in: query
+        schema:
+          type: string
+      - name: distanceUnit
+        in: query
+        schema:
+          type: string
+          default: MILES
+          enum:
+          - MILES
+          - KILOMETERS
+          - RADIANS
+      - name: latitude
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: longitude
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: maxResults
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 5
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateCenterSearchViewX'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+components:
+  schemas:
+    RateCenterSearchViewX:
+      type: object
+      properties:
+        name:
+          type: string
+        abbrName:
+          type: string
+        reorderName:
+          type: string
+        reorderNameAlias:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        msa:
+          type: string
+        zips:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        prefixes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelephoneNumberPrefixViewX'
+        distance:
+          type: number
+          format: double
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    TelephoneNumberPrefixViewX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        wireless:
+          type: boolean
+        wirelessBlockNumbers:
+          type: array
+          items:
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+            format: byte
+          uniqueItems: true
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

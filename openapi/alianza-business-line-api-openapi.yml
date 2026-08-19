@@ -1,0 +1,2104 @@
+openapi: 3.2.0
+info:
+  title: Alianza Business Line API
+  version: '2'
+  description: 'Operations tagged Business Line across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Business Line
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/business-line:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line list
+      description: Use to retrieve a list of business lines associated to an account
+      operationId: retrieveBusinessLines
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: BusinessLine
+              $ref: '#/components/schemas/BusinessLine'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: BusinessLine
+                  $ref: '#/components/schemas/BusinessLine'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: BusinessLine
+              $ref: '#/components/schemas/BusinessLine'
+          schema:
+            type: array
+            items:
+              originalRef: BusinessLine
+              $ref: '#/components/schemas/BusinessLine'
+    post:
+      tags:
+      - Business Line
+      summary: Create a new business line
+      description: Use to create a new business line on an account. This includes the physical device specifications, call handling rules, and SIP credentials.
+      operationId: createBusinessLine
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          content:
+            application/json:
+              schema:
+                originalRef: BusinessLine
+                $ref: '#/components/schemas/BusinessLine'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          schema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: BusinessLine
+              $ref: '#/components/schemas/BusinessLine'
+        description: Business line object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line/views/expanded:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line list with lines in expanded view format
+      description: Use to retrieve a list of business lines in expanded view format which is associated to an account
+      operationId: retrieveBusinessLinesExpanded
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: BusinessLineExpandedView
+              $ref: '#/components/schemas/BusinessLineExpandedView_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: BusinessLineExpandedView
+                  $ref: '#/components/schemas/BusinessLineExpandedView_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: BusinessLineExpandedView
+              $ref: '#/components/schemas/BusinessLineExpandedView_2'
+          schema:
+            type: array
+            items:
+              originalRef: BusinessLineExpandedView
+              $ref: '#/components/schemas/BusinessLineExpandedView_2'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/call-handling:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line call handling
+      description: Use to get the call handling specifications for a business line
+      operationId: getBusinessLineCallHandling
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallHandling
+                $ref: '#/components/schemas/CallHandling_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+          schema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+    put:
+      tags:
+      - Business Line
+      summary: Update business line call handling
+      description: Use to update the call handling specifications for a business line
+      operationId: putBusinessLineCallHandling
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallHandling
+                $ref: '#/components/schemas/CallHandling_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+          schema:
+            originalRef: CallHandling
+            $ref: '#/components/schemas/CallHandling_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: CallHandling
+              $ref: '#/components/schemas/CallHandling_2'
+        description: Business line call handling object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line
+      description: Use to retrieve a business line
+      operationId: retrieveBusinessLine
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          content:
+            application/json:
+              schema:
+                originalRef: BusinessLine
+                $ref: '#/components/schemas/BusinessLine'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          schema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+    put:
+      tags:
+      - Business Line
+      summary: Update business line
+      description: Use to update a business line
+      operationId: updateBusinessLine
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          content:
+            application/json:
+              schema:
+                originalRef: BusinessLine
+                $ref: '#/components/schemas/BusinessLine'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+          schema:
+            originalRef: BusinessLine
+            $ref: '#/components/schemas/BusinessLine'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: BusinessLine
+              $ref: '#/components/schemas/BusinessLine'
+        description: Business line object
+        required: true
+    delete:
+      tags:
+      - Business Line
+      summary: Delete business line
+      description: Use to delete a business line
+      operationId: deleteBusinessLine
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/views/expanded:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line in expanded view format
+      description: Use to retrieve a business line in expanded view format
+      operationId: retrieveBusinessLineExpanded
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLineExpandedView
+            $ref: '#/components/schemas/BusinessLineExpandedView_2'
+          content:
+            application/json:
+              schema:
+                originalRef: BusinessLineExpandedView
+                $ref: '#/components/schemas/BusinessLineExpandedView_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: BusinessLineExpandedView
+            $ref: '#/components/schemas/BusinessLineExpandedView_2'
+          schema:
+            originalRef: BusinessLineExpandedView
+            $ref: '#/components/schemas/BusinessLineExpandedView_2'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/registration:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve registration status for business line
+      description: Use to retrieve registration status of business line
+      operationId: businessLineRegistrationStatus
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+          content:
+            application/json:
+              schema:
+                originalRef: RegistrationStatus
+                $ref: '#/components/schemas/RegistrationStatus'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+          schema:
+            originalRef: RegistrationStatus
+            $ref: '#/components/schemas/RegistrationStatus'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/port-assignment/rpc/swap:
+    post:
+      tags:
+      - Business Line
+      summary: Swap business line port assignment(s)
+      description: Use to swap out the port assignments related to an existing port assignment mac address or id
+      operationId: swapBusinessLinePortAssignment
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAssignment
+                $ref: '#/components/schemas/PortAssignment'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          schema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DeviceSwap
+              $ref: '#/components/schemas/DeviceSwap'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/port-assignment:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line port assignment
+      description: Use to get the physical port assignment specifications for a business line
+      operationId: getBusinessLinePortAssignment
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAssignment
+                $ref: '#/components/schemas/PortAssignment'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          schema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+    post:
+      tags:
+      - Business Line
+      summary: Create business line port assignment
+      description: Use to create the physical port assignment specifications for a business line
+      operationId: createBusinessLinePortAssignment
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAssignment
+                $ref: '#/components/schemas/PortAssignment'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          schema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PortAssignment
+              $ref: '#/components/schemas/PortAssignment'
+        description: Business line port assignment object
+        required: true
+    put:
+      tags:
+      - Business Line
+      summary: Update business line port assignment
+      description: Use to update the physical port assignment specifications for a business line
+      operationId: updateBusinessLinePortAssignment
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAssignment
+                $ref: '#/components/schemas/PortAssignment'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          schema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: PortAssignment
+              $ref: '#/components/schemas/PortAssignment'
+        description: Business line port assignment object
+        required: true
+    delete:
+      tags:
+      - Business Line
+      summary: Delete business line port assignment
+      description: Use to delete the physical port assignment specifications for a business line
+      operationId: deleteBusinessLinePortAssignment
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/port-assignment/push-provisioning-logs:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve provisioning logs from third party notifications
+      description: Used for port assignments utilizing a mac address. Pull logs from push provisioning
+      operationId: getPushProvisioningLogs
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          content:
+            application/json:
+              schema:
+                originalRef: PortAssignment
+                $ref: '#/components/schemas/PortAssignment'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+          schema:
+            originalRef: PortAssignment
+            $ref: '#/components/schemas/PortAssignment'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/sip-credentials:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve SIP credentials
+      description: Use to retrieve SIP credentials for a business line
+      operationId: getBusinessLineSipCredentials
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+          content:
+            application/json:
+              schema:
+                originalRef: SipCredentialsView
+                $ref: '#/components/schemas/SipCredentialsView'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+          schema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+    put:
+      tags:
+      - Business Line
+      summary: Update SIP credentials
+      description: Use to update SIP credentials for a business line
+      operationId: putBusinessLineSipCredentials
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+          content:
+            application/json:
+              schema:
+                originalRef: SipCredentialsView
+                $ref: '#/components/schemas/SipCredentialsView'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+          schema:
+            originalRef: SipCredentialsView
+            $ref: '#/components/schemas/SipCredentialsView'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SipCredentials
+              $ref: '#/components/schemas/SipCredentials'
+        description: SIP Credentials object
+        required: true
+  ? /v2/partition/{partitionId}/account/{accountId}/business-line/{businessLineId}/sip-credentials/username-availability-check/{username}
+  : get:
+      tags:
+      - Business Line
+      summary: SIP Username Availability Check
+      description: Use to determine if a SIP username is available to use
+      operationId: isUsernameAvailable
+      parameters:
+      - name: businessLineId
+        in: path
+        description: ID of Business Line
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve all business line voicemail boxes on this account
+      description: Use to retrieve a business line voicemail boxes on the specified account
+      operationId: retrieveBusinessLineVoicemailBoxes
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          schema:
+            type: array
+            items:
+              type: object
+    post:
+      tags:
+      - Business Line
+      summary: Create business line voicemail box on account
+      description: Use to create a business line voicemail box on the specified account
+      operationId: createBusinessLineVoicemailBox
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBox
+                $ref: '#/components/schemas/VoicemailBox'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          schema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailBox
+              $ref: '#/components/schemas/VoicemailBox'
+        description: Voicemail Box object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/views/expanded:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve all business line voicemail boxes on this account including references
+      description: Use to retrieve a business line voicemail boxes on the specified account including references
+      operationId: retrieveBusinessLineVoicemailBoxesExpandedView
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          schema:
+            type: array
+            items:
+              type: object
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line voicemail box
+      description: Use to retrieve a business line voicemail box
+      operationId: retrieveBusinessLineVoicemailBox
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBox
+                $ref: '#/components/schemas/VoicemailBox'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          schema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+    put:
+      tags:
+      - Business Line
+      summary: Update business line voicemail box
+      description: Use to update a business line voicemail box
+      operationId: updateBusinessLineVoicemailBox
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBox
+                $ref: '#/components/schemas/VoicemailBox'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+          schema:
+            originalRef: VoicemailBox
+            $ref: '#/components/schemas/VoicemailBox'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VoicemailBox
+              $ref: '#/components/schemas/VoicemailBox'
+        description: Business line Voicemail Box object
+        required: true
+    delete:
+      tags:
+      - Business Line
+      summary: Delete business line voicemail box
+      description: Use to delete a business line voicemail box
+      operationId: deleteBusinessLineVoicemailBox
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/views/expanded:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line voicemail box including references
+      description: Use to retrieve a business line voicemail box including references
+      operationId: retrieveBusinessLineVoicemailBoxExpandedView
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxExpandedView
+            $ref: '#/components/schemas/VoicemailBoxExpandedView_2'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailBoxExpandedView
+                $ref: '#/components/schemas/VoicemailBoxExpandedView_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailBoxExpandedView
+            $ref: '#/components/schemas/VoicemailBoxExpandedView_2'
+          schema:
+            originalRef: VoicemailBoxExpandedView
+            $ref: '#/components/schemas/VoicemailBoxExpandedView_2'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/rpc/check-pin-status:
+    post:
+      tags:
+      - Business Line
+      summary: Check business line voicemail box PIN status
+      description: Use to check a business line voicemail box PIN status
+      operationId: checkBusinessLineVoicemailBoxPinStatus
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PinStatusResponse
+            $ref: '#/components/schemas/PinStatusResponse'
+          content:
+            application/json:
+              schema:
+                originalRef: PinStatusResponse
+                $ref: '#/components/schemas/PinStatusResponse'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: PinStatusResponse
+            $ref: '#/components/schemas/PinStatusResponse'
+          schema:
+            originalRef: PinStatusResponse
+            $ref: '#/components/schemas/PinStatusResponse'
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/rpc/reset-pin:
+    post:
+      tags:
+      - Business Line
+      summary: Reset the PIN for a business line voicemail box
+      description: Use to reset a PIN for a business line voicemail box
+      operationId: resetBusinessLineVoicemailBoxPinStatus
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/message/{messageId}:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve a business line voicemail message
+      description: Use to retrieve a message in a business line voicemail box
+      operationId: retrieveBusinessLineVoicemailMessage
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessage
+            $ref: '#/components/schemas/VoicemailMessage'
+          content:
+            application/json:
+              schema:
+                originalRef: VoicemailMessage
+                $ref: '#/components/schemas/VoicemailMessage'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VoicemailMessage
+            $ref: '#/components/schemas/VoicemailMessage'
+          schema:
+            originalRef: VoicemailMessage
+            $ref: '#/components/schemas/VoicemailMessage'
+    delete:
+      tags:
+      - Business Line
+      summary: Delete a business line voicemail message
+      description: Use to delete a message in a business line voicemail box
+      operationId: deleteBusinessLineVoicemailMessage
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/message:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve business line voicemail messages
+      description: Use to retrieve all messages in a business line voicemail box
+      operationId: retrieveBusinessLineVoicemailMessages
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: object
+          schema:
+            type: array
+            items:
+              type: object
+    delete:
+      tags:
+      - Business Line
+      summary: Delete business line voicemail messages
+      description: Use to delete all messages in a business line voicemail box
+      operationId: deleteBusinessLineVoicemailMessages
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/message/bulk-update:
+    put:
+      tags:
+      - Business Line
+      summary: Bulk update of voicemail messages
+      description: Use to mark multiple voicemail messages at the same time to a READ, UNREAD, or DELETE status
+      operationId: bulkVoicemailMessageUpdate
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: BulkVoicemailAction
+              $ref: '#/components/schemas/BulkVoicemailAction'
+        description: Bulk Voicemail Action object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/message/{messageId}/media:
+    get:
+      tags:
+      - Business Line
+      summary: Retrieve a business line voicemail message media
+      description: Use to retrieve the audio message for a business line voicemail message
+      operationId: retrieveBusinessLineVoicemailMessageMedia
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            audio/mpeg:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+            audio/wave:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+  ? /v2/partition/{partitionId}/account/{accountId}/business-line/voicemail-box/{voicemailBoxId}/message/{messageId}/set-read-status
+  : post:
+      tags:
+      - Business Line
+      summary: Update business line voicemail message read flag
+      description: Use to update if a voicemail message should be marked as read
+      operationId: updateBusinessLineVoicemailMessageRead
+      parameters:
+      - name: voicemailBoxId
+        in: path
+        description: ID of Voicemail Box
+        required: true
+        schema:
+          type: string
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: messageId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ReadMessage
+              $ref: '#/components/schemas/ReadMessage'
+        description: Voicemail Message Read object
+        required: true
+components:
+  schemas:
+    BusinessLineExpandedView_2:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        callerIdPhoneNumber:
+          type: string
+        callerIdVisible:
+          type: boolean
+        emergencyCallbackPhoneNumber:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        callHandling:
+          originalRef: CallHandlingView
+          $ref: '#/components/schemas/CallHandlingView_2'
+        sipCredentials:
+          originalRef: SipCredentialsView
+          $ref: '#/components/schemas/SipCredentialsView'
+        device:
+          originalRef: PortAssignmentView
+          $ref: '#/components/schemas/PortAssignmentView'
+    RingTimeoutConfiguration_2:
+      type: object
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LimitedRingTimeoutConfiguration
+          - UnlimitedRingTimeoutConfiguration
+    VoicemailBox:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        forwardMessageToEmailAddresses:
+          type: array
+          items:
+            type: string
+        forwardMessageToEmailEnabled:
+          type: boolean
+        shouldKeepMessageAfterForward:
+          type: boolean
+        locale:
+          type: string
+          pattern: en-US|fr-CA|es-MX
+      required:
+      - accountId
+      - name
+      - partitionId
+    PortAssignment:
+      type: object
+      properties:
+        businessLineId:
+          type: string
+          format: uuid
+        macAddress:
+          type: string
+        portNumber:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 100
+        deviceTypeId:
+          type: string
+        faxEnabled:
+          type: boolean
+      required:
+      - deviceTypeId
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
+    ReadMessage:
+      type: object
+      properties:
+        markAsRead:
+          type: boolean
+    BulkVoicemailAction:
+      type: object
+      properties:
+        actionType:
+          type: string
+          enum:
+          - DELETE
+          - MARK_AS_READ
+          - MARK_AS_UNREAD
+        messageIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - actionType
+    VoicemailBoxAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        display:
+          type: string
+    BusinessLine:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        callerIdPhoneNumber:
+          type: string
+          pattern: \d+
+        callerIdVisible:
+          type: boolean
+        emergencyCallbackPhoneNumber:
+          type: string
+          pattern: \d+
+        accountId:
+          type: string
+        partitionId:
+          type: string
+      required:
+      - accountId
+      - name
+      - partitionId
+    VoicemailBoxExpandedView_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        forwardMessageToEmailAddresses:
+          type: array
+          items:
+            type: string
+        forwardMessageToEmailEnabled:
+          type: boolean
+        shouldKeepMessageAfterForward:
+          type: boolean
+        locale:
+          type: string
+        assignedTo:
+          type: array
+          items:
+            originalRef: VoicemailBoxAssignment
+            $ref: '#/components/schemas/VoicemailBoxAssignment'
+    CallHandlingView_2:
+      type: object
+      properties:
+        activeCallHandling:
+          type: string
+          enum:
+          - RING_LINE
+          - FORWARD
+        callWaitingEnabled:
+          type: boolean
+        busyFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction_2'
+        unregisteredFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction_2'
+        ringTimeoutConfiguration:
+          originalRef: RingTimeoutConfiguration
+          $ref: '#/components/schemas/RingTimeoutConfiguration_2'
+        forwardToPhoneNumber:
+          type: string
+        voicemailBoxId:
+          type: string
+    DeviceSwap:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+      required:
+      - deviceTypeId
+      - macAddress
+    SipCredentialsView:
+      type: object
+      properties:
+        sipUsername:
+          type: string
+    VoicemailMessage:
+      type: object
+      properties:
+        storageId:
+          type: string
+          format: uuid
+        voicemailBoxId:
+          type: string
+        createdDate:
+          type: integer
+          format: int64
+        fromName:
+          type: string
+        fromAddress:
+          type: string
+        lengthInSeconds:
+          type: integer
+          format: int32
+        read:
+          type: boolean
+        toPhoneNumber:
+          type: string
+        storageStatus:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
+    PortAssignmentView:
+      type: object
+      properties:
+        deviceTypeId:
+          type: string
+        macAddress:
+          type: string
+        portNumber:
+          type: integer
+          format: int32
+        faxEnabled:
+          type: boolean
+    SipCredentials:
+      type: object
+      properties:
+        sipUsername:
+          type: string
+        sipPassword:
+          type: string
+      required:
+      - sipPassword
+      - sipUsername
+    RingFailoverAction_2:
+      type: object
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - VoicemailRingFailoverAction
+          - BusyRingFailoverAction
+          - ForwardRingFailoverAction
+    CallHandling_2:
+      type: object
+      required:
+      - activeCallHandling
+      - busyFailoverAction
+      - ringTimeoutConfiguration
+      - unregisteredFailoverAction
+      properties:
+        activeCallHandling:
+          type: string
+          enum:
+          - RING_LINE
+          - FORWARD
+        callWaitingEnabled:
+          type: boolean
+        busyFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction_2'
+        unregisteredFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction_2'
+        ringTimeoutConfiguration:
+          originalRef: RingTimeoutConfiguration
+          $ref: '#/components/schemas/RingTimeoutConfiguration_2'
+        forwardToPhoneNumber:
+          type: string
+          pattern: \d+
+        voicemailBoxId:
+          type: string
+    PinStatusResponse:
+      type: object
+      properties:
+        lockedOut:
+          type: boolean
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

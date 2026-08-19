@@ -1,0 +1,969 @@
+{
+  "item": [
+    {
+      "id": "5cf15b65-127d-4d62-a498-bab31aa20045",
+      "name": "Bulk Operation Job",
+      "description": {
+        "content": "Manage jobs used in the bulk process.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c56c0f4-a4c9-40c6-b10e-df9b610e8862",
+          "name": "Create new job",
+          "request": {
+            "name": "Create new job",
+            "description": {
+              "content": "Create a new job. This endpoint can take two content types -- application/json and multipart/form-data. Please see the request body examples for the content type you will be using.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bulk-user-operation",
+                "job"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "transformObjectType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of CreateUserInput,CreateTelephoneNumberInput,DeleteUserInput,DeleteTelephoneNumberInput)"
+                },
+                {
+                  "key": "transformObjectFile",
+                  "type": "file",
+                  "description": "(Required) valid data file that corresponds to the transform object type definition"
+                },
+                {
+                  "key": "targetAccountId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) account that this data will go into"
+                },
+                {
+                  "key": "jobTypeId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required)  (This can only be one of create users,create telephone numbers,delete users,delete telephone numbers)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9cf361c-e152-4c19-b397-f8d8a59456d1",
+              "name": "Job created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of CreateUserInput,CreateTelephoneNumberInput,DeleteUserInput,DeleteTelephoneNumberInput)",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectType",
+                      "value": "CreateUserInput",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) valid data file that corresponds to the transform object type definition",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectFile",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) account that this data will go into",
+                        "type": "text/plain"
+                      },
+                      "key": "targetAccountId",
+                      "value": "123948534",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of create users,create telephone numbers,delete users,delete telephone numbers)",
+                        "type": "text/plain"
+                      },
+                      "key": "jobTypeId",
+                      "value": "create users",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"jobStatus\": \"CREATED\",\n  \"executionStatus\": \"COMPLETED\",\n  \"updatedDateTime\": \"1960-09-11T02:43:28.051Z\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"string\"\n    }\n  },\n  \"abortAfter\": 4453\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34b97081-af3c-43b4-a2f5-ec837ea8312c",
+              "name": "Invalid job details supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of CreateUserInput,CreateTelephoneNumberInput,DeleteUserInput,DeleteTelephoneNumberInput)",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectType",
+                      "value": "CreateUserInput",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) valid data file that corresponds to the transform object type definition",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectFile",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) account that this data will go into",
+                        "type": "text/plain"
+                      },
+                      "key": "targetAccountId",
+                      "value": "123948534",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of create users,create telephone numbers,delete users,delete telephone numbers)",
+                        "type": "text/plain"
+                      },
+                      "key": "jobTypeId",
+                      "value": "create users",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 611,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fa7b57c-0bb4-4a46-8062-6fbd4396228d",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of CreateUserInput,CreateTelephoneNumberInput,DeleteUserInput,DeleteTelephoneNumberInput)",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectType",
+                      "value": "CreateUserInput",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) valid data file that corresponds to the transform object type definition",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectFile",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) account that this data will go into",
+                        "type": "text/plain"
+                      },
+                      "key": "targetAccountId",
+                      "value": "123948534",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of create users,create telephone numbers,delete users,delete telephone numbers)",
+                        "type": "text/plain"
+                      },
+                      "key": "jobTypeId",
+                      "value": "create users",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db150a89-0321-4de2-a3b0-c5f0d1c34e51",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of CreateUserInput,CreateTelephoneNumberInput,DeleteUserInput,DeleteTelephoneNumberInput)",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectType",
+                      "value": "CreateUserInput",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) valid data file that corresponds to the transform object type definition",
+                        "type": "text/plain"
+                      },
+                      "key": "transformObjectFile",
+                      "type": "file"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) account that this data will go into",
+                        "type": "text/plain"
+                      },
+                      "key": "targetAccountId",
+                      "value": "123948534",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required)  (This can only be one of create users,create telephone numbers,delete users,delete telephone numbers)",
+                        "type": "text/plain"
+                      },
+                      "key": "jobTypeId",
+                      "value": "create users",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dafd5bd-a064-42d9-a67d-f028a667cbd9",
+          "name": "Get job details",
+          "request": {
+            "name": "Get job details",
+            "description": {
+              "content": "Get job details by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bulk-user-operation",
+                "job",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "131490ee-c861-47e0-9fe9-c52a6a44574a",
+              "name": "Job retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"jobStatus\": \"CREATED\",\n  \"executionStatus\": \"COMPLETED\",\n  \"updatedDateTime\": \"1960-09-11T02:43:28.051Z\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"string\"\n    }\n  },\n  \"abortAfter\": 4453\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "481cd5aa-19d2-4c35-9b9e-5da0652a8ec5",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5f4f4fa-1b0a-4218-be8b-15c5974ab239",
+              "name": "Job not found; Invalid JobId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b4640d7-92b5-4cd0-b133-7764ba7753f0",
+          "name": "Update existing job",
+          "request": {
+            "name": "Update existing job",
+            "description": {
+              "content": "Update an existing job",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "bulk-user-operation",
+                "job",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobTypeId\": \"<string>\",\n  \"targetAccountId\": \"<string>\",\n  \"inputCollectionId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    },\n    \"key_1\": {\n      \"id\": \"<string>\"\n    },\n    \"key_2\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b69cfcee-aa5e-482b-83e2-8b22b95c6a9c",
+              "name": "Job updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56a6f7f9-6bab-4cf7-adb6-72789ce55a95",
+              "name": "Invalid job details supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b64bed08-ca56-4e4d-8348-d7f2c4f44acc",
+              "name": "Unauthorized access",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb269abf-6e21-4bc7-80b7-5ae25052e6e0",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "bulk-user-operation",
+                    "job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobTypeId\": \"create users | delete users | create telephone numbers | delete telephone numbers\",\n  \"targetAccountId\": \"456\",\n  \"inputCollectionId\": \"789\",\n  \"id\": \"<string>\",\n  \"ownerId\": \"<string>\",\n  \"jobStatus\": \"<string>\",\n  \"executionStatus\": \"<string>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"outputCollections\": {\n    \"key_0\": {\n      \"id\": \"<string>\"\n    }\n  },\n  \"abortAfter\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3668,\n  \"message\": \"string\",\n  \"errors\": [\n    \"transformObjectsFile must not be null\",\n    \"jobTypeId should be valid\",\n    \"etc.\"\n  ],\n  \"schemaErrors\": [\n    {\n      \"index\": \"index (location) of the error\",\n      \"path\": \"path\",\n      \"description\": \"description of the schema error\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AUTH-TOKEN"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "163f7449-4456-43bb-96fc-e056f2b033da",
+    "name": "Alianza Public Bulk Operation Job API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>",
+      "type": "text/plain"
+    }
+  }
+}

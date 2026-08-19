@@ -1,0 +1,389 @@
+openapi: 3.2.0
+info:
+  title: Alianza IVR API
+  version: '2'
+  description: 'Operations tagged IVR across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: IVR
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/ivr/{ivrId}:
+    get:
+      tags:
+      - IVR
+      summary: Retrieve IVR
+      description: Use to retrieve an IVR
+      operationId: retrieveIvr
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: ivrId
+        in: path
+        description: ID of IVR
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: IVRX
+                $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid account ID or IVR ID supplied
+        '404':
+          description: IVR not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          schema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid account ID or IVR ID supplied
+        '404':
+          description: IVR not found
+    put:
+      tags:
+      - IVR
+      summary: Update IVR
+      description: Use to update an IVR
+      operationId: updateIvr
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: ivrId
+        in: path
+        description: ID of IVR
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: IVRX
+                $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid IVR ID or invalid IVR object supplied
+        '404':
+          description: IVR not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          schema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid IVR ID or invalid IVR object supplied
+        '404':
+          description: IVR not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: IVRX
+              $ref: '#/components/schemas/IVRX_2'
+        description: IVR object
+        required: true
+    delete:
+      tags:
+      - IVR
+      summary: Delete IVR
+      description: Use to delete an IVR
+      operationId: deleteIvr
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: ivrId
+        in: path
+        description: ID of IVR
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid IVR ID
+        '404':
+          description: IVR not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid IVR ID
+        '404':
+          description: IVR not found
+  /v2/partition/{partitionId}/account/{accountId}/ivr:
+    get:
+      tags:
+      - IVR
+      summary: Retrieve all IVRs for account
+      description: Use to retrieve a list of all IVRs for a account
+      operationId: retrieveIvrList
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: IVRX
+              $ref: '#/components/schemas/IVRX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: IVRX
+                  $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid partition ID or account ID supplied
+        '404':
+          description: IVRs not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: IVRX
+              $ref: '#/components/schemas/IVRX_2'
+          schema:
+            type: array
+            items:
+              originalRef: IVRX
+              $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid partition ID or account ID supplied
+        '404':
+          description: IVRs not found
+    post:
+      tags:
+      - IVR
+      summary: Create IVR
+      description: Use to create an IVR
+      operationId: createIvr
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: IVRX
+                $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid IVR object supplied
+        '404':
+          description: IVR not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+          schema:
+            originalRef: IVRX
+            $ref: '#/components/schemas/IVRX_2'
+        '400':
+          description: Invalid IVR object supplied
+        '404':
+          description: IVR not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: IVRX
+              $ref: '#/components/schemas/IVRX_2'
+        description: IVR object
+        required: true
+components:
+  schemas:
+    IVRX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        name:
+          type: string
+        top:
+          type: string
+        left:
+          type: string
+        fixedPosition:
+          type: boolean
+        ivrComponents:
+          type: array
+          items:
+            originalRef: IVRComponentX
+            $ref: '#/components/schemas/IVRComponentX_2'
+        ivrComponentMappings:
+          type: array
+          items:
+            originalRef: IVRComponentMappingX
+            $ref: '#/components/schemas/IVRComponentMappingX_2'
+    IVRComponentMappingX_2:
+      type: object
+      properties:
+        fromIvrComponentId:
+          type: string
+        toIvrComponentId:
+          type: string
+    IVRComponentX_2:
+      type: object
+      discriminator:
+        propertyName: type
+      properties:
+        id:
+          type: string
+        left:
+          type: string
+        top:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - HANGUP
+          - MENU
+          - DIRECTORY
+          - GROUP
+          - INCOMING
+          - SCHEDULE
+          - DTMF
+          - MENU_FAILURE
+          - SCHEDULE_RULE_COMPONENT
+          - USER
+          - LINE_HUNTGROUP
+          - FORWARD
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

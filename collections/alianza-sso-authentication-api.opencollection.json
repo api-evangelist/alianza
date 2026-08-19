@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public SSO Authentication API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AUTH-TOKEN",
+      "value": "{{X-AUTH-TOKEN}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSO Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate SSO Authentication (Service Provider-Initiated Flow)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso/:emailAddress",
+            "headers": [
+              {
+                "name": "X-AUTH-REDIRECT-OVERRIDE",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "emailAddress",
+                "value": "",
+                "type": "path",
+                "description": "The user's email address, used to identify the SSO configuration by email domain"
+              },
+              {
+                "name": "redirect",
+                "value": "",
+                "type": "query",
+                "description": "When true, returns HTTP 303 and may include a Location header.\nWhen false, returns HTTP 200 with the redirect URL in the response body.\n"
+              }
+            ]
+          },
+          "docs": "Initiates the SSO authentication process by redirecting the user to their configured Identity Provider (IdP).\n\nWhat this endpoint does:\n1. Looks up the SSO configuration based on the user's email domain\n2. Generates a SAML authentication request\n3. Returns the SAML request in a 200 or 303 response depending on request parameters\n\nNote: This does not authenticate the user directly. It starts the redirect flow to the IdP.\n"
+        },
+        {
+          "info": {
+            "name": "Complete SSO Authentication (IdP Callback)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authn/sso/login-callback",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Authorization code from Auth0 after successful IdP authentication"
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query",
+                "description": "Must exactly match the URI used in the initial authentication request"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State token for session tracking and CSRF protection.\nContains the SSO configuration scope level.\n"
+              }
+            ]
+          },
+          "docs": "Completes the SSO authentication flow after the user has authenticated with their Identity Provider.\n\nFlow:\n1. User authenticates at the IdP\n2. IdP sends SAML assertion to Auth0\n3. Auth0 exchanges it for an authorization code\n4. This endpoint receives the code and exchanges it for user tokens\n5. Returns a LoginTokenX object for authenticated API use\n"
+        },
+        {
+          "info": {
+            "name": "Get SSO linkages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authn/sso/sso-linkage",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "query",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              }
+            ]
+          },
+          "docs": "Retrieves SSO linkage information for specified SSO configurations."
+        },
+        {
+          "info": {
+            "name": "Unlink SSO for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.d2.alianza.com/v2/authn/sso/sso-linkage",
+            "params": [
+              {
+                "name": "partitionId",
+                "value": "",
+                "type": "query",
+                "description": "ID of partition, refers to <a href=\"#/~schema/PartitionX\">partition.id</a>"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "ID of account, refers to <a href=\"#/~schema/Account\">account.id</a>"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "ID of end-user to unlink"
+              }
+            ]
+          },
+          "docs": "Removes the SSO linkage for a specific user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

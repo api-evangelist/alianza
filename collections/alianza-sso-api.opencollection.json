@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Public SSO API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SSO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get SSO data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/authorize/sso"
+          },
+          "docs": "Returns data needed for the UI to initiate Single Sign On"
+        },
+        {
+          "info": {
+            "name": "Authorization Code Exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.d2.alianza.com/v2/authorize/sso",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Pass the SSO response authorization code here to exchange it for a api authorization token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

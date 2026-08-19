@@ -1,0 +1,451 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public SSO Authentication API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: SSO Authentication
+  description: Operations for managing SSO authentication flows and callbacks
+paths:
+  /v2/authn/sso/{emailAddress}:
+    post:
+      tags:
+      - SSO Authentication
+      summary: Initiate SSO Authentication (Service Provider-Initiated Flow)
+      description: 'Initiates the SSO authentication process by redirecting the user to their configured Identity Provider (IdP).
+
+
+        What this endpoint does:
+
+        1. Looks up the SSO configuration based on the user''s email domain
+
+        2. Generates a SAML authentication request
+
+        3. Returns the SAML request in a 200 or 303 response depending on request parameters
+
+
+        Note: This does not authenticate the user directly. It starts the redirect flow to the IdP.
+
+        '
+      operationId: spInitiatedAuthn
+      parameters:
+      - name: emailAddress
+        in: path
+        required: true
+        description: The user's email address, used to identify the SSO configuration by email domain
+        schema:
+          type: string
+          format: email
+      - name: redirect
+        in: query
+        required: false
+        description: 'When true, returns HTTP 303 and may include a Location header.
+
+          When false, returns HTTP 200 with the redirect URL in the response body.
+
+          '
+        schema:
+          type: boolean
+          default: true
+      - name: X-AUTH-REDIRECT-OVERRIDE
+        in: header
+        required: false
+        description: 'Optional redirect URL override for specific applications.
+
+          If provided, the user will be redirected to this URL after successful authentication instead of the default callback URL.
+
+          '
+        schema:
+          type: string
+          format: uri
+      responses:
+        '200':
+          description: Redirect URI generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectResponse'
+              example:
+                redirectUri: https://idp.example.com/login?SAMLRequest=abc123
+        '303':
+          description: 'See Other - redirect URL returned in the response body and optionally in the Location header.
+
+            '
+          headers:
+            Location:
+              description: 'Optional redirect URL to SSO provider login page.
+
+                Present when `redirect=true` and User-Agent is not AUCA.
+
+                '
+              required: false
+              schema:
+                type: string
+                format: uri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RedirectResponse'
+              example:
+                redirectUri: https://idp.example.com/login?SAMLRequest=abc123
+        '400':
+          description: Bad Request - Invalid email or request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+              example:
+                errors:
+                - path param emailAddress must be a well-formed email address
+        '404':
+          description: Not Found - SSO configuration not found for email domain
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '500':
+          description: Internal Server Error - Failed to build Auth0 URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+  /v2/authn/sso/login-callback:
+    post:
+      tags:
+      - SSO Authentication
+      summary: Complete SSO Authentication (IdP Callback)
+      description: 'Completes the SSO authentication flow after the user has authenticated with their Identity Provider.
+
+
+        Flow:
+
+        1. User authenticates at the IdP
+
+        2. IdP sends SAML assertion to Auth0
+
+        3. Auth0 exchanges it for an authorization code
+
+        4. This endpoint receives the code and exchanges it for user tokens
+
+        5. Returns a LoginTokenX object for authenticated API use
+
+        '
+      operationId: finishSSO
+      parameters:
+      - name: code
+        in: query
+        required: true
+        description: Authorization code from Auth0 after successful IdP authentication
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: true
+        description: Must exactly match the URI used in the initial authentication request
+        schema:
+          type: string
+          format: uri
+      - name: state
+        in: query
+        required: true
+        description: 'State token for session tracking and CSRF protection.
+
+          Contains the SSO configuration scope level.
+
+          '
+        schema:
+          type: string
+          enum:
+          - ACCOUNT_LEVEL_SSO
+          - PARTITION_ENFORCED_SSO
+          - PARTITION_SSO
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: Bad Request - Invalid or malformed parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorResponse'
+              examples:
+                invalidAuthorizationCode:
+                  summary: Invalid Authorization Code
+                  value:
+                    code: INVALID_AUTHORIZATION_CODE
+                    message: Authorization code is invalid or has expired
+                    details:
+                      code: eyJhbGci...
+                redirectUriMismatch:
+                  summary: Redirect URI Mismatch
+                  value:
+                    code: REDIRECT_URI_MISMATCH
+                    message: Redirect URI does not match the original request
+                    details:
+                      provided: https://wrong.alianza.com/callback
+                      expected: https://app.alianza.com/auth/callback
+        '401':
+          description: Authentication failed - Invalid state or code verification failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorResponse'
+              example:
+                code: INVALID_STATE
+                message: State token validation failed - possible CSRF attack
+                details:
+                  state: ACCOUNT_LEVEL_SSO
+        '404':
+          description: State not found or session expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthErrorResponse'
+              example:
+                code: SESSION_EXPIRED
+                message: Authentication session has expired. Please initiate SSO login again.
+                details:
+                  maxSessionAge: 15 minutes
+  /v2/authn/sso/sso-linkage:
+    delete:
+      tags:
+      - SSO Authentication
+      summary: Unlink SSO for a user
+      description: Removes the SSO linkage for a specific user.
+      operationId: unlinkSSO
+      parameters:
+      - name: partitionId
+        in: query
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: accountId
+        in: query
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      - name: userId
+        in: query
+        required: true
+        description: ID of end-user to unlink
+        schema:
+          type: string
+      responses:
+        '204':
+          description: SSO linkage removed successfully
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - insufficient permissions
+        '404':
+          description: SSO linkage not found
+    get:
+      tags:
+      - SSO Authentication
+      summary: Get SSO linkages
+      description: Retrieves SSO linkage information for specified SSO configurations.
+      operationId: getSSOLinkages
+      parameters:
+      - name: partitionId
+        in: query
+        required: true
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        schema:
+          type: string
+      - name: accountId
+        in: query
+        required: true
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SSO linkages retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SSOLinkage'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - insufficient permissions
+components:
+  schemas:
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          example:
+          - path param emailAddress must be a well-formed email address
+    SSOLinkage:
+      type: object
+      description: SSO linkage information
+      properties:
+        ssoName:
+          type: string
+          description: Name of the SSO configuration
+        emailAddress:
+          type: string
+          format: email
+        partitionId:
+          type: string
+          description: Partition identifier
+        accountId:
+          type: string
+          description: Account identifier
+        userId:
+          type: string
+          description: User identifier
+        externalId:
+          type: string
+          description: External identity provider ID
+        externalEmail:
+          type: string
+          format: email
+          description: Email from external identity provider
+    LoginTokenX:
+      type: object
+      properties:
+        authToken:
+          type: string
+        userId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        endUserType:
+          type: string
+          enum:
+          - ADMIN
+          - ADVANCED_ADMIN
+          - BASIC_ADMIN
+          - STANDARD
+          - STANDARD_ADMIN
+          - SUPER_ADMIN
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        partitionId:
+          type: string
+        partitionName:
+          type: string
+        accountId:
+          type: string
+        permissions:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - NONE
+            - READ_MYUSER
+            - READ
+            - EDIT_MYUSER
+            - EDIT
+            - CREATE_MYUSER
+            - CREATE
+            - DELETE_MYUSER
+            - DELETE
+            - DENIED
+        featureToggles:
+          type: object
+          additionalProperties:
+            type: boolean
+        mustChangePassword:
+          type: boolean
+        subPartitionIds:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        tokenSource:
+          type: string
+        grantedAuthorities:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        pwdHash:
+          type: string
+        mustAddEmail:
+          type: boolean
+        maxLifeInHours:
+          type: integer
+          format: int32
+        groupId:
+          type: string
+        groupName:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    OAuthErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: INVALID_STATE
+        message:
+          type: string
+          example: State token validation failed
+        details:
+          type: object
+          additionalProperties: true
+    RedirectResponse:
+      type: object
+      required:
+      - redirectUri
+      properties:
+        redirectUri:
+          type: string
+          format: uri
+          description: URL of the Identity Provider login page where the user should be redirected
+          example: https://idp.example.com/login?SAMLRequest=abc123
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

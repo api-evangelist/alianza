@@ -1,0 +1,434 @@
+openapi: 3.2.0
+info:
+  title: Alianza Call Group API
+  version: '2'
+  description: 'Operations tagged Call Group across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Call Group
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/group:
+    get:
+      tags:
+      - Call Group
+      summary: Get call group list
+      description: Use to retrieve a list of call groups.
+      operationId: getAllCallGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: memberType
+        in: query
+        description: Filter by member type
+        required: false
+        schema:
+          type: string
+          enum:
+          - DEVICE
+          - USER
+      - name: memberId
+        in: query
+        description: Filter for member ID, requires member type
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: CallGroupX
+                  $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid partition or account ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+          schema:
+            type: array
+            items:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid partition or account ID
+        '404':
+          description: Not found
+    post:
+      tags:
+      - Call Group
+      summary: Create call group
+      description: Use to create a call group
+      operationId: createCallGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallGroupX
+                $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          schema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+        description: Call group object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/group/{callGroupId}:
+    get:
+      tags:
+      - Call Group
+      summary: Retrieve a call group
+      description: Use to retrieve a call group
+      operationId: getCallGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: callGroupId
+        in: path
+        description: ID of call group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallGroupX
+                $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid account ID or call group ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          schema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid account ID or call group ID
+        '404':
+          description: Not found
+    put:
+      tags:
+      - Call Group
+      summary: Update call group
+      description: Use to update a call group
+      operationId: updateCallGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: callGroupId
+        in: path
+        description: ID of Call group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallGroupX
+                $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group ID or call group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          schema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group ID or call group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+        description: Call group object
+        required: true
+    delete:
+      tags:
+      - Call Group
+      summary: Delete call group
+      description: Use to delete a call group
+      operationId: deleteCallGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: callGroupId
+        in: path
+        description: ID of call group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid call group ID
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid call group ID
+        '404':
+          description: Not found
+    patch:
+      tags:
+      - Call Group
+      summary: Update call group
+      description: Use to update a call group
+      operationId: patchCallGroup
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: callGroupId
+        in: path
+        description: ID of call group
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: CallGroupX
+                $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group ID or call group object
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+          schema:
+            originalRef: CallGroupX
+            $ref: '#/components/schemas/CallGroupX_2'
+        '400':
+          description: Invalid call group ID or call group object
+        '404':
+          description: Not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: CallGroupX
+              $ref: '#/components/schemas/CallGroupX_2'
+        description: Call group object
+        required: true
+components:
+  schemas:
+    CallGroupX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - DEVICE
+          - USER
+        subType:
+          type: string
+          enum:
+          - ANY_USER
+          - PAGING_DEVICE
+        memberIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

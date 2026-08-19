@@ -1,0 +1,771 @@
+{
+  "item": [
+    {
+      "id": "2e225a2d-6d43-4a56-8f7c-1e18cc8ae25c",
+      "name": "Emergency Notification",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52a7e2ab-e019-4ba2-9e40-87a7f37e8044",
+          "name": "Retrieve notification event list",
+          "request": {
+            "name": "Retrieve notification event list",
+            "description": {
+              "content": "Use to retrieve all NotificationEvents for an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "emergency-notifications",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c69e11e-c4db-43d3-844d-bafb54108c46",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "emergency-notifications",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"38a4b02a-c39f-5c23-0330-8cc62583d44e\",\n    \"callTime\": 6732,\n    \"timeZoneId\": \"string\",\n    \"groupId\": \"string\",\n    \"groupType\": \"ACCOUNT\",\n    \"triggerType\": \"EMERGENCY_TEST_CALL\",\n    \"triggeringPhoneNumber\": \"string\",\n    \"status\": \"SENT\",\n    \"emailNotificationRecipients\": [\n      {\n        \"recipient\": \"string\",\n        \"status\": \"FAILED\"\n      },\n      {\n        \"recipient\": \"string\",\n        \"status\": \"FAILED\"\n      }\n    ],\n    \"smsNotificationRecipients\": [\n      {\n        \"recipient\": \"string\",\n        \"status\": \"SENT\"\n      },\n      {\n        \"recipient\": \"string\",\n        \"status\": \"SENT\"\n      }\n    ]\n  },\n  {\n    \"id\": \"34bd7cb0-4161-0c7a-0464-e4793b5573b6\",\n    \"callTime\": 9019,\n    \"timeZoneId\": \"string\",\n    \"groupId\": \"string\",\n    \"groupType\": \"ACCOUNT\",\n    \"triggerType\": \"EMERGENCY_TEST_TEXT\",\n    \"triggeringPhoneNumber\": \"string\",\n    \"status\": \"SENT\",\n    \"emailNotificationRecipients\": [\n      {\n        \"recipient\": \"string\",\n        \"status\": \"FAILED\"\n      },\n      {\n        \"recipient\": \"string\",\n        \"status\": \"SENT\"\n      }\n    ],\n    \"smsNotificationRecipients\": [\n      {\n        \"recipient\": \"string\",\n        \"status\": \"SENT\"\n      },\n      {\n        \"recipient\": \"string\",\n        \"status\": \"FAILED\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ee15bc7-964e-4b95-9d61-1ba953550cb1",
+          "name": "Retrieve notification group list",
+          "request": {
+            "name": "Retrieve notification group list",
+            "description": {
+              "content": "Use to retrieve a list of notification group associated to an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "emergency-notifications",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c66b7498-c641-4ecc-ad3c-bc7b354ee1d7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "emergency-notifications",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"type\": \"ACCOUNT\",\n    \"name\": \"string\",\n    \"compliance\": {\n      \"installDate\": \"1966-04-30T04:22:09.238Z\",\n      \"usingAlternativeSolution\": false,\n      \"emailRecipients\": [\n        \"string\",\n        \"string\"\n      ],\n      \"smsRecipients\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inCompliance\": true\n    },\n    \"timeZoneId\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"type\": \"ACCOUNT\",\n    \"name\": \"string\",\n    \"compliance\": {\n      \"installDate\": \"1994-02-26T09:17:36.559Z\",\n      \"usingAlternativeSolution\": false,\n      \"emailRecipients\": [\n        \"string\",\n        \"string\"\n      ],\n      \"smsRecipients\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inCompliance\": false\n    },\n    \"timeZoneId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a45fe67-916d-466b-943a-1a8578f50140",
+          "name": "Retrieve notification group",
+          "request": {
+            "name": "Retrieve notification group",
+            "description": {
+              "content": "Use to retrieve a specific NotificationGroup (include Compliance & configurations) for id/type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "emergency-notifications",
+                "groups",
+                ":type",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bef9216-f3f5-4a9b-8d47-4b51cf96c1ff",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "emergency-notifications",
+                    "groups",
+                    ":type",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"ACCOUNT\",\n  \"name\": \"string\",\n  \"compliance\": {\n    \"installDate\": \"1997-08-18T00:20:48.767Z\",\n    \"usingAlternativeSolution\": true,\n    \"emailRecipients\": [\n      \"string\",\n      \"string\"\n    ],\n    \"smsRecipients\": [\n      \"string\",\n      \"string\"\n    ],\n    \"inCompliance\": false\n  },\n  \"timeZoneId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28a48a85-035a-4170-9d7d-ef8ad3078805",
+          "name": "Update notification group",
+          "request": {
+            "name": "Update notification group",
+            "description": {
+              "content": "Use to update specific NotificationGroup (only Compliance & configurations) for id/type",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "emergency-notifications",
+                "groups",
+                ":type",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"compliance\": {\n    \"installDate\": \"<dateTime>\",\n    \"usingAlternativeSolution\": \"<boolean>\",\n    \"emailRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"smsRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"inCompliance\": \"<boolean>\"\n  },\n  \"timeZoneId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c451f0f-703e-4739-a93a-1b051c88f0a8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "emergency-notifications",
+                    "groups",
+                    ":type",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"compliance\": {\n    \"installDate\": \"<dateTime>\",\n    \"usingAlternativeSolution\": \"<boolean>\",\n    \"emailRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"smsRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"inCompliance\": \"<boolean>\"\n  },\n  \"timeZoneId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"compliance\": {\n    \"installDate\": \"<dateTime>\",\n    \"usingAlternativeSolution\": \"<boolean>\",\n    \"emailRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"smsRecipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"inCompliance\": \"<boolean>\"\n  },\n  \"timeZoneId\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57d19573-e49e-447d-894c-04fc4e587b92",
+          "name": "Execute test",
+          "request": {
+            "name": "Execute test",
+            "description": {
+              "content": "Execute a test of all NotificationConfigurations associated with the specified NotificationGroup",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "partition",
+                ":partitionId",
+                "account",
+                ":accountId",
+                "emergency-notifications",
+                "groups",
+                ":type",
+                ":groupId",
+                "execute-test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "partitionId",
+                  "description": "(Required) ID of partition"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "groupId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-AUTH-TOKEN",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c2a7ed4-c1eb-497a-918a-0a71b6765b25",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "partition",
+                    ":partitionId",
+                    "account",
+                    ":accountId",
+                    "emergency-notifications",
+                    "groups",
+                    ":type",
+                    ":groupId",
+                    "execute-test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "partitionId",
+                      "description": "(Required) ID of partition"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "groupId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-AUTH-TOKEN",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b5609ab6-45f4-1271-c2d7-fcbc2eb7a614\",\n  \"callTime\": 3831,\n  \"timeZoneId\": \"string\",\n  \"groupId\": \"string\",\n  \"groupType\": \"ACCOUNT\",\n  \"triggerType\": \"EMERGENCY_TEST_TEXT\",\n  \"triggeringPhoneNumber\": \"string\",\n  \"status\": \"SENT\",\n  \"emailNotificationRecipients\": [\n    {\n      \"recipient\": \"string\",\n      \"status\": \"SENT\"\n    },\n    {\n      \"recipient\": \"string\",\n      \"status\": \"FAILED\"\n    }\n  ],\n  \"smsNotificationRecipients\": [\n    {\n      \"recipient\": \"string\",\n      \"status\": \"SENT\"\n    },\n    {\n      \"recipient\": \"string\",\n      \"status\": \"SENT\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.d2.alianza.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a30f9dd5-0318-42a1-a6a8-70c5baa2c956",
+    "name": "Alianza Emergency Notification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Operations tagged Emergency Notification across 2 of this provider's published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.",
+      "type": "text/plain"
+    }
+  }
+}

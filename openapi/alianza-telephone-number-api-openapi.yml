@@ -1,0 +1,3531 @@
+openapi: 3.2.0
+info:
+  title: Alianza Telephone Number API
+  version: '2'
+  description: 'Operations tagged Telephone Number across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Telephone Number
+paths:
+  /v2/partition/{partitionId}/telephonenumber:
+    get:
+      tags:
+      - Telephone Number
+      operationId: retrieve_5
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: TelephoneNumberViewX
+                  $ref: '#/components/schemas/TelephoneNumberViewX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          schema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+    post:
+      tags:
+      - Telephone Number
+      summary: Create telephone number
+      description: Use to create a telephone number
+      operationId: createTelephoneNumber
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberViewX
+                $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          schema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        description: Telephone number object
+        required: true
+  /v2/partition/{partitionId}/telephonenumber/{tn}:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve telephone number
+      description: Use to retrieve information about a telephone number
+      operationId: retrieveTelephoneNumber
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberViewX
+                $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          schema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number supplied
+        '404':
+          description: Telephone number not found
+    delete:
+      tags:
+      - Telephone Number
+      summary: Delete telephone number
+      description: Use to delete a telephone number
+      operationId: delete_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid telephone number supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid telephone number supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/search:
+    get:
+      tags:
+      - Telephone Number
+      summary: Telephone number search
+      description: Use to search for a telephone number
+      operationId: search_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: q
+        in: query
+        description: 'Query Field: q=18015551212, q=84062, q=ALBANY, q=ALBANY.NY, LAT_LONG does not use this field'
+        required: false
+        schema:
+          type: string
+      - name: functiontype
+        in: query
+        description: Function Type, default ELS
+        required: false
+        schema:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+          default: ELS
+      - name: type
+        in: query
+        description: Search Type, default POSTALCODE_OR_TN
+        required: false
+        schema:
+          type: string
+          enum:
+          - POSTALCODE_OR_TN
+          - TN
+          - POSTALCODE
+          - LAT_LONG
+          - RATECENTER
+          - RATECENTER_CARRIER
+          default: POSTALCODE_OR_TN
+      - name: lat
+        in: query
+        description: Latitude, requires type=LAT_LONG
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: long
+        in: query
+        description: Latitude, requires type=LAT_LONG
+        required: false
+        schema:
+          type: number
+          format: double
+      - name: maxResults
+        in: query
+        description: Number of results to return
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: TelephoneNumberViewX
+                  $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          schema:
+            type: array
+            items:
+              originalRef: TelephoneNumberViewX
+              $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/{tn}/availability:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve telephone number availability
+      description: Use to retrieve information about a telephone number availability
+      operationId: retrieveTelephoneNumberAvailability
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAvailabilityX
+            $ref: '#/components/schemas/TelephoneNumberAvailabilityX'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAvailabilityX
+                $ref: '#/components/schemas/TelephoneNumberAvailabilityX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAvailabilityX
+            $ref: '#/components/schemas/TelephoneNumberAvailabilityX'
+          schema:
+            originalRef: TelephoneNumberAvailabilityX
+            $ref: '#/components/schemas/TelephoneNumberAvailabilityX'
+  /v2/partition/{partitionId}/telephonenumber/bulkimport:
+    post:
+      tags:
+      - Telephone Number
+      summary: Bulk telephone number import
+      description: Use to import telephone numbers in bulk
+      operationId: bulkInsert
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Invalid telephone number list supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          schema:
+            type: array
+            items:
+              type: string
+        '400':
+          description: Invalid telephone number list supplied
+        '404':
+          description: Error
+      deprecated: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+        description: Telephone number list
+        required: true
+  /v2/partition/{partitionId}/telephonenumber/bulkimport_2:
+    post:
+      tags:
+      - Telephone Number
+      summary: Bulk telephone number import
+      description: Use to import telephone numbers in bulk
+      operationId: bulkInsert2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: JobUploadKey
+              $ref: '#/components/schemas/JobUploadKey'
+        description: Use Jobs API to upload file
+  /v2/partition/{partitionId}/telephonenumber/exportstatussearch:
+    get:
+      tags:
+      - Telephone Number
+      summary: Export as CSV telephone number status search
+      description: Use to export the searched status of a telephone number as a CSV file
+      operationId: exportStatusSearch
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: dateType
+        in: query
+        description: Type of data
+        required: false
+        schema:
+          type: string
+          enum:
+          - FOCDate
+          - UpdatedDate
+          - CreatedDate
+      - name: startDate
+        in: query
+        description: Start date
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        description: End date
+        required: false
+        schema:
+          type: string
+      - name: statusType
+        in: query
+        description: Status type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PENDING
+            - IN_PROGRESS
+            - REJECTED
+            - FOC_RECEIVED
+            - FOC_REMOVED
+            - CANCELLED
+            - CANCEL_PENDING
+            - CARRIER_CANCELLED
+            - DELETE_PENDING
+            - DELETE_SCHEDULED
+            - COMPLETED
+            - CORRECTED_COMPLETED
+            - COOLDOWN
+            - HOT_CUT_PORT
+            - ON_HOLD
+            - RESELLER_PENDING
+      - name: eventType
+        in: query
+        description: Service activation event type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PORT_REQUEST
+            - CSR_CHANGE_REQUEST
+            - ACTIVATION
+            - NINE_ONE_ONE_ADDRESS
+            - DISCONNECT
+            - DYNAMIC_RESERVATION
+            - BYOTN_REQUEST
+            - SERVICE_PROVIDER_TN
+      - name: accountId
+        in: query
+        description: Account ID
+        required: false
+        schema:
+          type: string
+      - name: telephoneNumber
+        in: query
+        description: Telephone number
+        required: false
+        schema:
+          type: string
+      - name: includeSubTns
+        in: query
+        description: Include Sub Tns
+        required: false
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+      responsesObject:
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/exportstatussearch_2:
+    get:
+      tags:
+      - Telephone Number
+      summary: Export as CSV telephone number status search
+      description: Use to export the searched status of a telephone number as a CSV file
+      operationId: exportStatusSearch2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: dateType
+        in: query
+        description: Type of data
+        required: false
+        schema:
+          type: string
+          enum:
+          - FOCDate
+          - UpdatedDate
+          - CreatedDate
+      - name: startDate
+        in: query
+        description: Start date
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        description: End date
+        required: false
+        schema:
+          type: string
+      - name: statusType
+        in: query
+        description: Status type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: eventType
+        in: query
+        description: Service activation event type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: accountId
+        in: query
+        description: Account ID
+        required: false
+        schema:
+          type: string
+      - name: telephoneNumber
+        in: query
+        description: Telephone number
+        required: false
+        schema:
+          type: string
+      - name: includeSubTns
+        in: query
+        description: Include Sub Tns
+        required: false
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/{tn}/cooldown/recover:
+    put:
+      tags:
+      - Telephone Number
+      summary: Delete telephone number cooldown
+      description: Use to delete a cooldown for a telephone number
+      operationId: cooldownRecover
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberViewX
+                $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+          schema:
+            originalRef: TelephoneNumberViewX
+            $ref: '#/components/schemas/TelephoneNumberViewX_2'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/{tn}/reserve:
+    put:
+      tags:
+      - Telephone Number
+      summary: Reserve a telephone number
+      description: Use to reserve a telephone number so another use cannot get it
+      operationId: reserve
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberReservedX
+            $ref: '#/components/schemas/TelephoneNumberReservedX'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberReservedX
+                $ref: '#/components/schemas/TelephoneNumberReservedX'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberReservedX
+            $ref: '#/components/schemas/TelephoneNumberReservedX'
+          schema:
+            originalRef: TelephoneNumberReservedX
+            $ref: '#/components/schemas/TelephoneNumberReservedX'
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+    delete:
+      tags:
+      - Telephone Number
+      summary: Delete a reserve on telephone number
+      description: Use to delete a reservation on a telephone number making it available for use by another
+      operationId: releaseReservation
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid telephone number object supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/statussearch:
+    get:
+      tags:
+      - Telephone Number
+      summary: Telephone number status search
+      description: Use to search for the status of a telephone number
+      operationId: statusSearch
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: dateType
+        in: query
+        description: Type of data
+        required: false
+        schema:
+          type: string
+          enum:
+          - FOCDate
+          - UpdatedDate
+          - CreatedDate
+      - name: startDate
+        in: query
+        description: Start date
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        description: End date
+        required: false
+        schema:
+          type: string
+      - name: statusType
+        in: query
+        description: Status type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PENDING
+            - IN_PROGRESS
+            - REJECTED
+            - FOC_RECEIVED
+            - FOC_REMOVED
+            - CANCELLED
+            - CANCEL_PENDING
+            - CARRIER_CANCELLED
+            - DELETE_PENDING
+            - DELETE_SCHEDULED
+            - COMPLETED
+            - CORRECTED_COMPLETED
+            - COOLDOWN
+            - HOT_CUT_PORT
+            - ON_HOLD
+            - RESELLER_PENDING
+      - name: eventType
+        in: query
+        description: Service activation event type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - PORT_REQUEST
+            - CSR_CHANGE_REQUEST
+            - ACTIVATION
+            - NINE_ONE_ONE_ADDRESS
+            - DISCONNECT
+            - DYNAMIC_RESERVATION
+            - BYOTN_REQUEST
+            - SERVICE_PROVIDER_TN
+      - name: accountId
+        in: query
+        description: Account ID
+        required: false
+        schema:
+          type: string
+      - name: telephoneNumber
+        in: query
+        description: Telephone number
+        required: false
+        schema:
+          type: string
+      - name: firstResultIndex
+        in: query
+        description: First result index
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: maxResult
+        in: query
+        description: Max results
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 50
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ServiceActivationEventResponseX
+            $ref: '#/components/schemas/ServiceActivationEventResponseX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ServiceActivationEventResponseX
+                $ref: '#/components/schemas/ServiceActivationEventResponseX_2'
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ServiceActivationEventResponseX
+            $ref: '#/components/schemas/ServiceActivationEventResponseX_2'
+          schema:
+            originalRef: ServiceActivationEventResponseX
+            $ref: '#/components/schemas/ServiceActivationEventResponseX_2'
+        '400':
+          description: Invalid search term supplied
+        '404':
+          description: Error
+  /v2/partition/{partitionId}/telephonenumber/{tn}/fmfmcheck:
+    get:
+      tags:
+      - Telephone Number
+      operationId: isTnOffNet
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/telephonenumber/export:
+    get:
+      tags:
+      - Telephone Number
+      operationId: getInventoryPlan
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: string
+          schema:
+            type: string
+  /v2/partition/{partitionId}/telephonenumber/export_2:
+    get:
+      tags:
+      - Telephone Number
+      summary: Export telephone numbers as csv
+      description: ''
+      operationId: getInventoryPlan2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve a telephone number on an account
+      description: Use to retrieve a specific telephone number on an account
+      operationId: retrieveTelephoneNumberOnAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAccountV2X
+                $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+    put:
+      tags:
+      - Telephone Number
+      summary: Update telephone number on an account
+      description: Use to update a telephone number on an account
+      operationId: updateTelephoneNumberOnAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAccountV2X
+                $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid telephone number or telephone number account object supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid telephone number or telephone number account object supplied
+        '404':
+          description: Telephone number not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        description: Telephone number account object
+        required: true
+    delete:
+      tags:
+      - Telephone Number
+      summary: Delete telephone number on an account
+      description: Use to delete a telephone number on an account
+      operationId: deleteTelephoneNumberOnAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+    patch:
+      tags:
+      - Telephone Number
+      summary: Update telephone number on an account
+      description: Use to update a telephone number on an account
+      operationId: patchTelephoneNumberOnAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAccountV2X
+                $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid telephone number or telephone number account object supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid telephone number or telephone number account object supplied
+        '404':
+          description: Telephone number not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        description: Telephone number account object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve all telephone numbers on an account
+      description: Use to retrieve all telephone numbers on an account. limitedData is provided to enable large result sets retreived without long retrieval times
+      operationId: retrieveAccountTelephoneNumbers
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: limitedData
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: TelephoneNumberAccountV2X
+                  $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Telephone numbers not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Telephone numbers not found
+    post:
+      tags:
+      - Telephone Number
+      summary: Create a telephone number or add telephone number to an account
+      description: 'Use to create a new telephone number or add an existing number to an account. Unit field in the CSR Address should be no greater than 10 character, anything more than 10 characters is ignored. '
+      operationId: createOrAddTelephoneNumberToAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberActivationsV2X
+            $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberActivationsV2X
+                $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        '400':
+          description: Invalid account ID or telephone number information supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberActivationsV2X
+            $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+          schema:
+            originalRef: TelephoneNumberActivationsV2X
+            $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        '400':
+          description: Invalid account ID or telephone number information supplied
+        '404':
+          description: Telephone number not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberActivationsV2X
+              $ref: '#/components/schemas/TelephoneNumberActivationsV2X_2'
+        description: Telephone number activation object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/groupid/{groupId}:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve all telephone number for end users
+      description: Use to retrieve all telephone numbers on an account for user groups. If group is provided only the numbers for the users on this group will be returned
+      operationId: retrieveTelephoneNumbersByUserGroups
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: groupId
+        in: path
+        description: Group ID
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: TelephoneNumberAccountV2X
+                  $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Telephone numbers not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            type: array
+            items:
+              originalRef: TelephoneNumberAccountV2X
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Telephone numbers not found
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}/911-address/original/accept:
+    put:
+      tags:
+      - Telephone Number
+      summary: Accept original E911 address
+      description: ''
+      operationId: acceptOriginalE911
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      - name: latitude
+        in: query
+        description: E911 address latitude
+        required: false
+        schema:
+          type: string
+      - name: longitude
+        in: query
+        description: E911 address latitude
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAccountV2X
+                $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/tn-requests:
+    get:
+      tags:
+      - Telephone Number
+      summary: Get all unfinished or archived activations with dynamic inventory
+      description: ''
+      operationId: retrieveDynamicInventoryActivations
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: getAll
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: DynamicTelephoneNumberActivationX
+                  $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid account ID supplied
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          schema:
+            type: array
+            items:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid account ID supplied
+    post:
+      tags:
+      - Telephone Number
+      summary: Activate a tn that will be requested dynamically from carrier. TN is not known at the moment of initiating of activation
+      description: ''
+      operationId: createOrAddTelephoneNumberToAccountWithDynamicInventory
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DynamicTelephoneNumberActivationX
+                $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid carrierId
+        '404':
+          description: Closest RateCenter could not be found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          schema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid carrierId
+        '404':
+          description: Closest RateCenter could not be found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/tn-requests/{orderId}:
+    get:
+      tags:
+      - Telephone Number
+      summary: Get activation with dynamic inventory regardless of status
+      description: ''
+      operationId: getDynamicInventoryActivation
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        description: Dynamic reservation order id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DynamicTelephoneNumberActivationX
+                $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Reservation could not be found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          schema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid account ID supplied
+        '404':
+          description: Reservation could not be found
+    put:
+      tags:
+      - Telephone Number
+      summary: Updates dynamic reservation object
+      description: ''
+      operationId: updateTelephoneNumberToAccountWithDynamicInventory
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        description: Dynamic reservation order id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DynamicTelephoneNumberActivationX
+                $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid dynamic reservation object supplied
+        '404':
+          description: Reservation could not be found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          schema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid dynamic reservation object supplied
+        '404':
+          description: Reservation could not be found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        description: Dynamic tn reservation object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/tn-requests/actions/cancel:
+    post:
+      tags:
+      - Telephone Number
+      summary: Cancel and remove reservation object
+      description: ''
+      operationId: cancelAndRemoveDynamicInventoryReservation
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid dynamic reservation object activation status
+      responsesObject:
+        '400':
+          description: Invalid dynamic reservation object activation status
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: CancelActionX
+              $ref: '#/components/schemas/CancelActionX'
+        description: Cancel action object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/tn-requests/actions/resubmit:
+    post:
+      tags:
+      - Telephone Number
+      summary: Revise and resubmit dynamic reservation object
+      description: ''
+      operationId: reviseAndResubmitDynamicInventoryReservation
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DynamicTelephoneNumberActivationX
+                $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid carrierId or dynamic reservation object activation status
+        '404':
+          description: Closest RateCenter could not be found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+          schema:
+            originalRef: DynamicTelephoneNumberActivationX
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        '400':
+          description: Invalid carrierId or dynamic reservation object activation status
+        '404':
+          description: Closest RateCenter could not be found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: DynamicTelephoneNumberActivationX
+              $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        description: Dynamic reservation object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/tn-requests/{orderId}/refresh:
+    post:
+      tags:
+      - Telephone Number
+      summary: Refresh dynamic activation status
+      description: ''
+      operationId: refreshDynamicInventoryActivation
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '404':
+          description: Activation is not found by orderId
+      responsesObject:
+        '404':
+          description: Activation is not found by orderId
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}/911-address/usages:
+    get:
+      tags:
+      - Telephone Number
+      summary: Retrieve a telephone number usages on an account
+      description: Use to retrieve usages of a specific telephone number on an account
+      operationId: retrieveTelephoneNumberUsages
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number usages
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberUsagesX
+            $ref: '#/components/schemas/TelephoneNumberUsagesX'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberUsagesX
+                $ref: '#/components/schemas/TelephoneNumberUsagesX'
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberUsagesX
+            $ref: '#/components/schemas/TelephoneNumberUsagesX'
+          schema:
+            originalRef: TelephoneNumberUsagesX
+            $ref: '#/components/schemas/TelephoneNumberUsagesX'
+        '400':
+          description: Invalid account ID or telephone number supplied
+        '404':
+          description: Telephone number not found
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}/911-address/correction:
+    get:
+      tags:
+      - Telephone Number
+      summary: Get adjusted E911 address
+      description: ''
+      operationId: getE911Correction
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: E911AddressX
+            $ref: '#/components/schemas/E911AddressX'
+          content:
+            application/json:
+              schema:
+                originalRef: E911AddressX
+                $ref: '#/components/schemas/E911AddressX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: E911AddressX
+            $ref: '#/components/schemas/E911AddressX'
+          schema:
+            originalRef: E911AddressX
+            $ref: '#/components/schemas/E911AddressX'
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}/911-address/correction/accept:
+    put:
+      tags:
+      - Telephone Number
+      summary: Accept adjusted E911 address
+      description: ''
+      operationId: acceptE911Correction
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        description: Telephone number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberAccountV2X
+                $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+          schema:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/external:
+    post:
+      tags:
+      - Telephone Number
+      summary: Create or updates already activated telephone number to an account
+      description: 'Use to create a new telephone number or update an existing number to an account. Unit field in the CSR Address should be no greater than 10 character, anything more than 10 characters is ignored. '
+      operationId: createOrUpdateExternalTelephoneNumberToAccount
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ExternalTnX
+            $ref: '#/components/schemas/ExternalTnX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: ExternalTnX
+                $ref: '#/components/schemas/ExternalTnX_2'
+        '400':
+          description: Invalid account ID or telephone number information supplied
+        '404':
+          description: Telephone number not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: ExternalTnX
+            $ref: '#/components/schemas/ExternalTnX_2'
+          schema:
+            originalRef: ExternalTnX
+            $ref: '#/components/schemas/ExternalTnX_2'
+        '400':
+          description: Invalid account ID or telephone number information supplied
+        '404':
+          description: Telephone number not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: ExternalTnX
+              $ref: '#/components/schemas/ExternalTnX_2'
+        description: Narrow telephone number object
+        required: true
+  /v2/partition/{partitionId}/account/{accountId}/telephonenumber/{tn}/destination:
+    put:
+      tags:
+      - Telephone Number
+      operationId: destination
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: tn
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: TelephoneNumberDestinationX
+            $ref: '#/components/schemas/TelephoneNumberDestinationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: TelephoneNumberDestinationX
+                $ref: '#/components/schemas/TelephoneNumberDestinationX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: TelephoneNumberDestinationX
+            $ref: '#/components/schemas/TelephoneNumberDestinationX_2'
+          schema:
+            originalRef: TelephoneNumberDestinationX
+            $ref: '#/components/schemas/TelephoneNumberDestinationX_2'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: TelephoneNumberDestinationX
+              $ref: '#/components/schemas/TelephoneNumberDestinationX_2'
+components:
+  schemas:
+    TelephoneNumberAccountV2X_2:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        carrierStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        orderVersion:
+          type: string
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        temporaryNumber:
+          type: string
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        assignAsCallerId:
+          type: boolean
+        byotnCarrierId:
+          type: string
+        ringType:
+          type: string
+          description: Default ringtype for this phone
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        carrierId:
+          type: string
+        id:
+          type: string
+        tollFree:
+          type: boolean
+    TelephoneNumberUsagesX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        phoneNumber:
+          type: string
+        users:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+    L3SettingsX_2:
+      type: object
+      properties:
+        servicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
+          type: array
+          items:
+            type: string
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
+          type: string
+        customerServiceName:
+          type: string
+        bizOrg:
+          type: string
+    MultipartFormDataInput_2:
+      type: object
+    TelephoneNumberDestinationX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumber:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        assignAsCallerId:
+          type: boolean
+        id:
+          type: string
+    ExternalTnX_2:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        userId:
+          type: string
+        inboundCarrierId:
+          type: string
+        functionType:
+          type: string
+        cnam:
+          type: string
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        callable:
+          type: boolean
+        id:
+          type: string
+    AddressX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+    E911AddressX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        latitude:
+          type: string
+          description: -90 through 90, 4-6 decimals
+        longitude:
+          type: string
+          description: -180 through 180, 4-6 decimals
+        language:
+          type: string
+          description: Optional, see /v2/ref/language for supported languages
+    TelephoneNumberViewX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        phoneNumber:
+          type: string
+        rateCenter:
+          type: string
+        rateCenterReorderName:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        prefix:
+          type: string
+        accountId:
+          type: string
+        carrierId:
+          type: string
+        cooldownExpireDate:
+          type: string
+          format: date-time
+        cooldownRecoveredDate:
+          type: string
+          format: date-time
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        claimTicketId:
+          type: string
+        matchesZip:
+          type: boolean
+        distance:
+          type: number
+          format: float
+        byotn:
+          type: boolean
+        activationDate:
+          type: integer
+          format: int64
+        isInInventory:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        id:
+          type: string
+        port:
+          type: boolean
+    TnData:
+      type: object
+      properties:
+        tn:
+          type: string
+        rateCenter:
+          type: string
+        wireless:
+          type: boolean
+    TelephoneNumberReservedX:
+      type: object
+      properties:
+        tn:
+          type: string
+        reservedTime:
+          type: string
+          format: date-time
+        reserved:
+          type: boolean
+        id:
+          type: string
+    CancelActionX:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+    LatLongCustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+    DirectoryListingX_2:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX_2'
+    DynamicTelephoneNumberActivationX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        carrierId:
+          type: string
+        orderId:
+          type: string
+        tnQuantity:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        userId:
+          type: string
+        customerServiceRecord:
+          originalRef: LatLongCustomerServiceRecordX
+          $ref: '#/components/schemas/LatLongCustomerServiceRecordX_2'
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        tnSettings:
+          originalRef: TelephoneNumberAccountBareX
+          $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        archived:
+          type: boolean
+        alianzaOrderId:
+          type: string
+        id:
+          type: string
+    PortX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: telephoneNumber
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        sendLoa:
+          type: boolean
+        loaSaved:
+          type: boolean
+        carrierId:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        crdDate:
+          type: string
+          format: date-time
+        billingTelephoneNumber:
+          type: string
+        portingWireType:
+          type: string
+          enum:
+          - Wireless
+          - Wireline
+        portingAuthorizedName:
+          type: string
+        wirelessAccountNumber:
+          type: string
+        wirelessPin:
+          type: string
+        focDate:
+          type: string
+          format: date-time
+        focDateTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        createdDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        cancelType:
+          type: string
+          enum:
+          - NORMAL
+          - EXPIDITED
+          - BY_CARRIER
+        telecomSettings:
+          originalRef: TelecomSettingsX
+          $ref: '#/components/schemas/TelecomSettingsX_2'
+        hotCutPortId:
+          type: string
+        portNow:
+          type: boolean
+        canAcceptSMS:
+          type: boolean
+        smsCallbackUrl:
+          type: string
+    TelephoneNumberActivationsV2X_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        port:
+          originalRef: PortX
+          $ref: '#/components/schemas/PortX_2'
+        l3Settings:
+          originalRef: L3SettingsX
+          $ref: '#/components/schemas/L3SettingsX_2'
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        holdActivation:
+          type: boolean
+          description: Use this when activating phone numbers to prevent carrier activation until a later date
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            xml:
+              name: telephoneNumber
+            originalRef: TelephoneNumberAccountBareX
+            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+        byotnCarrierId:
+          type: string
+        id:
+          type: string
+    ServiceActivationEventResponseX_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: ServiceActivationEventX
+            $ref: '#/components/schemas/ServiceActivationEventX_2'
+    ServiceActivationEventX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        serviceType:
+          type: string
+          enum:
+          - PORT_REQUEST
+          - CSR_CHANGE_REQUEST
+          - ACTIVATION
+          - NINE_ONE_ONE_ADDRESS
+          - DISCONNECT
+          - DYNAMIC_RESERVATION
+          - BYOTN_REQUEST
+          - SERVICE_PROVIDER_TN
+        referenceType:
+          type: string
+          enum:
+          - TELEPHONE
+          - PORT
+          - DYNAMIC_INVENTORY
+          - BYOTN
+          - BYOTN_PORT
+        referenceId:
+          type: string
+        activationStatusType:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        focDate:
+          type: string
+          format: date-time
+        crdDate:
+          type: string
+          format: date-time
+        city:
+          type: string
+        mainTelephoneNumber:
+          type: string
+        subTelephoneNumbers:
+          type: array
+          items:
+            type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        state:
+          type: string
+        l3Reaction:
+          type: string
+          enum:
+          - IGNORE
+          - RESUBMIT
+          - CANCEL
+          - SEND_EMAIL
+        parentOrderId:
+          type: string
+        editableFieldTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - crdDate
+            - wirelessAccountNumber
+            - wirelessPin
+            - name
+        losingCarrier:
+          type: string
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        logs:
+          type: array
+          items:
+            originalRef: ServiceActivationEventLogX
+            $ref: '#/components/schemas/ServiceActivationEventLogX'
+    TelecomSettingsX_2:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            originalRef: TnData
+            $ref: '#/components/schemas/TnData'
+    TelephoneNumberAvailabilityX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        reorderName:
+          type: string
+        originalReorderName:
+          type: string
+        name:
+          type: string
+        abbrName:
+          type: string
+        msa:
+          type: string
+        zips:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        wireless:
+          type: boolean
+        state:
+          type: string
+        country:
+          type: string
+        portable:
+          type: boolean
+        serviceAvailable:
+          type: boolean
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    ServiceActivationEventLogX:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        actionDate:
+          type: string
+          format: date-time
+        code:
+          type: string
+        message:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        generatedTicketId:
+          type: string
+    TelephoneNumberAccountBareX:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        tollFree:
+          type: boolean
+        id:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

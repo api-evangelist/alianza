@@ -1,0 +1,402 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Specialty Line API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Specialty Line
+  description: Managed Specialty Lines uses carefully curated CPE (Customer Premises Equipment) that can replace virtually any specialty use hardline for critical business and life safety systems.
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/specialty-line:
+    get:
+      tags:
+      - Specialty Line
+      summary: Retrieve specialty lines by account
+      description: Use to retrieve a list of specialty lines associated with an account
+      operationId: retrieve_specialty_line_by_account
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLinesX'
+        '403':
+          description: Partition or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+    post:
+      tags:
+      - Specialty Line
+      summary: Create a specialty line
+      description: Use to create a new specialty line on an account
+      operationId: create_specialty_line
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Specialty Line object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpecialtyLineRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Line created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineResponseDto'
+        '400':
+          description: Invalid Specialty Line object supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '403':
+          description: Partition or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '409':
+          description: 'Device already exists: MAC and Port combination must be unique'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+  /v2/partition/{partitionId}/account/{accountId}/specialty-line/{lineId}:
+    get:
+      tags:
+      - Specialty Line
+      summary: Retrieve a specialty line by id
+      description: Use to retrieve a specialty line by id
+      operationId: retrieve_specialty_line_by_id
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: lineId
+        in: path
+        description: ID of specialty line, refers to <a href="#/~schema/SpecialtyLineResponseDto">specialityLineX.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineResponseDto'
+        '403':
+          description: Partition or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '404':
+          description: Specialty line not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+    put:
+      tags:
+      - Specialty Line
+      summary: Update a specialty line
+      description: Use to update a specialty line
+      operationId: update_specialty_line
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: lineId
+        in: path
+        description: ID of specialty line, refers to <a href="#/~schema/SpecialtyLineResponseDto">specialityLineX.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Specialty Line object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpecialtyLineRequestDto'
+        required: true
+      responses:
+        '200':
+          description: Line updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineResponseDto'
+        '400':
+          description: Invalid Specialty Line object supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '403':
+          description: Partition or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '404':
+          description: Specialty line not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '409':
+          description: 'Device already exists: MAC and Port combination must be unique'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+    delete:
+      tags:
+      - Specialty Line
+      summary: Delete a specialty line
+      description: Use to delete a specialty line
+      operationId: delete_specialty_line
+      parameters:
+      - name: accountId
+        in: path
+        description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        required: true
+        schema:
+          type: string
+      - name: lineId
+        in: path
+        description: ID of specialty line, refers to <a href="#/~schema/SpecialtyLineResponseDto">specialityLineX.id</a>
+        required: true
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Line deleted successfully
+        '403':
+          description: Partition or account not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+        '404':
+          description: Specialty line not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+  /v2/rpc/specialty-line/validate-sip-username:
+    post:
+      tags:
+      - Specialty Line
+      summary: Validate a SIP username
+      description: Use to validate the availability of a SIP username
+      operationId: validate_sip_username
+      requestBody:
+        description: SIP username object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateSipUsernameDto'
+        required: true
+      responses:
+        '200':
+          description: Returns true if the username is available, false otherwise
+          content:
+            text/plain:
+              schema:
+                type: boolean
+        '400':
+          description: Invalid SIP username object supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
+components:
+  schemas:
+    SpecialtyLineRequestDto:
+      type: object
+      properties:
+        callerId:
+          type: string
+          description: The phone number displayed on the phone of the person being called.
+        callingPlanIds:
+          type: array
+          description: Calling plans allow you to control where your customers are allowed to call and what, if any, the cost should be for those calls. Each of your plans can be set up with a number of included minutes or a per-minute rate, depending on how you want to charge for services. The calling plans created at the partition level can be assigned to individual accounts and users based on their needs or the bundle they purchased.
+          items:
+            type: string
+        deviceType:
+          type: string
+          description: The generic device type that matches the customer's device configuration.
+        e911CallbackNumber:
+          type: string
+          description: The phone number that will be transmitted to 911.
+        macAddress:
+          type: string
+          description: The device's MAC address.
+        name:
+          type: string
+          description: A name for the specialty line, such as Elevator C or another descriptive term.
+        portNumber:
+          type: integer
+          format: int32
+          description: The physical port number the line is provisioned on (1–9).
+        sipPassword:
+          type: string
+          description: A unique plain-text password is automatically generated and displayed here. Use this one or enter your own, using at least 6 characters.
+        sipUsername:
+          type: string
+          description: A unique 14-character SIP username is automatically generated and displayed here. Use this one or enter your own, between 8-36 characters long.
+      required:
+      - name
+      - callerId
+      - e911CallbackNumber
+      - callingPlanIds
+      title: SpecialtyLine
+    ValidateSipUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+      title: ValidateSIPUsername
+    SpecialtyLineErrorResponseDto:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        traceId:
+          type: string
+      required:
+      - errorCode
+      title: SpecialtyLineErrorResponse
+    SpecialtyLinesX:
+      type: array
+      items:
+        $ref: '#/components/schemas/SpecialtyLineResponseDto'
+    SpecialtyLineResponseDto:
+      type: object
+      properties:
+        accountId:
+          type: string
+        callerId:
+          type: string
+          description: The phone number displayed on the phone of the person being called.
+        callingPlanIds:
+          type: array
+          description: Calling plans allow you to control where your customers are allowed to call and what, if any, the cost should be for those calls. Each of your plans can be set up with a number of included minutes or a per-minute rate, depending on how you want to charge for services. The calling plans created at the partition level can be assigned to individual accounts and users based on their needs or the bundle they purchased.
+          items:
+            type: string
+        deviceId:
+          type: string
+        deviceType:
+          type: string
+          description: The generic device type that matches the customer's device configuration.
+        e911CallbackNumber:
+          type: string
+          description: The phone number that will be transmitted to 911.
+        id:
+          type: string
+          description: The ID is immutable and cannot be changed.
+        linkedPhoneNumbers:
+          type: array
+          items:
+            type: string
+        macAddress:
+          type: string
+          description: The device's MAC address.
+        name:
+          type: string
+          description: A name for the specialty line, such as Elevator C or another descriptive term.
+        partitionId:
+          type: string
+        portNumber:
+          type: integer
+          format: int32
+          description: The physical port number the line is provisioned on (1–9).
+        sipPassword:
+          type: string
+          description: A unique plain-text password is automatically generated and displayed here. Use this one or enter your own, using at least 6 characters.
+        sipUsername:
+          type: string
+          description: A unique 14-character SIP username is automatically generated and displayed here. Use this one or enter your own, between 8-36 characters long.
+      required:
+      - id
+      - accountId
+      - partitionId
+      - name
+      - callingPlanIds
+      title: SpecialtyLineX
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

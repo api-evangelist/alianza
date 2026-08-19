@@ -1,0 +1,205 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Single Sign On - SSO API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Single Sign On - SSO
+  description: Operations for managing SSO
+paths:
+  /v2/authorize/sso:
+    get:
+      tags:
+      - Single Sign On - SSO
+      summary: Get SSO data
+      description: Returns data needed for the UI to initiate Single Sign On
+      operationId: getClientId
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SsoDataX'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      security: []
+    post:
+      tags:
+      - Single Sign On - SSO
+      summary: Authorization Code Exchange
+      description: Pass the SSO response authorization code here to exchange it for an API authorization token
+      operationId: getLoginInfo_1
+      parameters:
+      - name: code
+        in: query
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicApiException'
+      security: []
+components:
+  schemas:
+    SsoDataX:
+      type: object
+      properties:
+        clientId:
+          type: string
+        ssoUrl:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    LoginTokenX:
+      type: object
+      properties:
+        authToken:
+          type: string
+        userId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        endUserType:
+          type: string
+          enum:
+          - ADMIN
+          - ADVANCED_ADMIN
+          - BASIC_ADMIN
+          - STANDARD
+          - STANDARD_ADMIN
+          - SUPER_ADMIN
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        partitionId:
+          type: string
+        partitionName:
+          type: string
+        accountId:
+          type: string
+        permissions:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - NONE
+            - READ_MYUSER
+            - READ
+            - EDIT_MYUSER
+            - EDIT
+            - CREATE_MYUSER
+            - CREATE
+            - DELETE_MYUSER
+            - DELETE
+            - DENIED
+        featureToggles:
+          type: object
+          additionalProperties:
+            type: boolean
+        mustChangePassword:
+          type: boolean
+        subPartitionIds:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        tokenSource:
+          type: string
+        grantedAuthorities:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        pwdHash:
+          type: string
+        mustAddEmail:
+          type: boolean
+        maxLifeInHours:
+          type: integer
+          format: int32
+        groupId:
+          type: string
+        groupName:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

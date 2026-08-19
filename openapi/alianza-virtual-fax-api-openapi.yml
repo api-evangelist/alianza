@@ -1,0 +1,143 @@
+openapi: 3.2.0
+info:
+  title: Alianza Virtual Fax API
+  version: '2'
+  description: 'Operations tagged Virtual Fax across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Virtual Fax
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/vfax/outbound:
+    get:
+      tags:
+      - Virtual Fax
+      summary: Retrieve Outbound Virtual Fax Configuration
+      description: Use to retrieve the outbound vfax configuration on an account
+      operationId: retrieveOutboundVFax
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+          content:
+            application/json:
+              schema:
+                originalRef: VfaxOutbound
+                $ref: '#/components/schemas/VfaxOutbound'
+        '403':
+          description: Partition or account not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+          schema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+        '403':
+          description: Partition or account not found
+    put:
+      tags:
+      - Virtual Fax
+      summary: Update Outbound Virtual Fax Configuration
+      description: Use to configure outbound vfax for an account
+      operationId: updateOutboundVFax
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+          content:
+            application/json:
+              schema:
+                originalRef: VfaxOutbound
+                $ref: '#/components/schemas/VfaxOutbound'
+        '403':
+          description: Partition or account not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+          schema:
+            originalRef: VfaxOutbound
+            $ref: '#/components/schemas/VfaxOutbound'
+        '403':
+          description: Partition or account not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: VfaxOutbound
+              $ref: '#/components/schemas/VfaxOutbound'
+        description: Outbound vfax configuration
+        required: true
+components:
+  schemas:
+    VfaxOutbound:
+      type: object
+      properties:
+        callerId:
+          type: string
+        enabled:
+          type: boolean
+        accountId:
+          type: string
+        partitionId:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

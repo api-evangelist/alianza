@@ -1,0 +1,1040 @@
+openapi: 3.2.0
+info:
+  title: Alianza Reference Resources API
+  version: '2'
+  description: 'Operations tagged Reference Resources across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Reference Resources
+paths:
+  /v2/ref/devicetype/{id}:
+    get:
+      tags:
+      - Reference Resources
+      summary: DeviceType
+      description: Retrieve a specific DeviceType
+      operationId: get_4
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceTypeX
+            $ref: '#/components/schemas/DeviceTypeX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: DeviceTypeX
+                $ref: '#/components/schemas/DeviceTypeX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: DeviceTypeX
+            $ref: '#/components/schemas/DeviceTypeX_2'
+          schema:
+            originalRef: DeviceTypeX
+            $ref: '#/components/schemas/DeviceTypeX_2'
+  /v2/ref/devicetype:
+    get:
+      tags:
+      - Reference Resources
+      summary: DeviceTypes List
+      description: Retrieve a list of device types available to the given partition
+      operationId: getDeviceTypes
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionid
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceTypeX
+              $ref: '#/components/schemas/DeviceTypeX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: DeviceTypeX
+                  $ref: '#/components/schemas/DeviceTypeX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: DeviceTypeX
+              $ref: '#/components/schemas/DeviceTypeX_2'
+          schema:
+            type: array
+            items:
+              originalRef: DeviceTypeX
+              $ref: '#/components/schemas/DeviceTypeX_2'
+  /v2/ref/dialplan/actiontypes:
+    get:
+      tags:
+      - Reference Resources
+      summary: DialPlanActionTypes List
+      description: Retrieve a list of available dial plan action types
+      operationId: getDialPlanActions
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: includeRestricted
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - TranslateAndReapplyDialPlan
+                - CallOutboundNumber
+                - CallCustomerServiceHuntGroup
+                - Callback
+                - CallForwardingAlways
+                - CallForwardingOnBusy
+                - CallForwardingOnNoAnswer
+                - CallForwardingOnUnregistered
+                - CallNonEmergencyServices
+                - CallPublicServices
+                - CallCanadaHealthServices
+                - CallerIdBlockManage
+                - EnterVoiceMail
+                - DirectToVoicemail
+                - CallWaitingEnable
+                - CallWaitingDisable
+                - AnonymousCallRejectEnable
+                - AnonymousCallRejectDisable
+                - AnonymousCallRejectWithInterceptEnable
+                - AnonymousCallRejectWithInterceptDisable
+                - SelectiveCallAcceptEnable
+                - SelectiveCallAcceptDisable
+                - SpecificCallerBlock
+                - SpecificCallerBlockWithIntercept
+                - SpecificCallerAllow
+                - SpecificCallerVipRing
+                - SpecificCallerForwardEnable
+                - AccountAnonymousCallRejectEnable
+                - AccountAnonymousCallRejectDisable
+                - AccountAnonymousCallRejectWithInterceptEnable
+                - AccountAnonymousCallRejectWithInterceptDisable
+                - AccountSelectiveCallAcceptEnable
+                - AccountSelectiveCallAcceptDisable
+                - AccountSpecificCallerBlock
+                - AccountSpecificCallerAllow
+                - AccountSpecificCallerBlockWithIntercept
+                - DoNotDisturbEnable
+                - DoNotDisturbDisable
+                - PickupInDirectory
+                - CallTrace
+                - ParkCall
+                - ParkCallRetrieval
+                - DirectedCallPickUp
+                - GroupPickup
+                - ReservedForHuntGroup
+                - GroupForwarding
+                - CallPull
+                - GroupLoginLogout
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - TranslateAndReapplyDialPlan
+                    - CallOutboundNumber
+                    - CallCustomerServiceHuntGroup
+                    - Callback
+                    - CallForwardingAlways
+                    - CallForwardingOnBusy
+                    - CallForwardingOnNoAnswer
+                    - CallForwardingOnUnregistered
+                    - CallNonEmergencyServices
+                    - CallPublicServices
+                    - CallCanadaHealthServices
+                    - CallerIdBlockManage
+                    - EnterVoiceMail
+                    - DirectToVoicemail
+                    - CallWaitingEnable
+                    - CallWaitingDisable
+                    - AnonymousCallRejectEnable
+                    - AnonymousCallRejectDisable
+                    - AnonymousCallRejectWithInterceptEnable
+                    - AnonymousCallRejectWithInterceptDisable
+                    - SelectiveCallAcceptEnable
+                    - SelectiveCallAcceptDisable
+                    - SpecificCallerBlock
+                    - SpecificCallerBlockWithIntercept
+                    - SpecificCallerAllow
+                    - SpecificCallerVipRing
+                    - SpecificCallerForwardEnable
+                    - AccountAnonymousCallRejectEnable
+                    - AccountAnonymousCallRejectDisable
+                    - AccountAnonymousCallRejectWithInterceptEnable
+                    - AccountAnonymousCallRejectWithInterceptDisable
+                    - AccountSelectiveCallAcceptEnable
+                    - AccountSelectiveCallAcceptDisable
+                    - AccountSpecificCallerBlock
+                    - AccountSpecificCallerAllow
+                    - AccountSpecificCallerBlockWithIntercept
+                    - DoNotDisturbEnable
+                    - DoNotDisturbDisable
+                    - PickupInDirectory
+                    - CallTrace
+                    - ParkCall
+                    - ParkCallRetrieval
+                    - DirectedCallPickUp
+                    - GroupPickup
+                    - ReservedForHuntGroup
+                    - GroupForwarding
+                    - CallPull
+                    - GroupLoginLogout
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - TranslateAndReapplyDialPlan
+                - CallOutboundNumber
+                - CallCustomerServiceHuntGroup
+                - Callback
+                - CallForwardingAlways
+                - CallForwardingOnBusy
+                - CallForwardingOnNoAnswer
+                - CallForwardingOnUnregistered
+                - CallNonEmergencyServices
+                - CallPublicServices
+                - CallCanadaHealthServices
+                - CallerIdBlockManage
+                - EnterVoiceMail
+                - DirectToVoicemail
+                - CallWaitingEnable
+                - CallWaitingDisable
+                - AnonymousCallRejectEnable
+                - AnonymousCallRejectDisable
+                - AnonymousCallRejectWithInterceptEnable
+                - AnonymousCallRejectWithInterceptDisable
+                - SelectiveCallAcceptEnable
+                - SelectiveCallAcceptDisable
+                - SpecificCallerBlock
+                - SpecificCallerBlockWithIntercept
+                - SpecificCallerAllow
+                - SpecificCallerVipRing
+                - SpecificCallerForwardEnable
+                - AccountAnonymousCallRejectEnable
+                - AccountAnonymousCallRejectDisable
+                - AccountAnonymousCallRejectWithInterceptEnable
+                - AccountAnonymousCallRejectWithInterceptDisable
+                - AccountSelectiveCallAcceptEnable
+                - AccountSelectiveCallAcceptDisable
+                - AccountSpecificCallerBlock
+                - AccountSpecificCallerAllow
+                - AccountSpecificCallerBlockWithIntercept
+                - DoNotDisturbEnable
+                - DoNotDisturbDisable
+                - PickupInDirectory
+                - CallTrace
+                - ParkCall
+                - ParkCallRetrieval
+                - DirectedCallPickUp
+                - GroupPickup
+                - ReservedForHuntGroup
+                - GroupForwarding
+                - CallPull
+                - GroupLoginLogout
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - TranslateAndReapplyDialPlan
+                - CallOutboundNumber
+                - CallCustomerServiceHuntGroup
+                - Callback
+                - CallForwardingAlways
+                - CallForwardingOnBusy
+                - CallForwardingOnNoAnswer
+                - CallForwardingOnUnregistered
+                - CallNonEmergencyServices
+                - CallPublicServices
+                - CallCanadaHealthServices
+                - CallerIdBlockManage
+                - EnterVoiceMail
+                - DirectToVoicemail
+                - CallWaitingEnable
+                - CallWaitingDisable
+                - AnonymousCallRejectEnable
+                - AnonymousCallRejectDisable
+                - AnonymousCallRejectWithInterceptEnable
+                - AnonymousCallRejectWithInterceptDisable
+                - SelectiveCallAcceptEnable
+                - SelectiveCallAcceptDisable
+                - SpecificCallerBlock
+                - SpecificCallerBlockWithIntercept
+                - SpecificCallerAllow
+                - SpecificCallerVipRing
+                - SpecificCallerForwardEnable
+                - AccountAnonymousCallRejectEnable
+                - AccountAnonymousCallRejectDisable
+                - AccountAnonymousCallRejectWithInterceptEnable
+                - AccountAnonymousCallRejectWithInterceptDisable
+                - AccountSelectiveCallAcceptEnable
+                - AccountSelectiveCallAcceptDisable
+                - AccountSpecificCallerBlock
+                - AccountSpecificCallerAllow
+                - AccountSpecificCallerBlockWithIntercept
+                - DoNotDisturbEnable
+                - DoNotDisturbDisable
+                - PickupInDirectory
+                - CallTrace
+                - ParkCall
+                - ParkCallRetrieval
+                - DirectedCallPickUp
+                - GroupPickup
+                - ReservedForHuntGroup
+                - GroupForwarding
+                - CallPull
+                - GroupLoginLogout
+  /v2/ref/language:
+    get:
+      tags:
+      - Reference Resources
+      summary: Language List
+      description: Retrieve a list of supported Languages
+      operationId: getLanguages
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: LanguageReferenceX
+              $ref: '#/components/schemas/LanguageReferenceX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: LanguageReferenceX
+                  $ref: '#/components/schemas/LanguageReferenceX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: LanguageReferenceX
+              $ref: '#/components/schemas/LanguageReferenceX'
+          schema:
+            type: array
+            items:
+              originalRef: LanguageReferenceX
+              $ref: '#/components/schemas/LanguageReferenceX'
+  /v2/ref/permissions:
+    get:
+      tags:
+      - Reference Resources
+      summary: PermissionType and Access List
+      description: Retrieve a list of available Permission Types and their max Access level for a given UserType
+      operationId: getPermissions
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: usertype
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+          default: ManagementUser
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: PermissionTypeDefaultsX
+              $ref: '#/components/schemas/PermissionTypeDefaultsX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: PermissionTypeDefaultsX
+                  $ref: '#/components/schemas/PermissionTypeDefaultsX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: PermissionTypeDefaultsX
+              $ref: '#/components/schemas/PermissionTypeDefaultsX'
+          schema:
+            type: array
+            items:
+              originalRef: PermissionTypeDefaultsX
+              $ref: '#/components/schemas/PermissionTypeDefaultsX'
+  /v2/ref/routeplan-definition-template:
+    get:
+      tags:
+      - Reference Resources
+      summary: RoutePlan default template
+      description: Get the default rates csv for a RoutePlan
+      operationId: getRoutePlanDefinitionTemplate
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            text/csv:
+              schema:
+                type: string
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+  /v2/ref/secondary-location-types:
+    get:
+      tags:
+      - Reference Resources
+      summary: Address - SecondaryLocationType List
+      description: Get a list of available SecondaryLocationTypes
+      operationId: getSecondaryLocations
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - ''
+                - APARTMENT
+                - BUILDING
+                - BASEMENT
+                - DEPARTMENT
+                - FLOOR
+                - FRONT
+                - HANGER
+                - KEY
+                - LOBBY
+                - LOT
+                - LOWER
+                - OFFICE
+                - PENTHOUSE
+                - PIER
+                - REAR
+                - ROOM
+                - SIDE
+                - SLIP
+                - SPACE
+                - SUITE
+                - STOP
+                - TRAILER
+                - UNIT
+                - UPPER
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - ''
+                    - APARTMENT
+                    - BUILDING
+                    - BASEMENT
+                    - DEPARTMENT
+                    - FLOOR
+                    - FRONT
+                    - HANGER
+                    - KEY
+                    - LOBBY
+                    - LOT
+                    - LOWER
+                    - OFFICE
+                    - PENTHOUSE
+                    - PIER
+                    - REAR
+                    - ROOM
+                    - SIDE
+                    - SLIP
+                    - SPACE
+                    - SUITE
+                    - STOP
+                    - TRAILER
+                    - UNIT
+                    - UPPER
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - ''
+                - APARTMENT
+                - BUILDING
+                - BASEMENT
+                - DEPARTMENT
+                - FLOOR
+                - FRONT
+                - HANGER
+                - KEY
+                - LOBBY
+                - LOT
+                - LOWER
+                - OFFICE
+                - PENTHOUSE
+                - PIER
+                - REAR
+                - ROOM
+                - SIDE
+                - SLIP
+                - SPACE
+                - SUITE
+                - STOP
+                - TRAILER
+                - UNIT
+                - UPPER
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - ''
+                - APARTMENT
+                - BUILDING
+                - BASEMENT
+                - DEPARTMENT
+                - FLOOR
+                - FRONT
+                - HANGER
+                - KEY
+                - LOBBY
+                - LOT
+                - LOWER
+                - OFFICE
+                - PENTHOUSE
+                - PIER
+                - REAR
+                - ROOM
+                - SIDE
+                - SLIP
+                - SPACE
+                - SUITE
+                - STOP
+                - TRAILER
+                - UNIT
+                - UPPER
+  /v2/ref/sidecartype/{id}:
+    get:
+      tags:
+      - Reference Resources
+      summary: Device - SideCarType
+      description: Get a given SideCarType
+      operationId: get_5
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SideCarTypeX
+            $ref: '#/components/schemas/SideCarTypeX'
+          content:
+            application/json:
+              schema:
+                originalRef: SideCarTypeX
+                $ref: '#/components/schemas/SideCarTypeX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SideCarTypeX
+            $ref: '#/components/schemas/SideCarTypeX'
+          schema:
+            originalRef: SideCarTypeX
+            $ref: '#/components/schemas/SideCarTypeX'
+  /v2/ref/sidecartype:
+    get:
+      tags:
+      - Reference Resources
+      summary: Device - SideCarType List
+      description: Get a list of available SideCarTypes
+      operationId: getSideCarTypes
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SideCarTypeX
+              $ref: '#/components/schemas/SideCarTypeX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: SideCarTypeX
+                  $ref: '#/components/schemas/SideCarTypeX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SideCarTypeX
+              $ref: '#/components/schemas/SideCarTypeX'
+          schema:
+            type: array
+            items:
+              originalRef: SideCarTypeX
+              $ref: '#/components/schemas/SideCarTypeX'
+  /v2/ref/system-default-media/{type}:
+    get:
+      tags:
+      - Reference Resources
+      operationId: getList
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: SystemDefaultMediaX
+              $ref: '#/components/schemas/SystemDefaultMediaX'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: SystemDefaultMediaX
+                  $ref: '#/components/schemas/SystemDefaultMediaX'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            type: array
+            items:
+              originalRef: SystemDefaultMediaX
+              $ref: '#/components/schemas/SystemDefaultMediaX'
+          schema:
+            type: array
+            items:
+              originalRef: SystemDefaultMediaX
+              $ref: '#/components/schemas/SystemDefaultMediaX'
+  /v2/ref/timezones:
+    get:
+      tags:
+      - Reference Resources
+      summary: TimeZone List
+      description: Get a list of supported TimeZones
+      operationId: getTimeZones
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - US/Samoa
+                - US/Hawaii
+                - US/Alaska
+                - US/Pacific
+                - US/Arizona
+                - US/Mountain
+                - US/Central
+                - US/Eastern
+                - America/St_Thomas
+                - Canada/Pacific
+                - Canada/Mountain
+                - Canada/Central
+                - Canada/Eastern
+                - Canada/Atlantic
+                - Canada/Newfoundland
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - US/Samoa
+                    - US/Hawaii
+                    - US/Alaska
+                    - US/Pacific
+                    - US/Arizona
+                    - US/Mountain
+                    - US/Central
+                    - US/Eastern
+                    - America/St_Thomas
+                    - Canada/Pacific
+                    - Canada/Mountain
+                    - Canada/Central
+                    - Canada/Eastern
+                    - Canada/Atlantic
+                    - Canada/Newfoundland
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - US/Samoa
+                - US/Hawaii
+                - US/Alaska
+                - US/Pacific
+                - US/Arizona
+                - US/Mountain
+                - US/Central
+                - US/Eastern
+                - America/St_Thomas
+                - Canada/Pacific
+                - Canada/Mountain
+                - Canada/Central
+                - Canada/Eastern
+                - Canada/Atlantic
+                - Canada/Newfoundland
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+                enum:
+                - US/Samoa
+                - US/Hawaii
+                - US/Alaska
+                - US/Pacific
+                - US/Arizona
+                - US/Mountain
+                - US/Central
+                - US/Eastern
+                - America/St_Thomas
+                - Canada/Pacific
+                - Canada/Mountain
+                - Canada/Central
+                - Canada/Eastern
+                - Canada/Atlantic
+                - Canada/Newfoundland
+components:
+  schemas:
+    PermissionTypeDefaultsX:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - NONE
+          - Account
+          - AccountHistory
+          - AccountCallHistory
+          - AccountBulkStatuses
+          - IpWhitelist
+          - PhoneNumber
+          - PhoneNumberServiceActivation
+          - PhoneNumberInventory
+          - Product
+          - ProductCallingPlan
+          - ProductGroups
+          - ProductUsers
+          - Reports
+          - RoutePlan
+          - SipCredentials
+          - EU_DeviceSwapCreate
+          - EU_Account
+          - EU_AccountMedia
+          - EU_CallHistory
+          - EU_Device
+          - EU_DeviceSwap
+          - EU_DeviceLine
+          - EU_IVR
+          - EU_LineAppearance
+          - EU_LineHardware
+          - EU_LineHuntGroup
+          - EU_Voicemail
+          - EU_VoicemailMessage
+          - EU_VoicemailUnlock
+          - EU_Telephone
+          - EU_SipTrunk
+          - EU_User
+          - EU_UserResetPassword
+          - EU_History
+          - EU_BUSINESS_LINE
+          - EU_BUSINESS_LINE_PROVISIONING
+          - EU_BUSINESS_LINE_VOICEMAIL
+          - EU_BUSINESS_LINE_HUNT_GROUP
+          - EU_911_ADDRESS
+          - EU_TELEPHONE_DESTINATION
+          - EU_ENDUSER_REPURPOSE
+          - ALIANZA_MasterRoutePlan
+          - ALIANZA_TogglzAdmin
+          - ANY_END_USER
+          - ANY_MANAGEMENT_USER
+          - ANY_ALIANZA_USER
+        maxAccessType:
+          type: string
+          enum:
+          - NONE
+          - READ_MYUSER
+          - READ
+          - EDIT_MYUSER
+          - EDIT
+          - CREATE_MYUSER
+          - CREATE
+          - DELETE_MYUSER
+          - DELETE
+          - DENIED
+    RingTypeAlertInfoX:
+      type: object
+      properties:
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        alertInfoHeaderValue:
+          type: string
+          description: sip header for this ring type
+      required:
+      - alertInfoHeaderValue
+      - ringType
+    DeviceTypeX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLines:
+          type: integer
+          format: int32
+        deviceTypeManufacturer:
+          type: string
+          enum:
+          - CISCO_LINKSYS_SIPURA
+          - POLYCOM
+          - ARRIS
+          - OBIHAI
+          - INNOMEDIA
+          - THIRD_PARTY
+          - SOFT_PHONE
+          - ZTE
+          - SCIENTIFIC_ATLANTA
+          - CALIX
+          - YEALINK
+          - SNOM
+          - SMART_RG
+          - ACROBITS
+          - GRANDSTREAM
+          - ADTRAN
+          - MEDIATRIX
+          - ALGO
+          - MITEL
+          - CLEARLY_IP
+        acceptsRemoteResync:
+          type: boolean
+        faxSupported:
+          type: boolean
+        macAddressRequired:
+          type: boolean
+        showProvisionStatus:
+          type: boolean
+        enforceUniqueAdminPassword:
+          type: boolean
+        customEncryptionKeys:
+          type: boolean
+        sipPagingEnabled:
+          type: boolean
+        distinctiveRingInfo:
+          type: string
+        smbDevice:
+          type: boolean
+        sideCarTypeIds:
+          type: array
+          items:
+            type: string
+        maxSideCars:
+          type: integer
+          format: int32
+        ringTypeAlertInfo:
+          type: array
+          items:
+            originalRef: RingTypeAlertInfoX
+            $ref: '#/components/schemas/RingTypeAlertInfoX'
+    LanguageReferenceX:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
+    SideCarTypeX:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLinesPerPage:
+          type: integer
+          format: int32
+        numPages:
+          type: integer
+          format: int32
+    SystemDefaultMediaX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        subType:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

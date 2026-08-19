@@ -1,0 +1,291 @@
+openapi: 3.2.0
+info:
+  title: Alianza Authorize API
+  version: '2'
+  description: 'Operations tagged Authorize across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Authorize
+paths:
+  /v2/authorize/userinfo:
+    get:
+      tags:
+      - Authorize
+      summary: User Information
+      description: Return user information for a given token in the header
+      operationId: getLoginInfo
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          content:
+            application/json:
+              schema:
+                originalRef: LoginTokenX
+                $ref: '#/components/schemas/LoginTokenX'
+        '401':
+          description: ExpiredAuthToken, if invalid token is sent
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          schema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+        '401':
+          description: ExpiredAuthToken, if invalid token is sent
+  /v2/authorize/logout:
+    put:
+      tags:
+      - Authorize
+      summary: Log out a user
+      description: Log out user for the given token in the header
+      operationId: logOut
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+        '401':
+          description: ExpiredAuthToken, if invalid token is sent
+      responsesObject:
+        '401':
+          description: ExpiredAuthToken, if invalid token is sent
+  /v2/authorize/jwt:
+    post:
+      tags:
+      - Authorize
+      summary: Login with token
+      description: Takes a jwt and returns login token if successfully validates. For validating a jwt, Alianza needs your public key, please contact your account manager.
+      operationId: loginWithJWT
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          content:
+            application/json:
+              schema:
+                originalRef: LoginTokenX
+                $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: ' Invalid Login '
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          schema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: ' Invalid Login '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+  /v2/authorize:
+    post:
+      tags:
+      - Authorize
+      summary: Login with login credentials
+      description: 'Takes login credentials and returns token if successfully validates '
+      operationId: logUserIn
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          content:
+            application/json:
+              schema:
+                originalRef: LoginTokenX
+                $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: ' Invalid Login '
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          schema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: ' Invalid Login '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: Login
+              $ref: '#/components/schemas/Login'
+        description: Login credentials
+        required: true
+    put:
+      tags:
+      - Authorize
+      summary: Update password
+      description: Used to update an existing password
+      operationId: changePassword
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          content:
+            application/json:
+              schema:
+                originalRef: LoginTokenX
+                $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: FailedToUpdate, When new password doesnt satisfies password requirements
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+          schema:
+            originalRef: LoginTokenX
+            $ref: '#/components/schemas/LoginTokenX'
+        '400':
+          description: FailedToUpdate, When new password doesnt satisfies password requirements
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: Login
+              $ref: '#/components/schemas/Login'
+        description: Login credentials with new password
+        required: true
+components:
+  schemas:
+    LoginTokenX:
+      type: object
+      properties:
+        authToken:
+          type: string
+        userId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        endUserType:
+          type: string
+          enum:
+          - ADMIN
+          - ADVANCED_ADMIN
+          - BASIC_ADMIN
+          - STANDARD
+          - STANDARD_ADMIN
+          - SUPER_ADMIN
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        partitionId:
+          type: string
+        partitionName:
+          type: string
+        accountId:
+          type: string
+        permissions:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - NONE
+            - READ_MYUSER
+            - READ
+            - EDIT_MYUSER
+            - EDIT
+            - CREATE_MYUSER
+            - CREATE
+            - DELETE_MYUSER
+            - DELETE
+            - DENIED
+        featureToggles:
+          type: object
+          additionalProperties:
+            type: boolean
+        mustChangePassword:
+          type: boolean
+        subPartitionIds:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        tokenSource:
+          type: string
+        grantedAuthorities:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        pwdHash:
+          type: string
+        mustAddEmail:
+          type: boolean
+        maxLifeInHours:
+          type: integer
+          format: int32
+        groupId:
+          type: string
+        groupName:
+          type: string
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        changePassword:
+          type: string
+          description: This should be used only when changing the password
+      required:
+      - password
+      - username
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

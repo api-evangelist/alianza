@@ -1,0 +1,586 @@
+openapi: 3.2.0
+info:
+  title: Alianza Media API
+  version: '2'
+  description: 'Operations tagged Media across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Media
+paths:
+  /v2/partition/{partitionId}/account/{accountId}/media_2/{id}:
+    get:
+      tags:
+      - Media
+      summary: Retrieve Media. Will return a 302 redirect to the actual file location
+      description: Use to retrieve Media of a given type
+      operationId: get_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: ID of prompt
+        required: true
+        schema:
+          type: string
+      - name: mediaType
+        in: query
+        description: Type of Media
+        required: true
+        schema:
+          type: string
+          enum:
+          - HoldMusic
+          - IvrPrompt
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            application/octet-stream:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Invalid Media Type supplied
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+        '400':
+          description: Invalid Media Type supplied
+    put:
+      tags:
+      - Media
+      operationId: update_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      deprecated: true
+    delete:
+      tags:
+      - Media
+      operationId: deleteHoldMusic
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: ID of Hold Music Media
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+      deprecated: true
+  /v2/partition/{partitionId}/account/{accountId}/media_2:
+    post:
+      tags:
+      - Media
+      summary: Upload IVR Prompt or Account Hold Music
+      description: 'Use to add an IVR Prompt (use file upload to submit a wav file).
+
+        Use to add Hold Music (use the job service, then submit the jobUploadKey for the wav, mp3, ogg already uploaded)'
+      operationId: uploadAccountMedia
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: jobUploadKey
+        in: query
+        description: Provide an upload key (Use for Hold Music)
+        required: false
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Account not found
+        '200':
+          description: Processed the IVR Prompt file upload
+          responseSchema:
+            originalRef: MediaX
+            $ref: '#/components/schemas/MediaX'
+          content:
+            application/json:
+              schema:
+                originalRef: MediaX
+                $ref: '#/components/schemas/MediaX'
+        '202':
+          description: When providing a file upload key. The key has been accepted and the asynchronous process has started
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+      responsesObject:
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Account not found
+        '200':
+          description: Processed the IVR Prompt file upload
+          responseSchema:
+            originalRef: MediaX
+            $ref: '#/components/schemas/MediaX'
+          schema:
+            originalRef: MediaX
+            $ref: '#/components/schemas/MediaX'
+        '202':
+          description: When providing a file upload key. The key has been accepted and the asynchronous process has started
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  description: Wave File to upload. (Use for IVR prompt)
+                  format: binary
+  /v2/partition/{partitionId}/account/{accountId}/media_2/type/holdmusic:
+    get:
+      tags:
+      - Media
+      summary: Retrieve Hold Music Media ID.
+      description: Use to retrieve Hold Music Media ID
+      operationId: getAccountHoldMusic
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: custom
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+          content:
+            application/json:
+              schema:
+                originalRef: HoldMusicX
+                $ref: '#/components/schemas/HoldMusicX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+          schema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+    delete:
+      tags:
+      - Media
+      summary: Remove the hold music media selection for this account
+      description: Used to remove an existing media storage id that is used to play hold music for this account.
+      operationId: deleteAccountMusicOnHold
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: successful operation
+      responsesObject:
+        default:
+          description: successful operation
+  /v2/partition/{partitionId}/account/{accountId}/media_2/type/holdmusic/{id}:
+    put:
+      tags:
+      - Media
+      summary: Set the hold music on this account to this media storage id.
+      description: Used to set the hold music to a different storage id
+      operationId: updateAccountMusicOnHold
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Hold Music storage id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+          content:
+            application/json:
+              schema:
+                originalRef: HoldMusicX
+                $ref: '#/components/schemas/HoldMusicX'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+          schema:
+            originalRef: HoldMusicX
+            $ref: '#/components/schemas/HoldMusicX'
+  /v2/partition/{partitionId}/account/{accountId}/media/{mediaId}:
+    get:
+      tags:
+      - Media
+      summary: Retrieve Media of type
+      description: Use to retrieve Media of a given type
+      operationId: get_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      - name: mediaId
+        in: path
+        description: ID of prompt
+        required: true
+        schema:
+          type: string
+      - name: fileName
+        in: query
+        description: Name of media
+        required: false
+        schema:
+          type: string
+      - name: mediaType
+        in: query
+        description: Type of Media
+        required: true
+        schema:
+          type: string
+          enum:
+          - HoldMusic
+          - IvrPrompt
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          content:
+            application/octet-stream:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+        '400':
+          description: Invalid Media ID supplied
+        '404':
+          description: Account not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+              format: byte
+          schema:
+            type: array
+            items:
+              type: string
+              format: byte
+        '400':
+          description: Invalid Media ID supplied
+        '404':
+          description: Account not found
+  /v2/partition/{partitionId}/account/{accountId}/media:
+    post:
+      tags:
+      - Media
+      summary: Add IVR prompt
+      description: Use to add an IVR prompt
+      operationId: add
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: ID of account
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Account or IVR not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: string
+          schema:
+            type: string
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Account or IVR not found
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              originalRef: MultipartFormDataInput
+              $ref: '#/components/schemas/MultipartFormDataInput_2'
+        description: Media file
+        required: true
+components:
+  schemas:
+    MultipartFormDataInput_2:
+      type: object
+    MediaX:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    HoldMusicX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        url:
+          type: string
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

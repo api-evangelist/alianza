@@ -1,0 +1,329 @@
+openapi: 3.2.0
+info:
+  title: Alianza Address API
+  version: '2'
+  description: 'Operations tagged Address across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Address
+paths:
+  /v2/address/validate:
+    get:
+      tags:
+      - Address
+      summary: Validates a address
+      description: Use to validate a address
+      operationId: validateAddress
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: address
+        in: query
+        description: Address to parse
+        required: true
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: Valid country (current values are USA and CAN
+        required: true
+        schema:
+          type: string
+          enum:
+          - USA
+          - CAN
+          - UNK
+      - name: postalCode
+        in: query
+        description: Postal / Zip code of address
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: AddressValidationX
+            $ref: '#/components/schemas/AddressValidationX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: AddressValidationX
+                $ref: '#/components/schemas/AddressValidationX_2'
+        '404':
+          description: Address not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: AddressValidationX
+            $ref: '#/components/schemas/AddressValidationX_2'
+          schema:
+            originalRef: AddressValidationX
+            $ref: '#/components/schemas/AddressValidationX_2'
+        '404':
+          description: Address not found
+  /v2/address/typeahead:
+    get:
+      tags:
+      - Address
+      summary: Retrieves a list of addresses
+      description: Use to retrieve a single account
+      operationId: typeAhead
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: address
+        in: query
+        description: Address to parse
+        required: true
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: Valid country (current values are USA and CAN
+        required: true
+        schema:
+          type: string
+          enum:
+          - USA
+          - CAN
+          - UNK
+      - name: postalCode
+        in: query
+        description: Postal / Zip code of address
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '404':
+          description: Address not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              type: string
+          schema:
+            type: array
+            items:
+              type: string
+        '404':
+          description: Address not found
+  /v2/address/state/{state}/city/{city}/zipcode:
+    get:
+      tags:
+      - Address
+      summary: Retrieves a Set of ZipcodeX objects
+      description: Use to retrieve a zipcodes
+      operationId: getZipCodeByCityAndState
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: city
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: state
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: ZipcodeX
+              $ref: '#/components/schemas/ZipcodeX'
+            uniqueItems: true
+          content:
+            application/json:
+              schema:
+                type: array
+                uniqueItems: true
+                items:
+                  originalRef: ZipcodeX
+                  $ref: '#/components/schemas/ZipcodeX'
+        '404':
+          description: Zipcodes not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: ZipcodeX
+              $ref: '#/components/schemas/ZipcodeX'
+            uniqueItems: true
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              originalRef: ZipcodeX
+              $ref: '#/components/schemas/ZipcodeX'
+        '404':
+          description: Zipcodes not found
+components:
+  schemas:
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+    AddressValidationX_2:
+      type: object
+      properties:
+        requiredFields:
+          type: array
+          items:
+            type: string
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        latitude:
+          type: string
+        longitude:
+          type: string
+        valid:
+          type: boolean
+    ZipcodeX:
+      type: object
+      properties:
+        zipCode:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

@@ -1,0 +1,916 @@
+openapi: 3.2.0
+info:
+  title: Alianza Partition API
+  version: '2'
+  description: 'Operations tagged Partition across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Partition
+paths:
+  /v2/partition/{partitionId}:
+    get:
+      tags:
+      - Partition
+      operationId: retrieve_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PartitionX
+            $ref: '#/components/schemas/PartitionX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PartitionX
+                $ref: '#/components/schemas/PartitionX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PartitionX
+            $ref: '#/components/schemas/PartitionX_2'
+          schema:
+            originalRef: PartitionX
+            $ref: '#/components/schemas/PartitionX_2'
+  /v2/partition/{partitionId}/is-di-supported:
+    get:
+      tags:
+      - Partition
+      summary: Checks if dynamic inventory enabled for the specified partition
+      description: ''
+      operationId: isDISupported
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          content:
+            application/json:
+              schema:
+                type: boolean
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: boolean
+          schema:
+            type: boolean
+  /v2/partition/{partitionId}/setting:
+    get:
+      tags:
+      - Partition
+      summary: Get all settings for this partition
+      description: Use to retrieve a map containing partition specific settings
+      operationId: getAllSettings
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              originalRef: PartitionSettingX
+              $ref: '#/components/schemas/PartitionSettingX_2'
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  originalRef: PartitionSettingX
+                  $ref: '#/components/schemas/PartitionSettingX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: object
+            additionalProperties:
+              originalRef: PartitionSettingX
+              $ref: '#/components/schemas/PartitionSettingX_2'
+          schema:
+            type: object
+            additionalProperties:
+              originalRef: PartitionSettingX
+              $ref: '#/components/schemas/PartitionSettingX_2'
+  /v2/partition/{partitionId}/inboundcarriers:
+    get:
+      tags:
+      - Partition
+      summary: Telephone Carriers
+      description: the inbound carrier list available to this partition
+      operationId: getInboundCarriers
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: InboundCarrierX
+              $ref: '#/components/schemas/InboundCarrierX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: InboundCarrierX
+                  $ref: '#/components/schemas/InboundCarrierX_2'
+        '400':
+          description: Invalid
+        '404':
+          description: Not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: InboundCarrierX
+              $ref: '#/components/schemas/InboundCarrierX_2'
+          schema:
+            type: array
+            items:
+              originalRef: InboundCarrierX
+              $ref: '#/components/schemas/InboundCarrierX_2'
+        '400':
+          description: Invalid
+        '404':
+          description: Not found
+  /v2/partition/{partitionId}/deviceinventory_2:
+    get:
+      tags:
+      - Partition
+      summary: Retrieve bulk device inventory
+      description: Use to retrieve a bulk file containing the partition's device inventory
+      operationId: allTelephoneNumberCSVReport_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      deprecated: true
+    post:
+      tags:
+      - Partition
+      summary: Upload bulk device inventory
+      description: Use to upload a bulk file containing the partition's device inventory
+      operationId: importDeviceInventory_2
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          content:
+            application/json:
+              schema:
+                originalRef: Job
+                $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+          schema:
+            originalRef: Job
+            $ref: '#/components/schemas/Job_2'
+        '202':
+          description: Use Jobs API to check status
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: JobUploadKey
+              $ref: '#/components/schemas/JobUploadKey'
+        description: Use Jobs API to upload file
+  /v2/partition/{partitionId}/data-history:
+    get:
+      tags:
+      - Partition
+      operationId: partitionDataHistorySearch
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: startDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: tag
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: firstResultIndex
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: maxResult
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 20
+      responses:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PartitionDataHistorySearchResponseX
+            $ref: '#/components/schemas/PartitionDataHistorySearchResponseX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: PartitionDataHistorySearchResponseX
+                $ref: '#/components/schemas/PartitionDataHistorySearchResponseX_2'
+      responsesObject:
+        '200':
+          description: successful operation
+          headers: {}
+          responseSchema:
+            originalRef: PartitionDataHistorySearchResponseX
+            $ref: '#/components/schemas/PartitionDataHistorySearchResponseX_2'
+          schema:
+            originalRef: PartitionDataHistorySearchResponseX
+            $ref: '#/components/schemas/PartitionDataHistorySearchResponseX_2'
+components:
+  schemas:
+    L3SettingsX_2:
+      type: object
+      properties:
+        servicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
+          type: array
+          items:
+            type: string
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
+          type: string
+        customerServiceName:
+          type: string
+        bizOrg:
+          type: string
+    PartitionDataHistoryX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PARTITION
+          - PLATFORM_USER
+          - PLATFORM_USER_GROUP
+          - CALLING_PLAN
+          - INBOUND_RATE_PLAN
+          - LOCAL_CALLING_PLANS
+          - TN_INVENTORY
+          - PARTITION_SETTINGS
+          - FEATURE_TOGGLES
+          - IP_WHITELIST
+          - DIAL_PLAN_RULE
+          - ROUTE_PLAN
+        createdDate:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        userName:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        searchTags:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        actionType:
+          type: string
+        relatedDataId:
+          type: string
+        relatedDataType:
+          type: string
+        relatedDataDisplayName:
+          type: string
+        oldValue:
+          type: string
+        newValue:
+          type: string
+    PartitionDataHistorySearchResponseX_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: PartitionDataHistoryX
+            $ref: '#/components/schemas/PartitionDataHistoryX'
+    PartitionX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+          - HIDDEN
+        customerServiceNumber:
+          type: string
+        parentId:
+          type: string
+        useAccountNumberDefault:
+          type: boolean
+        bypassVoicemailPINValidationFromDevice:
+          type: boolean
+        billingCode:
+          type: string
+        country:
+          type: string
+        reorderNotifications:
+          type: array
+          items:
+            type: string
+        subPartitionIds:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        useOwnCarrier:
+          type: boolean
+        availableInboundCarrierId:
+          type: array
+          items:
+            type: string
+        defaultRoutePlanId:
+          type: string
+          format: uuid
+        tnDeleteCooldownDays:
+          type: integer
+          format: int32
+        defaultTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        tempTnThreshold:
+          type: integer
+          format: int32
+        serviceDialPlanRules:
+          type: array
+          items:
+            originalRef: DialPlanRuleX
+            $ref: '#/components/schemas/DialPlanRuleX'
+        mediaFriends:
+          originalRef: MediaFriendsX
+          $ref: '#/components/schemas/MediaFriendsX'
+        defaultSimpleDialingBehaviorType:
+          type: string
+          enum:
+          - SEVEN_DIGIT
+          - TEN_DIGIT
+          - OPEN_DIAL_PLAN
+          - DIAL_NINE_SEVEN_DIGIT
+          - DIAL_NINE_TEN_DIGIT
+          - OPEN_DIAL_PLAN_TEN_DIGIT
+        defaultAdvancedDialingBehaviorType:
+          type: string
+          enum:
+          - SEVEN_DIGIT
+          - TEN_DIGIT
+          - OPEN_DIAL_PLAN
+          - DIAL_NINE_SEVEN_DIGIT
+          - DIAL_NINE_TEN_DIGIT
+          - OPEN_DIAL_PLAN_TEN_DIGIT
+        defaultDirectoryListingType:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        portPushDays:
+          type: integer
+          format: int32
+        allowedDeviceTypes:
+          type: array
+          items:
+            type: string
+        defaultHoldTimeoutSeconds:
+          type: integer
+          format: int32
+        allowLoginByAccountNumber:
+          type: boolean
+        requiresDeviceInventory:
+          type: boolean
+        usesTrammellE911Verification:
+          type: boolean
+        showComplexListing:
+          type: boolean
+        defaultExtensionLength:
+          type: integer
+          format: int32
+        autoAssignCallerId:
+          type: boolean
+        byotnCarrierId:
+          type: string
+    InboundCarrierX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        partitionAvailability:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        l3Settings:
+          originalRef: L3SettingsX
+          $ref: '#/components/schemas/L3SettingsX_2'
+        supportsCSRUpdate:
+          type: boolean
+        supportCNAMChange:
+          type: boolean
+        supportDirectoryListing:
+          type: boolean
+        supportPorting:
+          type: boolean
+        supportHotCutPorting:
+          type: boolean
+        hasTNs:
+          type: boolean
+        e911Account:
+          originalRef: E911AccountX
+          $ref: '#/components/schemas/E911AccountX'
+        smsCallbackUrl:
+          type: string
+        portPushDays:
+          type: integer
+          format: int32
+        bandwidthSettings:
+          originalRef: BandwidthSettingsX
+          $ref: '#/components/schemas/BandwidthSettingsX_2'
+        enableDynamicInventory:
+          type: boolean
+        enableByotn:
+          type: boolean
+        sinchSettings:
+          originalRef: SinchSettingsX
+          $ref: '#/components/schemas/SinchSettingsX_2'
+        cnamCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        dlCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+    SinchSettingsX_2:
+      type: object
+      properties:
+        serviceType:
+          type: string
+          enum:
+          - ALL_IN_TN
+          - USAGE_TN
+          - BYOC
+        routingOption:
+          type: string
+        apiKey:
+          type: string
+        apiSecret:
+          type: string
+    MediaFriendsX:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        host:
+          type: string
+        toNumber:
+          type: string
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    PartitionSettingX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        type:
+          type: string
+          enum:
+          - IntegrationNotificationEmail
+          - CDRReportColumns
+          - SipTrunkProxyServer
+          - AllowAccountDangerousExtensions
+          - InboundRatePlanDefault
+          - SUB_DOMAINS
+          - SEND_WELCOME_EMAIL
+          - REGULATORY_TYPE
+          - ACCOUNT_HOLD_MUSIC_DEFAULT
+          - PLATFORM_TYPE_DEFAULT
+          - GENERATED_SIP_PASSWORD_LENGTH
+          - ENABLE_STAGED_CALL
+          - MAX_BURST_CALL_PERCENTAGE
+          - ALLOW_VM_MESSAGE_ACCESS
+        value:
+          type: object
+    E911AccountX:
+      type: object
+      properties:
+        e911ProviderType:
+          type: string
+          enum:
+          - INTRADO
+          - WEST
+          - DISABLED
+          - BANDWIDTH
+          - SINCH
+          - INTRADO_ENTERPRISE
+        accountId:
+          type: string
+        authToken:
+          type: string
+    BandwidthSettingsX_2:
+      type: object
+      properties:
+        accountId:
+          type: string
+        siteId:
+          type: string
+        peerId:
+          type: string
+    DialPlanRuleX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        mask:
+          type: string
+        actionType:
+          type: string
+          enum:
+          - TranslateAndReapplyDialPlan
+          - CallOutboundNumber
+          - CallCustomerServiceHuntGroup
+          - Callback
+          - CallForwardingAlways
+          - CallForwardingOnBusy
+          - CallForwardingOnNoAnswer
+          - CallForwardingOnUnregistered
+          - CallNonEmergencyServices
+          - CallPublicServices
+          - CallCanadaHealthServices
+          - CallerIdBlockManage
+          - EnterVoiceMail
+          - DirectToVoicemail
+          - CallWaitingEnable
+          - CallWaitingDisable
+          - AnonymousCallRejectEnable
+          - AnonymousCallRejectDisable
+          - AnonymousCallRejectWithInterceptEnable
+          - AnonymousCallRejectWithInterceptDisable
+          - SelectiveCallAcceptEnable
+          - SelectiveCallAcceptDisable
+          - SpecificCallerBlock
+          - SpecificCallerBlockWithIntercept
+          - SpecificCallerAllow
+          - SpecificCallerVipRing
+          - SpecificCallerForwardEnable
+          - AccountAnonymousCallRejectEnable
+          - AccountAnonymousCallRejectDisable
+          - AccountAnonymousCallRejectWithInterceptEnable
+          - AccountAnonymousCallRejectWithInterceptDisable
+          - AccountSelectiveCallAcceptEnable
+          - AccountSelectiveCallAcceptDisable
+          - AccountSpecificCallerBlock
+          - AccountSpecificCallerAllow
+          - AccountSpecificCallerBlockWithIntercept
+          - DoNotDisturbEnable
+          - DoNotDisturbDisable
+          - PickupInDirectory
+          - CallTrace
+          - ParkCall
+          - ParkCallRetrieval
+          - DirectedCallPickUp
+          - GroupPickup
+          - ReservedForHuntGroup
+          - GroupForwarding
+          - CallPull
+          - GroupLoginLogout
+        callNumber:
+          type: string
+        endingMinimumLength:
+          type: integer
+          format: int32
+        endingMaximumLength:
+          type: integer
+          format: int32
+        translationMacro:
+          type: string
+        disableCallerId:
+          type: boolean
+        callerIdVisibilityOverride:
+          type: string
+          enum:
+          - UseDestinationCallerIdEnabledSetting
+          - Blocked
+          - Unblocked
+        disableCallWaiting:
+          type: boolean
+        overwriteCallerIdNumber:
+          type: string
+        bypassAuthorization:
+          type: boolean
+        outboundNumberFunction:
+          type: string
+          enum:
+          - CUSTOMER_SERVICE
+          - DIRECTORY_ASSISTANCE
+          - EMERGENCY_SERVICES
+          - ESSENTIAL_COMMUNITY_SERVICES
+          - NONURGENT_MUNICIPAL_GOVERNMENT_SERVICES
+          - NONURGENT_TELEHEALTH_SERVICES
+          - OPERATOR
+          - SPEED_DIAL
+          - TELECOMMUNICATIONS_RELAY_SERVICE
+          - TRAFFIC_INFORMATION
+          - UNDERGROUND_PUBLIC_UTILITY_LOCATION
+        id:
+          type: string
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

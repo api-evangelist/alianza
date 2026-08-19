@@ -1,0 +1,251 @@
+openapi: 3.2.0
+info:
+  title: Alianza Public Bulk Operation Collection API
+  version: '2'
+  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+security:
+- X-Auth-Token: []
+tags:
+- name: Bulk Operation Collection
+  description: Manage collections used in the bulk process.
+paths:
+  /v2/bulk-user-operation/collection:
+    post:
+      tags:
+      - Bulk Operation Collection
+      summary: Create new collection
+      description: Create a new collection. This endpoint can take two content types -- application/json and multipart/form-data. Please see the request body examples for the content type you will be using.
+      operationId: create_collection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionDTO'
+            examples:
+              collectionRequest:
+                $ref: '#/components/examples/CreateCollectionWithJsonRequestExample'
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                transformObjectType:
+                  type: string
+                transformObjectsFile:
+                  type: string
+                  format: binary
+                columnTypes:
+                  type: string
+                jobTypeId:
+                  type: string
+            examples:
+              collectionRequest:
+                $ref: '#/components/examples/CreateCollectionWithFileExample'
+        required: true
+      responses:
+        '200':
+          description: Collection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionDTO'
+        '400':
+          description: Invalid collection details supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '422':
+          description: associated collection has pre-validation errors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+  /v2/bulk-user-operation/collection/{collectionId}:
+    get:
+      tags:
+      - Bulk Operation Collection
+      summary: Get collection details
+      description: Get collection details by ID
+      operationId: get_collection
+      parameters:
+      - name: collectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Collection retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionDTO'
+              examples:
+                collectionResponse:
+                  $ref: '#/components/examples/GetCollectionResponseExample'
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '404':
+          description: Invalid collectionId or Collection not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+  /v2/bulk-user-operation/collection/{collectionId}/{extension}:
+    get:
+      tags:
+      - Bulk Operation Collection
+      summary: Get collection file
+      description: Get collection file by ID and extension
+      operationId: get_collection_file
+      parameters:
+      - name: collectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: extension
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - json
+          - csv
+      responses:
+        '200':
+          description: Collection file retrieved successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '403':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+        '404':
+          description: Invalid collectionId or Collection not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationErrorResponse'
+components:
+  schemas:
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
+    CollectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the collection
+        ownerId:
+          type: string
+          description: Owner identifier of the collection
+        size:
+          type: integer
+          description: Size of the collection
+        transformObjectType:
+          type: string
+          description: Type of the transform object
+          example: CreateUserInput | DeleteUserInput | CreateTelephoneNumberInput | DeleteTelephoneNumberInput
+        transformObjects:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        createdDateTime:
+          type: string
+          format: date-time
+          description: Timestamp of the creation in ISO 8601 format
+      required:
+      - transformObjectType
+      - transformObjects
+  examples:
+    CreateCollectionWithJsonRequestExample:
+      summary: Create Collection with Json transformObjects
+      value:
+        id: string
+        ownerId: string
+        size: 0
+        transformObjectType: CreateUserInput
+        transformObjects:
+        - First Name: firstName
+          Last Name: lastName
+          Extension Number: 4242
+          User Tags: ''
+          Time Zone: US/MOUNTAIN
+          Email: email@example.com
+          Username: username
+          Feature Plan: STANDARD
+          Voice Portal Access: 'NO'
+          Calling Plan: ''
+          Language: ENGLISH
+    CreateCollectionWithFileExample:
+      summary: Create Collection with upload file
+      value:
+        jobTypeId: create users
+        columnTypes: object with column definitions
+        transformObjectType: string
+        transformObjectsFile: csvUploadFile.csv
+    GetCollectionResponseExample:
+      summary: Get collection response object
+      value:
+        id: collectionId
+        ownerId: same as targetAccountId
+        size: 0
+        transformObjectType: CreateUserInput
+        transformObjects: []
+        createdDateTime: '2024-09-04T22:27:03.431Z'
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN

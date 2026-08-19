@@ -1,0 +1,417 @@
+openapi: 3.2.0
+info:
+  title: Alianza Security Groups API
+  version: '2'
+  description: 'Operations tagged Security Groups across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.d2.alianza.com
+  description: Development
+- url: https://api.q2.alianza.com
+  description: QA
+- url: https://api.b2.alianza.com
+  description: Beta
+- url: https://api.alianza.com
+  description: Production
+tags:
+- name: Security Groups
+paths:
+  /v2/partition/{partitionId}/security/{securityId}:
+    get:
+      tags:
+      - Security Groups
+      summary: Retrieve Security Role
+      description: Use to get a specific security roles
+      operationId: retrieve_4
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: securityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SecurityRoleX
+                $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Partition or Security Role
+        '404':
+          description: Security Role is not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          schema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Partition or Security Role
+        '404':
+          description: Security Role is not found
+    put:
+      tags:
+      - Security Groups
+      summary: Update Security Role
+      description: Use to update a specific security roles
+      operationId: update_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: securityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SecurityRoleX
+                $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          schema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+    delete:
+      tags:
+      - Security Groups
+      summary: Delete Security Role
+      description: Use to delete a security roles
+      operationId: delete_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: securityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+      responsesObject:
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+    patch:
+      tags:
+      - Security Groups
+      summary: Update Security Role
+      description: Use to update a specific security roles
+      operationId: patch_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      - name: securityId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SecurityRoleX
+                $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          schema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+        '404':
+          description: Security Role is not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+  /v2/partition/{partitionId}/security:
+    get:
+      tags:
+      - Security Groups
+      summary: Retrieve Security Roles
+      description: Use to get a list of security roles
+      operationId: retrieve_3
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  originalRef: SecurityRoleX
+                  $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Partition
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            type: array
+            items:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+          schema:
+            type: array
+            items:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Partition
+    post:
+      tags:
+      - Security Groups
+      summary: Create Security Role
+      description: Use to create a security roles
+      operationId: create_1
+      parameters:
+      - name: X-AUTH-TOKEN
+        in: header
+        required: false
+        schema:
+          type: string
+      - name: partitionId
+        in: path
+        description: ID of partition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          content:
+            application/json:
+              schema:
+                originalRef: SecurityRoleX
+                $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+      responsesObject:
+        '200':
+          description: successful operation
+          responseSchema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+          schema:
+            originalRef: SecurityRoleX
+            $ref: '#/components/schemas/SecurityRoleX_2'
+        '400':
+          description: Invalid Security Role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              originalRef: SecurityRoleX
+              $ref: '#/components/schemas/SecurityRoleX_2'
+components:
+  schemas:
+    SecurityRoleX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        name:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        userCount:
+          type: integer
+          format: int32
+        permissions:
+          type: array
+          uniqueItems: true
+          items:
+            originalRef: SecurityPermissionX
+            $ref: '#/components/schemas/SecurityPermissionX_2'
+    SecurityPermissionX_2:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - NONE
+          - Account
+          - AccountHistory
+          - AccountCallHistory
+          - AccountBulkStatuses
+          - IpWhitelist
+          - PhoneNumber
+          - PhoneNumberServiceActivation
+          - PhoneNumberInventory
+          - Product
+          - ProductCallingPlan
+          - ProductGroups
+          - ProductUsers
+          - Reports
+          - RoutePlan
+          - SipCredentials
+          - EU_DeviceSwapCreate
+          - EU_Account
+          - EU_AccountMedia
+          - EU_CallHistory
+          - EU_Device
+          - EU_DeviceSwap
+          - EU_DeviceLine
+          - EU_IVR
+          - EU_LineAppearance
+          - EU_LineHardware
+          - EU_LineHuntGroup
+          - EU_Voicemail
+          - EU_VoicemailMessage
+          - EU_VoicemailUnlock
+          - EU_Telephone
+          - EU_SipTrunk
+          - EU_User
+          - EU_UserResetPassword
+          - EU_History
+          - EU_BUSINESS_LINE
+          - EU_BUSINESS_LINE_PROVISIONING
+          - EU_BUSINESS_LINE_VOICEMAIL
+          - EU_BUSINESS_LINE_HUNT_GROUP
+          - EU_911_ADDRESS
+          - EU_TELEPHONE_DESTINATION
+          - EU_ENDUSER_REPURPOSE
+          - ALIANZA_MasterRoutePlan
+          - ALIANZA_TogglzAdmin
+          - ANY_END_USER
+          - ANY_MANAGEMENT_USER
+          - ANY_ALIANZA_USER
+        accessType:
+          type: string
+          enum:
+          - NONE
+          - READ_MYUSER
+          - READ
+          - EDIT_MYUSER
+          - EDIT
+          - CREATE_MYUSER
+          - CREATE
+          - DELETE_MYUSER
+          - DELETE
+          - DENIED
+  securitySchemes:
+    X-Auth-Token:
+      type: apiKey
+      in: header
+      name: X-AUTH-TOKEN
+x-refined-from:
+- alianza-apidocs-swagger2-original.json
+- alianza-openapi-original.yml

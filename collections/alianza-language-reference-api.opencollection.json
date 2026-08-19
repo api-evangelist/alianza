@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alianza Language Reference API",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Language Reference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getLanguageFromHeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.d2.alianza.com/v2/language"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
