@@ -13,6 +13,18 @@ description: 'Alianza is a cloud communications software company founded in 2009
   and voice interconnect. The Alianza Public API is a JSON REST API over the Alianza
   One platform covering partition, account, end user, device, telephone number, porting,
   SIP trunk, calling plan, voicemail, CDR and reporting orchestration.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.alianza.com/wp-content/uploads/2025/03/Alianza-Basic-Images-New.png
 url: https://raw.githubusercontent.com/api-evangelist/alianza/refs/heads/main/apis.yml
 x-type: company
