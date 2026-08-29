@@ -3,7 +3,7 @@ provider: Alianza
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Telecommunications
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,16 +11,107 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 10
 edges:
+- tag: Port
+  spec_file: alianza-port-api-openapi.yml
+  capability_id: BC-2640.40
+  capability_id_l1: BC-2640
+  capability_name: Number Portability Management
+  confidence: 0.92
+  evidence: triggerPort  Updates a service activation event on an account and triggers the port with the
+    carrier; cancelPort; schemas CustomerServiceRecordX, LOAX, PortX
+  reason: Letter of Authorisation upload, customer service records, triggering and cancelling ports with
+    the carrier are unambiguously telephone number portability operations.
+- tag: Telephone Number
+  spec_file: alianza-telephone-number-api-openapi.yml
+  capability_id: BC-2640.30
+  capability_id_l1: BC-2640
+  capability_name: Numbering Resource Management
+  confidence: 0.85
+  evidence: POST 'Create telephone number', 'Retrieve telephone number availability', 'Reserve a telephone
+    number', 'Bulk telephone number import', 'Delete telephone number cooldown'
+  reason: Full lifecycle of telephone numbers — creation, availability check, reservation, cooldown, bulk
+    import — is telecom numbering resource stewardship and assignment to services.
+- tag: Calling Plan Product
+  spec_file: alianza-calling-plan-product-api-openapi.yml
+  capability_id: BC-2650.20
+  capability_id_l1: BC-2650
+  capability_name: Tariff & Plan Management
+  confidence: 0.8
+  evidence: Add calling plan product; Update calling plan product; Archive calling plan product; POST
+    .../callingplanproductdefinition  Add calling plan rates
+  reason: Full lifecycle CRUD plus rate definition and archiving of calling plan products is definition
+    and lifecycle of telecom tariffs/plans underpinning offers.
+- tag: Rate Center Inventory
+  spec_file: alianza-rate-center-inventory-api-openapi.yml
+  capability_id: BC-2640.30
+  capability_id_l1: BC-2640
+  capability_name: Numbering Resource Management
+  confidence: 0.78
+  evidence: GET /v2/partition/{partitionId}/ratecenter/tnsearch  search_1  Telephone number search grouped
+    by rate centers; getInventoryPlan2  Initiates the creation of a rate center inventory plan CSV file
+  reason: Managing telephone-number inventory plans by rate centre, TN search and reorder notifications
+    is stewardship and assignment of numbering resources. Some overlap with generic inventory reporting,
+    hence 0.78.
+- tag: Dynamic Inventory
+  spec_file: alianza-dynamic-inventory-api-openapi.yml
+  capability_id: BC-2640.30
+  capability_id_l1: BC-2640
+  capability_name: Numbering Resource Management
+  confidence: 0.75
+  evidence: Retrieve telephone number list matching query parameters from carrier's dynamic inventory;
+    Creates Dynamic inventory orders, those orders eventually will activate telephone numbers
+  reason: Searching carrier telephone-number inventory and ordering/activating numbers is stewardship
+    and assignment of numbering resources.
+- tag: Management User
+  spec_file: alianza-management-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: resetPassword  Reset management user password; sso  Get a management user's sso status; bulkUpdateUserGroups  Create
+    or Update management user groups
+  reason: CRUD over administrative users, user groups, password reset and SSO status is identity and access
+    administration. Slight ambiguity versus per-tenant identity federation, hence 0.75.
+- tag: Service Activation
+  spec_file: alianza-service-activation-api-openapi.yml
+  capability_id: BC-2620.40
+  capability_id_l1: BC-2620
+  capability_name: Service Activation
+  confidence: 0.72
+  evidence: 'GET .../account/{accountId}/reference/{referenceId}/type/{serviceType}  retrieve_7  Retrieve
+    a service activation event on an account; schemas: ServiceActivationEventX, ServiceActivationEventLogX'
+  reason: The single operation reads service activation events and activation event logs for a service
+    type on a customer account — the turn-up/activation record of a telecom service. Only one read endpoint,
+    so confidence is good but not maximal.
+- tag: Emergency Notification
+  spec_file: alianza-emergency-notification-api-openapi.yml
+  capability_id: BC-2700.40
+  capability_id_l1: BC-2700
+  capability_name: Emergency Services Management
+  confidence: 0.7
+  evidence: GET .../emergency-notifications/events  Retrieve notification event list; .../groups/{type}/{groupId}/execute-test  Execute
+    test (schemas ComplianceConfiguration, RecipientStatus)
+  reason: Emergency-call notification groups, events and compliance configuration implement regulator-mandated
+    emergency service notification obligations (e.g. Kari's Law style).
+- tag: End User
+  spec_file: alianza-end-user-api-openapi.yml
+  capability_id: BC-2640.10
+  capability_id_l1: BC-2640
+  capability_name: Subscriber Identity Management
+  confidence: 0.7
+  evidence: Create end user; Retrieve end user; Delete end user; POST .../user/activation  End User activation
+  reason: Lifecycle management of voice-service end-user profiles and their activation is subscriber identity
+    management in the subscriber data layer.
 - tag: Security Groups
   spec_file: alianza-security-groups-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
-  confidence: 0.72
-  evidence: POST /v2/partition/{partitionId}/security create_1 'Create Security Role'; schemas SecurityRoleX,
-    SecurityPermissionX
-  reason: CRUD over security roles and their permissions within a partition — role/permission administration,
-    i.e. access management. Mapped to IAM rather than a tenant-specific capability since the objects are
-    roles and permissions.
+  confidence: 0.7
+  evidence: 'POST /v2/partition/{partitionId}/security  create_1  Create Security Role; schemas: SecurityRoleX,
+    SecurityPermissionX'
+  reason: CRUD over security roles and their permissions is role-based access control administration,
+    which is Identity & Access Management. It is administrative in nature, so confidence is held below
+    the top band.
