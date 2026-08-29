@@ -1,0 +1,26 @@
+slug: alianza
+provider: Alianza
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Security Groups
+  spec_file: alianza-security-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /v2/partition/{partitionId}/security create_1 'Create Security Role'; schemas SecurityRoleX,
+    SecurityPermissionX
+  reason: CRUD over security roles and their permissions within a partition — role/permission administration,
+    i.e. access management. Mapped to IAM rather than a tenant-specific capability since the objects are
+    roles and permissions.

@@ -907,6 +907,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/alianza-capability-edges.yml
+  name: Alianza Business Capability Map
 - type: MCPServer
   url: mcp/alianza-mcp.yml
 - type: Overlay
