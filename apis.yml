@@ -48,6 +48,10 @@ x-tier-reason: enrichment-pipeline
 specificationVersion: '0.23'
 created: '2026-08-02'
 modified: '2026-08-02'
+x-docs-platform: swagger-ui
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-17
+x-docs-hosting: aws-cloudfront
 tags:
 - Company
 - Communications
@@ -589,6 +593,8 @@ apis:
   humanURL: https://developer.alianza.com/provisioning-api
   baseURL: https://api.alianza.com
   tags:
+  - Ports
+  tags_raw:
   - Port
   properties:
   - type: OpenAPI
