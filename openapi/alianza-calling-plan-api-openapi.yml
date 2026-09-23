@@ -150,7 +150,7 @@ paths:
           application/json:
             schema:
               originalRef: ModifyCallingPlanX
-              $ref: '#/components/schemas/ModifyCallingPlanX_2'
+              $ref: '#/components/schemas/ModifyCallingPlanX'
     delete:
       tags:
       - Calling Plan
@@ -208,7 +208,7 @@ paths:
           application/json:
             schema:
               originalRef: ModifyCallingPlanX
-              $ref: '#/components/schemas/ModifyCallingPlanX_2'
+              $ref: '#/components/schemas/ModifyCallingPlanX'
   /v2/ref/default-callingplan-definition:
     get:
       tags:
@@ -248,7 +248,7 @@ paths:
           description: File not found
 components:
   schemas:
-    ModifyCallingPlanX_2:
+    ModifyCallingPlanX:
       type: object
       properties:
         referenceType:
@@ -312,6 +312,55 @@ components:
         secondsRemaining:
           type: integer
           format: int64
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    ModifyCallingPlanX_2:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        callingPlanProductId:
+          type: string
+          description: Deprecated. Use the callingPlanReferenceId
+        callingPlanReferenceId:
+          type: string
+          description: When modifying an existing calling plan list, this is the calling plan product id. When opting to share an existing calling plan list, this is the the reference id that has the calling plan list that the new reference would share.
+        callingPlanType:
+          type: string
+          description: Indicates if the request is for a change to an existing calling plan list, share a calling plan list with another reference, or stop sharing the configured list with other references.
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
+        pending:
+          type: boolean
+          description: If false then the calling plan change will apply immediately.   If true then the change will take place at the account billing date. Does not apply when the request is to share a calling plan.
+        minutesUsed:
+          type: integer
+          format: int32
+          description: Only used on add.  Will only be applied to new plans.   Will not be applied to pending plans plans.  Does not apply when the request is to share a calling plan.
   securitySchemes:
     X-Auth-Token:
       type: apiKey

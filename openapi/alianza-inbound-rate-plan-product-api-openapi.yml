@@ -44,21 +44,21 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: InboundRatePlanProductX
-            $ref: '#/components/schemas/InboundRatePlanProductX_2'
+            $ref: '#/components/schemas/InboundRatePlanProductX'
           content:
             application/json:
               schema:
                 originalRef: InboundRatePlanProductX
-                $ref: '#/components/schemas/InboundRatePlanProductX_2'
+                $ref: '#/components/schemas/InboundRatePlanProductX'
       responsesObject:
         '200':
           description: successful operation
           responseSchema:
             originalRef: InboundRatePlanProductX
-            $ref: '#/components/schemas/InboundRatePlanProductX_2'
+            $ref: '#/components/schemas/InboundRatePlanProductX'
           schema:
             originalRef: InboundRatePlanProductX
-            $ref: '#/components/schemas/InboundRatePlanProductX_2'
+            $ref: '#/components/schemas/InboundRatePlanProductX'
   /v2/partition/{partitionId}/inboundrateplanproduct:
     get:
       tags:
@@ -85,14 +85,14 @@ paths:
             type: array
             items:
               originalRef: InboundRatePlanProductX
-              $ref: '#/components/schemas/InboundRatePlanProductX_2'
+              $ref: '#/components/schemas/InboundRatePlanProductX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: InboundRatePlanProductX
-                  $ref: '#/components/schemas/InboundRatePlanProductX_2'
+                  $ref: '#/components/schemas/InboundRatePlanProductX'
       responsesObject:
         '200':
           description: successful operation
@@ -100,12 +100,12 @@ paths:
             type: array
             items:
               originalRef: InboundRatePlanProductX
-              $ref: '#/components/schemas/InboundRatePlanProductX_2'
+              $ref: '#/components/schemas/InboundRatePlanProductX'
           schema:
             type: array
             items:
               originalRef: InboundRatePlanProductX
-              $ref: '#/components/schemas/InboundRatePlanProductX_2'
+              $ref: '#/components/schemas/InboundRatePlanProductX'
 components:
   schemas:
     InboundRate:
@@ -116,7 +116,7 @@ components:
           format: double
         allowCalls:
           type: boolean
-    InboundRatePlanProductX_2:
+    InboundRatePlanProductX:
       type: object
       properties:
         id:
@@ -133,6 +133,38 @@ components:
           type: object
           additionalProperties:
             originalRef: InboundRate
+            $ref: '#/components/schemas/InboundRate'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    InboundRatePlanProductX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        name:
+          type: string
+        defaultPlan:
+          type: boolean
+        archived:
+          type: boolean
+        rates:
+          type: object
+          additionalProperties:
             $ref: '#/components/schemas/InboundRate'
   securitySchemes:
     X-Auth-Token:

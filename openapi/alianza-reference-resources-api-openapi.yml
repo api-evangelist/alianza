@@ -38,21 +38,21 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceTypeX
-            $ref: '#/components/schemas/DeviceTypeX_2'
+            $ref: '#/components/schemas/DeviceTypeX'
           content:
             application/json:
               schema:
                 originalRef: DeviceTypeX
-                $ref: '#/components/schemas/DeviceTypeX_2'
+                $ref: '#/components/schemas/DeviceTypeX'
       responsesObject:
         '200':
           description: successful operation
           responseSchema:
             originalRef: DeviceTypeX
-            $ref: '#/components/schemas/DeviceTypeX_2'
+            $ref: '#/components/schemas/DeviceTypeX'
           schema:
             originalRef: DeviceTypeX
-            $ref: '#/components/schemas/DeviceTypeX_2'
+            $ref: '#/components/schemas/DeviceTypeX'
   /v2/ref/devicetype:
     get:
       tags:
@@ -78,14 +78,14 @@ paths:
             type: array
             items:
               originalRef: DeviceTypeX
-              $ref: '#/components/schemas/DeviceTypeX_2'
+              $ref: '#/components/schemas/DeviceTypeX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: DeviceTypeX
-                  $ref: '#/components/schemas/DeviceTypeX_2'
+                  $ref: '#/components/schemas/DeviceTypeX'
       responsesObject:
         '200':
           description: successful operation
@@ -93,12 +93,12 @@ paths:
             type: array
             items:
               originalRef: DeviceTypeX
-              $ref: '#/components/schemas/DeviceTypeX_2'
+              $ref: '#/components/schemas/DeviceTypeX'
           schema:
             type: array
             items:
               originalRef: DeviceTypeX
-              $ref: '#/components/schemas/DeviceTypeX_2'
+              $ref: '#/components/schemas/DeviceTypeX'
   /v2/ref/dialplan/actiontypes:
     get:
       tags:
@@ -737,6 +737,8 @@ paths:
             items:
               originalRef: SystemDefaultMediaX
               $ref: '#/components/schemas/SystemDefaultMediaX'
+      summary: Get list
+      x-summary-source: derived
   /v2/ref/timezones:
     get:
       tags:
@@ -914,27 +916,7 @@ components:
           - DELETE_MYUSER
           - DELETE
           - DENIED
-    RingTypeAlertInfoX:
-      type: object
-      properties:
-        ringType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        alertInfoHeaderValue:
-          type: string
-          description: sip header for this ring type
-      required:
-      - alertInfoHeaderValue
-      - ringType
-    DeviceTypeX_2:
+    DeviceTypeX:
       type: object
       properties:
         id:
@@ -997,15 +979,6 @@ components:
           items:
             originalRef: RingTypeAlertInfoX
             $ref: '#/components/schemas/RingTypeAlertInfoX'
-    LanguageReferenceX:
-      type: object
-      properties:
-        id:
-          type: string
-        country:
-          type: string
-        language:
-          type: string
     SideCarTypeX:
       type: object
       properties:
@@ -1019,6 +992,35 @@ components:
         numPages:
           type: integer
           format: int32
+    LanguageReferenceX:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
+    RingTypeAlertInfoX:
+      type: object
+      required:
+      - alertInfoHeaderValue
+      - ringType
+      properties:
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        alertInfoHeaderValue:
+          type: string
+          description: sip header for this ring type
     SystemDefaultMediaX:
       type: object
       properties:
@@ -1030,6 +1032,106 @@ components:
           type: string
         url:
           type: string
+    DeviceTypeX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLines:
+          type: integer
+          format: int32
+        deviceTypeManufacturer:
+          type: string
+          enum:
+          - CISCO_LINKSYS_SIPURA
+          - POLYCOM
+          - ARRIS
+          - OBIHAI
+          - INNOMEDIA
+          - THIRD_PARTY
+          - SOFT_PHONE
+          - ZTE
+          - SCIENTIFIC_ATLANTA
+          - CALIX
+          - YEALINK
+          - SNOM
+          - SMART_RG
+          - ACROBITS
+          - GRANDSTREAM
+          - ADTRAN
+          - MEDIATRIX
+          - ALGO
+          - MITEL
+          - CLEARLY_IP
+        acceptsRemoteResync:
+          type: boolean
+        faxSupported:
+          type: boolean
+        macAddressRequired:
+          type: boolean
+        showProvisionStatus:
+          type: boolean
+        enforceUniqueAdminPassword:
+          type: boolean
+        customEncryptionKeys:
+          type: boolean
+        sipPagingEnabled:
+          type: boolean
+        distinctiveRingInfo:
+          type: string
+        smbDevice:
+          type: boolean
+        sideCarTypeIds:
+          type: array
+          items:
+            type: string
+        maxSideCars:
+          type: integer
+          format: int32
+        ringTypeAlertInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/RingTypeAlertInfoX'
+        sipRegMax:
+          type: integer
+          format: int32
+        deviceKind:
+          type: string
+        lineFunctionality:
+          type: object
+          additionalProperties:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+              enum:
+              - Line
+              - AdvancedSharedLine
+              - ReferencedUser
+              - IntercomLine
+              - PresenceBlfUser
+              - SpeedDialUser
+              - SpeedDialTn
+              - CallParkingSpot
+              - SipPaging
+              - Custom
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -51,12 +51,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 originalRef: SipTrunk
-                $ref: '#/components/schemas/SipTrunk_2'
+                $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID supplied
         '404':
@@ -66,10 +66,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           schema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID supplied
         '404':
@@ -109,12 +109,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 originalRef: SipTrunk
-                $ref: '#/components/schemas/SipTrunk_2'
+                $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID or SIP trunk object supplied
         '404':
@@ -124,10 +124,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           schema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID or SIP trunk object supplied
         '404':
@@ -137,7 +137,7 @@ paths:
           application/json:
             schema:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
         description: SIP trunk object
         required: true
     delete:
@@ -229,12 +229,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 originalRef: SipTrunk
-                $ref: '#/components/schemas/SipTrunk_2'
+                $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID or SIP trunk object supplied
         '404':
@@ -244,10 +244,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           schema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID or SIP trunk object supplied
         '404':
@@ -257,7 +257,7 @@ paths:
           application/json:
             schema:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
         description: SIP trunk object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/validate:
@@ -351,14 +351,14 @@ paths:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: SipTrunk
-                  $ref: '#/components/schemas/SipTrunk_2'
+                  $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid partition or account ID supplied
         '404':
@@ -370,12 +370,12 @@ paths:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
           schema:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid partition or account ID supplied
         '404':
@@ -409,12 +409,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 originalRef: SipTrunk
-                $ref: '#/components/schemas/SipTrunk_2'
+                $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk object supplied
         '404':
@@ -424,10 +424,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           schema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk object supplied
         '404':
@@ -437,13 +437,12 @@ paths:
           application/json:
             schema:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
   /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/forward:
     get:
       tags:
       - SIP Trunk
       summary: Get Forward behavior for a SipTrunk
-      description: Get Forward behavior for a SipTrunk
       operationId: retrieveSipTrunkForwardBehavior
       parameters:
       - name: X-AUTH-TOKEN
@@ -474,12 +473,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunkForwardRules
-            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+            $ref: '#/components/schemas/SipTrunkForwardRules'
           content:
             application/json:
               schema:
                 originalRef: SipTrunkForwardRules
-                $ref: '#/components/schemas/SipTrunkForwardRules_2'
+                $ref: '#/components/schemas/SipTrunkForwardRules'
         '400':
           description: Invalid SIP trunk ID supplied
       responsesObject:
@@ -487,17 +486,16 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunkForwardRules
-            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+            $ref: '#/components/schemas/SipTrunkForwardRules'
           schema:
             originalRef: SipTrunkForwardRules
-            $ref: '#/components/schemas/SipTrunkForwardRules_2'
+            $ref: '#/components/schemas/SipTrunkForwardRules'
         '400':
           description: Invalid SIP trunk ID supplied
     put:
       tags:
       - SIP Trunk
       summary: Update Forward behavior for a SipTrunk
-      description: Update Forward behavior for a SipTrunk
       operationId: updateSipTrunkForwardBehavior
       parameters:
       - name: X-AUTH-TOKEN
@@ -534,7 +532,7 @@ paths:
           application/json:
             schema:
               originalRef: SipTrunkForwardRules
-              $ref: '#/components/schemas/SipTrunkForwardRules_2'
+              $ref: '#/components/schemas/SipTrunkForwardRules'
   /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/unlock:
     put:
       tags:
@@ -571,12 +569,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 originalRef: SipTrunk
-                $ref: '#/components/schemas/SipTrunk_2'
+                $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID supplied
         '404':
@@ -586,10 +584,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
           schema:
             originalRef: SipTrunk
-            $ref: '#/components/schemas/SipTrunk_2'
+            $ref: '#/components/schemas/SipTrunk'
         '400':
           description: Invalid SIP trunk ID supplied
         '404':
@@ -626,14 +624,14 @@ paths:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: SipTrunk
-                  $ref: '#/components/schemas/SipTrunk_2'
+                  $ref: '#/components/schemas/SipTrunk'
       responsesObject:
         '200':
           description: successful operation
@@ -641,12 +639,12 @@ paths:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
           schema:
             type: array
             items:
               originalRef: SipTrunk
-              $ref: '#/components/schemas/SipTrunk_2'
+              $ref: '#/components/schemas/SipTrunk'
   /v2/partition/{partitionId}/account/{accountId}/siptrunk_2/{sipTrunkId}/registrationstatus:
     get:
       tags:
@@ -708,97 +706,7 @@ paths:
           description: Not found
 components:
   schemas:
-    ForwardReference:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
-          type: string
-    SipTrunkForwardRules_2:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        sipTrunkId:
-          type: string
-        forwardAlways:
-          originalRef: ForwardAlwaysReference
-          $ref: '#/components/schemas/ForwardAlwaysReference'
-        forwardOnFailure:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
-        forwardOnCapacityExceeded:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
-    SbcEndpoint:
-      type: object
-      properties:
-        site:
-          type: string
-        address:
-          type: string
-        port:
-          type: integer
-          format: int32
-        protocol:
-          type: string
-    RegistrationStatus:
-      type: object
-      properties:
-        registered:
-          type: boolean
-        lockedOut:
-          type: boolean
-    CallingPlan:
-      type: object
-      properties:
-        id:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        callingPlanProductId:
-          type: string
-        endDate:
-          type: string
-          format: date-time
-        startDate:
-          type: string
-          format: date-time
-        planMinutes:
-          type: integer
-          format: int32
-        secondsRemaining:
-          type: integer
-          format: int64
-    SetupCallingPlan_2:
-      type: object
-      properties:
-        referenceId:
-          type: string
-        callingPlanType:
-          type: string
-          enum:
-          - SHARED_CALLING_PLAN
-          - NEW_CALLING_PLAN
-          - UNSHARED_CALLING_PLAN
-    SipTrunk_2:
+    SipTrunk:
       type: object
       properties:
         partitionId:
@@ -848,7 +756,7 @@ components:
           type: string
         setupCallingPlan:
           originalRef: SetupCallingPlan
-          $ref: '#/components/schemas/SetupCallingPlan_2'
+          $ref: '#/components/schemas/SetupCallingPlan'
         provisioningStatus:
           type: string
         ipBasedAuthEnabled:
@@ -870,6 +778,36 @@ components:
           format: int32
         languageTag:
           type: string
+    CallingPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
+          type: integer
+          format: int32
+        secondsRemaining:
+          type: integer
+          format: int64
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
     ForwardAlwaysReference:
       type: object
       properties:
@@ -887,6 +825,212 @@ components:
           type: string
         enabled:
           type: boolean
+    ForwardReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+    SetupCallingPlan:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        callingPlanType:
+          type: string
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
+    SbcEndpoint:
+      type: object
+      properties:
+        site:
+          type: string
+        address:
+          type: string
+        port:
+          type: integer
+          format: int32
+        protocol:
+          type: string
+    SipTrunkForwardRules:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          originalRef: ForwardAlwaysReference
+          $ref: '#/components/schemas/ForwardAlwaysReference'
+        forwardOnFailure:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
+    SipTrunk_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        trunkName:
+          type: string
+        id:
+          type: string
+        sipPassword:
+          type: string
+          minLength: 6
+        sipUsername:
+          type: string
+          minLength: 8
+          maxLength: 36
+          pattern: '[A-Za-z0-9\\-_.]+'
+        callbackNumber:
+          type: string
+        concurrentCalls:
+          type: integer
+          format: int32
+          minimum: 1
+        maxBurstCalls:
+          type: integer
+          format: int32
+        callingPlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallingPlan'
+        telephoneNumbers:
+          type: array
+          items:
+            type: string
+        sipProxyServer:
+          type: string
+        lockedOut:
+          type: boolean
+        localServicesEnabled:
+          type: boolean
+        primaryTn:
+          type: string
+        extensionPatterns:
+          type: array
+          items:
+            type: string
+            pattern: \\d+x*
+        externalChargeNumber:
+          type: string
+        newCppId:
+          type: string
+        setupCallingPlan:
+          $ref: '#/components/schemas/SetupCallingPlan_2'
+        provisioningStatus:
+          type: string
+        ipBasedAuthEnabled:
+          type: boolean
+        ipAddress:
+          type: string
+        portNumber:
+          type: integer
+          format: int32
+        accessEndpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/SbcEndpoint'
+        sipTrunkGroupId:
+          type: string
+        pbxTnDigits:
+          type: integer
+          format: int32
+        languageTag:
+          type: string
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+    SipTrunkForwardReference:
+      type: object
+      required:
+      - referenceType
+      properties:
+        referenceId:
+          type: string
+          description: id of the entity to forward the calls to
+        referenceType:
+          $ref: '#/components/schemas/ReferenceType'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    SetupCallingPlan_2:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        callingPlanType:
+          type: string
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+    SipTrunkForwardRules_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
+        forwardOnFailure:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

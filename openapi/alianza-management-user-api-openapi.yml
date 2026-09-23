@@ -45,12 +45,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserX
-                $ref: '#/components/schemas/ManagementUserX_2'
+                $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -60,10 +60,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           schema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -97,12 +97,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserX
-                $ref: '#/components/schemas/ManagementUserX_2'
+                $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -112,10 +112,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           schema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -125,7 +125,7 @@ paths:
           application/json:
             schema:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
         description: Management user object
         required: true
     delete:
@@ -205,12 +205,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserX
-                $ref: '#/components/schemas/ManagementUserX_2'
+                $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -220,10 +220,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           schema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -233,7 +233,7 @@ paths:
           application/json:
             schema:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
         description: Management user object
         required: true
   /v2/partition/{partitionId}/managementuser:
@@ -261,14 +261,14 @@ paths:
             type: array
             items:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: ManagementUserX
-                  $ref: '#/components/schemas/ManagementUserX_2'
+                  $ref: '#/components/schemas/ManagementUserX'
       responsesObject:
         '200':
           description: successful operation
@@ -277,12 +277,14 @@ paths:
             type: array
             items:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
           schema:
             type: array
             items:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
+      summary: Retrieve 1
+      x-summary-source: derived
     post:
       tags:
       - Management User
@@ -306,12 +308,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserX
-                $ref: '#/components/schemas/ManagementUserX_2'
+                $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user object
         '404':
@@ -321,10 +323,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           schema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user object
         '404':
@@ -334,7 +336,7 @@ paths:
           application/json:
             schema:
               originalRef: ManagementUserX
-              $ref: '#/components/schemas/ManagementUserX_2'
+              $ref: '#/components/schemas/ManagementUserX'
         description: Management user object
         required: true
   /v2/partition/{partitionId}/managementuser/search:
@@ -400,12 +402,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserSearchResponseX
-            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+            $ref: '#/components/schemas/ManagementUserSearchResponseX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserSearchResponseX
-                $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+                $ref: '#/components/schemas/ManagementUserSearchResponseX'
         '400':
           description: Invalid information supplied
         '404':
@@ -415,10 +417,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserSearchResponseX
-            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+            $ref: '#/components/schemas/ManagementUserSearchResponseX'
           schema:
             originalRef: ManagementUserSearchResponseX
-            $ref: '#/components/schemas/ManagementUserSearchResponseX_2'
+            $ref: '#/components/schemas/ManagementUserSearchResponseX'
         '400':
           description: Invalid information supplied
         '404':
@@ -521,7 +523,7 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
         description: List of management user groups
         required: true
   /v2/partition/{partitionId}/managementuser/validateproperties:
@@ -595,12 +597,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           content:
             application/json:
               schema:
                 originalRef: ManagementUserX
-                $ref: '#/components/schemas/ManagementUserX_2'
+                $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -610,10 +612,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
           schema:
             originalRef: ManagementUserX
-            $ref: '#/components/schemas/ManagementUserX_2'
+            $ref: '#/components/schemas/ManagementUserX'
         '400':
           description: Invalid management user ID
         '404':
@@ -648,12 +650,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SsoUserX
-            $ref: '#/components/schemas/SsoUserX_2'
+            $ref: '#/components/schemas/SsoUserX'
           content:
             application/json:
               schema:
                 originalRef: SsoUserX
-                $ref: '#/components/schemas/SsoUserX_2'
+                $ref: '#/components/schemas/SsoUserX'
         '404':
           description: Management user not found
       responsesObject:
@@ -661,17 +663,33 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SsoUserX
-            $ref: '#/components/schemas/SsoUserX_2'
+            $ref: '#/components/schemas/SsoUserX'
           schema:
             originalRef: SsoUserX
-            $ref: '#/components/schemas/SsoUserX_2'
+            $ref: '#/components/schemas/SsoUserX'
         '404':
           description: Management user not found
 components:
   schemas:
-    MultipartFormDataInput_2:
+    ManagementUserSearchResponseX:
       type: object
-    ManagementUserX_2:
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: ManagementUserX
+            $ref: '#/components/schemas/ManagementUserX'
+    SsoUserX:
+      type: object
+      properties:
+        ssoStatus:
+          type: string
+    MultipartFormDataInput:
+      type: object
+    ManagementUserX:
       type: object
       properties:
         id:
@@ -706,6 +724,58 @@ components:
           uniqueItems: true
           items:
             type: string
+    ManagementUserX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+          description: users email address
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+          description: just a readonly repetition of the username
+        mustChangePassword:
+          type: boolean
+        languageTag:
+          type: string
+          enum:
+          - en-US
+          - fr-CA
+        partitionId:
+          type: string
+          description: Reference to <a href="#/~schema/PartitionX">PartitionX.id</a>
+        roles:
+          type: array
+          description: A list of roles that the contain the permissions of this managementUser.
+          items:
+            type: string
+            description: Reference to <a href="#/~schema/SecurityRoleX">SecurityRoleX.name</a>.  The named role must be under the partition of the managementUser.
+          uniqueItems: true
+        groupIds:
+          type: array
+          description: Readonly and internal only, the same information is contained in the roles array in a different format
+          items:
+            type: string
+            description: Reference to <a href="#/~schema/SecurityRoleX">SecurityRoleX.id</a>.
+          uniqueItems: true
+    SsoUserX_2:
+      type: object
+      description: This is only the <a href="https://developer.okta.com/docs/reference/api/users/#user-status">user.status</a> of an Okta user which sits behind one of the Alianza user types. In our api, we represent this as a string, but in Okta, it in an enumeration whose possible values are <ul><li>STAGED</li><li>PROVISIONED</li><li>ACTIVE</li><li>RECOVERY</li><li>LOCKED_OUT</li><li>PASSWORD_EXPIRED</li><li>SUSPENDED</li><li>DEPROVISIONED</li></ul> at the time of this writing.
+      properties:
+        ssoStatus:
+          type: string
+          example: ACTIVE
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
     ManagementUserSearchResponseX_2:
       type: object
       properties:
@@ -715,13 +785,22 @@ components:
         results:
           type: array
           items:
-            originalRef: ManagementUserX
             $ref: '#/components/schemas/ManagementUserX_2'
-    SsoUserX_2:
+    PublicApiException:
       type: object
       properties:
-        ssoStatus:
-          type: string
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

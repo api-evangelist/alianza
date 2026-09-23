@@ -121,6 +121,8 @@ paths:
         default:
           description: successful operation
       deprecated: true
+      summary: Update 2
+      x-summary-source: derived
     delete:
       tags:
       - Media
@@ -156,6 +158,8 @@ paths:
         default:
           description: successful operation
       deprecated: true
+      summary: Delete hold music
+      x-summary-source: derived
   /v2/partition/{partitionId}/account/{accountId}/media_2:
     post:
       tags:
@@ -208,12 +212,12 @@ paths:
           description: When providing a file upload key. The key has been accepted and the asynchronous process has started
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
       responsesObject:
         '400':
           description: Invalid ID supplied
@@ -231,10 +235,10 @@ paths:
           description: When providing a file upload key. The key has been accepted and the asynchronous process has started
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
       requestBody:
         content:
           multipart/form-data:
@@ -249,7 +253,7 @@ paths:
     get:
       tags:
       - Media
-      summary: Retrieve Hold Music Media ID.
+      summary: Retrieve Hold Music Media ID
       description: Use to retrieve Hold Music Media ID
       operationId: getAccountHoldMusic
       parameters:
@@ -329,7 +333,7 @@ paths:
     put:
       tags:
       - Media
-      summary: Set the hold music on this account to this media storage id.
+      summary: Set the hold music on this account to this media storage id
       description: Used to set the hold music to a different storage id
       operationId: updateAccountMusicOnHold
       parameters:
@@ -512,20 +516,11 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
         description: Media file
         required: true
 components:
   schemas:
-    MultipartFormDataInput_2:
-      type: object
-    MediaX:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
     JobError:
       type: object
       properties:
@@ -538,14 +533,16 @@ components:
           type: string
         input:
           type: string
-    HoldMusicX:
+    MediaX:
       type: object
       properties:
-        storageId:
+        id:
           type: string
         url:
           type: string
-    Job_2:
+    MultipartFormDataInput:
+      type: object
+    Job:
       type: object
       properties:
         id:
@@ -576,6 +573,66 @@ components:
         lastUpdated:
           type: integer
           format: int64
+    HoldMusicX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        url:
+          type: string
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

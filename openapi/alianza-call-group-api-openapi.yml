@@ -62,14 +62,14 @@ paths:
             type: array
             items:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: CallGroupX
-                  $ref: '#/components/schemas/CallGroupX_2'
+                  $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -81,12 +81,12 @@ paths:
             type: array
             items:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
           schema:
             type: array
             items:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -120,12 +120,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           content:
             application/json:
               schema:
                 originalRef: CallGroupX
-                $ref: '#/components/schemas/CallGroupX_2'
+                $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group object
         '404':
@@ -135,10 +135,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           schema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group object
         '404':
@@ -148,7 +148,7 @@ paths:
           application/json:
             schema:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
         description: Call group object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/group/{callGroupId}:
@@ -187,12 +187,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           content:
             application/json:
               schema:
                 originalRef: CallGroupX
-                $ref: '#/components/schemas/CallGroupX_2'
+                $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid account ID or call group ID
         '404':
@@ -202,10 +202,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           schema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid account ID or call group ID
         '404':
@@ -245,12 +245,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           content:
             application/json:
               schema:
                 originalRef: CallGroupX
-                $ref: '#/components/schemas/CallGroupX_2'
+                $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group ID or call group object
         '404':
@@ -260,10 +260,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           schema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group ID or call group object
         '404':
@@ -273,7 +273,7 @@ paths:
           application/json:
             schema:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
         description: Call group object
         required: true
     delete:
@@ -365,12 +365,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           content:
             application/json:
               schema:
                 originalRef: CallGroupX
-                $ref: '#/components/schemas/CallGroupX_2'
+                $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group ID or call group object
         '404':
@@ -380,10 +380,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
           schema:
             originalRef: CallGroupX
-            $ref: '#/components/schemas/CallGroupX_2'
+            $ref: '#/components/schemas/CallGroupX'
         '400':
           description: Invalid call group ID or call group object
         '404':
@@ -393,12 +393,12 @@ paths:
           application/json:
             schema:
               originalRef: CallGroupX
-              $ref: '#/components/schemas/CallGroupX_2'
+              $ref: '#/components/schemas/CallGroupX'
         description: Call group object
         required: true
 components:
   schemas:
-    CallGroupX_2:
+    CallGroupX:
       type: object
       properties:
         partitionId:
@@ -424,6 +424,49 @@ components:
           uniqueItems: true
           items:
             type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    CallGroupX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+          minLength: 1
+          maxLength: 256
+        type:
+          type: string
+          enum:
+          - DEVICE
+          - USER
+        subType:
+          type: string
+          enum:
+          - ANY_USER
+          - PAGING_DEVICE
+        memberIds:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
   securitySchemes:
     X-Auth-Token:
       type: apiKey

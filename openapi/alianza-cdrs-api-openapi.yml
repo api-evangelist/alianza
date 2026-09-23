@@ -375,12 +375,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             text/csv:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
       responsesObject:
@@ -388,10 +388,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
   /v2/partition/{partitionId}/account/{accountId}/cdrsearch:
@@ -564,20 +564,20 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallDetailRecordSearchResponse
-            $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+            $ref: '#/components/schemas/CallDetailRecordSearchResponse'
           content:
             application/json:
               schema:
                 originalRef: CallDetailRecordSearchResponse
-                $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+                $ref: '#/components/schemas/CallDetailRecordSearchResponse'
             application/xml:
               schema:
                 originalRef: CallDetailRecordSearchResponse
-                $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+                $ref: '#/components/schemas/CallDetailRecordSearchResponse'
             text/csv:
               schema:
                 originalRef: CallDetailRecordSearchResponse
-                $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+                $ref: '#/components/schemas/CallDetailRecordSearchResponse'
         '400':
           description: Invalid
         '404':
@@ -587,17 +587,63 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: CallDetailRecordSearchResponse
-            $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+            $ref: '#/components/schemas/CallDetailRecordSearchResponse'
           schema:
             originalRef: CallDetailRecordSearchResponse
-            $ref: '#/components/schemas/CallDetailRecordSearchResponse_2'
+            $ref: '#/components/schemas/CallDetailRecordSearchResponse'
         '400':
           description: Invalid
         '404':
           description: Not found
 components:
   schemas:
-    CallDetailRecord_2:
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    CdrApplicationData:
+      type: object
+      discriminator: type
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+    CallDetailRecord:
       type: object
       properties:
         id:
@@ -883,7 +929,7 @@ components:
           type: string
         applicationData:
           originalRef: CdrApplicationData
-          $ref: '#/components/schemas/CdrApplicationData_2'
+          $ref: '#/components/schemas/CdrApplicationData'
         origCnam:
           type: string
         termCnam:
@@ -900,7 +946,7 @@ components:
             type: string
         remoteChargeInfo:
           type: string
-    CallDetailRecordSearchResponse_2:
+    CallDetailRecordSearchResponse:
       type: object
       properties:
         totalRecords:
@@ -910,22 +956,69 @@ components:
           type: array
           items:
             originalRef: CallDetailRecord
-            $ref: '#/components/schemas/CallDetailRecord_2'
-    JobError:
+            $ref: '#/components/schemas/CallDetailRecord'
+    SipTrunkCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/SipTrunkApplication'
+    SipTrunkApplication:
       type: object
       properties:
-        error:
+        sipTrunkId:
           type: string
-        lineNumber:
+        burstCallsCount:
           type: integer
           format: int32
-        column:
-          type: string
-        input:
-          type: string
+        concurrentCallsCount:
+          type: integer
+          format: int32
     CdrApplicationData_2:
       type: object
-      discriminator: type
+      discriminator:
+        propertyName: type
+        mapping:
+          sip-trunks-interactions: '#/components/schemas/SipTrunkCdrApplicationData'
+          vfax-failure: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
+          vfax-setup-failure: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
+          vfax-success: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
+      anyOf:
+      - $ref: '#/components/schemas/SipTrunkCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
+    VirtualFaxFailureCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+        properties:
+          resolution:
+            type: string
+          fileSize:
+            type: integer
+            format: int64
+          badRows:
+            type: integer
+            format: int32
+          mediaInfo:
+            $ref: '#/components/schemas/CdrMediaInfo'
+          totalPageCount:
+            type: integer
+            format: int32
+    CdrMediaInfo:
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          audio: '#/components/schemas/CdrAudioInfo'
+          t38: '#/components/schemas/CdrT38Info'
+      anyOf:
+      - $ref: '#/components/schemas/CdrAudioInfo'
+      - $ref: '#/components/schemas/CdrT38Info'
     Job_2:
       type: object
       properties:
@@ -945,18 +1038,372 @@ components:
         errors:
           type: array
           items:
-            originalRef: JobError
             $ref: '#/components/schemas/JobError'
         inputKey:
           type: string
         outputKey:
           type: string
         start:
-          type: integer
-          format: int64
+          type: string
+          format: date-time
         lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    CdrT38Info:
+      allOf:
+      - $ref: '#/components/schemas/CdrMediaInfo'
+      - type: object
+        properties:
+          errorCorrectionEnabled:
+            type: boolean
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    VirtualFaxSetupFailureCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+    VirtualFaxSuccessCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+        properties:
+          resolution:
+            type: string
+          fileSize:
+            type: integer
+            format: int64
+          badRows:
+            type: integer
+            format: int32
+          mediaInfo:
+            $ref: '#/components/schemas/CdrMediaInfo'
+          totalPageCount:
+            type: integer
+            format: int32
+    CallDetailRecord_2:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        partitionId:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        connectTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        createdDate:
+          type: string
+          format: date-time
+        actualCallLengthSeconds:
           type: integer
           format: int64
+        billCallLengthSeconds:
+          type: integer
+          format: int64
+        ratePerMinute:
+          type: number
+          format: double
+        cost:
+          type: number
+        inPlan:
+          type: boolean
+        dialedNumber:
+          type: string
+        origNumber:
+          type: string
+        origLocation:
+          type: string
+        origCityName:
+          type: string
+        origAbbrRCName:
+          type: string
+        origState:
+          type: string
+        origCountry:
+          type: string
+        origCarrier:
+          type: string
+        origCallCategory:
+          type: string
+          enum:
+          - OffNet
+          - OnNet
+          - DirectoryAssistance
+          - Emergency
+          - Operator
+          - PhoneSupport
+          - TeleRelayService
+          - NonEmergencyServices
+          - Other
+          - PublicServices
+          - NotResolved
+          - EmergencyServicesVerification
+        identityAttestLevel:
+          type: string
+        identityOriginationId:
+          type: string
+        identitySignOrganization:
+          type: string
+        identitySignSPCode:
+          type: string
+        verstat:
+          type: string
+          enum:
+          - TN_VALIDATION_PASSED
+          - TN_VALIDATION_FAILED
+          - NO_TN_VALIDATION
+        verstatReason:
+          type: string
+          enum:
+          - BAD_IDENTITY_INFO
+          - CLAIM_TO_SIP_MISMATCH
+          - IDENTITY_HEADER_REQUIRED
+          - INVALID_IDENTITY_HEADER
+          - MALFORMED_IDENTITY_HEADER
+          - STALE_DATE
+          - UNSUPPORTED_CREDENTIAL
+          - UNSUPPORTED_PASSPORT_FORMAT
+        correlationData:
+          type: object
+          additionalProperties:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+        accountCode:
+          type: string
+        termNumber:
+          type: string
+        termLocation:
+          type: string
+        termCityName:
+          type: string
+        termAbbrRCName:
+          type: string
+        termState:
+          type: string
+        termCountry:
+          type: string
+        termCarrier:
+          type: string
+        termCallCategory:
+          type: string
+          enum:
+          - OffNet
+          - OnNet
+          - DirectoryAssistance
+          - Emergency
+          - Operator
+          - PhoneSupport
+          - TeleRelayService
+          - NonEmergencyServices
+          - Other
+          - PublicServices
+          - NotResolved
+          - EmergencyServicesVerification
+        forwardingNumber:
+          type: string
+        forwardingNumberCityName:
+          type: string
+        forwardingNumberAbbrRCName:
+          type: string
+        forwardingNumberLocation:
+          type: string
+        forwardingNumberState:
+          type: string
+        forwardingNumberCountry:
+          type: string
+        mediaServerType:
+          type: string
+        legType:
+          type: string
+          enum:
+          - Origination
+          - Termination
+          - Forward
+        callType:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+        callFlagType:
+          type: string
+          enum:
+          - MISSED
+          - VOICEMAIL
+          - FORWARDED
+          - BUSY
+          - ANSWERED
+          - OTHER
+          - PICKUP
+          - PICKED_UP
+        disconnectType:
+          type: string
+          enum:
+          - Busy
+          - NoAnswer
+          - HangUp
+          - HangUpOther
+          - BlindTransfer
+          - SupervisedTransfer
+          - Error
+          - Cancelled
+          - NextMenu
+          - NetworkBusy
+          - Unauthorized
+          - PickedUp
+          - NoURL
+          - BadURL
+          - URLExpired
+          - NoCallWaiting
+          - ImportantCall
+          - RefreshTimeout
+          - LocationCapacity
+          - Capacity
+          - SystemHangUp
+          - Rejected
+          - NotFound
+          - Other
+          - Forward
+          - Screened
+          - Unregistered
+        metroServiceArea:
+          type: string
+        rateType:
+          type: string
+          enum:
+          - Local
+          - OnPlanMinutes
+          - OnPlanRated
+          - OffPlanRated
+          - Free
+          - TollFree
+          - _411
+          - Operator
+          - IntraPartitionFree
+          - SipTrunkInbound
+        rateLocalFromNumber:
+          type: string
+        serviceType:
+          type: string
+          enum:
+          - INTERSTATE
+          - INTRASTATE
+          - INTERNATIONAL
+          - TOLL_FREE
+          - NOT_APPLICABLE
+          - UNKNOWN
+        local:
+          type: boolean
+        sessionId:
+          type: string
+        accountBillableNumber:
+          type: string
+        accountBillableCityName:
+          type: string
+        accountBillableAbbrRCName:
+          type: string
+        accountBillableLocation:
+          type: string
+        accountBillableState:
+          type: string
+        accountBillableCountry:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - ACCOUNT
+          - SPECIALTY_LINE
+        referenceName:
+          type: string
+        acctId:
+          type: string
+        accountId:
+          type: string
+        callingPlanProductId:
+          type: string
+        callingPlanProductName:
+          type: string
+        accountNumber:
+          type: string
+        accountCustomField:
+          type: string
+        partitionBillingCode:
+          type: string
+        accountBillingCycleDay:
+          type: integer
+          format: int32
+        accountTimeZone:
+          type: string
+        sipCallIds:
+          type: array
+          items:
+            type: string
+        meanOpinionScoreAverage:
+          type: number
+          format: double
+        meanOpinionScores:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+        callPickupFromId:
+          type: string
+        callPickupById:
+          type: string
+        applicationData:
+          $ref: '#/components/schemas/CdrApplicationData_2'
+        origCnam:
+          type: string
+        termCnam:
+          type: string
+        forwardingCnam:
+          type: string
+    CdrAudioInfo:
+      allOf:
+      - $ref: '#/components/schemas/CdrMediaInfo'
+      - type: object
+        properties:
+          codec:
+            type: string
+          bitRate:
+            type: integer
+            format: int32
+    CallDetailRecordSearchResponse_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallDetailRecord_2'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

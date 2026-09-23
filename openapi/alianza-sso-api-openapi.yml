@@ -1,11 +1,9 @@
 openapi: 3.2.0
 info:
-  description: '**This documentation of the Alianza Public API is outdated. No further updates will be
-    made to it.**
+  description: '**This documentation of the Alianza Public API is outdated. No further updates will be made to it.**
 
 
-    You are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at
-    [https://developer.alianza.com/](https://developer.alianza.com/)'
+    You are encouraged to use the latest API documentation, found at https://developer.alianza.com/'
   version: '2'
   title: Alianza Public SSO API
 tags:
@@ -42,8 +40,7 @@ paths:
       tags:
       - SSO
       summary: Authorization Code Exchange
-      description: Pass the SSO response authorization code here to exchange it for a api authorization
-        token
+      description: Pass the SSO response authorization code here to exchange it for a api authorization token
       operationId: getLoginInfo_1
       parameters:
       - name: code
@@ -167,6 +164,3 @@ components:
           type: string
         groupName:
           type: string
-servers:
-- url: https://api.d2.alianza.com
-  description: Base URL reconciled from _original

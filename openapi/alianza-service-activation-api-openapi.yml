@@ -64,12 +64,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ServiceActivationEventX
-            $ref: '#/components/schemas/ServiceActivationEventX_2'
+            $ref: '#/components/schemas/ServiceActivationEventX'
           content:
             application/json:
               schema:
                 originalRef: ServiceActivationEventX
-                $ref: '#/components/schemas/ServiceActivationEventX_2'
+                $ref: '#/components/schemas/ServiceActivationEventX'
         '400':
           description: Invalid partition or account
       responsesObject:
@@ -77,10 +77,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ServiceActivationEventX
-            $ref: '#/components/schemas/ServiceActivationEventX_2'
+            $ref: '#/components/schemas/ServiceActivationEventX'
           schema:
             originalRef: ServiceActivationEventX
-            $ref: '#/components/schemas/ServiceActivationEventX_2'
+            $ref: '#/components/schemas/ServiceActivationEventX'
         '400':
           description: Invalid partition or account
 components:
@@ -119,7 +119,7 @@ components:
           format: date-time
         generatedTicketId:
           type: string
-    ServiceActivationEventX_2:
+    ServiceActivationEventX:
       type: object
       properties:
         id:
@@ -239,6 +239,151 @@ components:
           items:
             originalRef: ServiceActivationEventLogX
             $ref: '#/components/schemas/ServiceActivationEventLogX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    ServiceActivationEventX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        serviceType:
+          type: string
+          enum:
+          - PORT_REQUEST
+          - CSR_CHANGE_REQUEST
+          - ACTIVATION
+          - NINE_ONE_ONE_ADDRESS
+          - DISCONNECT
+          - DYNAMIC_RESERVATION
+          - BYOTN_REQUEST
+          - SERVICE_PROVIDER_TN
+        referenceType:
+          type: string
+          enum:
+          - TELEPHONE
+          - PORT
+          - DYNAMIC_INVENTORY
+          - BYOTN
+          - BYOTN_PORT
+        referenceId:
+          type: string
+        activationStatusType:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        focDate:
+          type: string
+          format: date-time
+        crdDate:
+          type: string
+          format: date-time
+        city:
+          type: string
+        mainTelephoneNumber:
+          type: string
+        subTelephoneNumbers:
+          type: array
+          items:
+            type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        state:
+          type: string
+        l3Reaction:
+          type: string
+          enum:
+          - IGNORE
+          - RESUBMIT
+          - CANCEL
+          - SEND_EMAIL
+        parentOrderId:
+          type: string
+        editableFieldTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - crdDate
+            - wirelessAccountNumber
+            - wirelessPin
+            - name
+        losingCarrier:
+          type: string
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceActivationEventLogX'
+    ServiceActivationEventTypeX:
+      type: string
+      enum:
+      - ACTIVATION
+      - BYOTN_REQUEST
+      - CSR_CHANGE_REQUEST
+      - DISCONNECT
+      - DYNAMIC_RESERVATION
+      - NINE_ONE_ONE_ADDRESS
+      - PORT_REQUEST
+      - SERVICE_PROVIDER_TN
   securitySchemes:
     X-Auth-Token:
       type: apiKey

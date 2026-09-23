@@ -51,12 +51,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           content:
             application/json:
               schema:
                 originalRef: PickupGroupX
-                $ref: '#/components/schemas/PickupGroupX_2'
+                $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid account ID or pickup group ID
         '404':
@@ -66,10 +66,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           schema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid account ID or pickup group ID
         '404':
@@ -109,12 +109,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           content:
             application/json:
               schema:
                 originalRef: PickupGroupX
-                $ref: '#/components/schemas/PickupGroupX_2'
+                $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group ID or pickup group object
         '404':
@@ -124,10 +124,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           schema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group ID or pickup group object
         '404':
@@ -137,7 +137,7 @@ paths:
           application/json:
             schema:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
         description: Pickup group object
         required: true
     delete:
@@ -229,12 +229,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           content:
             application/json:
               schema:
                 originalRef: PickupGroupX
-                $ref: '#/components/schemas/PickupGroupX_2'
+                $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group ID or pickup group object
         '404':
@@ -244,10 +244,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           schema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group ID or pickup group object
         '404':
@@ -257,7 +257,7 @@ paths:
           application/json:
             schema:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
         description: Pickup group object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/grouppickup:
@@ -292,14 +292,14 @@ paths:
             type: array
             items:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: PickupGroupX
-                  $ref: '#/components/schemas/PickupGroupX_2'
+                  $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -311,12 +311,12 @@ paths:
             type: array
             items:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
           schema:
             type: array
             items:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -350,12 +350,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           content:
             application/json:
               schema:
                 originalRef: PickupGroupX
-                $ref: '#/components/schemas/PickupGroupX_2'
+                $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group object
         '404':
@@ -365,10 +365,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
           schema:
             originalRef: PickupGroupX
-            $ref: '#/components/schemas/PickupGroupX_2'
+            $ref: '#/components/schemas/PickupGroupX'
         '400':
           description: Invalid pickup group object
         '404':
@@ -378,12 +378,12 @@ paths:
           application/json:
             schema:
               originalRef: PickupGroupX
-              $ref: '#/components/schemas/PickupGroupX_2'
+              $ref: '#/components/schemas/PickupGroupX'
         description: Pickup group object
         required: true
 components:
   schemas:
-    PickupGroupX_2:
+    PickupGroupX:
       type: object
       properties:
         partitionId:
@@ -399,6 +399,39 @@ components:
           uniqueItems: true
           items:
             type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    PickupGroupX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+          minLength: 1
+          maxLength: 256
+        groupIds:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
   securitySchemes:
     X-Auth-Token:
       type: apiKey

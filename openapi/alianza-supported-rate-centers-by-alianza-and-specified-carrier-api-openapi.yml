@@ -1,13 +1,11 @@
 openapi: 3.2.0
 info:
-  description: '**This documentation of the Alianza Public API is outdated. No further updates will be
-    made to it.**
+  description: '**This documentation of the Alianza Public API is outdated. No further updates will be made to it.**
 
 
-    You are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at
-    [https://developer.alianza.com/](https://developer.alianza.com/)'
+    You are encouraged to use the latest API documentation, found at https://developer.alianza.com/'
   version: '2'
-  title: Alianza Public Supported Rate Centers by Alianza and specified carrier API
+  title: Alianza Public Supported Rate Centers by Alianza and…
 tags:
 - name: Supported Rate Centers by Alianza and specified carrier
 paths:
@@ -106,6 +104,19 @@ paths:
             $ref: '#/components/schemas/RateCenterSearchViewX'
 components:
   schemas:
+    TelephoneNumberPrefixViewX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        wireless:
+          type: boolean
+        wirelessBlockNumbers:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: byte
     RateCenterSearchViewX:
       type: object
       properties:
@@ -142,19 +153,3 @@ components:
         distance:
           type: number
           format: double
-    TelephoneNumberPrefixViewX:
-      type: object
-      properties:
-        prefix:
-          type: string
-        wireless:
-          type: boolean
-        wirelessBlockNumbers:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-            format: byte
-servers:
-- url: https://api.d2.alianza.com
-  description: Base URL reconciled from _original

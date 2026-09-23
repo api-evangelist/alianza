@@ -112,7 +112,7 @@ paths:
       tags:
       - Authorize
       summary: Login with login credentials
-      description: 'Takes login credentials and returns token if successfully validates '
+      description: Takes login credentials and returns token if successfully validates
       operationId: logUserIn
       responses:
         '200':
@@ -186,6 +186,19 @@ paths:
         required: true
 components:
   schemas:
+    Login:
+      type: object
+      required:
+      - password
+      - username
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        changePassword:
+          type: string
+          description: This should be used only when changing the password
     LoginTokenX:
       type: object
       properties:
@@ -247,20 +260,20 @@ components:
           type: boolean
         subPartitionIds:
           type: array
+          uniqueItems: true
           items:
             type: string
-          uniqueItems: true
         tokenSource:
           type: string
         grantedAuthorities:
           type: array
+          uniqueItems: true
           items:
             type: string
-          uniqueItems: true
-        pwdHash:
-          type: string
         mustAddEmail:
           type: boolean
+        pwdHash:
+          type: string
         maxLifeInHours:
           type: integer
           format: int32
@@ -268,19 +281,21 @@ components:
           type: string
         groupName:
           type: string
-    Login:
+    PublicApiException:
       type: object
       properties:
-        username:
-          type: string
-        password:
-          type: string
-        changePassword:
-          type: string
-          description: This should be used only when changing the password
-      required:
-      - password
-      - username
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

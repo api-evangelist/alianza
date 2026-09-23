@@ -111,12 +111,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -128,10 +128,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -162,12 +162,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -179,10 +179,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -351,12 +351,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -368,10 +368,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -403,12 +403,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -420,10 +420,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -573,12 +573,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -590,10 +590,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -715,12 +715,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -732,10 +732,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -747,7 +747,7 @@ paths:
     get:
       tags:
       - Report
-      summary: Retrieve account report in CSV format. Uses new Data API to retrieve data.
+      summary: Retrieve account report in CSV format. Uses new Data API to retrieve data
       description: Use to retrieve a CSV formatted list
       operationId: accountCSVReport3
       parameters:
@@ -767,12 +767,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -784,10 +784,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -846,6 +846,8 @@ paths:
             originalRef: StreamingOutput
             $ref: '#/components/schemas/StreamingOutput'
       deprecated: true
+      summary: End user account history
+      x-summary-source: derived
   /v2/partition/{partitionId}/report/accounthistory/enduserchanges_2:
     get:
       tags:
@@ -881,12 +883,12 @@ paths:
           headers: {}
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -899,16 +901,18 @@ paths:
           headers: {}
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
           description: Invalid partition ID supplied
         '404':
           description: Not found
+      summary: End user account history2
+      x-summary-source: derived
   /v2/partition/{partitionId}/report/vfax:
     get:
       tags:
@@ -996,6 +1000,8 @@ paths:
             originalRef: ReportSummaryX
             $ref: '#/components/schemas/ReportSummaryX'
       deprecated: true
+      summary: Mock line summary
+      x-summary-source: derived
   /v2/partition/{partitionId}/report/businesslines/csv_2:
     get:
       tags:
@@ -1020,12 +1026,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1037,10 +1043,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1071,12 +1077,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1088,10 +1094,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1122,12 +1128,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1139,10 +1145,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1185,12 +1191,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1202,10 +1208,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1248,12 +1254,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1265,10 +1271,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1311,12 +1317,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1328,10 +1334,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1432,12 +1438,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1449,10 +1455,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1496,12 +1502,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1513,10 +1519,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1527,7 +1533,7 @@ paths:
     get:
       tags:
       - Report
-      summary: Retrieve user summary report in CSV format. Uses new Data API to retrieve data.
+      summary: Retrieve user summary report in CSV format. Uses new Data API to retrieve data
       description: Use to retrieve a CSV formatted list
       operationId: userCSVReport3
       parameters:
@@ -1561,12 +1567,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1578,10 +1584,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1738,12 +1744,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1755,10 +1761,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1801,12 +1807,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1818,10 +1824,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '202':
           description: Use Jobs API to check status
         '400':
@@ -1839,6 +1845,37 @@ components:
           type: integer
           format: int64
         totalCount:
+          type: integer
+          format: int64
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
           type: integer
           format: int64
     JobError:
@@ -1872,18 +1909,34 @@ components:
         errors:
           type: array
           items:
-            originalRef: JobError
             $ref: '#/components/schemas/JobError'
         inputKey:
           type: string
         outputKey:
           type: string
         start:
-          type: integer
-          format: int64
+          type: string
+          format: date-time
         lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    PublicApiException:
+      type: object
+      properties:
+        status:
           type: integer
-          format: int64
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

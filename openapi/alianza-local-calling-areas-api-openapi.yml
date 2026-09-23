@@ -54,6 +54,8 @@ paths:
           schema:
             originalRef: StreamingOutput
             $ref: '#/components/schemas/StreamingOutput'
+      summary: All telephone number CSV report 1
+      x-summary-source: derived
   /v2/partition/{partitionId}/localprefixes/import:
     post:
       tags:
@@ -106,15 +108,13 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
         description: 'List of prefix allowables - EX: 801,801|485|901'
         required: true
+      summary: Import local areas
+      x-summary-source: derived
 components:
   schemas:
-    StreamingOutput:
-      type: object
-    MultipartFormDataInput_2:
-      type: object
     FileImportValidationErrorX:
       type: object
       properties:
@@ -127,6 +127,31 @@ components:
           type: string
         input:
           type: string
+    MultipartFormDataInput:
+      type: object
+    StreamingOutput:
+      type: object
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

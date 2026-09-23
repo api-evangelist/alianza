@@ -349,7 +349,9 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
+      summary: Add 1
+      x-summary-source: derived
   /v2/partition/{partitionId}/callingplanproduct/{cppId}/archive-callingplan:
     delete:
       tags:
@@ -498,13 +500,11 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
         description: List of rates
         required: true
 components:
   schemas:
-    MultipartFormDataInput_2:
-      type: object
     FileImportValidationErrorX:
       type: object
       properties:
@@ -517,6 +517,8 @@ components:
           type: string
         input:
           type: string
+    MultipartFormDataInput:
+      type: object
     Calling_Plan_Product:
       type: object
       properties:
@@ -562,6 +564,72 @@ components:
           type: boolean
         rateIntraPartitionAsFree:
           type: boolean
+    CallingPlanProduct:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Not required for POST operation
+        name:
+          type: string
+        planMinutes:
+          type: integer
+          format: int32
+        unlimitedDisplay:
+          type: boolean
+        allowOverage:
+          type: boolean
+        preventForwarding:
+          type: boolean
+        defaultPlan:
+          type: boolean
+        callRateFor411:
+          type: number
+          format: double
+        allow411:
+          type: boolean
+        rateTypeFor411:
+          type: string
+          enum:
+          - PER_CALL
+          - PER_MINUTE
+        callRateForOperator:
+          type: number
+          format: double
+        allowOperator:
+          type: boolean
+        rateTypeForOperator:
+          type: string
+          enum:
+          - PER_CALL
+          - PER_MINUTE
+        partitionId:
+          type: string
+        allowUnlimitedLocal:
+          type: boolean
+        rateIntraPartitionAsFree:
+          type: boolean
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

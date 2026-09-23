@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Alianza Public Edge Node API
   version: '2'
-  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+  description: Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.
 servers:
 - url: https://api.d2.alianza.com
   description: Development
@@ -68,7 +68,6 @@ paths:
       tags:
       - Edge Node
       summary: Create Edge Node
-      description: Create Edge Node
       operationId: createNode
       parameters:
       - name: default
@@ -197,7 +196,6 @@ paths:
       tags:
       - Edge Node
       summary: Remove Edge Node configuration for a device
-      description: Remove Edge Node configuration for a device
       operationId: removeDeviceEdgeNodeConfigByDeviceId
       parameters:
       - name: deviceId
@@ -223,7 +221,6 @@ paths:
       tags:
       - Edge Node
       summary: Get device Edge Node
-      description: Get device Edge Node
       operationId: getDeviceNode
       parameters:
       - name: deviceId
@@ -269,7 +266,6 @@ paths:
       tags:
       - Edge Node
       summary: Configure Edge Node for a device
-      description: Configure Edge Node for a device
       operationId: configureDeviceNode
       requestBody:
         description: Configure Edge Node for a device
@@ -301,7 +297,6 @@ paths:
       tags:
       - Edge Node
       summary: Remove Edge Node configuration
-      description: Remove Edge Node configuration
       operationId: removeDeviceEdgeNodeConfigById
       parameters:
       - name: nodeAssignmentId
@@ -327,7 +322,6 @@ paths:
       tags:
       - Edge Node
       summary: Get device Edge Node
-      description: Get device Edge Node
       operationId: getDeviceNodeByAssignmentId
       parameters:
       - name: nodeAssignmentId
@@ -355,7 +349,6 @@ paths:
       tags:
       - Edge Node
       summary: Update Edge Node configuration for a device
-      description: Update Edge Node configuration for a device
       operationId: updateDeviceNodeConfiguration
       parameters:
       - name: nodeAssignmentId
@@ -391,6 +384,103 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    NodeAssignmentQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 1
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeAssignment'
+        count:
+          type: integer
+          example: 1
+    NodeAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+        proxyAddress:
+          type: string
+    NodeAssignmentUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    NodeQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 0
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        count:
+          type: integer
+          example: 1
+    NodeUpsert:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: company12
+        proxyAddress:
+          type: string
+        partitionId:
+          type: string
+        default:
+          type: boolean
+          description: Default node for partition
+        resetAuthToken:
+          type: boolean
+          description: Generate a new authToken
+      required:
+      - displayName
+      - proxyAddress
+      - partitionId
     Node:
       type: object
       properties:
@@ -416,103 +506,6 @@ components:
       - displayName
       - proxyAddress
       - partitionId
-    NodeQueryResult:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-          example: 1
-        pageNum:
-          type: integer
-          example: 0
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Node'
-        count:
-          type: integer
-          example: 1
-    NodeAssignment:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Node assignment Id
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        edgeNodeId:
-          type: string
-          description: Id of Edge Node
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        deviceId:
-          type: string
-          description: Id of the device
-        proxyAddress:
-          type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    NodeAssignmentQueryResult:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-          example: 1
-        pageNum:
-          type: integer
-          example: 1
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/NodeAssignment'
-        count:
-          type: integer
-          example: 1
-    NodeUpsert:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: company12
-        proxyAddress:
-          type: string
-        partitionId:
-          type: string
-        default:
-          type: boolean
-          description: Default node for partition
-        resetAuthToken:
-          type: boolean
-          description: Generate a new authToken
-      required:
-      - displayName
-      - proxyAddress
-      - partitionId
-    NodeAssignmentUpsert:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Node assignment Id
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        edgeNodeId:
-          type: string
-          description: Id of Edge Node
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        deviceId:
-          type: string
-          description: Id of the device
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -44,12 +44,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           content:
             application/json:
               schema:
                 originalRef: SecurityRoleX
-                $ref: '#/components/schemas/SecurityRoleX_2'
+                $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Partition or Security Role
         '404':
@@ -59,10 +59,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           schema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Partition or Security Role
         '404':
@@ -95,12 +95,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           content:
             application/json:
               schema:
                 originalRef: SecurityRoleX
-                $ref: '#/components/schemas/SecurityRoleX_2'
+                $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
         '404':
@@ -110,10 +110,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           schema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
         '404':
@@ -123,7 +123,7 @@ paths:
           application/json:
             schema:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
     delete:
       tags:
       - Security Groups
@@ -185,12 +185,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           content:
             application/json:
               schema:
                 originalRef: SecurityRoleX
-                $ref: '#/components/schemas/SecurityRoleX_2'
+                $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
         '404':
@@ -200,10 +200,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           schema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
         '404':
@@ -213,7 +213,7 @@ paths:
           application/json:
             schema:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
   /v2/partition/{partitionId}/security:
     get:
       tags:
@@ -240,14 +240,14 @@ paths:
             type: array
             items:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: SecurityRoleX
-                  $ref: '#/components/schemas/SecurityRoleX_2'
+                  $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Partition
       responsesObject:
@@ -257,12 +257,12 @@ paths:
             type: array
             items:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
           schema:
             type: array
             items:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Partition
     post:
@@ -288,12 +288,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           content:
             application/json:
               schema:
                 originalRef: SecurityRoleX
-                $ref: '#/components/schemas/SecurityRoleX_2'
+                $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
       responsesObject:
@@ -301,10 +301,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
           schema:
             originalRef: SecurityRoleX
-            $ref: '#/components/schemas/SecurityRoleX_2'
+            $ref: '#/components/schemas/SecurityRoleX'
         '400':
           description: Invalid Security Role
       requestBody:
@@ -312,36 +312,10 @@ paths:
           application/json:
             schema:
               originalRef: SecurityRoleX
-              $ref: '#/components/schemas/SecurityRoleX_2'
+              $ref: '#/components/schemas/SecurityRoleX'
 components:
   schemas:
-    SecurityRoleX_2:
-      type: object
-      properties:
-        id:
-          type: string
-        partitionId:
-          type: string
-        name:
-          type: string
-        userType:
-          type: string
-          enum:
-          - AccountUser
-          - EndUser
-          - ManagementUser
-          - AlianzaUser
-          - BusinessLines
-        userCount:
-          type: integer
-          format: int32
-        permissions:
-          type: array
-          uniqueItems: true
-          items:
-            originalRef: SecurityPermissionX
-            $ref: '#/components/schemas/SecurityPermissionX_2'
-    SecurityPermissionX_2:
+    SecurityPermissionX:
       type: object
       properties:
         type:
@@ -407,6 +381,145 @@ components:
           - DELETE_MYUSER
           - DELETE
           - DENIED
+    SecurityRoleX:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        name:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        userCount:
+          type: integer
+          format: int32
+        permissions:
+          type: array
+          uniqueItems: true
+          items:
+            originalRef: SecurityPermissionX
+            $ref: '#/components/schemas/SecurityPermissionX'
+    SecurityPermissionX_2:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of permission.  Features of the api are mostly categorized under one of these permission types.
+          enum:
+          - NONE
+          - Account
+          - AccountHistory
+          - AccountCallHistory
+          - AccountBulkStatuses
+          - IpWhitelist
+          - PhoneNumber
+          - PhoneNumberServiceActivation
+          - PhoneNumberInventory
+          - Product
+          - ProductCallingPlan
+          - ProductGroups
+          - ProductUsers
+          - Reports
+          - RoutePlan
+          - SipCredentials
+          - EU_DeviceSwapCreate
+          - EU_Account
+          - EU_AccountMedia
+          - EU_CallHistory
+          - EU_Device
+          - EU_DeviceSwap
+          - EU_DeviceLine
+          - EU_IVR
+          - EU_LineAppearance
+          - EU_LineHardware
+          - EU_LineHuntGroup
+          - EU_Voicemail
+          - EU_VoicemailMessage
+          - EU_VoicemailUnlock
+          - EU_Telephone
+          - EU_SipTrunk
+          - EU_User
+          - EU_UserResetPassword
+          - EU_History
+          - EU_BUSINESS_LINE
+          - EU_BUSINESS_LINE_PROVISIONING
+          - EU_BUSINESS_LINE_VOICEMAIL
+          - EU_BUSINESS_LINE_HUNT_GROUP
+          - EU_911_ADDRESS
+          - EU_TELEPHONE_DESTINATION
+          - EU_ENDUSER_REPURPOSE
+          - ALIANZA_MasterRoutePlan
+          - ALIANZA_TogglzAdmin
+          - ANY_END_USER
+          - ANY_MANAGEMENT_USER
+          - ANY_ALIANZA_USER
+        accessType:
+          type: string
+          description: The level of access to grant for the type of permission
+          enum:
+          - NONE
+          - READ_MYUSER
+          - READ
+          - EDIT_MYUSER
+          - EDIT
+          - CREATE_MYUSER
+          - CREATE
+          - DELETE_MYUSER
+          - DELETE
+          - DENIED
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    SecurityRoleX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+          description: Reference to <a href="#/~schema/PartitionX">partition.id</a>
+        name:
+          type: string
+          description: The name of the Role.  Must be unique among SecurityRoleX with the same partitionId.
+        userType:
+          type: string
+          description: Which user type can be assigned the role.
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        userCount:
+          type: integer
+          format: int32
+          description: A readonly (calculated) value which indicates how many users are assigned this Role.
+        permissions:
+          type: array
+          description: The set of permissions which will apply to any users who are assigned to this role.
+          items:
+            $ref: '#/components/schemas/SecurityPermissionX_2'
+          uniqueItems: true
   securitySchemes:
     X-Auth-Token:
       type: apiKey

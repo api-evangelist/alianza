@@ -52,14 +52,14 @@ paths:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: DeviceX
-                  $ref: '#/components/schemas/DeviceX_2'
+                  $ref: '#/components/schemas/DeviceX'
       responsesObject:
         '200':
           description: successful operation
@@ -67,17 +67,17 @@ paths:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
           schema:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
     post:
       tags:
       - Account Device
       summary: Bulk Import Device Lines
-      description: 'Use to bulk import lines for a given device.  Note: To use this you must already have a device line defined for this MacAddress'
+      description: 'Use to bulk import lines for a given device. Note: To use this you must already have a device line defined for this MacAddress'
       operationId: bulkImportDevice
       parameters:
       - name: macAddress
@@ -135,7 +135,7 @@ paths:
           multipart/form-data:
             schema:
               originalRef: MultipartFormDataInput
-              $ref: '#/components/schemas/MultipartFormDataInput_2'
+              $ref: '#/components/schemas/MultipartFormDataInput'
         description: CSV list of device lines (LINE_NUMBER, LINE_TYPE, REFERENCED_USER_EXTENSION, SPEED_DIAL, SPEED_DIAL_DISPLAY_NAME)
         required: true
     delete:
@@ -254,12 +254,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           content:
             application/json:
               schema:
                 originalRef: DeviceMetadataX
-                $ref: '#/components/schemas/DeviceMetadataX_2'
+                $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       responsesObject:
@@ -267,10 +267,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           schema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
     put:
@@ -307,12 +307,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           content:
             application/json:
               schema:
                 originalRef: DeviceMetadataX
-                $ref: '#/components/schemas/DeviceMetadataX_2'
+                $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       responsesObject:
@@ -320,10 +320,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           schema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       requestBody:
@@ -331,7 +331,7 @@ paths:
           application/json:
             schema:
               originalRef: DeviceMetadataX
-              $ref: '#/components/schemas/DeviceMetadataX_2'
+              $ref: '#/components/schemas/DeviceMetadataX'
         description: Device Metadata
         required: true
     patch:
@@ -368,12 +368,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           content:
             application/json:
               schema:
                 originalRef: DeviceMetadataX
-                $ref: '#/components/schemas/DeviceMetadataX_2'
+                $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       responsesObject:
@@ -381,10 +381,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           schema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       requestBody:
@@ -392,7 +392,7 @@ paths:
           application/json:
             schema:
               originalRef: DeviceMetadataX
-              $ref: '#/components/schemas/DeviceMetadataX_2'
+              $ref: '#/components/schemas/DeviceMetadataX'
         description: Device Metadata
         required: true
   /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/provisioning:
@@ -400,7 +400,6 @@ paths:
       tags:
       - Account Device
       summary: Provisioning info for this device
-      description: Provisioning info for this device
       operationId: getProvisoningRequest
       parameters:
       - name: macAddress
@@ -430,12 +429,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ProvisioningRequestX
-            $ref: '#/components/schemas/ProvisioningRequestX_2'
+            $ref: '#/components/schemas/ProvisioningRequestX'
           content:
             application/json:
               schema:
                 originalRef: ProvisioningRequestX
-                $ref: '#/components/schemas/ProvisioningRequestX_2'
+                $ref: '#/components/schemas/ProvisioningRequestX'
         '404':
           description: Device not found
       responsesObject:
@@ -443,10 +442,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: ProvisioningRequestX
-            $ref: '#/components/schemas/ProvisioningRequestX_2'
+            $ref: '#/components/schemas/ProvisioningRequestX'
           schema:
             originalRef: ProvisioningRequestX
-            $ref: '#/components/schemas/ProvisioningRequestX_2'
+            $ref: '#/components/schemas/ProvisioningRequestX'
         '404':
           description: Device not found
   /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/metadata/generateadminpassword:
@@ -484,12 +483,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           content:
             application/json:
               schema:
                 originalRef: DeviceMetadataX
-                $ref: '#/components/schemas/DeviceMetadataX_2'
+                $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
       responsesObject:
@@ -497,10 +496,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
           schema:
             originalRef: DeviceMetadataX
-            $ref: '#/components/schemas/DeviceMetadataX_2'
+            $ref: '#/components/schemas/DeviceMetadataX'
         '404':
           description: Device not found
   /v2/partition/{partitionId}/account/{accountId}/device/{macAddress}/metadata/resetencryptionkey:
@@ -594,38 +593,7 @@ paths:
             type: boolean
 components:
   schemas:
-    MultipartFormDataInput_2:
-      type: object
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
-    ProvisioningRequestX_2:
-      type: object
-      properties:
-        id:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
-        httpStatus:
-          type: integer
-          format: int32
-        deviceId:
-          type: string
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-    DeviceX_2:
+    DeviceX:
       type: object
       required:
       - accountId
@@ -686,7 +654,38 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceMetadataX_2:
+    MultipartFormDataInput:
+      type: object
+    ProvisioningRequestX:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    DeviceMetadataX:
       type: object
       properties:
         macAddress:
@@ -711,6 +710,153 @@ components:
           - PHONISM
         id:
           type: string
+    DeviceX_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Not required for creating a new device line
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        accountId:
+          type: string
+          description: Not required for creating a new device line
+        partitionId:
+          type: string
+          description: Not required for creating a new device line
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device.  Must not be claimed in another device request.
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+          deprecated: true
+        state:
+          type: string
+          deprecated: true
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+          - Custom
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number.
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      - lineNumber
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    ProvisioningRequestX_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
+        requestDate:
+          type: string
+          format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
+        httpStatus:
+          type: integer
+          format: int32
+          description: The http status of the device's most recent request for provisioning.
+        deviceId:
+          type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    DeviceMetadataX_2:
+      type: object
+      properties:
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
+        partitionId:
+          type: string
+          description: ID of partition, reference to <a href="#/~schema/Account">account.partitionId</a>
+        accountId:
+          type: string
+          description: ID of account,  refers to <a href="#/~schema/Account">account.id</a>
+        deviceTypeId:
+          type: string
+          description: 'The deviceTypeId identifies the equipment and the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All DeviceType</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">GetDeviceType</a>'
+        sideCarTypeId:
+          type: string
+          description: 'The sideCarTypeId identifies the equipment and the features of the side car device. Refers to <a href="#/~schema/SideCarTypeX">sideCarType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getSideCarTypes">Get All SideCar types</a> and <a href="#/~operation/Reference%20Resources/getSideCarTypeById">Get SideCarType</a>'
+        numSideCars:
+          type: integer
+          format: int32
+          description: The number of side cars assigned to this device.
+        adminPassword:
+          type: string
+          description: If an admin password is supplied here, it will be applied to the device if a partition level setting is not present. The partition level setting can only be modified by an Alianza Admin. The partition level setting (Devcon - short for device configuration) is almost always supplied, making most uses of this field irrelevant. The adminPassword set by Devcon is NOT reported in this field.
+        provisionerType:
+          type: string
+          description: Indicates what entity is responsible for provisioning the device. ALIANZA - Alianza is responsible for provisioning the device. PHONISM - Phonism, a third party service, is responsible for provisioning the device.
+          enum:
+          - ALIANZA
+          - PHONISM
+        id:
+          type: string
+          description: This field always refers to the macAddress.
   securitySchemes:
     X-Auth-Token:
       type: apiKey

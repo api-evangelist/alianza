@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Alianza Public Bulk Operation Job API
   version: '2'
-  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+  description: Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.
 servers:
 - url: https://api.d2.alianza.com
   description: Development
@@ -138,42 +138,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkOperationErrorResponse'
 components:
-  examples:
-    CreateJobExample:
-      summary: Create a Job (multipart/form-data)
-      value:
-        transformObjectType: CreateUserInput
-        transformObjectFile: <file to upload>
-        targetAccountId: 0123948534
-        jobTypeId: create users
   schemas:
-    BulkOperationErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP error status code
-        message:
-          type: string
-          description: Detailed error message
-        errors:
-          type: array
-          description: list of errors
-          items:
-            type: string
-          example:
-          - transformObjectsFile must not be null
-          - jobTypeId should be valid
-          - etc.
-        schemaErrors:
-          type: array
-          description: list of schema errors
-          items:
-            type: object
-          example:
-          - index: index (location) of the error
-            path: path
-            description: description of the schema error
     JobOutputCollectionDTO:
       type: object
       properties:
@@ -182,13 +147,6 @@ components:
           description: Unique identifier of the output collection
       required:
       - id
-    JobStatusDTO:
-      type: string
-      enum:
-      - CREATED
-      - STARTED
-      - ABORTED
-      - COMPLETED
     JobDTO:
       type: object
       properties:
@@ -229,6 +187,33 @@ components:
       - jobTypeId
       - targetAccountId
       - inputCollectionId
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
     JobFormDTO:
       type: object
       properties:
@@ -258,6 +243,21 @@ components:
       - transformObjectFile
       - targetAccountId
       - jobTypeId
+    JobStatusDTO:
+      type: string
+      enum:
+      - CREATED
+      - STARTED
+      - ABORTED
+      - COMPLETED
+  examples:
+    CreateJobExample:
+      summary: Create a Job (multipart/form-data)
+      value:
+        transformObjectType: CreateUserInput
+        transformObjectFile: <file to upload>
+        targetAccountId: 0123948534
+        jobTypeId: create users
   securitySchemes:
     X-Auth-Token:
       type: apiKey

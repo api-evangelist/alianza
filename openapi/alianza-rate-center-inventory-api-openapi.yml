@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Alianza Public Rate Center Inventory API
   version: '2'
-  description: "Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.\n\n_If you need the Swagger 2.0/OAS 2.0 version of the Alianza Public API, click [here](https://api.alianza.com/v2/apidocs/)._\n\nAuthentication for most API endpoints requires the use of an <a href=\"data.html#xauthtoken\" hidden>X-AUTH-TOKEN</a> X-AUTH-TOKEN header. Please reach out to your account manager for login credentials.\nTo obtain an X-AUTH-TOKEN, use the POST /v2/authorize endpoint under the <a href=\"#/~operation/Authorize/\">Authorize</a> group, which will return an authToken value. \nClick the Authorize button below and provide the returned token. \n\n<div hidden>\nSome useful links:\n- [Brief introduction to Alianza components](data.html) such as Partitions, Accounts and Users\n</div>"
+  description: Welcome to the Alianza Public API documentation, based on the OpenAPI 3.0 specification.
 servers:
 - url: https://api.d2.alianza.com
   description: Development
@@ -85,11 +85,9 @@ paths:
       tags:
       - Rate Center Inventory
       summary: Initiates the creation of a rate center inventory plan CSV file
-      description: 'Creates an <a href="#/~schema/Job">asynchronous job</a> that generates a CSV file for download.
+      description: 'Creates an asynchronous job that generates a CSV file for download.
 
-        <span hidden>Please refer to <a href="jobs.html#monitor-job-progress">monitoring job progress</a> and <a href="jobs.html#get-job-output">retrieving job output</a> for instructions on retrieving the report.</span>
-
-        '
+        Please refer to monitoring job progress and retrieving job output for instructions on retrieving the report.'
       operationId: getInventoryPlan2
       parameters:
       - name: partitionId
@@ -366,6 +364,61 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    MultipartFormDataInput:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
     TelephoneNumberViewX:
       type: object
       properties:
@@ -428,14 +481,23 @@ components:
           type: string
         port:
           type: boolean
-    StreamingOutput:
-      type: object
-    MultipartFormDataInput:
+    PublicApiException:
       type: object
       properties:
-        file:
-          type: string
-          format: binary
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    StreamingOutput:
+      type: object
     FileImportValidationErrorX:
       type: object
       properties:
@@ -448,38 +510,6 @@ components:
           type: string
         input:
           type: string
-    Job:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        userId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - DONE
-          - FAILED
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobError'
-        inputKey:
-          type: string
-        outputKey:
-          type: string
-        start:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-      xml:
-        name: job
     RateCenterX:
       type: object
       properties:
@@ -525,38 +555,6 @@ components:
           - LEVEL3_CARIANZA
           - BANDWIDTH
           - LUMEN_IMS
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    JobError:
-      type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    JobUploadKey:
-      type: object
-      properties:
-        key:
-          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -38,12 +38,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           content:
             application/json:
               schema:
                 originalRef: Job
-                $ref: '#/components/schemas/Job_2'
+                $ref: '#/components/schemas/Job'
         '401':
           description: Invalid User
         '404':
@@ -53,10 +53,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
           schema:
             originalRef: Job
-            $ref: '#/components/schemas/Job_2'
+            $ref: '#/components/schemas/Job'
         '401':
           description: Invalid User
         '404':
@@ -79,12 +79,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: JobUpload
-            $ref: '#/components/schemas/JobUpload_2'
+            $ref: '#/components/schemas/JobUpload'
           content:
             application/json:
               schema:
                 originalRef: JobUpload
-                $ref: '#/components/schemas/JobUpload_2'
+                $ref: '#/components/schemas/JobUpload'
         '401':
           description: Invalid User
       responsesObject:
@@ -92,10 +92,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: JobUpload
-            $ref: '#/components/schemas/JobUpload_2'
+            $ref: '#/components/schemas/JobUpload'
           schema:
             originalRef: JobUpload
-            $ref: '#/components/schemas/JobUpload_2'
+            $ref: '#/components/schemas/JobUpload'
         '401':
           description: Invalid User
   /v2/job/{jobId}/input:
@@ -238,8 +238,6 @@ paths:
           description: EntityNotFound when there is no job with the given Id or if the job has no output
 components:
   schemas:
-    InputStream:
-      type: object
     JobError:
       type: object
       properties:
@@ -252,12 +250,21 @@ components:
           type: string
         input:
           type: string
+    InputStream:
+      type: object
     JobOutputUrl:
       type: object
       properties:
         url:
           type: string
-    Job_2:
+    JobUpload:
+      type: object
+      properties:
+        url:
+          type: string
+        key:
+          type: string
+    Job:
       type: object
       properties:
         id:
@@ -295,6 +302,55 @@ components:
           type: string
         key:
           type: string
+      xml:
+        name: upload
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -386,19 +386,34 @@ components:
       properties:
         id:
           type: string
-        name:
-          type: string
-        emailAddresses:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-        languageTag:
-          type: string
         accountId:
           type: string
         partitionId:
           type: string
+        name:
+          type: string
+        emailAddresses:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        languageTag:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

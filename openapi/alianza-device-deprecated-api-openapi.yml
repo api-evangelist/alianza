@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Alianza Device (Deprecated) Device (Deprecated) API
+  title: Alianza Device (Deprecated) API
   version: '2'
   description: 'Operations tagged Device (Deprecated) across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
@@ -53,14 +53,14 @@ paths:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: DeviceX
-                  $ref: '#/components/schemas/DeviceX_2'
+                  $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid partition, account or user ID supplied
         '404':
@@ -72,12 +72,12 @@ paths:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
           schema:
             type: array
             items:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid partition, account or user ID supplied
         '404':
@@ -118,12 +118,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 originalRef: DeviceX
-                $ref: '#/components/schemas/DeviceX_2'
+                $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid device object supplied
         '404':
@@ -133,10 +133,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           schema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid device object supplied
         '404':
@@ -147,7 +147,7 @@ paths:
           application/json:
             schema:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
         description: Device object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/validateproperties:
@@ -377,12 +377,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 originalRef: DeviceX
-                $ref: '#/components/schemas/DeviceX_2'
+                $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid partition, account or user ID supplied
         '404':
@@ -392,10 +392,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           schema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid partition, account or user ID supplied
         '404':
@@ -442,12 +442,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 originalRef: DeviceX
-                $ref: '#/components/schemas/DeviceX_2'
+                $ref: '#/components/schemas/DeviceX'
         '404':
           description: Device not found
       responsesObject:
@@ -455,10 +455,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           schema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
         '404':
           description: Device not found
       deprecated: true
@@ -467,7 +467,7 @@ paths:
           application/json:
             schema:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
         description: Device object
         required: true
     delete:
@@ -568,12 +568,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 originalRef: DeviceX
-                $ref: '#/components/schemas/DeviceX_2'
+                $ref: '#/components/schemas/DeviceX'
         '404':
           description: Device not found
       responsesObject:
@@ -581,10 +581,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           schema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
         '404':
           description: Device not found
       deprecated: true
@@ -593,7 +593,7 @@ paths:
           application/json:
             schema:
               originalRef: DeviceX
-              $ref: '#/components/schemas/DeviceX_2'
+              $ref: '#/components/schemas/DeviceX'
         description: Device object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/user/{userId}/device/{deviceId}/swap:
@@ -638,12 +638,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           content:
             application/json:
               schema:
                 originalRef: DeviceX
-                $ref: '#/components/schemas/DeviceX_2'
+                $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid MAC or device type supplied
       responsesObject:
@@ -651,10 +651,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
           schema:
             originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX_2'
+            $ref: '#/components/schemas/DeviceX'
         '400':
           description: Invalid MAC or device type supplied
       deprecated: true
@@ -663,12 +663,32 @@ paths:
           application/json:
             schema:
               originalRef: DeviceSwapX
-              $ref: '#/components/schemas/DeviceSwapX_2'
+              $ref: '#/components/schemas/DeviceSwapX'
         description: DeviceSwap object containing the new macAddress and deviceTypeId
         required: true
 components:
   schemas:
-    DeviceX_2:
+    DeviceStatusX:
+      type: object
+      properties:
+        success:
+          type: boolean
+        failureMessage:
+          type: string
+        macAddress:
+          type: string
+        request:
+          type: object
+          additionalProperties:
+            type: string
+        response:
+          type: object
+          additionalProperties:
+            type: string
+        updated:
+          type: string
+          format: date-time
+    DeviceX:
       type: object
       required:
       - accountId
@@ -729,12 +749,7 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
-    DeviceSwapX_2:
+    DeviceSwapX:
       type: object
       properties:
         macAddress:
@@ -743,26 +758,97 @@ components:
           type: string
         deviceName:
           type: string
-    DeviceStatusX:
+    RegistrationStatusX:
       type: object
       properties:
-        success:
+        registered:
           type: boolean
-        failureMessage:
+    DeviceX_2:
+      type: object
+      properties:
+        id:
           type: string
+          description: Not required for creating a new device line
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        accountId:
+          type: string
+          description: Not required for creating a new device line
+        partitionId:
+          type: string
+          description: Not required for creating a new device line
         macAddress:
           type: string
-        request:
-          type: object
-          additionalProperties:
-            type: string
-        response:
-          type: object
-          additionalProperties:
-            type: string
-        updated:
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device.  Must not be claimed in another device request.
+        deviceName:
           type: string
-          format: date-time
+        emergencyNumber:
+          type: string
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+          deprecated: true
+        state:
+          type: string
+          deprecated: true
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+          - Custom
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number.
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      - lineNumber
+    DeviceSwapX_2:
+      type: object
+      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
+      properties:
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        deviceName:
+          type: string
+      required:
+      - macAddress
+      - deviceName
+      - deviceTypeId
   securitySchemes:
     X-Auth-Token:
       type: apiKey

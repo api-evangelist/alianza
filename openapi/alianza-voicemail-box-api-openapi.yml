@@ -228,14 +228,14 @@ paths:
             type: array
             items:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: VoicemailBoxX
-                  $ref: '#/components/schemas/VoicemailBoxX_2'
+                  $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: Invalid partition, account or voicemail box supplied
       responsesObject:
@@ -245,12 +245,12 @@ paths:
             type: array
             items:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             type: array
             items:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: Invalid partition, account or voicemail box supplied
     post:
@@ -282,12 +282,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 originalRef: VoicemailBoxX
-                $ref: '#/components/schemas/VoicemailBoxX_2'
+                $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
       responsesObject:
@@ -295,10 +295,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
       requestBody:
@@ -306,7 +306,7 @@ paths:
           application/json:
             schema:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
         description: voicemail message object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/pin:
@@ -564,12 +564,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 originalRef: VoicemailBoxX
-                $ref: '#/components/schemas/VoicemailBoxX_2'
+                $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: invalid voicemail message id supplied
         '404':
@@ -579,10 +579,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: invalid voicemail message id supplied
         '404':
@@ -622,12 +622,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 originalRef: VoicemailBoxX
-                $ref: '#/components/schemas/VoicemailBoxX_2'
+                $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
@@ -637,10 +637,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
@@ -650,7 +650,7 @@ paths:
           application/json:
             schema:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
         description: voicemail message object
         required: true
     delete:
@@ -728,12 +728,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 originalRef: VoicemailBoxX
-                $ref: '#/components/schemas/VoicemailBoxX_2'
+                $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
@@ -743,10 +743,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
@@ -756,7 +756,7 @@ paths:
           application/json:
             schema:
               originalRef: VoicemailBoxX
-              $ref: '#/components/schemas/VoicemailBoxX_2'
+              $ref: '#/components/schemas/VoicemailBoxX'
         description: voicemail message object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/voicemailbox/{voicemailBoxId}/unlock:
@@ -801,12 +801,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           content:
             application/json:
               schema:
                 originalRef: VoicemailBoxX
-                $ref: '#/components/schemas/VoicemailBoxX_2'
+                $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
@@ -816,30 +816,17 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
           schema:
             originalRef: VoicemailBoxX
-            $ref: '#/components/schemas/VoicemailBoxX_2'
+            $ref: '#/components/schemas/VoicemailBoxX'
         '400':
           description: voicemail error
         '404':
           description: voicemail box not found
 components:
   schemas:
-    PinChange:
-      type: object
-      properties:
-        accountId:
-          type: string
-        voicemailBoxId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        pin:
-          type: string
-    VoicemailBoxX_2:
+    VoicemailBoxX:
       type: object
       properties:
         id:
@@ -914,12 +901,18 @@ components:
           additionalProperties:
             originalRef: VoicemailMessageX
             $ref: '#/components/schemas/VoicemailMessageX'
-    VoicemailReferencedByX:
+    PinChange:
       type: object
       properties:
-        type:
+        accountId:
           type: string
-        id:
+        voicemailBoxId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        pin:
           type: string
     VoicemailMessageX:
       type: object
@@ -985,6 +978,101 @@ components:
         audioFileAndType:
           type: string
           description: The type of audio file
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    VoicemailBoxX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+          description: name of the box
+        partitionId:
+          type: string
+          description: partitionid of the account
+        accountId:
+          type: string
+          description: accountid of the voicemail box
+        voicemailToEmailAddresses:
+          type: array
+          description: email addresses to forward all voicemail messages to
+          items:
+            type: string
+          uniqueItems: true
+        voicemailToEmailEnabled:
+          type: boolean
+          description: enables voicemail to email
+        voicemailKeepAfterEmail:
+          type: boolean
+          description: keep or delete the voicemail after being emailed
+        referencedBy:
+          type: array
+          description: References that point at this voicemail box
+          items:
+            $ref: '#/components/schemas/VoicemailReferencedByX'
+          uniqueItems: true
+        locale:
+          type: string
+          description: Locale of the voicemail box
+        totalVoicemails:
+          type: integer
+          format: int32
+          description: Total voicemails on the box
+        totalUnreadVoicemails:
+          type: integer
+          format: int32
+          description: Total unread voicemails on the box
+        type:
+          type: string
+          description: Type of voicemail
+          enum:
+          - Normal
+          - Sub
+          - Primary
+          - BUSINESS_LINE
+        subIds:
+          type: array
+          description: List of sub voicemail ids, this will be populated only if this voicemail box is primary
+          items:
+            type: string
+        parentId:
+          type: string
+          description: Parent id for this voicemail box. Applicable if this voicemail box is a sub
+        dtmfOption:
+          type: string
+          description: DTMF option for this voicemail box.  If this voicemail box is a sub, options are 2 through 8 otherwise option must be 1
+        pinLockedOut:
+          type: boolean
+          description: Marks whether the pin on this sub voicemailbox has been locked out
+        messageTranscriptionEnabled:
+          type: boolean
+          description: Specifies whether voicemail messages will be transcribed to text after a voicemail message is left
+        greetings:
+          type: object
+          description: Map of voicemail box greetings
+          additionalProperties:
+            $ref: '#/components/schemas/VoicemailMessageX'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

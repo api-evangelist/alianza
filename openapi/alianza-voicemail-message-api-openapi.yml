@@ -322,7 +322,7 @@ paths:
     get:
       tags:
       - Voicemail Message
-      summary: Get contents of voicemail message. Will return a 302 redirect to the actual image location. Pass query param mediatype=mp3 or wav
+      summary: Get contents of voicemail message.
       description: Use to retrieve Media of a given type
       operationId: getVoicemailUrl
       parameters:
@@ -553,6 +553,21 @@ components:
         audioFileAndType:
           type: string
           description: The type of audio file
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

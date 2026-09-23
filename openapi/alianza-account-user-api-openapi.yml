@@ -52,14 +52,14 @@ paths:
             type: array
             items:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 type: array
                 items:
                   originalRef: AccountUserX
-                  $ref: '#/components/schemas/AccountUserX_2'
+                  $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -71,12 +71,12 @@ paths:
             type: array
             items:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
           schema:
             type: array
             items:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid partition or account ID
         '404':
@@ -110,12 +110,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 originalRef: AccountUserX
-                $ref: '#/components/schemas/AccountUserX_2'
+                $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user object
         '404':
@@ -125,10 +125,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           schema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user object
         '404':
@@ -138,7 +138,7 @@ paths:
           application/json:
             schema:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
         description: End user object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/accountuser/{userId}:
@@ -186,12 +186,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 originalRef: AccountUserX
-                $ref: '#/components/schemas/AccountUserX_2'
+                $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid account ID or user ID
         '404':
@@ -201,10 +201,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           schema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid account ID or user ID
         '404':
@@ -244,12 +244,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 originalRef: AccountUserX
-                $ref: '#/components/schemas/AccountUserX_2'
+                $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID or user object
         '404':
@@ -259,10 +259,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           schema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID or user object
         '404':
@@ -272,7 +272,7 @@ paths:
           application/json:
             schema:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
         description: Account user object
         required: true
     delete:
@@ -364,12 +364,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 originalRef: AccountUserX
-                $ref: '#/components/schemas/AccountUserX_2'
+                $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID or user object
         '404':
@@ -379,10 +379,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           schema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID or user object
         '404':
@@ -392,7 +392,7 @@ paths:
           application/json:
             schema:
               originalRef: AccountUserX
-              $ref: '#/components/schemas/AccountUserX_2'
+              $ref: '#/components/schemas/AccountUserX'
         description: Account user object
         required: true
   /v2/partition/{partitionId}/account/{accountId}/accountuser/{userId}/resetpassword:
@@ -431,12 +431,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           content:
             application/json:
               schema:
                 originalRef: AccountUserX
-                $ref: '#/components/schemas/AccountUserX_2'
+                $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID
         '404':
@@ -446,17 +446,17 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
           schema:
             originalRef: AccountUserX
-            $ref: '#/components/schemas/AccountUserX_2'
+            $ref: '#/components/schemas/AccountUserX'
         '400':
           description: Invalid user ID
         '404':
           description: User not found
 components:
   schemas:
-    AccountUserX_2:
+    AccountUserX:
       type: object
       properties:
         partitionId:
@@ -481,6 +481,64 @@ components:
           type: string
         id:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    AccountUserX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+          description: A partitionId identifies the business entity that this account is a part of.  Refers to <a href="#/~schema/PartitionX">partition.id</a>
+        accountId:
+          type: string
+          description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        userId:
+          type: string
+          description: Identifies a unique Account User.
+        subDomain:
+          type: string
+          minLength: 3
+          maxLength: 256
+          description: Determines the branding which is used in the display of user emails and the portal. Must exist in the <a href="#/~operation/Partition/getAllSettings">Partition Settings</a> (type SUB-DOMAINS).
+        username:
+          type: string
+          minLength: 3
+          maxLength: 256
+          description: The email address of the AccountUser.
+        firstName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        lastName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        mustChangePassword:
+          type: boolean
+          description: Indicates whether the user will be required to update their password upon login. This field cannot be set manually, only read out.
+        languageTag:
+          type: string
+          description: 'The localization setting that indicates the language of the user.  Example: "en-US"'
+        id:
+          type: string
+          description: The same value as the userId.
+      required:
+      - username
+      - firstName
+      - lastName
   securitySchemes:
     X-Auth-Token:
       type: apiKey

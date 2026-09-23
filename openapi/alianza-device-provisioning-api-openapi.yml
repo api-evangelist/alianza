@@ -1,11 +1,9 @@
 openapi: 3.2.0
 info:
-  description: '**This documentation of the Alianza Public API is outdated. No further updates will be
-    made to it.**
+  description: '**This documentation of the Alianza Public API is outdated. No further updates will be made to it.**
 
 
-    You are encouraged to use the [latest API documentation](https://developer.alianza.com/), found at
-    [https://developer.alianza.com/](https://developer.alianza.com/)'
+    You are encouraged to use the latest API documentation, found at https://developer.alianza.com/'
   version: '2'
   title: Alianza Public Device Provisioning API
 tags:
@@ -122,25 +120,6 @@ paths:
           description: Device Not found
 components:
   schemas:
-    RequestedDeviceX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceType:
-          type: string
-        lineCount:
-          type: integer
-          format: int32
-        dialPlan:
-          type: string
-        hasFaxEnabledLine:
-          type: boolean
-        lines:
-          type: array
-          items:
-            originalRef: RequestedDeviceLineX
-            $ref: '#/components/schemas/RequestedDeviceLineX'
     RequestedDeviceLineX:
       type: object
       properties:
@@ -169,6 +148,22 @@ components:
           type: boolean
         faxEnabled:
           type: boolean
-servers:
-- url: https://api.d2.alianza.com
-  description: Base URL reconciled from _original
+    RequestedDeviceX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
+          type: array
+          items:
+            originalRef: RequestedDeviceLineX
+            $ref: '#/components/schemas/RequestedDeviceLineX'

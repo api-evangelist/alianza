@@ -42,6 +42,8 @@ paths:
           schema:
             originalRef: LanguageX
             $ref: '#/components/schemas/LanguageX'
+      summary: Get language from header
+      x-summary-source: derived
 components:
   schemas:
     LanguageX:
@@ -49,6 +51,21 @@ components:
       properties:
         prefLang:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

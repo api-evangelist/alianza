@@ -55,12 +55,12 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AddressValidationX
-            $ref: '#/components/schemas/AddressValidationX_2'
+            $ref: '#/components/schemas/AddressValidationX'
           content:
             application/json:
               schema:
                 originalRef: AddressValidationX
-                $ref: '#/components/schemas/AddressValidationX_2'
+                $ref: '#/components/schemas/AddressValidationX'
         '404':
           description: Address not found
       responsesObject:
@@ -68,10 +68,10 @@ paths:
           description: successful operation
           responseSchema:
             originalRef: AddressValidationX
-            $ref: '#/components/schemas/AddressValidationX_2'
+            $ref: '#/components/schemas/AddressValidationX'
           schema:
             originalRef: AddressValidationX
-            $ref: '#/components/schemas/AddressValidationX_2'
+            $ref: '#/components/schemas/AddressValidationX'
         '404':
           description: Address not found
   /v2/address/typeahead:
@@ -198,7 +198,34 @@ paths:
           description: Zipcodes not found
 components:
   schemas:
-    CustomerServiceRecordX_2:
+    AddressValidationX:
+      type: object
+      properties:
+        requiredFields:
+          type: array
+          items:
+            type: string
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX'
+        latitude:
+          type: string
+        longitude:
+          type: string
+        valid:
+          type: boolean
+    ZipcodeX:
+      type: object
+      properties:
+        zipCode:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    CustomerServiceRecordX:
       type: object
       properties:
         id:
@@ -300,7 +327,6 @@ components:
           items:
             type: string
         customerServiceRecord:
-          originalRef: CustomerServiceRecordX
           $ref: '#/components/schemas/CustomerServiceRecordX_2'
         latitude:
           type: string
@@ -308,17 +334,125 @@ components:
           type: string
         valid:
           type: boolean
-    ZipcodeX:
+    PublicApiException:
       type: object
       properties:
-        zipCode:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
           type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
+        firstName:
+          type: string
+          minLength: 1
+          maxLength: 256
+        middleInitial:
+          type: string
+          maxLength: 256
+        lastName:
+          type: string
+          maxLength: 256
+        businessName:
+          type: string
+          maxLength: 256
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          maxLength: 256
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          maxLength: 256
+        state:
+          type: string
+          description: A two-letter state abbreviation
+        country:
+          type: string
+          description: Alianza supports accounts in the USA and Canada.
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          maxLength: 10
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey
