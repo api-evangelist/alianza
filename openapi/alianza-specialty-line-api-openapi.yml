@@ -279,61 +279,6 @@ paths:
                 $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
 components:
   schemas:
-    SpecialtyLinesX:
-      type: array
-      items:
-        $ref: '#/components/schemas/SpecialtyLineResponseDto'
-    SpecialtyLineErrorResponseDto:
-      type: object
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        traceId:
-          type: string
-      required:
-      - errorCode
-      title: SpecialtyLineErrorResponse
-    SpecialtyLineRequestDto:
-      type: object
-      properties:
-        callerId:
-          type: string
-          description: The phone number displayed on the phone of the person being called.
-        callingPlanIds:
-          type: array
-          description: Calling plans allow you to control where your customers are allowed to call and what, if any, the cost should be for those calls. Each of your plans can be set up with a number of included minutes or a per-minute rate, depending on how you want to charge for services. The calling plans created at the partition level can be assigned to individual accounts and users based on their needs or the bundle they purchased.
-          items:
-            type: string
-        deviceType:
-          type: string
-          description: The generic device type that matches the customer's device configuration.
-        e911CallbackNumber:
-          type: string
-          description: The phone number that will be transmitted to 911.
-        macAddress:
-          type: string
-          description: The device's MAC address.
-        name:
-          type: string
-          description: A name for the specialty line, such as Elevator C or another descriptive term.
-        portNumber:
-          type: integer
-          format: int32
-          description: The physical port number the line is provisioned on (1–9).
-        sipPassword:
-          type: string
-          description: A unique plain-text password is automatically generated and displayed here. Use this one or enter your own, using at least 6 characters.
-        sipUsername:
-          type: string
-          description: A unique 14-character SIP username is automatically generated and displayed here. Use this one or enter your own, between 8-36 characters long.
-      required:
-      - name
-      - callerId
-      - e911CallbackNumber
-      - callingPlanIds
-      title: SpecialtyLine
     ValidateSipUsernameDto:
       type: object
       properties:
@@ -395,6 +340,61 @@ components:
       - name
       - callingPlanIds
       title: SpecialtyLineX
+    SpecialtyLinesX:
+      type: array
+      items:
+        $ref: '#/components/schemas/SpecialtyLineResponseDto'
+    SpecialtyLineRequestDto:
+      type: object
+      properties:
+        callerId:
+          type: string
+          description: The phone number displayed on the phone of the person being called.
+        callingPlanIds:
+          type: array
+          description: Calling plans allow you to control where your customers are allowed to call and what, if any, the cost should be for those calls. Each of your plans can be set up with a number of included minutes or a per-minute rate, depending on how you want to charge for services. The calling plans created at the partition level can be assigned to individual accounts and users based on their needs or the bundle they purchased.
+          items:
+            type: string
+        deviceType:
+          type: string
+          description: The generic device type that matches the customer's device configuration.
+        e911CallbackNumber:
+          type: string
+          description: The phone number that will be transmitted to 911.
+        macAddress:
+          type: string
+          description: The device's MAC address.
+        name:
+          type: string
+          description: A name for the specialty line, such as Elevator C or another descriptive term.
+        portNumber:
+          type: integer
+          format: int32
+          description: The physical port number the line is provisioned on (1–9).
+        sipPassword:
+          type: string
+          description: A unique plain-text password is automatically generated and displayed here. Use this one or enter your own, using at least 6 characters.
+        sipUsername:
+          type: string
+          description: A unique 14-character SIP username is automatically generated and displayed here. Use this one or enter your own, between 8-36 characters long.
+      required:
+      - name
+      - callerId
+      - e911CallbackNumber
+      - callingPlanIds
+      title: SpecialtyLine
+    SpecialtyLineErrorResponseDto:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        traceId:
+          type: string
+      required:
+      - errorCode
+      title: SpecialtyLineErrorResponse
   securitySchemes:
     X-Auth-Token:
       type: apiKey

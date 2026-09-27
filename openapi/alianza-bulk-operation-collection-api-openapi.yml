@@ -152,7 +152,70 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkOperationErrorResponse'
 components:
+  examples:
+    CreateCollectionWithJsonRequestExample:
+      summary: Create Collection with Json transformObjects
+      value:
+        id: string
+        ownerId: string
+        size: 0
+        transformObjectType: CreateUserInput
+        transformObjects:
+        - First Name: firstName
+          Last Name: lastName
+          Extension Number: 4242
+          User Tags: ''
+          Time Zone: US/MOUNTAIN
+          Email: email@example.com
+          Username: username
+          Feature Plan: STANDARD
+          Voice Portal Access: 'NO'
+          Calling Plan: ''
+          Language: ENGLISH
+    GetCollectionResponseExample:
+      summary: Get collection response object
+      value:
+        id: collectionId
+        ownerId: same as targetAccountId
+        size: 0
+        transformObjectType: CreateUserInput
+        transformObjects: []
+        createdDateTime: '2024-09-04T22:27:03.431Z'
+    CreateCollectionWithFileExample:
+      summary: Create Collection with upload file
+      value:
+        jobTypeId: create users
+        columnTypes: object with column definitions
+        transformObjectType: string
+        transformObjectsFile: csvUploadFile.csv
   schemas:
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
     CollectionDTO:
       type: object
       properties:
@@ -181,69 +244,6 @@ components:
       required:
       - transformObjectType
       - transformObjects
-    BulkOperationErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP error status code
-        message:
-          type: string
-          description: Detailed error message
-        errors:
-          type: array
-          description: list of errors
-          items:
-            type: string
-          example:
-          - transformObjectsFile must not be null
-          - jobTypeId should be valid
-          - etc.
-        schemaErrors:
-          type: array
-          description: list of schema errors
-          items:
-            type: object
-          example:
-          - index: index (location) of the error
-            path: path
-            description: description of the schema error
-  examples:
-    CreateCollectionWithFileExample:
-      summary: Create Collection with upload file
-      value:
-        jobTypeId: create users
-        columnTypes: object with column definitions
-        transformObjectType: string
-        transformObjectsFile: csvUploadFile.csv
-    GetCollectionResponseExample:
-      summary: Get collection response object
-      value:
-        id: collectionId
-        ownerId: same as targetAccountId
-        size: 0
-        transformObjectType: CreateUserInput
-        transformObjects: []
-        createdDateTime: '2024-09-04T22:27:03.431Z'
-    CreateCollectionWithJsonRequestExample:
-      summary: Create Collection with Json transformObjects
-      value:
-        id: string
-        ownerId: string
-        size: 0
-        transformObjectType: CreateUserInput
-        transformObjects:
-        - First Name: firstName
-          Last Name: lastName
-          Extension Number: 4242
-          User Tags: ''
-          Time Zone: US/MOUNTAIN
-          Email: email@example.com
-          Username: username
-          Feature Plan: STANDARD
-          Voice Portal Access: 'NO'
-          Calling Plan: ''
-          Language: ENGLISH
   securitySchemes:
     X-Auth-Token:
       type: apiKey

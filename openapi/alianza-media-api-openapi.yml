@@ -521,22 +521,10 @@ paths:
         required: true
 components:
   schemas:
-    JobError:
+    HoldMusicX:
       type: object
       properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    MediaX:
-      type: object
-      properties:
-        id:
+        storageId:
           type: string
         url:
           type: string
@@ -573,12 +561,24 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    HoldMusicX:
+    MediaX:
       type: object
       properties:
-        storageId:
+        id:
           type: string
         url:
+          type: string
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
           type: string
     MultipartFormDataInput_2:
       type: object

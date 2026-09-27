@@ -363,184 +363,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    E911AccountX:
+    PartitionDataHistorySearchResponseX:
       type: object
       properties:
-        e911ProviderType:
-          type: string
-          enum:
-          - INTRADO
-          - WEST
-          - DISABLED
-          - BANDWIDTH
-          - SINCH
-          - INTRADO_ENTERPRISE
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: PartitionDataHistoryX
+            $ref: '#/components/schemas/PartitionDataHistoryX'
+    BandwidthSettingsX:
+      type: object
+      properties:
         accountId:
           type: string
-        authToken:
+        siteId:
           type: string
-    InboundCarrierX:
+        peerId:
+          type: string
+    JobUploadKey:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        carrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-          - LUMEN_VOICE_LI_ELS
-          - SINCH
-          - SERVICE_PROVIDER_CARRIER
-        partitionAvailability:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-        l3Settings:
-          originalRef: L3SettingsX
-          $ref: '#/components/schemas/L3SettingsX'
-        supportsCSRUpdate:
-          type: boolean
-        supportCNAMChange:
-          type: boolean
-        supportDirectoryListing:
-          type: boolean
-        supportPorting:
-          type: boolean
-        supportHotCutPorting:
-          type: boolean
-        hasTNs:
-          type: boolean
-        e911Account:
-          originalRef: E911AccountX
-          $ref: '#/components/schemas/E911AccountX'
-        smsCallbackUrl:
-          type: string
-        portPushDays:
-          type: integer
-          format: int32
-        bandwidthSettings:
-          originalRef: BandwidthSettingsX
-          $ref: '#/components/schemas/BandwidthSettingsX'
-        enableDynamicInventory:
-          type: boolean
-        enableByotn:
-          type: boolean
-        sinchSettings:
-          originalRef: SinchSettingsX
-          $ref: '#/components/schemas/SinchSettingsX'
-        cnamCarrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-          - LUMEN_VOICE_LI_ELS
-          - SINCH
-          - SERVICE_PROVIDER_CARRIER
-        dlCarrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-          - LUMEN_VOICE_LI_ELS
-          - SINCH
-          - SERVICE_PROVIDER_CARRIER
-    JobError:
-      type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    SinchSettingsX:
-      type: object
-      properties:
-        serviceType:
-          type: string
-          enum:
-          - ALL_IN_TN
-          - USAGE_TN
-          - BYOC
-        routingOption:
-          type: string
-        apiKey:
-          type: string
-        apiSecret:
-          type: string
-    L3SettingsX:
-      type: object
-      properties:
-        servicePackage:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        availableServicePackages:
-          type: array
-          items:
-            type: string
-            enum:
-            - Usage
-            - PrimaryLocalFlatRate
-            - PrimaryLocalAndDomesticLDFlatRate
-            - SecondaryLocalFlatRate
-            - SecondaryLocalAndDomesticLDFlatRate
-        seasonalSuspendServicePackage:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        b2BPartnerID:
-          type: string
-        customerServiceName:
-          type: string
-        bizOrg:
+        key:
           type: string
     DialPlanRuleX:
       type: object
@@ -640,59 +486,80 @@ components:
           - UNDERGROUND_PUBLIC_UTILITY_LOCATION
         id:
           type: string
-    PartitionDataHistoryX:
+    SinchSettingsX:
       type: object
       properties:
-        partitionId:
-          type: string
-        id:
-          type: string
-        type:
+        serviceType:
           type: string
           enum:
-          - PARTITION
-          - PLATFORM_USER
-          - PLATFORM_USER_GROUP
-          - CALLING_PLAN
-          - INBOUND_RATE_PLAN
-          - LOCAL_CALLING_PLANS
-          - TN_INVENTORY
-          - PARTITION_SETTINGS
-          - FEATURE_TOGGLES
-          - IP_WHITELIST
-          - DIAL_PLAN_RULE
-          - ROUTE_PLAN
-        createdDate:
+          - ALL_IN_TN
+          - USAGE_TN
+          - BYOC
+        routingOption:
           type: string
-          format: date-time
-        userId:
+        apiKey:
           type: string
-        userName:
+        apiSecret:
           type: string
-        userType:
+    E911AccountX:
+      type: object
+      properties:
+        e911ProviderType:
           type: string
           enum:
-          - AccountUser
-          - EndUser
-          - ManagementUser
-          - AlianzaUser
-          - BusinessLines
-        searchTags:
+          - INTRADO
+          - WEST
+          - DISABLED
+          - BANDWIDTH
+          - SINCH
+          - INTRADO_ENTERPRISE
+        accountId:
+          type: string
+        authToken:
+          type: string
+    L3SettingsX:
+      type: object
+      properties:
+        servicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
           type: array
-          uniqueItems: true
           items:
             type: string
-        actionType:
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
           type: string
-        relatedDataId:
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
           type: string
-        relatedDataType:
+        customerServiceName:
           type: string
-        relatedDataDisplayName:
+        bizOrg:
           type: string
-        oldValue:
+    MediaFriendsX:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        host:
           type: string
-        newValue:
+        toNumber:
           type: string
     Job:
       type: object
@@ -852,19 +719,71 @@ components:
           type: boolean
         byotnCarrierId:
           type: string
-    JobUploadKey:
+    JobError:
       type: object
       properties:
-        key:
+        error:
           type: string
-    MediaFriendsX:
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    PartitionDataHistoryX:
       type: object
       properties:
-        enabled:
-          type: boolean
-        host:
+        partitionId:
           type: string
-        toNumber:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PARTITION
+          - PLATFORM_USER
+          - PLATFORM_USER_GROUP
+          - CALLING_PLAN
+          - INBOUND_RATE_PLAN
+          - LOCAL_CALLING_PLANS
+          - TN_INVENTORY
+          - PARTITION_SETTINGS
+          - FEATURE_TOGGLES
+          - IP_WHITELIST
+          - DIAL_PLAN_RULE
+          - ROUTE_PLAN
+        createdDate:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        userName:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        searchTags:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        actionType:
+          type: string
+        relatedDataId:
+          type: string
+        relatedDataType:
+          type: string
+        relatedDataDisplayName:
+          type: string
+        oldValue:
+          type: string
+        newValue:
           type: string
     PartitionSettingX:
       type: object
@@ -890,27 +809,7 @@ components:
           - ALLOW_VM_MESSAGE_ACCESS
         value:
           type: object
-    PartitionDataHistorySearchResponseX:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            originalRef: PartitionDataHistoryX
-            $ref: '#/components/schemas/PartitionDataHistoryX'
-    BandwidthSettingsX:
-      type: object
-      properties:
-        accountId:
-          type: string
-        siteId:
-          type: string
-        peerId:
-          type: string
-    InboundCarrierX_2:
+    InboundCarrierX:
       type: object
       properties:
         id:
@@ -939,11 +838,12 @@ components:
           - SERVICE_PROVIDER_CARRIER
         partitionAvailability:
           type: array
+          uniqueItems: true
           items:
             type: string
-          uniqueItems: true
         l3Settings:
-          $ref: '#/components/schemas/L3SettingsX_2'
+          originalRef: L3SettingsX
+          $ref: '#/components/schemas/L3SettingsX'
         supportsCSRUpdate:
           type: boolean
         supportCNAMChange:
@@ -957,6 +857,7 @@ components:
         hasTNs:
           type: boolean
         e911Account:
+          originalRef: E911AccountX
           $ref: '#/components/schemas/E911AccountX'
         smsCallbackUrl:
           type: string
@@ -964,13 +865,15 @@ components:
           type: integer
           format: int32
         bandwidthSettings:
-          $ref: '#/components/schemas/BandwidthSettingsX_2'
+          originalRef: BandwidthSettingsX
+          $ref: '#/components/schemas/BandwidthSettingsX'
         enableDynamicInventory:
           type: boolean
         enableByotn:
           type: boolean
         sinchSettings:
-          $ref: '#/components/schemas/SinchSettingsX_2'
+          originalRef: SinchSettingsX
+          $ref: '#/components/schemas/SinchSettingsX'
         cnamCarrierType:
           type: string
           enum:
@@ -1007,6 +910,35 @@ components:
           - LUMEN_VOICE_LI_ELS
           - SINCH
           - SERVICE_PROVIDER_CARRIER
+    PartitionDataHistorySearchResponseX_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartitionDataHistoryX'
+    BandwidthSettingsX_2:
+      type: object
+      properties:
+        accountId:
+          type: string
+        siteId:
+          type: string
+        peerId:
+          type: string
+        apiUsername:
+          type: string
+        apiPassword:
+          type: string
+        localAccountId:
+          type: string
+        localSiteId:
+          type: string
+        localPeerId:
+          type: string
     SinchSettingsX_2:
       type: object
       properties:
@@ -1093,46 +1025,6 @@ components:
           format: date-time
       xml:
         name: job
-    PartitionSettingX_2:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        type:
-          type: string
-          enum:
-          - IntegrationNotificationEmail
-          - CDRReportColumns
-          - SipTrunkProxyServer
-          - AllowAccountDangerousExtensions
-          - InboundRatePlanDefault
-          - SUB_DOMAINS
-          - SEND_WELCOME_EMAIL
-          - REGULATORY_TYPE
-          - ACCOUNT_HOLD_MUSIC_DEFAULT
-          - PLATFORM_TYPE_DEFAULT
-          - GENERATED_SIP_PASSWORD_LENGTH
-          - ENABLE_STAGED_CALL
-          - MAX_BURST_CALL_PERCENTAGE
-          - ALLOW_VM_MESSAGE_ACCESS
-        value:
-          type: object
-          properties: {}
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     PartitionX_2:
       type: object
       properties:
@@ -1260,35 +1152,143 @@ components:
           type: boolean
         byotnCarrierId:
           type: string
-    PartitionDataHistorySearchResponseX_2:
+    PartitionSettingX_2:
       type: object
       properties:
-        totalRecords:
+        partitionId:
+          type: string
+        type:
+          type: string
+          enum:
+          - IntegrationNotificationEmail
+          - CDRReportColumns
+          - SipTrunkProxyServer
+          - AllowAccountDangerousExtensions
+          - InboundRatePlanDefault
+          - SUB_DOMAINS
+          - SEND_WELCOME_EMAIL
+          - REGULATORY_TYPE
+          - ACCOUNT_HOLD_MUSIC_DEFAULT
+          - PLATFORM_TYPE_DEFAULT
+          - GENERATED_SIP_PASSWORD_LENGTH
+          - ENABLE_STAGED_CALL
+          - MAX_BURST_CALL_PERCENTAGE
+          - ALLOW_VM_MESSAGE_ACCESS
+        value:
+          type: object
+          properties: {}
+    PublicApiException:
+      type: object
+      properties:
+        status:
           type: integer
-          format: int64
-        results:
+        messages:
           type: array
           items:
-            $ref: '#/components/schemas/PartitionDataHistoryX'
-    BandwidthSettingsX_2:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    InboundCarrierX_2:
       type: object
       properties:
-        accountId:
+        id:
           type: string
-        siteId:
+        name:
           type: string
-        peerId:
+        description:
           type: string
-        apiUsername:
+        carrierType:
           type: string
-        apiPassword:
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        partitionAvailability:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        l3Settings:
+          $ref: '#/components/schemas/L3SettingsX_2'
+        supportsCSRUpdate:
+          type: boolean
+        supportCNAMChange:
+          type: boolean
+        supportDirectoryListing:
+          type: boolean
+        supportPorting:
+          type: boolean
+        supportHotCutPorting:
+          type: boolean
+        hasTNs:
+          type: boolean
+        e911Account:
+          $ref: '#/components/schemas/E911AccountX'
+        smsCallbackUrl:
           type: string
-        localAccountId:
+        portPushDays:
+          type: integer
+          format: int32
+        bandwidthSettings:
+          $ref: '#/components/schemas/BandwidthSettingsX_2'
+        enableDynamicInventory:
+          type: boolean
+        enableByotn:
+          type: boolean
+        sinchSettings:
+          $ref: '#/components/schemas/SinchSettingsX_2'
+        cnamCarrierType:
           type: string
-        localSiteId:
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        dlCarrierType:
           type: string
-        localPeerId:
-          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
   securitySchemes:
     X-Auth-Token:
       type: apiKey

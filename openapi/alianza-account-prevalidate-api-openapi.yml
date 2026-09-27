@@ -216,6 +216,65 @@ components:
           type: boolean
         lnp:
           type: boolean
+    TelephoneNumberActivationsV2X:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        port:
+          originalRef: PortX
+          $ref: '#/components/schemas/PortX'
+        l3Settings:
+          originalRef: L3SettingsX
+          $ref: '#/components/schemas/L3SettingsX'
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX'
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        holdActivation:
+          type: boolean
+          description: Use this when activating phone numbers to prevent carrier activation until a later date
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            xml:
+              name: telephoneNumber
+            originalRef: TelephoneNumberAccountBareX
+            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+        byotnCarrierId:
+          type: string
+        id:
+          type: string
+    E911PrevalidateResponseX:
+      type: object
+      properties:
+        valid:
+          type: string
+          enum:
+          - VALID
+          - INVALID
+          - UNKNOWN
+        errors:
+          type: array
+          items:
+            type: string
+        addressAlternatives:
+          type: array
+          items:
+            originalRef: AddressX
+            $ref: '#/components/schemas/AddressX'
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX'
     PortX:
       type: object
       properties:
@@ -337,170 +396,88 @@ components:
           type: boolean
         smsCallbackUrl:
           type: string
-    TelephoneNumberAccountBareX:
+    AddressX:
       type: object
       properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
-          type: boolean
-        operationalStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - STAGED
-        portId:
-          type: string
-        servicePackageType:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
         id:
           type: string
-        tollFree:
-          type: boolean
-    DirectoryListingX:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
           type: string
           enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          originalRef: AddressX
-          $ref: '#/components/schemas/AddressX'
-    L3SettingsX:
-      type: object
-      properties:
-        servicePackage:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
           type: string
           enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        availableServicePackages:
-          type: array
-          items:
-            type: string
-            enum:
-            - Usage
-            - PrimaryLocalFlatRate
-            - PrimaryLocalAndDomesticLDFlatRate
-            - SecondaryLocalFlatRate
-            - SecondaryLocalAndDomesticLDFlatRate
-        seasonalSuspendServicePackage:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
           type: string
           enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        b2BPartnerID:
-          type: string
-        customerServiceName:
-          type: string
-        bizOrg:
-          type: string
-    TelecomSettingsX:
-      type: object
-      properties:
-        notes:
-          type: string
-        currentCarrier:
-          type: string
-        currentCarrierName:
-          type: string
-        localReseller:
-          type: string
-        loaDate:
-          type: string
-          format: date-time
-        disconnectInternetService:
-          type: boolean
-        disconnectTelevisionService:
-          type: boolean
-        tnData:
-          type: object
-          additionalProperties:
-            originalRef: TnData
-            $ref: '#/components/schemas/TnData'
-    TelephoneNumberActivationsV2X:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        port:
-          originalRef: PortX
-          $ref: '#/components/schemas/PortX'
-        l3Settings:
-          originalRef: L3SettingsX
-          $ref: '#/components/schemas/L3SettingsX'
-        customerServiceRecord:
-          originalRef: CustomerServiceRecordX
-          $ref: '#/components/schemas/CustomerServiceRecordX'
-        directoryListing:
-          originalRef: DirectoryListingX
-          $ref: '#/components/schemas/DirectoryListingX'
-        e911Address:
-          originalRef: E911AddressX
-          $ref: '#/components/schemas/E911AddressX'
-        holdActivation:
-          type: boolean
-          description: Use this when activating phone numbers to prevent carrier activation until a later date
-        telephoneNumbers:
-          type: array
-          xml:
-            wrapped: true
-          items:
-            xml:
-              name: telephoneNumber
-            originalRef: TelephoneNumberAccountBareX
-            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
-        byotnCarrierId:
-          type: string
-        id:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
           type: string
     CustomerServiceRecordX:
       type: object
@@ -596,110 +573,142 @@ components:
           type: boolean
         customerName:
           type: string
-    E911PrevalidateResponseX:
+    L3SettingsX:
       type: object
       properties:
-        valid:
+        servicePackage:
           type: string
           enum:
-          - VALID
-          - INVALID
-          - UNKNOWN
-        errors:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
           type: array
           items:
             type: string
-        addressAlternatives:
-          type: array
-          items:
-            originalRef: AddressX
-            $ref: '#/components/schemas/AddressX'
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
+          type: string
+        customerServiceName:
+          type: string
+        bizOrg:
+          type: string
+    TelecomSettingsX:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            originalRef: TnData
+            $ref: '#/components/schemas/TnData'
+    DirectoryListingX:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
         address:
           originalRef: AddressX
           $ref: '#/components/schemas/AddressX'
-    AddressX:
+    TelephoneNumberAccountBareX:
       type: object
       properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
         id:
           type: string
-        firstName:
+        tollFree:
+          type: boolean
+    TnData:
+      type: object
+      properties:
+        tn:
           type: string
-        middleInitial:
+        rateCenter:
           type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
+        wireless:
+          type: boolean
     E911AddressX:
       type: object
       properties:
@@ -797,15 +806,6 @@ components:
         language:
           type: string
           description: Optional, see /v2/ref/language for supported languages
-    TnData:
-      type: object
-      properties:
-        tn:
-          type: string
-        rateCenter:
-          type: string
-        wireless:
-          type: boolean
     PortAvailabilityResponseV2X_2:
       type: object
       properties:
@@ -866,6 +866,36 @@ components:
           type: boolean
         wirelessPort:
           type: boolean
+    TelephoneNumberActivationsV2X_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        port:
+          $ref: '#/components/schemas/PortX_2'
+        l3Settings:
+          $ref: '#/components/schemas/L3SettingsX_2'
+        customerServiceRecord:
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        directoryListing:
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          $ref: '#/components/schemas/E911AddressX'
+        holdActivation:
+          type: boolean
+          description: Use this when activating phone numbers to prevent carrier activation until a later date
+        telephoneNumbers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+          xml:
+            wrapped: true
+        byotnCarrierId:
+          type: string
+        id:
+          type: string
     PortX_2:
       type: object
       properties:
@@ -986,127 +1016,99 @@ components:
           type: boolean
         smsCallbackUrl:
           type: string
-    DirectoryListingX_2:
+    AddressX_2:
       type: object
       properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX_2'
-    L3SettingsX_2:
-      type: object
-      properties:
-        servicePackage:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        availableServicePackages:
-          type: array
-          items:
-            type: string
-            enum:
-            - Usage
-            - PrimaryLocalFlatRate
-            - PrimaryLocalAndDomesticLDFlatRate
-            - SecondaryLocalFlatRate
-            - SecondaryLocalAndDomesticLDFlatRate
-        seasonalSuspendServicePackage:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        b2BPartnerID:
-          type: string
-        customerServiceName:
-          type: string
-        bizOrg:
-          type: string
-        parentBizOrg:
-          type: string
-    TelecomSettingsX_2:
-      type: object
-      properties:
-        notes:
-          type: string
-        currentCarrier:
-          type: string
-        currentCarrierName:
-          type: string
-        localReseller:
-          type: string
-        loaDate:
-          type: string
-          format: date-time
-        disconnectInternetService:
-          type: boolean
-        disconnectTelevisionService:
-          type: boolean
-        tnData:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/TnData'
-    TelephoneNumberActivationsV2X_2:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        port:
-          $ref: '#/components/schemas/PortX_2'
-        l3Settings:
-          $ref: '#/components/schemas/L3SettingsX_2'
-        customerServiceRecord:
-          $ref: '#/components/schemas/CustomerServiceRecordX_2'
-        directoryListing:
-          $ref: '#/components/schemas/DirectoryListingX_2'
-        e911Address:
-          $ref: '#/components/schemas/E911AddressX'
-        holdActivation:
-          type: boolean
-          description: Use this when activating phone numbers to prevent carrier activation until a later date
-        telephoneNumbers:
-          type: array
-          items:
-            $ref: '#/components/schemas/TelephoneNumberAccountBareX'
-          xml:
-            wrapped: true
-        byotnCarrierId:
-          type: string
         id:
           type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+        firstName:
+          type: string
+          minLength: 1
+          maxLength: 256
+        middleInitial:
+          type: string
+          maxLength: 256
+        lastName:
+          type: string
+          maxLength: 256
+        businessName:
+          type: string
+          maxLength: 256
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          maxLength: 256
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          maxLength: 256
+        state:
+          type: string
+          description: A two-letter state abbreviation
+        country:
+          type: string
+          description: Alianza supports accounts in USA and CAN
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          maxLength: 10
     CustomerServiceRecordX_2:
       type: object
       properties:
@@ -1211,6 +1213,97 @@ components:
           type: boolean
         customerName:
           type: string
+    L3SettingsX_2:
+      type: object
+      properties:
+        servicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        availableServicePackages:
+          type: array
+          items:
+            type: string
+            enum:
+            - Usage
+            - PrimaryLocalFlatRate
+            - PrimaryLocalAndDomesticLDFlatRate
+            - SecondaryLocalFlatRate
+            - SecondaryLocalAndDomesticLDFlatRate
+        seasonalSuspendServicePackage:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        b2BPartnerID:
+          type: string
+        customerServiceName:
+          type: string
+        bizOrg:
+          type: string
+        parentBizOrg:
+          type: string
+    TelecomSettingsX_2:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TnData'
+    DirectoryListingX_2:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX_2'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     E911PrevalidateResponseX_2:
       type: object
       properties:
@@ -1230,99 +1323,6 @@ components:
             $ref: '#/components/schemas/AddressX_2'
         address:
           $ref: '#/components/schemas/AddressX_2'
-    AddressX_2:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-          minLength: 1
-          maxLength: 256
-        middleInitial:
-          type: string
-          maxLength: 256
-        lastName:
-          type: string
-          maxLength: 256
-        businessName:
-          type: string
-          maxLength: 256
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-          maxLength: 256
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-          maxLength: 256
-        state:
-          type: string
-          description: A two-letter state abbreviation
-        country:
-          type: string
-          description: Alianza supports accounts in USA and CAN
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-          maxLength: 10
   securitySchemes:
     X-Auth-Token:
       type: apiKey

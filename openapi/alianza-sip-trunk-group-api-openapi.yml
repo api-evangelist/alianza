@@ -263,42 +263,6 @@ paths:
           description: Not found
 components:
   schemas:
-    SipTrunkGroupForwardRules:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        sipTrunkGroupId:
-          type: string
-        unconditionalForward:
-          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
-        unreachableForward:
-          type: array
-          items:
-            $ref: '#/components/schemas/SipTrunkForwardReference'
-        capacityForward:
-          type: array
-          items:
-            $ref: '#/components/schemas/SipTrunkForwardReference'
-    ReferenceType:
-      type: string
-      enum:
-      - SIP_TRUNK
-      - END_USER
-      - TELEPHONE
-      - AUTO_ATTENDANT
-      - IVR
-      - VOICEMAIL
-      - BUSY
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
     SipTrunkForwardReference:
       type: object
       required:
@@ -309,6 +273,16 @@ components:
           description: id of the entity to forward the calls to
         referenceType:
           $ref: '#/components/schemas/ReferenceType'
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
     SipTrunkGroup:
       type: object
       required:
@@ -337,6 +311,32 @@ components:
           type: array
           items:
             type: string
+    SipTrunkGroupForwardRules:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkGroupId:
+          type: string
+        unconditionalForward:
+          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
+        unreachableForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        capacityForward:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
   securitySchemes:
     X-Auth-Token:
       type: apiKey

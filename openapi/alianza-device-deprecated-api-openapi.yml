@@ -668,26 +668,20 @@ paths:
         required: true
 components:
   schemas:
-    DeviceStatusX:
+    DeviceSwapX:
       type: object
       properties:
-        success:
-          type: boolean
-        failureMessage:
-          type: string
         macAddress:
           type: string
-        request:
-          type: object
-          additionalProperties:
-            type: string
-        response:
-          type: object
-          additionalProperties:
-            type: string
-        updated:
+        deviceTypeId:
           type: string
-          format: date-time
+        deviceName:
+          type: string
+    RegistrationStatusX:
+      type: object
+      properties:
+        registered:
+          type: boolean
     DeviceX:
       type: object
       required:
@@ -749,20 +743,42 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceSwapX:
+    DeviceStatusX:
       type: object
+      properties:
+        success:
+          type: boolean
+        failureMessage:
+          type: string
+        macAddress:
+          type: string
+        request:
+          type: object
+          additionalProperties:
+            type: string
+        response:
+          type: object
+          additionalProperties:
+            type: string
+        updated:
+          type: string
+          format: date-time
+    DeviceSwapX_2:
+      type: object
+      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
       properties:
         macAddress:
           type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
         deviceTypeId:
           type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
         deviceName:
           type: string
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
+      required:
+      - macAddress
+      - deviceName
+      - deviceTypeId
     DeviceX_2:
       type: object
       properties:
@@ -833,22 +849,6 @@ components:
       - partitionId
       - userId
       - lineNumber
-    DeviceSwapX_2:
-      type: object
-      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
-      properties:
-        macAddress:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
-        deviceTypeId:
-          type: string
-          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
-        deviceName:
-          type: string
-      required:
-      - macAddress
-      - deviceName
-      - deviceTypeId
   securitySchemes:
     X-Auth-Token:
       type: apiKey

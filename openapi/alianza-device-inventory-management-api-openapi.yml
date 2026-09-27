@@ -259,20 +259,25 @@ paths:
         description: Use Jobs API to upload file
 components:
   schemas:
-    JobError:
+    MultipartFormDataInput:
+      type: object
+    FileImportValidationErrorX:
       type: object
       properties:
-        error:
-          type: string
         lineNumber:
           type: integer
           format: int32
+        error:
+          type: string
         column:
           type: string
         input:
           type: string
-    MultipartFormDataInput:
+    JobUploadKey:
       type: object
+      properties:
+        key:
+          type: string
     Job:
       type: object
       properties:
@@ -304,19 +309,14 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    JobUploadKey:
+    JobError:
       type: object
       properties:
-        key:
+        error:
           type: string
-    FileImportValidationErrorX:
-      type: object
-      properties:
         lineNumber:
           type: integer
           format: int32
-        error:
-          type: string
         column:
           type: string
         input:

@@ -843,20 +843,6 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceSwapX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceTypeId:
-          type: string
-        deviceName:
-          type: string
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
     DeviceStatusX:
       type: object
       properties:
@@ -877,6 +863,15 @@ components:
         updated:
           type: string
           format: date-time
+    DeviceSwapX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+        deviceName:
+          type: string
     ProvisioningRequestX:
       type: object
       properties:
@@ -894,24 +889,11 @@ components:
           type: string
         userAgent:
           type: string
-    RequestedDeviceX:
+    RegistrationStatusX:
       type: object
       properties:
-        macAddress:
-          type: string
-        deviceType:
-          type: string
-        lineCount:
-          type: integer
-          format: int32
-        dialPlan:
-          type: string
-        hasFaxEnabledLine:
+        registered:
           type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestedDeviceLineX'
     DeviceX_2:
       type: object
       properties:
@@ -998,21 +980,74 @@ components:
       - macAddress
       - deviceName
       - deviceTypeId
-    PublicApiException:
+    ProvisioningRequestX_2:
       type: object
       properties:
-        status:
+        id:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
+        requestDate:
+          type: string
+          format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
+        httpStatus:
           type: integer
-        messages:
+          format: int32
+          description: The http status of the device's most recent request for provisioning.
+        deviceId:
+          type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    RequestedDeviceLineX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        displayName:
+          type: string
+        sipUsername:
+          type: string
+        sipPassword:
+          type: string
+        dialPlan:
+          type: string
+        server:
+          type: string
+        serverPort:
+          type: string
+        emergencyNumber:
+          type: string
+        enabled:
+          type: boolean
+        faxEnabled:
+          type: boolean
+    RequestedDeviceX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
           type: array
           items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+            $ref: '#/components/schemas/RequestedDeviceLineX'
     DeviceData:
       type: object
       properties:
@@ -1057,56 +1092,21 @@ components:
                 type: boolean
               faxEnabled:
                 type: boolean
-    RequestedDeviceLineX:
+    PublicApiException:
       type: object
       properties:
-        macAddress:
-          type: string
-        lineNumber:
+        status:
           type: integer
-          format: int32
-        userId:
-          type: string
-        displayName:
-          type: string
-        sipUsername:
-          type: string
-        sipPassword:
-          type: string
-        dialPlan:
-          type: string
-        server:
-          type: string
-        serverPort:
-          type: string
-        emergencyNumber:
-          type: string
-        enabled:
-          type: boolean
-        faxEnabled:
-          type: boolean
-    ProvisioningRequestX_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
-        requestDate:
-          type: string
-          format: date-time
-          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
-        httpStatus:
-          type: integer
-          format: int32
-          description: The http status of the device's most recent request for provisioning.
-        deviceId:
-          type: string
-          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-          description: The user agent that was used to retrieve the provisioning data.
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

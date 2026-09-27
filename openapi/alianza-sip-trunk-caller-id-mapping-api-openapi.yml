@@ -405,6 +405,24 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    CustomCallerIdNumberResponse:
+      type: object
+      required:
+      - customCallerIdNumber
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        customCallerIdNumber:
+          type: string
+    CustomCallerIdNumberRequest:
+      type: object
+      required:
+      - customCallerIdNumber
+      properties:
+        customCallerIdNumber:
+          type: string
     CidMappingResponse:
       type: object
       required:
@@ -420,14 +438,25 @@ components:
           type: string
         isCustom:
           type: boolean
-    CustomCallerIdNumberResponse:
+    FromTelephoneNumberResponse:
       type: object
       required:
-      - customCallerIdNumber
+      - fromWildcard
       properties:
         partitionId:
           type: string
         accountId:
+          type: string
+        fromWildcard:
+          type: string
+        isCustom:
+          type: boolean
+    CidMappingRequest:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        fromWildcard:
           type: string
         customCallerIdNumber:
           type: string
@@ -446,35 +475,6 @@ components:
           example:
             key: value
             key2: value2
-    CidMappingRequest:
-      type: object
-      required:
-      - fromWildcard
-      properties:
-        fromWildcard:
-          type: string
-        customCallerIdNumber:
-          type: string
-    FromTelephoneNumberResponse:
-      type: object
-      required:
-      - fromWildcard
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        fromWildcard:
-          type: string
-        isCustom:
-          type: boolean
-    CustomCallerIdNumberRequest:
-      type: object
-      required:
-      - customCallerIdNumber
-      properties:
-        customCallerIdNumber:
-          type: string
     FromTelephoneNumberRequest:
       type: object
       required:

@@ -400,87 +400,6 @@ components:
         count:
           type: integer
           example: 1
-    NodeAssignment:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Node assignment Id
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        edgeNodeId:
-          type: string
-          description: Id of Edge Node
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        deviceId:
-          type: string
-          description: Id of the device
-        proxyAddress:
-          type: string
-    NodeAssignmentUpsert:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Node assignment Id
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        edgeNodeId:
-          type: string
-          description: Id of Edge Node
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        deviceId:
-          type: string
-          description: Id of the device
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    NodeQueryResult:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-          example: 1
-        pageNum:
-          type: integer
-          example: 0
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Node'
-        count:
-          type: integer
-          example: 1
-    NodeUpsert:
-      type: object
-      properties:
-        displayName:
-          type: string
-          example: company12
-        proxyAddress:
-          type: string
-        partitionId:
-          type: string
-        default:
-          type: boolean
-          description: Default node for partition
-        resetAuthToken:
-          type: boolean
-          description: Generate a new authToken
-      required:
-      - displayName
-      - proxyAddress
-      - partitionId
     Node:
       type: object
       properties:
@@ -506,6 +425,87 @@ components:
       - displayName
       - proxyAddress
       - partitionId
+    NodeAssignmentUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+    NodeUpsert:
+      type: object
+      properties:
+        displayName:
+          type: string
+          example: company12
+        proxyAddress:
+          type: string
+        partitionId:
+          type: string
+        default:
+          type: boolean
+          description: Default node for partition
+        resetAuthToken:
+          type: boolean
+          description: Generate a new authToken
+      required:
+      - displayName
+      - proxyAddress
+      - partitionId
+    NodeQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 0
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        count:
+          type: integer
+          example: 1
+    NodeAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+        proxyAddress:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

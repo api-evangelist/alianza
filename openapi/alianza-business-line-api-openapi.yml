@@ -1790,157 +1790,6 @@ paths:
         required: true
 components:
   schemas:
-    VoicemailBoxExpandedView:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        forwardMessageToEmailAddresses:
-          type: array
-          items:
-            type: string
-        forwardMessageToEmailEnabled:
-          type: boolean
-        shouldKeepMessageAfterForward:
-          type: boolean
-        locale:
-          type: string
-        assignedTo:
-          type: array
-          items:
-            originalRef: VoicemailBoxAssignment
-            $ref: '#/components/schemas/VoicemailBoxAssignment'
-    DeviceSwap:
-      type: object
-      required:
-      - deviceTypeId
-      - macAddress
-      properties:
-        macAddress:
-          type: string
-        deviceTypeId:
-          type: string
-    RingTimeoutConfiguration:
-      type: object
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-      properties:
-        '@type':
-          type: string
-          enum:
-          - LimitedRingTimeoutConfiguration
-          - UnlimitedRingTimeoutConfiguration
-    PinStatusResponse:
-      type: object
-      properties:
-        lockedOut:
-          type: boolean
-    RingFailoverAction:
-      type: object
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-      properties:
-        '@type':
-          type: string
-          enum:
-          - VoicemailRingFailoverAction
-          - BusyRingFailoverAction
-          - ForwardRingFailoverAction
-    BusinessLineExpandedView:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        callerIdPhoneNumber:
-          type: string
-        callerIdVisible:
-          type: boolean
-        emergencyCallbackPhoneNumber:
-          type: string
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        callHandling:
-          originalRef: CallHandlingView
-          $ref: '#/components/schemas/CallHandlingView'
-        sipCredentials:
-          originalRef: SipCredentialsView
-          $ref: '#/components/schemas/SipCredentialsView'
-        device:
-          originalRef: PortAssignmentView
-          $ref: '#/components/schemas/PortAssignmentView'
-    BusinessLine:
-      type: object
-      required:
-      - accountId
-      - name
-      - partitionId
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        callerIdPhoneNumber:
-          type: string
-          pattern: \d+
-        callerIdVisible:
-          type: boolean
-        emergencyCallbackPhoneNumber:
-          type: string
-          pattern: \d+
-        accountId:
-          type: string
-        partitionId:
-          type: string
-    VoicemailBox:
-      type: object
-      required:
-      - accountId
-      - name
-      - partitionId
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        forwardMessageToEmailAddresses:
-          type: array
-          items:
-            type: string
-        forwardMessageToEmailEnabled:
-          type: boolean
-        shouldKeepMessageAfterForward:
-          type: boolean
-        locale:
-          type: string
-          pattern: en-US|fr-CA|es-MX
-    VoicemailBoxAssignment:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        display:
-          type: string
     PortAssignment:
       type: object
       required:
@@ -1960,33 +1809,11 @@ components:
           type: string
         faxEnabled:
           type: boolean
-    VoicemailMessage:
+    PinStatusResponse:
       type: object
       properties:
-        storageId:
-          type: string
-          format: uuid
-        voicemailBoxId:
-          type: string
-        createdDate:
-          type: integer
-          format: int64
-        fromName:
-          type: string
-        fromAddress:
-          type: string
-        lengthInSeconds:
-          type: integer
-          format: int32
-        read:
+        lockedOut:
           type: boolean
-        toPhoneNumber:
-          type: string
-        storageStatus:
-          type: string
-        sizeInBytes:
-          type: integer
-          format: int64
     CallHandling:
       type: object
       required:
@@ -2016,60 +1843,56 @@ components:
           pattern: \d+
         voicemailBoxId:
           type: string
-    CallHandlingView:
-      type: object
-      properties:
-        activeCallHandling:
-          type: string
-          enum:
-          - RING_LINE
-          - FORWARD
-        callWaitingEnabled:
-          type: boolean
-        busyFailoverAction:
-          originalRef: RingFailoverAction
-          $ref: '#/components/schemas/RingFailoverAction'
-        unregisteredFailoverAction:
-          originalRef: RingFailoverAction
-          $ref: '#/components/schemas/RingFailoverAction'
-        ringTimeoutConfiguration:
-          originalRef: RingTimeoutConfiguration
-          $ref: '#/components/schemas/RingTimeoutConfiguration'
-        forwardToPhoneNumber:
-          type: string
-        voicemailBoxId:
-          type: string
     ReadMessage:
       type: object
       properties:
         markAsRead:
           type: boolean
-    SipCredentials:
+    RingTimeoutConfiguration:
       type: object
       required:
-      - sipPassword
-      - sipUsername
+      - '@type'
+      discriminator:
+        propertyName: '@type'
       properties:
-        sipUsername:
-          type: string
-        sipPassword:
-          type: string
-    BulkVoicemailAction:
-      type: object
-      required:
-      - actionType
-      properties:
-        actionType:
+        '@type':
           type: string
           enum:
-          - DELETE
-          - MARK_AS_READ
-          - MARK_AS_UNREAD
-        messageIds:
+          - LimitedRingTimeoutConfiguration
+          - UnlimitedRingTimeoutConfiguration
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
+    VoicemailBox:
+      type: object
+      required:
+      - accountId
+      - name
+      - partitionId
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        forwardMessageToEmailAddresses:
           type: array
           items:
             type: string
-            format: uuid
+        forwardMessageToEmailEnabled:
+          type: boolean
+        shouldKeepMessageAfterForward:
+          type: boolean
+        locale:
+          type: string
+          pattern: en-US|fr-CA|es-MX
     PortAssignmentView:
       type: object
       properties:
@@ -2082,23 +1905,7 @@ components:
           format: int32
         faxEnabled:
           type: boolean
-    SipCredentialsView:
-      type: object
-      properties:
-        sipUsername:
-          type: string
-    RegistrationStatus:
-      type: object
-      properties:
-        registered:
-          type: boolean
-        lockedOut:
-          type: boolean
-    BusyRingFailoverAction:
-      allOf:
-      - $ref: '#/components/schemas/RingFailoverAction_2'
-      - type: object
-    VoicemailBoxExpandedView_2:
+    VoicemailBoxExpandedView:
       type: object
       properties:
         id:
@@ -2122,40 +1929,99 @@ components:
         assignedTo:
           type: array
           items:
+            originalRef: VoicemailBoxAssignment
             $ref: '#/components/schemas/VoicemailBoxAssignment'
-    RingTimeoutConfiguration_2:
+    CallHandlingView:
       type: object
       properties:
-        '@type':
+        activeCallHandling:
           type: string
           enum:
-          - LimitedRingTimeoutConfiguration
-          - UnlimitedRingTimeoutConfiguration
-      discriminator:
-        propertyName: '@type'
-      anyOf:
-      - $ref: '#/components/schemas/LimitedRingTimeoutConfiguration'
-      - $ref: '#/components/schemas/UnlimitedRingTimeoutConfiguration'
+          - RING_LINE
+          - FORWARD
+        callWaitingEnabled:
+          type: boolean
+        busyFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction'
+        unregisteredFailoverAction:
+          originalRef: RingFailoverAction
+          $ref: '#/components/schemas/RingFailoverAction'
+        ringTimeoutConfiguration:
+          originalRef: RingTimeoutConfiguration
+          $ref: '#/components/schemas/RingTimeoutConfiguration'
+        forwardToPhoneNumber:
+          type: string
+        voicemailBoxId:
+          type: string
+    BulkVoicemailAction:
+      type: object
       required:
-      - '@type'
-    RingFailoverAction_2:
+      - actionType
+      properties:
+        actionType:
+          type: string
+          enum:
+          - DELETE
+          - MARK_AS_READ
+          - MARK_AS_UNREAD
+        messageIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+    VoicemailMessage:
       type: object
       properties:
-        '@type':
+        storageId:
           type: string
-          enum:
-          - VoicemailRingFailoverAction
-          - BusyRingFailoverAction
-          - ForwardRingFailoverAction
-      discriminator:
-        propertyName: '@type'
-      anyOf:
-      - $ref: '#/components/schemas/BusyRingFailoverAction'
-      - $ref: '#/components/schemas/ForwardRingFailoverAction'
-      - $ref: '#/components/schemas/VoicemailRingFailoverAction'
+          format: uuid
+        voicemailBoxId:
+          type: string
+        createdDate:
+          type: integer
+          format: int64
+        fromName:
+          type: string
+        fromAddress:
+          type: string
+        lengthInSeconds:
+          type: integer
+          format: int32
+        read:
+          type: boolean
+        toPhoneNumber:
+          type: string
+        storageStatus:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
+    BusinessLine:
+      type: object
       required:
-      - '@type'
-    BusinessLineExpandedView_2:
+      - accountId
+      - name
+      - partitionId
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        callerIdPhoneNumber:
+          type: string
+          pattern: \d+
+        callerIdVisible:
+          type: boolean
+        emergencyCallbackPhoneNumber:
+          type: string
+          pattern: \d+
+        accountId:
+          type: string
+        partitionId:
+          type: string
+    BusinessLineExpandedView:
       type: object
       properties:
         id:
@@ -2174,11 +2040,74 @@ components:
         partitionId:
           type: string
         callHandling:
-          $ref: '#/components/schemas/CallHandlingView_2'
+          originalRef: CallHandlingView
+          $ref: '#/components/schemas/CallHandlingView'
         sipCredentials:
+          originalRef: SipCredentialsView
           $ref: '#/components/schemas/SipCredentialsView'
         device:
+          originalRef: PortAssignmentView
           $ref: '#/components/schemas/PortAssignmentView'
+    VoicemailBoxAssignment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        display:
+          type: string
+    RingFailoverAction:
+      type: object
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - VoicemailRingFailoverAction
+          - BusyRingFailoverAction
+          - ForwardRingFailoverAction
+    DeviceSwap:
+      type: object
+      required:
+      - deviceTypeId
+      - macAddress
+      properties:
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+    SipCredentials:
+      type: object
+      required:
+      - sipPassword
+      - sipUsername
+      properties:
+        sipUsername:
+          type: string
+        sipPassword:
+          type: string
+    SipCredentialsView:
+      type: object
+      properties:
+        sipUsername:
+          type: string
+    VoicemailRingFailoverAction:
+      allOf:
+      - $ref: '#/components/schemas/RingFailoverAction_2'
+      - type: object
+    ForwardRingFailoverAction:
+      allOf:
+      - $ref: '#/components/schemas/RingFailoverAction_2'
+      - required:
+        - forwardToPhoneNumber
+        type: object
+        properties:
+          forwardToPhoneNumber:
+            type: string
+            pattern: \d+
     CallHandling_2:
       type: object
       properties:
@@ -2205,6 +2134,58 @@ components:
       - busyFailoverAction
       - ringTimeoutConfiguration
       - unregisteredFailoverAction
+    LimitedRingTimeoutConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/RingTimeoutConfiguration_2'
+      - required:
+        - noAnswerAction
+        type: object
+        properties:
+          timeoutSeconds:
+            type: integer
+            format: int32
+          noAnswerAction:
+            $ref: '#/components/schemas/RingFailoverAction_2'
+    RingTimeoutConfiguration_2:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LimitedRingTimeoutConfiguration
+          - UnlimitedRingTimeoutConfiguration
+      discriminator:
+        propertyName: '@type'
+      anyOf:
+      - $ref: '#/components/schemas/LimitedRingTimeoutConfiguration'
+      - $ref: '#/components/schemas/UnlimitedRingTimeoutConfiguration'
+      required:
+      - '@type'
+    VoicemailBoxExpandedView_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        forwardMessageToEmailAddresses:
+          type: array
+          items:
+            type: string
+        forwardMessageToEmailEnabled:
+          type: boolean
+        shouldKeepMessageAfterForward:
+          type: boolean
+        locale:
+          type: string
+        assignedTo:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoicemailBoxAssignment'
     CallHandlingView_2:
       type: object
       properties:
@@ -2225,7 +2206,7 @@ components:
           type: string
         voicemailBoxId:
           type: string
-    VoicemailRingFailoverAction:
+    BusyRingFailoverAction:
       allOf:
       - $ref: '#/components/schemas/RingFailoverAction_2'
       - type: object
@@ -2244,32 +2225,51 @@ components:
           example:
             key: value
             key2: value2
-    LimitedRingTimeoutConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/RingTimeoutConfiguration_2'
-      - required:
-        - noAnswerAction
-        type: object
-        properties:
-          timeoutSeconds:
-            type: integer
-            format: int32
-          noAnswerAction:
-            $ref: '#/components/schemas/RingFailoverAction_2'
+    BusinessLineExpandedView_2:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        callerIdPhoneNumber:
+          type: string
+        callerIdVisible:
+          type: boolean
+        emergencyCallbackPhoneNumber:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        callHandling:
+          $ref: '#/components/schemas/CallHandlingView_2'
+        sipCredentials:
+          $ref: '#/components/schemas/SipCredentialsView'
+        device:
+          $ref: '#/components/schemas/PortAssignmentView'
     UnlimitedRingTimeoutConfiguration:
       allOf:
       - $ref: '#/components/schemas/RingTimeoutConfiguration_2'
       - type: object
-    ForwardRingFailoverAction:
-      allOf:
-      - $ref: '#/components/schemas/RingFailoverAction_2'
-      - required:
-        - forwardToPhoneNumber
-        type: object
-        properties:
-          forwardToPhoneNumber:
-            type: string
-            pattern: \d+
+    RingFailoverAction_2:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - VoicemailRingFailoverAction
+          - BusyRingFailoverAction
+          - ForwardRingFailoverAction
+      discriminator:
+        propertyName: '@type'
+      anyOf:
+      - $ref: '#/components/schemas/BusyRingFailoverAction'
+      - $ref: '#/components/schemas/ForwardRingFailoverAction'
+      - $ref: '#/components/schemas/VoicemailRingFailoverAction'
+      required:
+      - '@type'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -826,6 +826,70 @@ paths:
           description: voicemail box not found
 components:
   schemas:
+    VoicemailMessageX:
+      type: object
+      properties:
+        id:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+          description: date the message was left
+        fromName:
+          type: string
+          description: callerId name of caller that left message, if available
+        fromNumber:
+          type: string
+          description: callerId number of caller that left message, if available
+        lengthInPages:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a FAX
+        lengthInSeconds:
+          type: integer
+          format: int32
+          description: length of message in pages, if it is a VOICE message
+        read:
+          type: boolean
+          description: has the message been seen / opened / read
+        sizeInBytes:
+          type: integer
+          format: int64
+          description: size of message in bytes
+        messageType:
+          type: string
+          description: type of message
+          enum:
+          - FAX
+          - VOICE
+        voicemailBoxId:
+          type: string
+          description: voicemail box id
+        accountId:
+          type: string
+          description: Account of the voicemail box
+        partitionId:
+          type: string
+          description: Partition of the account
+        toPhoneNumber:
+          type: string
+          description: The to number associated with the voicemail message
+        transcriptionStatus:
+          type: string
+          description: The status of the transcription
+        transcriptionInfo:
+          type: string
+          description: Details (quality, etc...) about the transcription
+        transcriptionText:
+          type: string
+          description: The resulting text of the transcribed message
+        storageId:
+          type: string
+          format: uuid
+          description: The storage id of audio file
+        audioFileAndType:
+          type: string
+          description: The type of audio file
     VoicemailBoxX:
       type: object
       properties:
@@ -901,6 +965,13 @@ components:
           additionalProperties:
             originalRef: VoicemailMessageX
             $ref: '#/components/schemas/VoicemailMessageX'
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
     PinChange:
       type: object
       properties:
@@ -914,92 +985,6 @@ components:
           type: string
         pin:
           type: string
-    VoicemailMessageX:
-      type: object
-      properties:
-        id:
-          type: string
-        createdDate:
-          type: string
-          format: date-time
-          description: date the message was left
-        fromName:
-          type: string
-          description: callerId name of caller that left message, if available
-        fromNumber:
-          type: string
-          description: callerId number of caller that left message, if available
-        lengthInPages:
-          type: integer
-          format: int32
-          description: length of message in pages, if it is a FAX
-        lengthInSeconds:
-          type: integer
-          format: int32
-          description: length of message in pages, if it is a VOICE message
-        read:
-          type: boolean
-          description: has the message been seen / opened / read
-        sizeInBytes:
-          type: integer
-          format: int64
-          description: size of message in bytes
-        messageType:
-          type: string
-          description: type of message
-          enum:
-          - FAX
-          - VOICE
-        voicemailBoxId:
-          type: string
-          description: voicemail box id
-        accountId:
-          type: string
-          description: Account of the voicemail box
-        partitionId:
-          type: string
-          description: Partition of the account
-        toPhoneNumber:
-          type: string
-          description: The to number associated with the voicemail message
-        transcriptionStatus:
-          type: string
-          description: The status of the transcription
-        transcriptionInfo:
-          type: string
-          description: Details (quality, etc...) about the transcription
-        transcriptionText:
-          type: string
-          description: The resulting text of the transcribed message
-        storageId:
-          type: string
-          format: uuid
-          description: The storage id of audio file
-        audioFileAndType:
-          type: string
-          description: The type of audio file
-    VoicemailReferencedByX:
-      type: object
-      properties:
-        type:
-          type: string
-        id:
-          type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     VoicemailBoxX_2:
       type: object
       properties:
@@ -1073,6 +1058,21 @@ components:
           description: Map of voicemail box greetings
           additionalProperties:
             $ref: '#/components/schemas/VoicemailMessageX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

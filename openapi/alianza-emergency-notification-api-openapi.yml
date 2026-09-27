@@ -301,32 +301,6 @@ paths:
             $ref: '#/components/schemas/NotificationEvent'
 components:
   schemas:
-    NotificationGroup:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - ACCOUNT
-        name:
-          type: string
-        compliance:
-          originalRef: ComplianceConfiguration
-          $ref: '#/components/schemas/ComplianceConfiguration'
-        timeZoneId:
-          type: string
-    RecipientStatus:
-      type: object
-      properties:
-        recipient:
-          type: string
-        status:
-          type: string
-          enum:
-          - SENT
-          - FAILED
     ComplianceConfiguration:
       type: object
       properties:
@@ -345,6 +319,32 @@ components:
             type: string
         inCompliance:
           type: boolean
+    RecipientStatus:
+      type: object
+      properties:
+        recipient:
+          type: string
+        status:
+          type: string
+          enum:
+          - SENT
+          - FAILED
+    NotificationGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - ACCOUNT
+        name:
+          type: string
+        compliance:
+          originalRef: ComplianceConfiguration
+          $ref: '#/components/schemas/ComplianceConfiguration'
+        timeZoneId:
+          type: string
     NotificationEvent:
       type: object
       properties:
@@ -467,21 +467,6 @@ components:
           description: The list of recipients that were attempted via SMS.
           items:
             $ref: '#/components/schemas/RecipientStatus_2'
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     ComplianceConfiguration_2:
       type: object
       properties:
@@ -505,6 +490,21 @@ components:
         inCompliance:
           type: boolean
           description: Indicates whether the customer is in compliance with Kari's law.
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

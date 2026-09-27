@@ -517,6 +517,46 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    SSOExemptionResponse:
+      type: object
+      properties:
+        exemptionId:
+          type: string
+          description: Unique identifier for the exemption
+        partitionId:
+          type: string
+          description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
+        accountId:
+          type: string
+          description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
+        accountName:
+          type: string
+          description: Name of the account
+        exemptionName:
+          type: string
+          description: Name of the exemption configuration
+        exemptionType:
+          $ref: '#/components/schemas/ExemptionType'
+        exemptions:
+          type: array
+          description: List of exempted identifiers
+          items:
+            type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     SSOExemptionRequest:
       type: object
       required:
@@ -554,21 +594,6 @@ components:
           - ACCOUNT_LEVEL_SSO
           - PARTITION_ENFORCED_SSO
           - PARTITION_SSO
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     ExemptionType:
       type: string
       description: Type of exemption target
@@ -576,31 +601,6 @@ components:
       - USER
       - GROUP
       - ACCOUNT
-    SSOExemptionResponse:
-      type: object
-      properties:
-        exemptionId:
-          type: string
-          description: Unique identifier for the exemption
-        partitionId:
-          type: string
-          description: ID of partition, refers to <a href="#/~schema/PartitionX">partition.id</a>
-        accountId:
-          type: string
-          description: ID of account, refers to <a href="#/~schema/Account">account.id</a>
-        accountName:
-          type: string
-          description: Name of the account
-        exemptionName:
-          type: string
-          description: Name of the exemption configuration
-        exemptionType:
-          $ref: '#/components/schemas/ExemptionType'
-        exemptions:
-          type: array
-          description: List of exempted identifiers
-          items:
-            type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

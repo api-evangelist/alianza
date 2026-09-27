@@ -1001,6 +1001,17 @@ components:
           type: string
         language:
           type: string
+    SystemDefaultMediaX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        subType:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
     RingTypeAlertInfoX:
       type: object
       required:
@@ -1021,17 +1032,6 @@ components:
         alertInfoHeaderValue:
           type: string
           description: sip header for this ring type
-    SystemDefaultMediaX:
-      type: object
-      properties:
-        storageId:
-          type: string
-        subType:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
     DeviceTypeX_2:
       type: object
       properties:

@@ -85,40 +85,6 @@ paths:
           description: Invalid partition or account
 components:
   schemas:
-    ServiceActivationEventLogX:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - REJECTED
-          - FOC_RECEIVED
-          - FOC_REMOVED
-          - CANCELLED
-          - CANCEL_PENDING
-          - CARRIER_CANCELLED
-          - DELETE_PENDING
-          - DELETE_SCHEDULED
-          - COMPLETED
-          - CORRECTED_COMPLETED
-          - COOLDOWN
-          - HOT_CUT_PORT
-          - ON_HOLD
-          - RESELLER_PENDING
-        actionDate:
-          type: string
-          format: date-time
-        code:
-          type: string
-        message:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
-        generatedTicketId:
-          type: string
     ServiceActivationEventX:
       type: object
       properties:
@@ -239,21 +205,40 @@ components:
           items:
             originalRef: ServiceActivationEventLogX
             $ref: '#/components/schemas/ServiceActivationEventLogX'
-    PublicApiException:
+    ServiceActivationEventLogX:
       type: object
       properties:
         status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        actionDate:
+          type: string
+          format: date-time
+        code:
+          type: string
+        message:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        generatedTicketId:
+          type: string
     ServiceActivationEventX_2:
       type: object
       properties:
@@ -373,6 +358,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ServiceActivationEventLogX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     ServiceActivationEventTypeX:
       type: string
       enum:

@@ -61,60 +61,124 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    DeviceGraphUnlimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - tnas
-        properties:
-          tnas:
-            type: array
-            items:
-              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
-    DirectoryListingX:
+    DeviceGraph:
       type: object
       properties:
-        listed:
-          type: boolean
-        type:
+        deviceTypeId:
           type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX'
-    PublicApiException:
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        macAddress:
+          type: string
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+        userId:
+          type: string
+        sipUsername:
+          type: string
+        linetype:
+          type: string
+    AddressX:
       type: object
       properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    DeviceGraphLimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - telephoneNumbers
-        properties:
-          telephoneNumbers:
-            type: array
-            items:
-              type: string
+        id:
+          type: string
+        firstName:
+          type: string
+          minLength: 1
+          maxLength: 256
+        middleInitial:
+          type: string
+          maxLength: 256
+        lastName:
+          type: string
+          maxLength: 256
+        businessName:
+          type: string
+          maxLength: 256
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          maxLength: 256
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          maxLength: 256
+        state:
+          type: string
+          description: A two-letter state abbreviation
+        country:
+          type: string
+          description: Alianza supports accounts in USA and CAN
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          maxLength: 10
     CustomerServiceRecordX:
       type: object
       properties:
@@ -322,124 +386,34 @@ components:
           type: boolean
         id:
           type: string
-    DeviceGraph:
+    DeviceGraphUnlimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - tnas
+        properties:
+          tnas:
+            type: array
+            items:
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
+    DirectoryListingX:
       type: object
       properties:
-        deviceTypeId:
-          type: string
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        macAddress:
-          type: string
-        deviceName:
-          type: string
-        emergencyNumber:
-          type: string
-        faxEnabled:
+        listed:
           type: boolean
-        lineNumber:
-          type: integer
-        userId:
+        type:
           type: string
-        sipUsername:
-          type: string
-        linetype:
-          type: string
-    AddressX:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-          minLength: 1
-          maxLength: 256
-        middleInitial:
-          type: string
-          maxLength: 256
-        lastName:
-          type: string
-          maxLength: 256
-        businessName:
-          type: string
-          maxLength: 256
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
           enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-          maxLength: 256
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-          maxLength: 256
-        state:
-          type: string
-          description: A two-letter state abbreviation
-        country:
-          type: string
-          description: Alianza supports accounts in USA and CAN
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-          maxLength: 10
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX'
     E911AddressX:
       type: object
       properties:
@@ -537,6 +511,32 @@ components:
         language:
           type: string
           description: Optional, see /v2/ref/language for supported languages
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DeviceGraphLimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - telephoneNumbers
+        properties:
+          telephoneNumbers:
+            type: array
+            items:
+              type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -248,6 +248,36 @@ paths:
           description: File not found
 components:
   schemas:
+    CallingPlanX:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
+          type: integer
+          format: int32
+        secondsRemaining:
+          type: integer
+          format: int64
     ModifyCallingPlanX:
       type: object
       properties:
@@ -282,51 +312,6 @@ components:
           type: integer
           format: int32
           description: Only used on add. Will only be applied to new plans. Will not be applied to pending plans plans. Does not apply when the request is to share a calling plan.
-    CallingPlanX:
-      type: object
-      properties:
-        id:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - ACCOUNT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        callingPlanProductId:
-          type: string
-        endDate:
-          type: string
-          format: date-time
-        startDate:
-          type: string
-          format: date-time
-        planMinutes:
-          type: integer
-          format: int32
-        secondsRemaining:
-          type: integer
-          format: int64
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     ModifyCallingPlanX_2:
       type: object
       properties:
@@ -361,6 +346,21 @@ components:
           type: integer
           format: int32
           description: Only used on add.  Will only be applied to new plans.   Will not be applied to pending plans plans.  Does not apply when the request is to share a calling plan.
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

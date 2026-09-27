@@ -139,14 +139,6 @@ paths:
                 $ref: '#/components/schemas/BulkOperationErrorResponse'
 components:
   schemas:
-    JobOutputCollectionDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the output collection
-      required:
-      - id
     JobDTO:
       type: object
       properties:
@@ -214,6 +206,13 @@ components:
           - index: index (location) of the error
             path: path
             description: description of the schema error
+    JobStatusDTO:
+      type: string
+      enum:
+      - CREATED
+      - STARTED
+      - ABORTED
+      - COMPLETED
     JobFormDTO:
       type: object
       properties:
@@ -243,13 +242,14 @@ components:
       - transformObjectFile
       - targetAccountId
       - jobTypeId
-    JobStatusDTO:
-      type: string
-      enum:
-      - CREATED
-      - STARTED
-      - ABORTED
-      - COMPLETED
+    JobOutputCollectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the output collection
+      required:
+      - id
   examples:
     CreateJobExample:
       summary: Create a Job (multipart/form-data)

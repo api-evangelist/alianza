@@ -656,6 +656,18 @@ components:
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
     MultipartFormDataInput:
       type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
     ProvisioningRequestX:
       type: object
       properties:
@@ -672,18 +684,6 @@ components:
         ipAddress:
           type: string
         userAgent:
-          type: string
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
           type: string
     DeviceMetadataX:
       type: object
@@ -786,21 +786,6 @@ components:
         file:
           type: string
           format: binary
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     ProvisioningRequestX_2:
       type: object
       properties:
@@ -823,6 +808,21 @@ components:
         userAgent:
           type: string
           description: The user agent that was used to retrieve the provisioning data.
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     DeviceMetadataX_2:
       type: object
       properties:

@@ -293,6 +293,15 @@ components:
           type: string
         groupName:
           type: string
+    SipCredentialData:
+      type: object
+      properties:
+        sipUsernameLine1:
+          type: string
+        sipUsernameLine2:
+          type: string
+        sipPassword:
+          type: string
     CymbusAccountGroup:
       type: object
       properties:
@@ -303,15 +312,6 @@ components:
         groupName:
           type: string
         partitionId:
-          type: string
-    SipCredentialData:
-      type: object
-      properties:
-        sipUsernameLine1:
-          type: string
-        sipUsernameLine2:
-          type: string
-        sipPassword:
           type: string
     PublicApiException:
       type: object

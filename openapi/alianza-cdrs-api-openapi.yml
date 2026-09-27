@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Alianza CD Rs API
+  title: Alianza CDRs API
   version: '2'
   description: 'Operations tagged CDRs across 2 of this provider''s published API definitions: alianza-apidocs-swagger2-original.json, alianza-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
@@ -597,52 +597,17 @@ paths:
           description: Not found
 components:
   schemas:
-    JobError:
+    CallDetailRecordSearchResponse:
       type: object
       properties:
-        error:
-          type: string
-        lineNumber:
+        totalRecords:
           type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    CdrApplicationData:
-      type: object
-      discriminator: type
-    Job:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        userId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - DONE
-          - FAILED
-        errors:
+          format: int64
+        results:
           type: array
           items:
-            originalRef: JobError
-            $ref: '#/components/schemas/JobError'
-        inputKey:
-          type: string
-        outputKey:
-          type: string
-        start:
-          type: integer
-          format: int64
-        lastUpdated:
-          type: integer
-          format: int64
+            originalRef: CallDetailRecord
+            $ref: '#/components/schemas/CallDetailRecord'
     CallDetailRecord:
       type: object
       properties:
@@ -946,80 +911,7 @@ components:
             type: string
         remoteChargeInfo:
           type: string
-    CallDetailRecordSearchResponse:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            originalRef: CallDetailRecord
-            $ref: '#/components/schemas/CallDetailRecord'
-    SipTrunkCdrApplicationData:
-      allOf:
-      - $ref: '#/components/schemas/CdrApplicationData_2'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/SipTrunkApplication'
-    SipTrunkApplication:
-      type: object
-      properties:
-        sipTrunkId:
-          type: string
-        burstCallsCount:
-          type: integer
-          format: int32
-        concurrentCallsCount:
-          type: integer
-          format: int32
-    CdrApplicationData_2:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          sip-trunks-interactions: '#/components/schemas/SipTrunkCdrApplicationData'
-          vfax-failure: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
-          vfax-setup-failure: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
-          vfax-success: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
-      anyOf:
-      - $ref: '#/components/schemas/SipTrunkCdrApplicationData'
-      - $ref: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
-      - $ref: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
-      - $ref: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
-    VirtualFaxFailureCdrApplicationData:
-      allOf:
-      - $ref: '#/components/schemas/CdrApplicationData_2'
-      - type: object
-        properties:
-          resolution:
-            type: string
-          fileSize:
-            type: integer
-            format: int64
-          badRows:
-            type: integer
-            format: int32
-          mediaInfo:
-            $ref: '#/components/schemas/CdrMediaInfo'
-          totalPageCount:
-            type: integer
-            format: int32
-    CdrMediaInfo:
-      type: object
-      discriminator:
-        propertyName: type
-        mapping:
-          audio: '#/components/schemas/CdrAudioInfo'
-          t38: '#/components/schemas/CdrT38Info'
-      anyOf:
-      - $ref: '#/components/schemas/CdrAudioInfo'
-      - $ref: '#/components/schemas/CdrT38Info'
-    Job_2:
+    Job:
       type: object
       properties:
         id:
@@ -1038,63 +930,83 @@ components:
         errors:
           type: array
           items:
+            originalRef: JobError
             $ref: '#/components/schemas/JobError'
         inputKey:
           type: string
         outputKey:
           type: string
         start:
-          type: string
-          format: date-time
+          type: integer
+          format: int64
         lastUpdated:
+          type: integer
+          format: int64
+    JobError:
+      type: object
+      properties:
+        error:
           type: string
-          format: date-time
-      xml:
-        name: job
-    CdrT38Info:
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
+    CdrApplicationData:
+      type: object
+      discriminator: type
+    SipTrunkApplication:
+      type: object
+      properties:
+        sipTrunkId:
+          type: string
+        burstCallsCount:
+          type: integer
+          format: int32
+        concurrentCallsCount:
+          type: integer
+          format: int32
+    CdrAudioInfo:
       allOf:
       - $ref: '#/components/schemas/CdrMediaInfo'
       - type: object
         properties:
-          errorCorrectionEnabled:
-            type: boolean
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
+          codec:
             type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    VirtualFaxSetupFailureCdrApplicationData:
-      allOf:
-      - $ref: '#/components/schemas/CdrApplicationData_2'
-      - type: object
-    VirtualFaxSuccessCdrApplicationData:
+          bitRate:
+            type: integer
+            format: int32
+    SipTrunkCdrApplicationData:
       allOf:
       - $ref: '#/components/schemas/CdrApplicationData_2'
       - type: object
         properties:
-          resolution:
-            type: string
-          fileSize:
-            type: integer
-            format: int64
-          badRows:
-            type: integer
-            format: int32
-          mediaInfo:
-            $ref: '#/components/schemas/CdrMediaInfo'
-          totalPageCount:
-            type: integer
-            format: int32
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/SipTrunkApplication'
+    CdrMediaInfo:
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          audio: '#/components/schemas/CdrAudioInfo'
+          t38: '#/components/schemas/CdrT38Info'
+      anyOf:
+      - $ref: '#/components/schemas/CdrAudioInfo'
+      - $ref: '#/components/schemas/CdrT38Info'
+    CallDetailRecordSearchResponse_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallDetailRecord_2'
     CallDetailRecord_2:
       type: object
       properties:
@@ -1384,26 +1296,114 @@ components:
           type: string
         forwardingCnam:
           type: string
-    CdrAudioInfo:
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    VirtualFaxSuccessCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+        properties:
+          resolution:
+            type: string
+          fileSize:
+            type: integer
+            format: int64
+          badRows:
+            type: integer
+            format: int32
+          mediaInfo:
+            $ref: '#/components/schemas/CdrMediaInfo'
+          totalPageCount:
+            type: integer
+            format: int32
+    VirtualFaxFailureCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+        properties:
+          resolution:
+            type: string
+          fileSize:
+            type: integer
+            format: int64
+          badRows:
+            type: integer
+            format: int32
+          mediaInfo:
+            $ref: '#/components/schemas/CdrMediaInfo'
+          totalPageCount:
+            type: integer
+            format: int32
+    CdrApplicationData_2:
+      type: object
+      discriminator:
+        propertyName: type
+        mapping:
+          sip-trunks-interactions: '#/components/schemas/SipTrunkCdrApplicationData'
+          vfax-failure: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
+          vfax-setup-failure: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
+          vfax-success: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
+      anyOf:
+      - $ref: '#/components/schemas/SipTrunkCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxFailureCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxSetupFailureCdrApplicationData'
+      - $ref: '#/components/schemas/VirtualFaxSuccessCdrApplicationData'
+    VirtualFaxSetupFailureCdrApplicationData:
+      allOf:
+      - $ref: '#/components/schemas/CdrApplicationData_2'
+      - type: object
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    CdrT38Info:
       allOf:
       - $ref: '#/components/schemas/CdrMediaInfo'
       - type: object
         properties:
-          codec:
-            type: string
-          bitRate:
-            type: integer
-            format: int32
-    CallDetailRecordSearchResponse_2:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/CallDetailRecord_2'
+          errorCorrectionEnabled:
+            type: boolean
   securitySchemes:
     X-Auth-Token:
       type: apiKey
