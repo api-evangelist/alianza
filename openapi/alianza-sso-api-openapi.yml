@@ -75,13 +75,6 @@ paths:
             $ref: '#/components/schemas/LoginTokenX'
 components:
   schemas:
-    SsoDataX:
-      type: object
-      properties:
-        clientId:
-          type: string
-        ssoUrl:
-          type: string
     LoginTokenX:
       type: object
       properties:
@@ -163,4 +156,11 @@ components:
         groupId:
           type: string
         groupName:
+          type: string
+    SsoDataX:
+      type: object
+      properties:
+        clientId:
+          type: string
+        ssoUrl:
           type: string

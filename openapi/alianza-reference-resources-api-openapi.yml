@@ -850,6 +850,78 @@ paths:
                 - Canada/Newfoundland
 components:
   schemas:
+    DeviceTypeX:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLines:
+          type: integer
+          format: int32
+        deviceTypeManufacturer:
+          type: string
+          enum:
+          - CISCO_LINKSYS_SIPURA
+          - POLYCOM
+          - ARRIS
+          - OBIHAI
+          - INNOMEDIA
+          - THIRD_PARTY
+          - SOFT_PHONE
+          - ZTE
+          - SCIENTIFIC_ATLANTA
+          - CALIX
+          - YEALINK
+          - SNOM
+          - SMART_RG
+          - ACROBITS
+          - GRANDSTREAM
+          - ADTRAN
+          - MEDIATRIX
+          - ALGO
+          - MITEL
+          - CLEARLY_IP
+        acceptsRemoteResync:
+          type: boolean
+        faxSupported:
+          type: boolean
+        macAddressRequired:
+          type: boolean
+        showProvisionStatus:
+          type: boolean
+        enforceUniqueAdminPassword:
+          type: boolean
+        customEncryptionKeys:
+          type: boolean
+        sipPagingEnabled:
+          type: boolean
+        distinctiveRingInfo:
+          type: string
+        smbDevice:
+          type: boolean
+        sideCarTypeIds:
+          type: array
+          items:
+            type: string
+        maxSideCars:
+          type: integer
+          format: int32
+        ringTypeAlertInfo:
+          type: array
+          items:
+            originalRef: RingTypeAlertInfoX
+            $ref: '#/components/schemas/RingTypeAlertInfoX'
+    LanguageReferenceX:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
     PermissionTypeDefaultsX:
       type: object
       properties:
@@ -916,102 +988,6 @@ components:
           - DELETE_MYUSER
           - DELETE
           - DENIED
-    DeviceTypeX:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        numLines:
-          type: integer
-          format: int32
-        deviceTypeManufacturer:
-          type: string
-          enum:
-          - CISCO_LINKSYS_SIPURA
-          - POLYCOM
-          - ARRIS
-          - OBIHAI
-          - INNOMEDIA
-          - THIRD_PARTY
-          - SOFT_PHONE
-          - ZTE
-          - SCIENTIFIC_ATLANTA
-          - CALIX
-          - YEALINK
-          - SNOM
-          - SMART_RG
-          - ACROBITS
-          - GRANDSTREAM
-          - ADTRAN
-          - MEDIATRIX
-          - ALGO
-          - MITEL
-          - CLEARLY_IP
-        acceptsRemoteResync:
-          type: boolean
-        faxSupported:
-          type: boolean
-        macAddressRequired:
-          type: boolean
-        showProvisionStatus:
-          type: boolean
-        enforceUniqueAdminPassword:
-          type: boolean
-        customEncryptionKeys:
-          type: boolean
-        sipPagingEnabled:
-          type: boolean
-        distinctiveRingInfo:
-          type: string
-        smbDevice:
-          type: boolean
-        sideCarTypeIds:
-          type: array
-          items:
-            type: string
-        maxSideCars:
-          type: integer
-          format: int32
-        ringTypeAlertInfo:
-          type: array
-          items:
-            originalRef: RingTypeAlertInfoX
-            $ref: '#/components/schemas/RingTypeAlertInfoX'
-    SideCarTypeX:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        numLinesPerPage:
-          type: integer
-          format: int32
-        numPages:
-          type: integer
-          format: int32
-    LanguageReferenceX:
-      type: object
-      properties:
-        id:
-          type: string
-        country:
-          type: string
-        language:
-          type: string
-    SystemDefaultMediaX:
-      type: object
-      properties:
-        storageId:
-          type: string
-        subType:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
     RingTypeAlertInfoX:
       type: object
       required:
@@ -1032,6 +1008,30 @@ components:
         alertInfoHeaderValue:
           type: string
           description: sip header for this ring type
+    SideCarTypeX:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLinesPerPage:
+          type: integer
+          format: int32
+        numPages:
+          type: integer
+          format: int32
+    SystemDefaultMediaX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        subType:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
     DeviceTypeX_2:
       type: object
       properties:

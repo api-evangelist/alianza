@@ -278,21 +278,6 @@ paths:
             $ref: '#/components/schemas/SipCredentialData'
 components:
   schemas:
-    CymbusPartitionGroup:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        supportEmail:
-          type: string
-        productName:
-          type: string
-        voicemailStarCode:
-          type: string
-        proxyHost:
-          type: string
-        groupName:
-          type: string
     SipCredentialData:
       type: object
       properties:
@@ -312,6 +297,21 @@ components:
         groupName:
           type: string
         partitionId:
+          type: string
+    CymbusPartitionGroup:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        supportEmail:
+          type: string
+        productName:
+          type: string
+        voicemailStarCode:
+          type: string
+        proxyHost:
+          type: string
+        groupName:
           type: string
     PublicApiException:
       type: object

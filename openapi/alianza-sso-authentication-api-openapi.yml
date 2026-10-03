@@ -286,6 +286,27 @@ paths:
           description: Forbidden - insufficient permissions
 components:
   schemas:
+    OAuthErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: INVALID_STATE
+        message:
+          type: string
+          example: State token validation failed
+        details:
+          type: object
+          additionalProperties: true
+    ValidationErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+          example:
+          - path param emailAddress must be a well-formed email address
     LoginTokenX:
       type: object
       properties:
@@ -368,6 +389,31 @@ components:
           type: string
         groupName:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    RedirectResponse:
+      type: object
+      required:
+      - redirectUri
+      properties:
+        redirectUri:
+          type: string
+          format: uri
+          description: URL of the Identity Provider login page where the user should be redirected
+          example: https://idp.example.com/login?SAMLRequest=abc123
     SSOLinkage:
       type: object
       description: SSO linkage information
@@ -394,52 +440,6 @@ components:
           type: string
           format: email
           description: Email from external identity provider
-    RedirectResponse:
-      type: object
-      required:
-      - redirectUri
-      properties:
-        redirectUri:
-          type: string
-          format: uri
-          description: URL of the Identity Provider login page where the user should be redirected
-          example: https://idp.example.com/login?SAMLRequest=abc123
-    ValidationErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-          example:
-          - path param emailAddress must be a well-formed email address
-    OAuthErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: INVALID_STATE
-        message:
-          type: string
-          example: State token validation failed
-        details:
-          type: object
-          additionalProperties: true
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

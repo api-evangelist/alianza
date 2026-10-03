@@ -238,11 +238,6 @@ paths:
           description: EntityNotFound when there is no job with the given Id or if the job has no output
 components:
   schemas:
-    JobOutputUrl:
-      type: object
-      properties:
-        url:
-          type: string
     Job:
       type: object
       properties:
@@ -274,8 +269,6 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    InputStream:
-      type: object
     JobError:
       type: object
       properties:
@@ -288,6 +281,13 @@ components:
           type: string
         input:
           type: string
+    JobOutputUrl:
+      type: object
+      properties:
+        url:
+          type: string
+    InputStream:
+      type: object
     JobUpload:
       type: object
       properties:
@@ -327,15 +327,6 @@ components:
           format: date-time
       xml:
         name: job
-    JobUpload_2:
-      type: object
-      properties:
-        url:
-          type: string
-        key:
-          type: string
-      xml:
-        name: upload
     PublicApiException:
       type: object
       properties:
@@ -351,6 +342,15 @@ components:
           example:
             key: value
             key2: value2
+    JobUpload_2:
+      type: object
+      properties:
+        url:
+          type: string
+        key:
+          type: string
+      xml:
+        name: upload
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -706,30 +706,6 @@ paths:
           description: Not found
 components:
   schemas:
-    ForwardAlwaysReference:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
-          type: string
-        enabled:
-          type: boolean
-    RegistrationStatus:
-      type: object
-      properties:
-        registered:
-          type: boolean
-        lockedOut:
-          type: boolean
     SipTrunkForwardRules:
       type: object
       properties:
@@ -752,6 +728,13 @@ components:
           items:
             originalRef: ForwardReference
             $ref: '#/components/schemas/ForwardReference'
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
     SbcEndpoint:
       type: object
       properties:
@@ -764,29 +747,6 @@ components:
           format: int32
         protocol:
           type: string
-    CallingPlan:
-      type: object
-      properties:
-        id:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        callingPlanProductId:
-          type: string
-        endDate:
-          type: string
-          format: date-time
-        startDate:
-          type: string
-          format: date-time
-        planMinutes:
-          type: integer
-          format: int32
-        secondsRemaining:
-          type: integer
-          format: int64
     SetupCallingPlan:
       type: object
       properties:
@@ -798,21 +758,6 @@ components:
           - SHARED_CALLING_PLAN
           - NEW_CALLING_PLAN
           - UNSHARED_CALLING_PLAN
-    ForwardReference:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
-          type: string
     SipTrunk:
       type: object
       properties:
@@ -885,26 +830,61 @@ components:
           format: int32
         languageTag:
           type: string
-    SipTrunkForwardReference:
+    ForwardReference:
       type: object
-      required:
-      - referenceType
       properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
         referenceId:
           type: string
-          description: id of the entity to forward the calls to
+    ForwardAlwaysReference:
+      type: object
+      properties:
         referenceType:
-          $ref: '#/components/schemas/ReferenceType'
-    ReferenceType:
-      type: string
-      enum:
-      - SIP_TRUNK
-      - END_USER
-      - TELEPHONE
-      - AUTO_ATTENDANT
-      - IVR
-      - VOICEMAIL
-      - BUSY
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+        enabled:
+          type: boolean
+    CallingPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
+          type: integer
+          format: int32
+        secondsRemaining:
+          type: integer
+          format: int64
     SipTrunkForwardRules_2:
       type: object
       properties:
@@ -924,6 +904,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SipTrunkForwardReference'
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
     SetupCallingPlan_2:
       type: object
       properties:
@@ -934,28 +921,6 @@ components:
           enum:
           - SHARED_CALLING_PLAN
           - NEW_CALLING_PLAN
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
     SipTrunk_2:
       type: object
       properties:
@@ -1031,6 +996,41 @@ components:
           format: int32
         languageTag:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
+    SipTrunkForwardReference:
+      type: object
+      required:
+      - referenceType
+      properties:
+        referenceId:
+          type: string
+          description: id of the entity to forward the calls to
+        referenceType:
+          $ref: '#/components/schemas/ReferenceType'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

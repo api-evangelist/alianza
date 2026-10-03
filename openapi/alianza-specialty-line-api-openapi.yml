@@ -279,14 +279,6 @@ paths:
                 $ref: '#/components/schemas/SpecialtyLineErrorResponseDto'
 components:
   schemas:
-    ValidateSipUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
-      required:
-      - username
-      title: ValidateSIPUsername
     SpecialtyLineResponseDto:
       type: object
       properties:
@@ -340,10 +332,6 @@ components:
       - name
       - callingPlanIds
       title: SpecialtyLineX
-    SpecialtyLinesX:
-      type: array
-      items:
-        $ref: '#/components/schemas/SpecialtyLineResponseDto'
     SpecialtyLineRequestDto:
       type: object
       properties:
@@ -383,6 +371,18 @@ components:
       - e911CallbackNumber
       - callingPlanIds
       title: SpecialtyLine
+    SpecialtyLinesX:
+      type: array
+      items:
+        $ref: '#/components/schemas/SpecialtyLineResponseDto'
+    ValidateSipUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+      title: ValidateSIPUsername
     SpecialtyLineErrorResponseDto:
       type: object
       properties:

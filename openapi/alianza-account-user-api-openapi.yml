@@ -481,6 +481,21 @@ components:
           type: string
         id:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     AccountUserX_2:
       type: object
       properties:
@@ -524,21 +539,6 @@ components:
       - username
       - firstName
       - lastName
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

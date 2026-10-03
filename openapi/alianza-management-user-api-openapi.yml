@@ -671,11 +671,6 @@ paths:
           description: Management user not found
 components:
   schemas:
-    SsoUserX:
-      type: object
-      properties:
-        ssoStatus:
-          type: string
     ManagementUserSearchResponseX:
       type: object
       properties:
@@ -687,6 +682,13 @@ components:
           items:
             originalRef: ManagementUserX
             $ref: '#/components/schemas/ManagementUserX'
+    MultipartFormDataInput:
+      type: object
+    SsoUserX:
+      type: object
+      properties:
+        ssoStatus:
+          type: string
     ManagementUserX:
       type: object
       properties:
@@ -722,31 +724,21 @@ components:
           uniqueItems: true
           items:
             type: string
-    MultipartFormDataInput:
-      type: object
-    MultipartFormDataInput_2:
+    PublicApiException:
       type: object
       properties:
-        file:
-          type: string
-          format: binary
-    SsoUserX_2:
-      type: object
-      description: This is only the <a href="https://developer.okta.com/docs/reference/api/users/#user-status">user.status</a> of an Okta user which sits behind one of the Alianza user types. In our api, we represent this as a string, but in Okta, it in an enumeration whose possible values are <ul><li>STAGED</li><li>PROVISIONED</li><li>ACTIVE</li><li>RECOVERY</li><li>LOCKED_OUT</li><li>PASSWORD_EXPIRED</li><li>SUSPENDED</li><li>DEPROVISIONED</li></ul> at the time of this writing.
-      properties:
-        ssoStatus:
-          type: string
-          example: ACTIVE
-    ManagementUserSearchResponseX_2:
-      type: object
-      properties:
-        totalRecords:
+        status:
           type: integer
-          format: int64
-        results:
+        messages:
           type: array
           items:
-            $ref: '#/components/schemas/ManagementUserX_2'
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     ManagementUserX_2:
       type: object
       properties:
@@ -786,21 +778,29 @@ components:
             type: string
             description: Reference to <a href="#/~schema/SecurityRoleX">SecurityRoleX.id</a>.
           uniqueItems: true
-    PublicApiException:
+    MultipartFormDataInput_2:
       type: object
       properties:
-        status:
+        file:
+          type: string
+          format: binary
+    SsoUserX_2:
+      type: object
+      description: This is only the <a href="https://developer.okta.com/docs/reference/api/users/#user-status">user.status</a> of an Okta user which sits behind one of the Alianza user types. In our api, we represent this as a string, but in Okta, it in an enumeration whose possible values are <ul><li>STAGED</li><li>PROVISIONED</li><li>ACTIVE</li><li>RECOVERY</li><li>LOCKED_OUT</li><li>PASSWORD_EXPIRED</li><li>SUSPENDED</li><li>DEPROVISIONED</li></ul> at the time of this writing.
+      properties:
+        ssoStatus:
+          type: string
+          example: ACTIVE
+    ManagementUserSearchResponseX_2:
+      type: object
+      properties:
+        totalRecords:
           type: integer
-        messages:
+          format: int64
+        results:
           type: array
           items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+            $ref: '#/components/schemas/ManagementUserX_2'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

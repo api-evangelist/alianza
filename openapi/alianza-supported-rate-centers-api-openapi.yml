@@ -105,35 +105,6 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    TelephoneNumberPrefixViewX:
-      type: object
-      properties:
-        prefix:
-          type: string
-        wireless:
-          type: boolean
-        wirelessBlockNumbers:
-          type: array
-          items:
-            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-            type: string
-            format: byte
-          uniqueItems: true
     RateCenterSearchViewX:
       type: object
       properties:
@@ -169,6 +140,35 @@ components:
         distance:
           type: number
           format: double
+    TelephoneNumberPrefixViewX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        wireless:
+          type: boolean
+        wirelessBlockNumbers:
+          type: array
+          items:
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+            format: byte
+          uniqueItems: true
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

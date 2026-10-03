@@ -86,6 +86,152 @@ components:
           type: string
         linetype:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DeviceGraphUnlimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - tnas
+        properties:
+          tnas:
+            type: array
+            items:
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
+    TelephoneNumberAccountV2X:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          description: What kind of destination gets calls from this number.
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+          description: The id of the destination which gets calls from this number.  You can think of this as a variable refkey; what it points to depends on the referenceType.
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        customerServiceRecord:
+          $ref: '#/components/schemas/CustomerServiceRecordX'
+        carrierStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        orderVersion:
+          type: string
+        e911Address:
+          $ref: '#/components/schemas/E911AddressX'
+        temporaryNumber:
+          type: string
+        directoryListing:
+          $ref: '#/components/schemas/DirectoryListingX'
+        assignAsCallerId:
+          type: boolean
+        byotnCarrierId:
+          type: string
+        ringType:
+          type: string
+          description: Default ringtype for this phone
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        carrierId:
+          type: string
+        tollFree:
+          type: boolean
+        id:
+          type: string
+    DirectoryListingX:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX'
     AddressX:
       type: object
       properties:
@@ -179,6 +325,17 @@ components:
         unit:
           type: string
           maxLength: 10
+    DeviceGraphLimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - telephoneNumbers
+        properties:
+          telephoneNumbers:
+            type: array
+            items:
+              type: string
     CustomerServiceRecordX:
       type: object
       properties:
@@ -283,137 +440,6 @@ components:
           type: boolean
         customerName:
           type: string
-    TelephoneNumberAccountV2X:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          description: What kind of destination gets calls from this number.
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-          description: The id of the destination which gets calls from this number.  You can think of this as a variable refkey; what it points to depends on the referenceType.
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
-          type: boolean
-        operationalStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - STAGED
-        portId:
-          type: string
-        servicePackageType:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        customerServiceRecord:
-          $ref: '#/components/schemas/CustomerServiceRecordX'
-        carrierStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - ACTIVATION_ON_HOLD
-          - ACTIVATION_PENDING
-          - PORT_PENDING
-          - CANCEL_PORT
-          - CANCEL_PORT_EXPIDITED
-          - DELETE_PENDING
-          - DELETED
-          - CANCEL_PORT_COMPLETE
-          - PORT_REJECTED
-          - INVENTORY
-          - INVENTORY_CLAIMED
-          - COOLDOWN
-          - RECOVERED
-        orderVersion:
-          type: string
-        e911Address:
-          $ref: '#/components/schemas/E911AddressX'
-        temporaryNumber:
-          type: string
-        directoryListing:
-          $ref: '#/components/schemas/DirectoryListingX'
-        assignAsCallerId:
-          type: boolean
-        byotnCarrierId:
-          type: string
-        ringType:
-          type: string
-          description: Default ringtype for this phone
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        carrierId:
-          type: string
-        tollFree:
-          type: boolean
-        id:
-          type: string
-    DeviceGraphUnlimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - tnas
-        properties:
-          tnas:
-            type: array
-            items:
-              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
-    DirectoryListingX:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX'
     E911AddressX:
       type: object
       properties:
@@ -511,32 +537,6 @@ components:
         language:
           type: string
           description: Optional, see /v2/ref/language for supported languages
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    DeviceGraphLimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - telephoneNumbers
-        properties:
-          telephoneNumbers:
-            type: array
-            items:
-              type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

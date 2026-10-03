@@ -826,6 +826,26 @@ paths:
           description: voicemail box not found
 components:
   schemas:
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+    PinChange:
+      type: object
+      properties:
+        accountId:
+          type: string
+        voicemailBoxId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        pin:
+          type: string
     VoicemailMessageX:
       type: object
       properties:
@@ -965,26 +985,21 @@ components:
           additionalProperties:
             originalRef: VoicemailMessageX
             $ref: '#/components/schemas/VoicemailMessageX'
-    VoicemailReferencedByX:
+    PublicApiException:
       type: object
       properties:
-        type:
-          type: string
-        id:
-          type: string
-    PinChange:
-      type: object
-      properties:
-        accountId:
-          type: string
-        voicemailBoxId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        pin:
-          type: string
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     VoicemailBoxX_2:
       type: object
       properties:
@@ -1058,21 +1073,6 @@ components:
           description: Map of voicemail box greetings
           additionalProperties:
             $ref: '#/components/schemas/VoicemailMessageX'
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

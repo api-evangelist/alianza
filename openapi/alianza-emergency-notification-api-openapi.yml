@@ -301,34 +301,6 @@ paths:
             $ref: '#/components/schemas/NotificationEvent'
 components:
   schemas:
-    ComplianceConfiguration:
-      type: object
-      properties:
-        installDate:
-          type: string
-          format: date-time
-        usingAlternativeSolution:
-          type: boolean
-        emailRecipients:
-          type: array
-          items:
-            type: string
-        smsRecipients:
-          type: array
-          items:
-            type: string
-        inCompliance:
-          type: boolean
-    RecipientStatus:
-      type: object
-      properties:
-        recipient:
-          type: string
-        status:
-          type: string
-          enum:
-          - SENT
-          - FAILED
     NotificationGroup:
       type: object
       properties:
@@ -388,37 +360,34 @@ components:
           items:
             originalRef: RecipientStatus
             $ref: '#/components/schemas/RecipientStatus'
-    NotificationGroup_2:
-      type: object
-      description: A notification group configures who is notified when an enduser dials 911.
-      properties:
-        id:
-          type: string
-          description: ID of the notification group.  For ACCOUNT type groups, this refers to <a href="#/~schema/Account">account.id</a>.
-        type:
-          type: string
-          description: The type of notification group.
-          enum:
-          - ACCOUNT
-        name:
-          type: string
-          description: The name of the notification group.
-        compliance:
-          $ref: '#/components/schemas/ComplianceConfiguration_2'
-        timeZoneId:
-          type: string
-    RecipientStatus_2:
+    RecipientStatus:
       type: object
       properties:
         recipient:
           type: string
-          description: This represents the intended recipient of the emergency notification.  For email, this is the email address.  For SMS, this is the phone number.
         status:
           type: string
-          description: Indicates the success of the notification delivery.<BR>SENT - notification successfully sent to this recipient.<BR>FAILED - notification failed to be sent to this recipient.
           enum:
           - SENT
           - FAILED
+    ComplianceConfiguration:
+      type: object
+      properties:
+        installDate:
+          type: string
+          format: date-time
+        usingAlternativeSolution:
+          type: boolean
+        emailRecipients:
+          type: array
+          items:
+            type: string
+        smsRecipients:
+          type: array
+          items:
+            type: string
+        inCompliance:
+          type: boolean
     EmergencyNotificationEvent:
       type: object
       properties:
@@ -467,6 +436,52 @@ components:
           description: The list of recipients that were attempted via SMS.
           items:
             $ref: '#/components/schemas/RecipientStatus_2'
+    RecipientStatus_2:
+      type: object
+      properties:
+        recipient:
+          type: string
+          description: This represents the intended recipient of the emergency notification.  For email, this is the email address.  For SMS, this is the phone number.
+        status:
+          type: string
+          description: Indicates the success of the notification delivery.<BR>SENT - notification successfully sent to this recipient.<BR>FAILED - notification failed to be sent to this recipient.
+          enum:
+          - SENT
+          - FAILED
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    NotificationGroup_2:
+      type: object
+      description: A notification group configures who is notified when an enduser dials 911.
+      properties:
+        id:
+          type: string
+          description: ID of the notification group.  For ACCOUNT type groups, this refers to <a href="#/~schema/Account">account.id</a>.
+        type:
+          type: string
+          description: The type of notification group.
+          enum:
+          - ACCOUNT
+        name:
+          type: string
+          description: The name of the notification group.
+        compliance:
+          $ref: '#/components/schemas/ComplianceConfiguration_2'
+        timeZoneId:
+          type: string
     ComplianceConfiguration_2:
       type: object
       properties:
@@ -490,21 +505,6 @@ components:
         inCompliance:
           type: boolean
           description: Indicates whether the customer is in compliance with Kari's law.
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

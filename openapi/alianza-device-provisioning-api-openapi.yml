@@ -120,25 +120,6 @@ paths:
           description: Device Not found
 components:
   schemas:
-    RequestedDeviceX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceType:
-          type: string
-        lineCount:
-          type: integer
-          format: int32
-        dialPlan:
-          type: string
-        hasFaxEnabledLine:
-          type: boolean
-        lines:
-          type: array
-          items:
-            originalRef: RequestedDeviceLineX
-            $ref: '#/components/schemas/RequestedDeviceLineX'
     RequestedDeviceLineX:
       type: object
       properties:
@@ -167,3 +148,22 @@ components:
           type: boolean
         faxEnabled:
           type: boolean
+    RequestedDeviceX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
+          type: array
+          items:
+            originalRef: RequestedDeviceLineX
+            $ref: '#/components/schemas/RequestedDeviceLineX'

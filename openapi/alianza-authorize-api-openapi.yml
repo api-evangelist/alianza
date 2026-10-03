@@ -186,6 +186,19 @@ paths:
         required: true
 components:
   schemas:
+    Login:
+      type: object
+      required:
+      - password
+      - username
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        changePassword:
+          type: string
+          description: This should be used only when changing the password
     LoginTokenX:
       type: object
       properties:
@@ -268,19 +281,6 @@ components:
           type: string
         groupName:
           type: string
-    Login:
-      type: object
-      required:
-      - password
-      - username
-      properties:
-        username:
-          type: string
-        password:
-          type: string
-        changePassword:
-          type: string
-          description: This should be used only when changing the password
     PublicApiException:
       type: object
       properties:

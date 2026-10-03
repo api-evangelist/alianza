@@ -746,143 +746,12 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    CompleteSSOConfigRequest:
-      type: object
-      required:
-      - identityProviderSignInUrl
-      - identityProviderSigningCertificate
-      - externalIdAttributeFieldMapping
-      - ssoName
-      properties:
-        identityProviderSignInUrl:
-          type: string
-          format: uri
-          description: Identity Provider sign-in endpoint URL where SAML authentication requests are sent.
-        identityProviderSigningCertificate:
-          type: string
-          description: Identity Provider signing certificate in PEM or CER format.
-        userIdAttributeFieldMapping:
-          type: string
-          description: SAML attribute name that contains the Alianza user ID.
-        externalIdAttributeFieldMapping:
-          type: string
-          description: SAML attribute name containing the user's unique identifier in the IdP.
-        externalEmailAttributeFieldMapping:
-          type: string
-          description: SAML attribute name containing the user's email address.
-        ssoName:
-          type: string
-        identityProviderLogoutUrl:
-          type: string
-          format: uri
-        samlRequestProtocolBinding:
-          $ref: '#/components/schemas/SAMLRequestProtocolBinding'
-        enforcedSubPartitions:
-          type: array
-          items:
-            type: string
-        allowSpInitiatedAuthenticationFlow:
-          type: boolean
-          default: true
-        allowAlianzaAuthentication:
-          type: boolean
-    UserValidationResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/UserValidationResult'
-    SSOConfigCreateResponse:
-      type: object
-      properties:
-        scope:
-          type: string
-          enum:
-          - ACCOUNT_LEVEL_SSO
-          - PARTITION_ENFORCED_SSO
-          - PARTITION_SSO
-        scopeId:
-          type: string
-        ssoName:
-          type: string
-        assertionConsumerResponseUrl:
-          type: string
-          format: uri
-        serviceProviderEntityId:
-          type: string
-        serviceProviderSigningCertificate:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    UpdateSubPartitionsRequest:
-      type: object
-      required:
-      - enforcedSubPartitions
-      properties:
-        enforcedSubPartitions:
-          type: array
-          items:
-            type: string
-          description: List of sub-partition IDs to enforce. Merged with existing (union).
-        allowAlianzaAuthentication:
-          type: boolean
-          description: Allow Alianza authentication. Default true.
-          default: true
-        allowSpInitiatedAuthenticationFlow:
-          type: boolean
-          description: Allow SP-initiated authentication flow. Default true.
-          default: true
     SAMLRequestProtocolBinding:
       type: string
       enum:
       - POST
       - REDIRECT
       description: SAML Request Protocol Binding.
-    SSOConfigCreateRequest:
-      type: object
-      required:
-      - ssoName
-      properties:
-        partitionId:
-          type: string
-          description: Partition identifier. Required for partition-enforced/partition SSO configurations.
-        accountId:
-          type: string
-          description: Account identifier. Required for account-level SSO configurations.
-        ssoName:
-          type: string
-          description: SSO configuration name.
-          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
-          minLength: 4
-          maxLength: 36
-    UserValidationResult:
-      type: string
-      enum:
-      - LINKED_USER
-      - EXEMPTED_USER
-      - ACC_SSO_CONFIGURED
-      - P_E_SSO_CONFIGURED
-      - P_SSO_CONFIGURED
-      - NO_ACTIVE_CONFIG
-      - ACTIVE_CONFIG_ALZ_AUTHN_ALLOWED
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     SSOConfigResponse:
       type: object
       properties:
@@ -940,6 +809,137 @@ components:
           type: array
           items:
             type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    UpdateSubPartitionsRequest:
+      type: object
+      required:
+      - enforcedSubPartitions
+      properties:
+        enforcedSubPartitions:
+          type: array
+          items:
+            type: string
+          description: List of sub-partition IDs to enforce. Merged with existing (union).
+        allowAlianzaAuthentication:
+          type: boolean
+          description: Allow Alianza authentication. Default true.
+          default: true
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          description: Allow SP-initiated authentication flow. Default true.
+          default: true
+    UserValidationResult:
+      type: string
+      enum:
+      - LINKED_USER
+      - EXEMPTED_USER
+      - ACC_SSO_CONFIGURED
+      - P_E_SSO_CONFIGURED
+      - P_SSO_CONFIGURED
+      - NO_ACTIVE_CONFIG
+      - ACTIVE_CONFIG_ALZ_AUTHN_ALLOWED
+    SSOConfigCreateResponse:
+      type: object
+      properties:
+        scope:
+          type: string
+          enum:
+          - ACCOUNT_LEVEL_SSO
+          - PARTITION_ENFORCED_SSO
+          - PARTITION_SSO
+        scopeId:
+          type: string
+        ssoName:
+          type: string
+        assertionConsumerResponseUrl:
+          type: string
+          format: uri
+        serviceProviderEntityId:
+          type: string
+        serviceProviderSigningCertificate:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CompleteSSOConfigRequest:
+      type: object
+      required:
+      - identityProviderSignInUrl
+      - identityProviderSigningCertificate
+      - externalIdAttributeFieldMapping
+      - ssoName
+      properties:
+        identityProviderSignInUrl:
+          type: string
+          format: uri
+          description: Identity Provider sign-in endpoint URL where SAML authentication requests are sent.
+        identityProviderSigningCertificate:
+          type: string
+          description: Identity Provider signing certificate in PEM or CER format.
+        userIdAttributeFieldMapping:
+          type: string
+          description: SAML attribute name that contains the Alianza user ID.
+        externalIdAttributeFieldMapping:
+          type: string
+          description: SAML attribute name containing the user's unique identifier in the IdP.
+        externalEmailAttributeFieldMapping:
+          type: string
+          description: SAML attribute name containing the user's email address.
+        ssoName:
+          type: string
+        identityProviderLogoutUrl:
+          type: string
+          format: uri
+        samlRequestProtocolBinding:
+          $ref: '#/components/schemas/SAMLRequestProtocolBinding'
+        enforcedSubPartitions:
+          type: array
+          items:
+            type: string
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          default: true
+        allowAlianzaAuthentication:
+          type: boolean
+    UserValidationResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/UserValidationResult'
+    SSOConfigCreateRequest:
+      type: object
+      required:
+      - ssoName
+      properties:
+        partitionId:
+          type: string
+          description: Partition identifier. Required for partition-enforced/partition SSO configurations.
+        accountId:
+          type: string
+          description: Account identifier. Required for account-level SSO configurations.
+        ssoName:
+          type: string
+          description: SSO configuration name.
+          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
+          minLength: 4
+          maxLength: 36
   securitySchemes:
     X-Auth-Token:
       type: apiKey

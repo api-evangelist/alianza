@@ -1645,133 +1645,22 @@ paths:
       description: Production
 components:
   schemas:
-    UserProductPlanX:
+    JobUploadKey:
       type: object
       properties:
-        id:
+        key:
           type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        emailAddressRequired:
-          type: boolean
-    AccountActivationV2X:
+    JobError:
       type: object
       properties:
-        device:
-          originalRef: DeviceX
-          $ref: '#/components/schemas/DeviceX'
-        user:
-          originalRef: EndUserV2X
-          $ref: '#/components/schemas/EndUserV2X'
-        telephoneNumberAccount:
-          originalRef: TelephoneNumberAccountV2X
-          $ref: '#/components/schemas/TelephoneNumberAccountV2X'
-        dynamicTelephoneNumberActivation:
-          originalRef: DynamicTelephoneNumberActivationX
-          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX'
-        port:
-          originalRef: PortX
-          $ref: '#/components/schemas/PortX'
-        holdActivation:
-          type: boolean
-        account:
-          originalRef: Account
-          $ref: '#/components/schemas/Account'
-    CustomerServiceRecordX:
-      type: object
-      properties:
-        id:
+        error:
           type: string
-        firstName:
+        lineNumber:
+          type: integer
+          format: int32
+        column:
           type: string
-        middleInitial:
-          type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        firstNameSecondary:
-          type: string
-        blockCustomerName:
-          type: boolean
-        customerName:
+        input:
           type: string
     CallerIdConfigX:
       type: object
@@ -1788,1447 +1677,6 @@ components:
           type: boolean
         callerIdNumberReservationId:
           type: string
-    SideCarTypeX:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        numLinesPerPage:
-          type: integer
-          format: int32
-        numPages:
-          type: integer
-          format: int32
-    RingPhoneCallHandlingX:
-      type: object
-      properties:
-        busyCallHandling:
-          originalRef: CallHandlingX
-          $ref: '#/components/schemas/CallHandlingX'
-        noAnswerCallHandling:
-          originalRef: CallHandlingWithTimeoutX
-          $ref: '#/components/schemas/CallHandlingWithTimeoutX'
-        unregisteredCallHandling:
-          originalRef: CallHandlingX
-          $ref: '#/components/schemas/CallHandlingX'
-    MultipleActivationX:
-      type: object
-      required:
-      - account
-      properties:
-        account:
-          originalRef: Account
-          $ref: '#/components/schemas/Account'
-        endUsers:
-          type: array
-          items:
-            originalRef: EndUserWithMultipleTnActivationX
-            $ref: '#/components/schemas/EndUserWithMultipleTnActivationX'
-    SimultaneousRingCallHandlingX:
-      type: object
-      properties:
-        forwardToNumberList:
-          type: array
-          items:
-            type: string
-        noAnswerCallHandling:
-          originalRef: CallHandlingWithTimeoutX
-          $ref: '#/components/schemas/CallHandlingWithTimeoutX'
-    AccountDeviceDataX:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - LINE_HARDWARE
-          - USER
-        macAddress:
-          type: string
-        deviceType:
-          originalRef: DeviceTypeX
-          $ref: '#/components/schemas/DeviceTypeX'
-        sideCarType:
-          originalRef: SideCarTypeX
-          $ref: '#/components/schemas/SideCarTypeX'
-        numSideCars:
-          type: integer
-          format: int32
-        devices:
-          type: array
-          items:
-            originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX'
-    Job:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        userId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - DONE
-          - FAILED
-        errors:
-          type: array
-          items:
-            originalRef: JobError
-            $ref: '#/components/schemas/JobError'
-        inputKey:
-          type: string
-        outputKey:
-          type: string
-        start:
-          type: integer
-          format: int64
-        lastUpdated:
-          type: integer
-          format: int64
-    JobError:
-      type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    CallHandlingX:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - Forward
-          - Voicemail
-          - Busy
-        forwardToNumber:
-          type: string
-        description:
-          type: string
-    CallScreeningSettingsX:
-      type: object
-      properties:
-        anonymousCallScreen:
-          type: string
-          enum:
-          - Allow
-          - Block
-          - Voicemail
-          - Forward
-          - VipRing
-          - BlockWithPrompt
-        anonymousRingType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        tollFreeCallScreen:
-          type: string
-          enum:
-          - Allow
-          - Block
-          - Voicemail
-          - Forward
-          - VipRing
-          - BlockWithPrompt
-        tollFreeRingType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        defaultCallScreen:
-          type: string
-          enum:
-          - Allow
-          - Block
-          - Voicemail
-          - Forward
-          - VipRing
-          - BlockWithPrompt
-        defaultRingType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        customCallScreenList:
-          type: array
-          items:
-            originalRef: CustomCallScreenX
-            $ref: '#/components/schemas/CustomCallScreenX'
-        forwardTn:
-          type: string
-    LatLongCustomerServiceRecordX:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        middleInitial:
-          type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        firstNameSecondary:
-          type: string
-        blockCustomerName:
-          type: boolean
-        customerName:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-    AccountViewX:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        id:
-          type: string
-        accountNumber:
-          type: string
-        accountName:
-          type: string
-        type:
-          type: string
-          enum:
-          - SIMPLE
-          - ADVANCED
-        accountStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - DISABLED
-          - DELETED
-          - DELETE_PENDING
-          - SUSPENDED
-          - PENDING
-        platformType:
-          type: string
-          enum:
-          - V2_0
-          - V2_1
-          - CPE1
-          - CPE2
-        platformChangeDate:
-          type: integer
-          format: int64
-        matches:
-          type: object
-          additionalProperties:
-            type: string
-    DynamicTelephoneNumberActivationX:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        carrierId:
-          type: string
-        orderId:
-          type: string
-        tnQuantity:
-          type: integer
-          format: int32
-        deviceId:
-          type: string
-        userId:
-          type: string
-        customerServiceRecord:
-          originalRef: LatLongCustomerServiceRecordX
-          $ref: '#/components/schemas/LatLongCustomerServiceRecordX'
-        directoryListing:
-          originalRef: DirectoryListingX
-          $ref: '#/components/schemas/DirectoryListingX'
-        e911Address:
-          originalRef: E911AddressX
-          $ref: '#/components/schemas/E911AddressX'
-        tnSettings:
-          originalRef: TelephoneNumberAccountBareX
-          $ref: '#/components/schemas/TelephoneNumberAccountBareX'
-        ringType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        archived:
-          type: boolean
-        alianzaOrderId:
-          type: string
-        id:
-          type: string
-    ScheduleX:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - CUSTOM
-          - WEEKLY
-        weekly:
-          type: object
-          additionalProperties:
-            originalRef: WeeklyScheduleX
-            $ref: '#/components/schemas/WeeklyScheduleX'
-        custom:
-          type: array
-          items:
-            originalRef: CustomScheduleX
-            $ref: '#/components/schemas/CustomScheduleX'
-    MultipartFormDataInput:
-      type: object
-    CallHandlingSettingsX:
-      type: object
-      properties:
-        callWaitingEnabled:
-          type: boolean
-        doNotDisturbEnabled:
-          type: boolean
-        callHandlingOptionType:
-          type: string
-          enum:
-          - RingPhone
-          - ForwardAlways
-          - SimultaneousRing
-          - FindMeFollowMe
-        forwardAlwaysToNumber:
-          type: string
-        forwardAlwaysToNumberDescription:
-          type: string
-        ringPhoneCallHandling:
-          originalRef: RingPhoneCallHandlingX
-          $ref: '#/components/schemas/RingPhoneCallHandlingX'
-        simultaneousRingCallHandling:
-          originalRef: SimultaneousRingCallHandlingX
-          $ref: '#/components/schemas/SimultaneousRingCallHandlingX'
-        findMeFollowMeCallHandling:
-          originalRef: FindMeFollowMeCallHandlingX
-          $ref: '#/components/schemas/FindMeFollowMeCallHandlingX'
-    AccountHistoryX:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        accountNumber:
-          type: string
-        oldValue:
-          type: string
-        newValue:
-          type: string
-        userName:
-          type: string
-        userId:
-          type: string
-        userType:
-          type: string
-          enum:
-          - AccountUser
-          - EndUser
-          - ManagementUser
-          - AlianzaUser
-          - BusinessLines
-        partitionName:
-          type: string
-        accountHistoryType:
-          type: string
-          enum:
-          - PHONE_NUMBER
-          - PROVISIONING
-          - CALL_FORWARDING
-          - CALL_SCREENING
-          - ADDRESS
-          - ADDRESS_CSR
-          - ADDRESS_E911
-          - ADDRESS_DIRECTORY_LISTING
-          - ACCOUNT_STATUS
-          - VOICEMAIL
-          - CALLING_PLAN
-          - INBOUND_CALLING_PLAN
-          - IVR
-          - SIP_TRUNK
-          - SIP_TRUNK_FORWARD
-          - SIP_TRUNK_GROUP
-          - DEVICE
-          - DEVICE_METADATA
-          - USER
-          - USER_API_AUTH
-          - LINE_HUNTGROUP
-          - ACCOUNT
-          - LINE_APPEARANCE
-          - LINE_HARDWARE
-          - VFAX
-          - PAGING_GROUP
-          - PICKUP_GROUP
-          - GROUP_OF_REFERENCES
-          - CALL_PARKING_SPOT
-          - ACCOUNT_USER
-          - SIP_CREDENTIALS
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - USER_DEVICE_LINE
-          - EMERGENCY_NOTIFICATION
-          - DYNAMIC_RESERVATION
-          - SPECIALTY_LINE
-          - AUTHORITY
-          - AUTO_ATTENDANT
-          - CONTACT
-          - CONTACT_CENTER
-          - CALL_RECORDING
-          - ACCOUNT_CODE
-          - SHORT_CODE
-          - MEDIA_MANAGEMENT
-          - SOUNDS
-          - USER_GROUP
-        loggedDate:
-          type: string
-          format: date-time
-        referenceType:
-          type: string
-          enum:
-          - Account
-          - LineAppearance
-          - LineHuntGroup
-          - SipTrunk
-          - SipTrunkForward
-          - Device
-          - Telephone
-          - IVR
-          - EndUser
-          - VFax
-          - VoicemailBox
-          - PagingGroup
-          - GroupOfReferences
-          - PickupGroup
-          - CallParkingSpot
-          - AccountUser
-          - SIP_CREDENTIALS
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - USER_DEVICE_LINE
-          - SIP_TRUNK
-          - SIP_TRUNK_GROUP
-          - EMERGENCY_NOTIFICATION_COMPLIANCE
-          - DYNAMIC_RESERVATION
-          - SPECIALTY_LINE
-          - AUTHORITY_ROLE
-          - AUTO_ATTENDANT
-          - END_USER_CONTACT
-          - CUSTOM_CONTACT
-          - CONTACT_CENTER
-          - CALL_RECORDING
-          - ACCOUNT_CODE
-          - SHORT_CODE
-          - MEDIA_MANAGEMENT
-          - SOUNDS
-          - USER_GROUP
-          - USER_API_AUTH
-        referenceId:
-          type: string
-        referenceName:
-          type: string
-        action:
-          type: string
-          enum:
-          - CREATE
-          - UPDATE
-          - PROVISION_REQUEST
-          - DELETE
-    CallingPlanX:
-      type: object
-      properties:
-        id:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - ACCOUNT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        callingPlanProductId:
-          type: string
-        endDate:
-          type: string
-          format: date-time
-        startDate:
-          type: string
-          format: date-time
-        planMinutes:
-          type: integer
-          format: int32
-        secondsRemaining:
-          type: integer
-          format: int64
-    FindMeFollowMeCallHandlingX:
-      type: object
-      properties:
-        findMeEndpoints:
-          type: array
-          items:
-            originalRef: FindMeEndpointX
-            $ref: '#/components/schemas/FindMeEndpointX'
-        timeoutType:
-          type: string
-          enum:
-          - Forward
-          - Voicemail
-          - Busy
-          - RingForever
-    FindMeEndpointX:
-      type: object
-      properties:
-        ringUserDevice:
-          type: boolean
-        toNumber:
-          type: string
-        description:
-          type: string
-        timeout:
-          type: integer
-          format: int32
-    CustomScheduleX:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date-time
-        startTime:
-          type: string
-        endTime:
-          type: string
-    DeviceX:
-      type: object
-      required:
-      - accountId
-      - deviceName
-      - deviceTypeId
-      - faxEnabled
-      - id
-      - partitionId
-      - userId
-      properties:
-        id:
-          type: string
-        deviceTypeId:
-          type: string
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        macAddress:
-          type: string
-        deviceName:
-          type: string
-        emergencyNumber:
-          type: string
-          description: Required if emergencyNumberReservationId is absent
-        emergencyNumberReservationId:
-          type: string
-          description: Required if emergencyNumber is absent
-        faxEnabled:
-          type: boolean
-        lineNumber:
-          type: integer
-          format: int32
-          description: Required for POST & PUT operations only
-        userId:
-          type: string
-        sipPassword:
-          type: string
-        sipUsername:
-          type: string
-          description: Required to be globally unique if specified
-        zipcode:
-          type: string
-        state:
-          type: string
-        lineType:
-          type: string
-          enum:
-          - Line
-          - AdvancedSharedLine
-          - ReferencedUser
-          - IntercomLine
-          - PresenceBlfUser
-          - SpeedDialUser
-          - SpeedDialTn
-          - CallParkingSpot
-          - SipPaging
-        referenceId:
-          type: string
-          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    PortX:
-      type: object
-      properties:
-        id:
-          type: string
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        telephoneNumbers:
-          type: array
-          xml:
-            wrapped: true
-          items:
-            type: string
-            xml:
-              name: telephoneNumber
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - ACTIVATION_ON_HOLD
-          - ACTIVATION_PENDING
-          - PORT_PENDING
-          - CANCEL_PORT
-          - CANCEL_PORT_EXPIDITED
-          - DELETE_PENDING
-          - DELETED
-          - CANCEL_PORT_COMPLETE
-          - PORT_REJECTED
-          - INVENTORY
-          - INVENTORY_CLAIMED
-          - COOLDOWN
-          - RECOVERED
-        sendLoa:
-          type: boolean
-        loaSaved:
-          type: boolean
-        carrierId:
-          type: string
-        carrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-          - LUMEN_VOICE_LI_ELS
-          - SINCH
-          - SERVICE_PROVIDER_CARRIER
-        customerServiceRecord:
-          originalRef: CustomerServiceRecordX
-          $ref: '#/components/schemas/CustomerServiceRecordX'
-        crdDate:
-          type: string
-          format: date-time
-        billingTelephoneNumber:
-          type: string
-        portingWireType:
-          type: string
-          enum:
-          - Wireless
-          - Wireline
-        portingAuthorizedName:
-          type: string
-        wirelessAccountNumber:
-          type: string
-        wirelessPin:
-          type: string
-        focDate:
-          type: string
-          format: date-time
-        focDateTimeZone:
-          type: string
-          enum:
-          - US/Samoa
-          - US/Hawaii
-          - US/Alaska
-          - US/Pacific
-          - US/Arizona
-          - US/Mountain
-          - US/Central
-          - US/Eastern
-          - America/St_Thomas
-          - Canada/Pacific
-          - Canada/Mountain
-          - Canada/Central
-          - Canada/Eastern
-          - Canada/Atlantic
-          - Canada/Newfoundland
-        createdDate:
-          type: string
-          format: date-time
-        completedDate:
-          type: string
-          format: date-time
-        cancelType:
-          type: string
-          enum:
-          - NORMAL
-          - EXPIDITED
-          - BY_CARRIER
-        telecomSettings:
-          originalRef: TelecomSettingsX
-          $ref: '#/components/schemas/TelecomSettingsX'
-        hotCutPortId:
-          type: string
-        portNow:
-          type: boolean
-        canAcceptSMS:
-          type: boolean
-        smsCallbackUrl:
-          type: string
-    AddressX:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        middleInitial:
-          type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
-    EndUserV2X:
-      type: object
-      required:
-      - timeZone
-      properties:
-        id:
-          type: string
-        username:
-          type: string
-        password:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        emailAddress:
-          type: string
-        mustChangePassword:
-          type: boolean
-        languageTag:
-          type: string
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        callingPlans:
-          type: array
-          xml:
-            wrapped: true
-          description: callingPlans
-          readOnly: true
-          items:
-            xml:
-              name: callingPlan
-            originalRef: CallingPlanX
-            $ref: '#/components/schemas/CallingPlanX'
-        devices:
-          type: array
-          xml:
-            wrapped: true
-          description: devices
-          readOnly: true
-          items:
-            xml:
-              name: device
-            originalRef: DeviceX
-            $ref: '#/components/schemas/DeviceX'
-        timeZone:
-          type: string
-          enum:
-          - US/Samoa
-          - US/Hawaii
-          - US/Alaska
-          - US/Pacific
-          - US/Arizona
-          - US/Mountain
-          - US/Central
-          - US/Eastern
-          - America/St_Thomas
-          - Canada/Pacific
-          - Canada/Mountain
-          - Canada/Central
-          - Canada/Eastern
-          - Canada/Atlantic
-          - Canada/Newfoundland
-        extension:
-          type: string
-        callerIdConfig:
-          originalRef: CallerIdConfigX
-          $ref: '#/components/schemas/CallerIdConfigX'
-        callHandlingSettings:
-          originalRef: CallHandlingSettingsX
-          $ref: '#/components/schemas/CallHandlingSettingsX'
-        callScreeningSettings:
-          originalRef: CallScreeningSettingsX
-          $ref: '#/components/schemas/CallScreeningSettingsX'
-        newCppId:
-          type: string
-        mediaFriends:
-          originalRef: MediaFriendsX
-          $ref: '#/components/schemas/MediaFriendsX'
-        callHandlingSchedules:
-          type: array
-          items:
-            originalRef: CallHandlingScheduleX
-            $ref: '#/components/schemas/CallHandlingScheduleX'
-        voicemailBoxId:
-          type: string
-        endUserType:
-          type: string
-          enum:
-          - ADMIN
-          - ADVANCED_ADMIN
-          - BASIC_ADMIN
-          - STANDARD
-          - STANDARD_ADMIN
-          - SUPER_ADMIN
-        userProductPlan:
-          type: string
-          enum:
-          - STANDARD
-          - ADVANCED
-          - PROFESSIONAL
-        softphoneClientType:
-          type: string
-          enum:
-          - STRETTO
-          - CYMBUS
-        pinLockedOut:
-          type: boolean
-        welcomeEmailSent:
-          type: string
-          format: date-time
-        blockEmail:
-          type: boolean
-        allowPortalAccess:
-          type: boolean
-        tags:
-          type: string
-        group:
-          originalRef: UserGroupX
-          $ref: '#/components/schemas/UserGroupX'
-    TelephoneNumberAccountV2X:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
-          type: boolean
-        operationalStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - STAGED
-        portId:
-          type: string
-        servicePackageType:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        customerServiceRecord:
-          originalRef: CustomerServiceRecordX
-          $ref: '#/components/schemas/CustomerServiceRecordX'
-        carrierStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - ACTIVATION_ON_HOLD
-          - ACTIVATION_PENDING
-          - PORT_PENDING
-          - CANCEL_PORT
-          - CANCEL_PORT_EXPIDITED
-          - DELETE_PENDING
-          - DELETED
-          - CANCEL_PORT_COMPLETE
-          - PORT_REJECTED
-          - INVENTORY
-          - INVENTORY_CLAIMED
-          - COOLDOWN
-          - RECOVERED
-        orderVersion:
-          type: string
-        e911Address:
-          originalRef: E911AddressX
-          $ref: '#/components/schemas/E911AddressX'
-        temporaryNumber:
-          type: string
-        directoryListing:
-          originalRef: DirectoryListingX
-          $ref: '#/components/schemas/DirectoryListingX'
-        assignAsCallerId:
-          type: boolean
-        byotnCarrierId:
-          type: string
-        ringType:
-          type: string
-          description: Default ringtype for this phone
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        carrierId:
-          type: string
-        id:
-          type: string
-        tollFree:
-          type: boolean
-    EndUserWithMultipleTnActivationX:
-      type: object
-      properties:
-        user:
-          originalRef: EndUserV2X
-          $ref: '#/components/schemas/EndUserV2X'
-        telephoneNumberAccounts:
-          type: array
-          items:
-            originalRef: TelephoneNumberAccountV2X
-            $ref: '#/components/schemas/TelephoneNumberAccountV2X'
-        dynamicTelephoneNumberActivation:
-          originalRef: DynamicTelephoneNumberActivationX
-          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX'
-        port:
-          originalRef: PortX
-          $ref: '#/components/schemas/PortX'
-        holdActivation:
-          type: boolean
-    MediaFriendsX:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        host:
-          type: string
-        toNumber:
-          type: string
-    CallHandlingScheduleX:
-      type: object
-      properties:
-        schedule:
-          originalRef: ScheduleX
-          $ref: '#/components/schemas/ScheduleX'
-        callHandling:
-          originalRef: CallHandlingSettingsX
-          $ref: '#/components/schemas/CallHandlingSettingsX'
-    CustomCallScreenX:
-      type: object
-      properties:
-        telephoneNumber:
-          type: string
-        blockType:
-          type: string
-          enum:
-          - Allow
-          - Block
-          - Voicemail
-          - Forward
-          - VipRing
-          - BlockWithPrompt
-        ringType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-    UserGroupX:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-    RingTypeAlertInfoX:
-      type: object
-      required:
-      - alertInfoHeaderValue
-      - ringType
-      properties:
-        ringType:
-          type: string
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        alertInfoHeaderValue:
-          type: string
-          description: sip header for this ring type
-    E911AddressX:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        middleInitial:
-          type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        latitude:
-          type: string
-          description: -90 through 90, 4-6 decimals
-        longitude:
-          type: string
-          description: -180 through 180, 4-6 decimals
-        language:
-          type: string
-          description: Optional, see /v2/ref/language for supported languages
-    TelephoneNumberAccountBareX:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
-          type: boolean
-        operationalStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - STAGED
-        portId:
-          type: string
-        servicePackageType:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        id:
-          type: string
-        tollFree:
-          type: boolean
-    DeviceTypeX:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        numLines:
-          type: integer
-          format: int32
-        deviceTypeManufacturer:
-          type: string
-          enum:
-          - CISCO_LINKSYS_SIPURA
-          - POLYCOM
-          - ARRIS
-          - OBIHAI
-          - INNOMEDIA
-          - THIRD_PARTY
-          - SOFT_PHONE
-          - ZTE
-          - SCIENTIFIC_ATLANTA
-          - CALIX
-          - YEALINK
-          - SNOM
-          - SMART_RG
-          - ACROBITS
-          - GRANDSTREAM
-          - ADTRAN
-          - MEDIATRIX
-          - ALGO
-          - MITEL
-          - CLEARLY_IP
-        acceptsRemoteResync:
-          type: boolean
-        faxSupported:
-          type: boolean
-        macAddressRequired:
-          type: boolean
-        showProvisionStatus:
-          type: boolean
-        enforceUniqueAdminPassword:
-          type: boolean
-        customEncryptionKeys:
-          type: boolean
-        sipPagingEnabled:
-          type: boolean
-        distinctiveRingInfo:
-          type: string
-        smbDevice:
-          type: boolean
-        sideCarTypeIds:
-          type: array
-          items:
-            type: string
-        maxSideCars:
-          type: integer
-          format: int32
-        ringTypeAlertInfo:
-          type: array
-          items:
-            originalRef: RingTypeAlertInfoX
-            $ref: '#/components/schemas/RingTypeAlertInfoX'
     Account:
       type: object
       required:
@@ -3364,43 +1812,194 @@ components:
               name: callingPlan
             originalRef: CallingPlanX
             $ref: '#/components/schemas/CallingPlanX'
-    JobUploadKey:
+    DynamicTelephoneNumberActivationX:
       type: object
       properties:
-        key:
+        partitionId:
           type: string
-    WeeklyScheduleX:
-      type: object
-      properties:
-        startTime:
+        accountId:
           type: string
-        endTime:
+        carrierId:
           type: string
-    AccountHistorySearchResponseX:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int64
-        accountCreatedDate:
+        orderId:
           type: string
-          format: date-time
-        accountLastUpdatedDate:
-          type: string
-          format: date-time
-        results:
-          type: array
-          items:
-            originalRef: AccountHistoryX
-            $ref: '#/components/schemas/AccountHistoryX'
-    CallingPlanSwapX:
-      type: object
-      properties:
-        swapCallingPlanProductId:
-          type: string
-        newMinutesUsed:
+        tnQuantity:
           type: integer
           format: int32
+        deviceId:
+          type: string
+        userId:
+          type: string
+        customerServiceRecord:
+          originalRef: LatLongCustomerServiceRecordX
+          $ref: '#/components/schemas/LatLongCustomerServiceRecordX'
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX'
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        tnSettings:
+          originalRef: TelephoneNumberAccountBareX
+          $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        archived:
+          type: boolean
+        alianzaOrderId:
+          type: string
+        id:
+          type: string
+    PortX:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumbers:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: telephoneNumber
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        sendLoa:
+          type: boolean
+        loaSaved:
+          type: boolean
+        carrierId:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX'
+        crdDate:
+          type: string
+          format: date-time
+        billingTelephoneNumber:
+          type: string
+        portingWireType:
+          type: string
+          enum:
+          - Wireless
+          - Wireline
+        portingAuthorizedName:
+          type: string
+        wirelessAccountNumber:
+          type: string
+        wirelessPin:
+          type: string
+        focDate:
+          type: string
+          format: date-time
+        focDateTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        createdDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        cancelType:
+          type: string
+          enum:
+          - NORMAL
+          - EXPIDITED
+          - BY_CARRIER
+        telecomSettings:
+          originalRef: TelecomSettingsX
+          $ref: '#/components/schemas/TelecomSettingsX'
+        hotCutPortId:
+          type: string
+        portNow:
+          type: boolean
+        canAcceptSMS:
+          type: boolean
+        smsCallbackUrl:
+          type: string
+    RingTypeAlertInfoX:
+      type: object
+      required:
+      - alertInfoHeaderValue
+      - ringType
+      properties:
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        alertInfoHeaderValue:
+          type: string
+          description: sip header for this ring type
     TelecomSettingsX:
       type: object
       properties:
@@ -3424,275 +2023,7 @@ components:
           additionalProperties:
             originalRef: TnData
             $ref: '#/components/schemas/TnData'
-    DirectoryListingX:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          originalRef: AddressX
-          $ref: '#/components/schemas/AddressX'
-    TnData:
-      type: object
-      properties:
-        tn:
-          type: string
-        rateCenter:
-          type: string
-        wireless:
-          type: boolean
-    CallHandlingWithTimeoutX:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - Forward
-          - Voicemail
-          - Busy
-          - RingForever
-        timeout:
-          type: integer
-          format: int32
-        forwardToNumber:
-          type: string
-        description:
-          type: string
-    UserProductPlanX_2:
-      type: object
-      description: 'A user product plan indicates the platform features that are available to an end user.  There are 3 types: [STANDARD, ADVANCED, PROFESSIONAL]. <p>ADVANCED and PROFESSIONAL plans are only available for ADVANCED account types once a Cymbus group has been created.</p> <span hidden><p><a href="account.html">Accounts</a></p></span> <p><a href="#/~operation/Cymbus%20User%20Product/updateCymbusAccountGroup">Create Cymbus Group</a></p> <h5>STANDARD</h5> <p>The standard plan is available to all users.  It is basic phone service.</p> <h5>ADVANCED</h5> <p>The advanced plan offers the standard phone service plus the Cymbus softphone client. Requires the user have an email address.</p> <h5>PROFESSIONAL</h5> <p>The professional plan includes phone service, Cymbus softphone client, and the Cymbus collaboration features. Requires the user have an email address.</p>'
-      properties:
-        id:
-          type: string
-        displayName:
-          type: string
-        description:
-          type: string
-        emailAddressRequired:
-          type: boolean
-    AccountActivationV2X_2:
-      type: object
-      properties:
-        device:
-          $ref: '#/components/schemas/DeviceX_2'
-        user:
-          $ref: '#/components/schemas/EndUserV2X_2'
-        telephoneNumberAccount:
-          $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
-        dynamicTelephoneNumberActivation:
-          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
-        port:
-          $ref: '#/components/schemas/PortX_2'
-        holdActivation:
-          type: boolean
-        account:
-          $ref: '#/components/schemas/Account_2'
-    CustomerServiceRecordX_2:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-          minLength: 1
-          maxLength: 256
-        middleInitial:
-          type: string
-          maxLength: 256
-        lastName:
-          type: string
-          maxLength: 256
-        businessName:
-          type: string
-          maxLength: 256
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-          maxLength: 256
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-          maxLength: 256
-        state:
-          type: string
-          description: A two-letter state abbreviation
-        country:
-          type: string
-          description: Alianza supports accounts in the USA and Canada.
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-          maxLength: 10
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        firstNameSecondary:
-          type: string
-        blockCustomerName:
-          type: boolean
-        customerName:
-          type: string
-    RingPhoneCallHandlingX_2:
-      type: object
-      properties:
-        busyCallHandling:
-          $ref: '#/components/schemas/CallHandlingX'
-        noAnswerCallHandling:
-          $ref: '#/components/schemas/CallHandlingWithTimeoutX_2'
-        unregisteredCallHandling:
-          $ref: '#/components/schemas/CallHandlingX'
-    MultipleActivationX_2:
-      type: object
-      description: Root object for activating multiple end users with telephone numbers in a single request
-      properties:
-        account:
-          $ref: '#/components/schemas/Account_2'
-        endUsers:
-          type: array
-          description: List of end users with telephone number activations (max 2)
-          maxItems: 2
-          items:
-            $ref: '#/components/schemas/EndUserWithMultipleTnActivationX_2'
-      required:
-      - account
-    SimultaneousRingCallHandlingX_2:
-      type: object
-      properties:
-        forwardToNumberList:
-          type: array
-          items:
-            type: string
-        forwardToTimedNumberList:
-          type: array
-          items:
-            $ref: '#/components/schemas/SimultaneousRingEndpointX'
-          description: Mutually exclusive with forwardToNumberList; if both are sent, this list takes precedence when non-empty. Endpoint delays must be in chronological order with no gaps between active windows. The first endpoint delay must be less than or equal to noAnswerCallHandling.timeout.
-        noAnswerCallHandling:
-          $ref: '#/components/schemas/CallHandlingWithTimeoutX_2'
-        continueOnBusy:
-          type: boolean
-    AccountDeviceDataX_2:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - LINE_HARDWARE
-          - USER
-        macAddress:
-          type: string
-        deviceType:
-          $ref: '#/components/schemas/DeviceTypeX_2'
-        sideCarType:
-          $ref: '#/components/schemas/SideCarTypeX'
-        numSideCars:
-          type: integer
-          format: int32
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceX_2'
-    Job_2:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        userId:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - DONE
-          - FAILED
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/JobError'
-        inputKey:
-          type: string
-        outputKey:
-          type: string
-        start:
-          type: string
-          format: date-time
-        lastUpdated:
-          type: string
-          format: date-time
-      xml:
-        name: job
-    CallScreeningSettingsX_2:
+    CallScreeningSettingsX:
       type: object
       properties:
         anonymousCallScreen:
@@ -3758,182 +2089,77 @@ components:
         customCallScreenList:
           type: array
           items:
+            originalRef: CustomCallScreenX
             $ref: '#/components/schemas/CustomCallScreenX'
         forwardTn:
           type: string
-    SimultaneousRingEndpointX:
+    FindMeEndpointX:
       type: object
       properties:
+        ringUserDevice:
+          type: boolean
         toNumber:
           type: string
-        ringDelay:
+        description:
+          type: string
+        timeout:
           type: integer
           format: int32
-          minimum: 0
-        ringDuration:
+    CallingPlanSwapX:
+      type: object
+      properties:
+        swapCallingPlanProductId:
+          type: string
+        newMinutesUsed:
           type: integer
           format: int32
-          minimum: 1
-          description: When noAnswerCallHandling.type is RingForever, this value is ignored by the service.
-        continueOnBusy:
-          type: boolean
-    LatLongCustomerServiceRecordX_2:
+    AccountDeviceDataX:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - LINE_HARDWARE
+          - USER
+        macAddress:
+          type: string
+        deviceType:
+          originalRef: DeviceTypeX
+          $ref: '#/components/schemas/DeviceTypeX'
+        sideCarType:
+          originalRef: SideCarTypeX
+          $ref: '#/components/schemas/SideCarTypeX'
+        numSideCars:
+          type: integer
+          format: int32
+        devices:
+          type: array
+          items:
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX'
+    UserGroupX:
       type: object
       properties:
         id:
           type: string
-        firstName:
+        name:
           type: string
-          minLength: 3
-          maxLength: 256
-        middleInitial:
+        description:
           type: string
-          minLength: 3
-          maxLength: 256
-        lastName:
-          type: string
-          minLength: 3
-          maxLength: 256
-        businessName:
-          type: string
-          minLength: 3
-          maxLength: 256
-        streetNumber:
-          type: string
-          minLength: 3
-          maxLength: 256
-        streetNumberSuffix:
-          type: string
-          minLength: 3
-          maxLength: 256
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-          minLength: 3
-          maxLength: 256
-        streetSuffix:
-          type: string
-          minLength: 3
-          maxLength: 256
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-          minLength: 3
-          maxLength: 256
-        state:
-          type: string
-          minLength: 3
-          maxLength: 256
-        country:
-          type: string
-          minLength: 3
-          maxLength: 256
-        postalCode:
-          type: string
-          minLength: 3
-          maxLength: 256
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-          minLength: 0
-          maxLength: 10
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        firstNameSecondary:
-          type: string
-          minLength: 3
-          maxLength: 256
-        blockCustomerName:
-          type: boolean
-        customerName:
-          type: string
-          minLength: 3
-          maxLength: 256
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-    DynamicTelephoneNumberActivationX_2:
+    CustomCallScreenX:
       type: object
       properties:
-        partitionId:
+        telephoneNumber:
           type: string
-        accountId:
+        blockType:
           type: string
-        carrierId:
-          type: string
-        orderId:
-          type: string
-        tnQuantity:
-          type: integer
-          format: int32
-        deviceId:
-          type: string
-        userId:
-          type: string
-        customerServiceRecord:
-          $ref: '#/components/schemas/LatLongCustomerServiceRecordX_2'
-        directoryListing:
-          $ref: '#/components/schemas/DirectoryListingX_2'
-        e911Address:
-          $ref: '#/components/schemas/E911AddressX'
-        tnSettings:
-          $ref: '#/components/schemas/TelephoneNumberAccountBareX'
-          required: true
+          enum:
+          - Allow
+          - Block
+          - Voicemail
+          - Forward
+          - VipRing
+          - BlockWithPrompt
         ringType:
           type: string
           enum:
@@ -3945,13 +2171,31 @@ components:
           - Ring5
           - Ring6
           - Ring7
-        archived:
-          type: boolean
-        alianzaOrderId:
-          type: string
+    MultipleActivationX:
+      type: object
+      required:
+      - account
+      properties:
+        account:
+          originalRef: Account
+          $ref: '#/components/schemas/Account'
+        endUsers:
+          type: array
+          items:
+            originalRef: EndUserWithMultipleTnActivationX
+            $ref: '#/components/schemas/EndUserWithMultipleTnActivationX'
+    UserProductPlanX:
+      type: object
+      properties:
         id:
           type: string
-    ScheduleX_2:
+        displayName:
+          type: string
+        description:
+          type: string
+        emailAddressRequired:
+          type: boolean
+    ScheduleX:
       type: object
       properties:
         name:
@@ -3964,193 +2208,69 @@ components:
         weekly:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/WeeklyScheduleX_2'
+            originalRef: WeeklyScheduleX
+            $ref: '#/components/schemas/WeeklyScheduleX'
         custom:
           type: array
           items:
-            $ref: '#/components/schemas/CustomScheduleX_2'
-    MultipartFormDataInput_2:
+            originalRef: CustomScheduleX
+            $ref: '#/components/schemas/CustomScheduleX'
+    TelephoneNumberAccountV2X:
       type: object
       properties:
-        file:
+        phoneNumber:
           type: string
-          format: binary
-    CallHandlingSettingsX_2:
-      type: object
-      properties:
-        callWaitingEnabled:
-          type: boolean
-        doNotDisturbEnabled:
-          type: boolean
-        callHandlingOptionType:
+        referenceType:
           type: string
           enum:
-          - RingPhone
-          - ForwardAlways
-          - SimultaneousRing
-          - FindMeFollowMe
-        forwardAlwaysToNumber:
-          type: string
-        forwardAlwaysToNumberDescription:
-          type: string
-        ringPhoneCallHandling:
-          $ref: '#/components/schemas/RingPhoneCallHandlingX_2'
-        simultaneousRingCallHandling:
-          $ref: '#/components/schemas/SimultaneousRingCallHandlingX_2'
-        findMeFollowMeCallHandling:
-          $ref: '#/components/schemas/FindMeFollowMeCallHandlingX_2'
-    FindMeFollowMeCallHandlingX_2:
-      type: object
-      properties:
-        findMeEndpoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/FindMeEndpointX_2'
-        timeoutType:
-          type: string
-          enum:
-          - Forward
-          - Voicemail
-          - Busy
-          - RingForever
-    FindMeEndpointX_2:
-      type: object
-      properties:
-        ringUserDevice:
-          type: boolean
-        toNumber:
-          type: string
-        description:
-          type: string
-        timeout:
-          type: integer
-          format: int32
-          minimum: 1
-          maximum: 240
-        toUserId:
-          type: string
-        continueOnBusy:
-          type: boolean
-          description: Must be false for the last Find Me endpoint.
-    WeeklyScheduleTimeX:
-      type: object
-      properties:
-        startTime:
-          type: string
-        endTime:
-          type: string
-      required:
-      - startTime
-      - endTime
-    CustomScheduleX_2:
-      type: object
-      properties:
-        date:
-          type: string
-          format: date-time
-        startTime:
-          type: string
-        endTime:
-          type: string
-      required:
-      - date
-      - startTime
-      - endTime
-    ApiSingleException:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-    DeviceX_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Not required for creating a new device line
-        deviceTypeId:
-          type: string
-          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
-        accountId:
-          type: string
-          description: Not required for creating a new device line
-        partitionId:
-          type: string
-          description: Not required for creating a new device line
-        macAddress:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device.  Must not be claimed in another device request.
-        deviceName:
-          type: string
-        emergencyNumber:
-          type: string
-          description: Required if emergencyNumberReservationId is absent
-        emergencyNumberReservationId:
-          type: string
-          description: Required if emergencyNumber is absent
-        faxEnabled:
-          type: boolean
-        lineNumber:
-          type: integer
-          format: int32
-          description: Required for POST & PUT operations only
-        userId:
-          type: string
-        sipPassword:
-          type: string
-        sipUsername:
-          type: string
-          description: Required to be globally unique if specified
-        zipcode:
-          type: string
-          deprecated: true
-        state:
-          type: string
-          deprecated: true
-        lineType:
-          type: string
-          enum:
-          - Line
-          - AdvancedSharedLine
-          - ReferencedUser
-          - IntercomLine
-          - PresenceBlfUser
-          - SpeedDialUser
-          - SpeedDialTn
-          - CallParkingSpot
-          - SipPaging
-          - Custom
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
         referenceId:
           type: string
-          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number.
-      required:
-      - accountId
-      - deviceName
-      - deviceTypeId
-      - faxEnabled
-      - id
-      - partitionId
-      - userId
-      - lineNumber
-    PortX_2:
-      type: object
-      properties:
-        id:
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        accountId:
           type: string
         partitionId:
           type: string
-        accountId:
-          type: string
-        telephoneNumbers:
-          type: array
-          items:
-            type: string
-            xml:
-              name: telephoneNumber
-          xml:
-            wrapped: true
-        status:
+        customerServiceRecord:
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX'
+        carrierStatus:
           type: string
           enum:
           - ACTIVE
@@ -4167,233 +2287,139 @@ components:
           - INVENTORY_CLAIMED
           - COOLDOWN
           - RECOVERED
-        sendLoa:
+        orderVersion:
+          type: string
+        e911Address:
+          originalRef: E911AddressX
+          $ref: '#/components/schemas/E911AddressX'
+        temporaryNumber:
+          type: string
+        directoryListing:
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX'
+        assignAsCallerId:
           type: boolean
-        loaSaved:
-          type: boolean
+        byotnCarrierId:
+          type: string
+        ringType:
+          type: string
+          description: Default ringtype for this phone
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
         carrierId:
           type: string
-        carrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-          - LUMEN_VOICE_LI_ELS
-          - SINCH
-          - SERVICE_PROVIDER_CARRIER
-        customerServiceRecord:
-          $ref: '#/components/schemas/CustomerServiceRecordX_2'
-        crdDate:
-          type: string
-          format: date-time
-        billingTelephoneNumber:
-          type: string
-        portingWireType:
-          type: string
-          enum:
-          - Wireless
-          - Wireline
-        portingAuthorizedName:
-          type: string
-        wirelessAccountNumber:
-          type: string
-        wirelessPin:
-          type: string
-          maxLength: 15
-        focDate:
-          type: string
-          format: date-time
-        focDateTimeZone:
-          type: string
-          enum:
-          - US/Samoa
-          - US/Hawaii
-          - US/Alaska
-          - US/Pacific
-          - US/Arizona
-          - US/Mountain
-          - US/Central
-          - US/Eastern
-          - America/St_Thomas
-          - Canada/Pacific
-          - Canada/Mountain
-          - Canada/Central
-          - Canada/Eastern
-          - Canada/Atlantic
-          - Canada/Newfoundland
-        createdDate:
-          type: string
-          format: date-time
-        completedDate:
-          type: string
-          format: date-time
-        cancelType:
-          type: string
-          enum:
-          - NORMAL
-          - EXPIDITED
-          - BY_CARRIER
-        telecomSettings:
-          $ref: '#/components/schemas/TelecomSettingsX_2'
-        hotCutPortId:
-          type: string
-        portNow:
-          type: boolean
-        canAcceptSMS:
-          type: boolean
-        smsCallbackUrl:
-          type: string
-    AddressX_2:
-      type: object
-      properties:
         id:
           type: string
-        firstName:
-          type: string
-          minLength: 1
-          maxLength: 256
-        middleInitial:
-          type: string
-          maxLength: 256
-        lastName:
-          type: string
-          maxLength: 256
-        businessName:
-          type: string
-          maxLength: 256
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-          maxLength: 256
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-          maxLength: 256
-        state:
-          type: string
-          description: A two-letter state abbreviation
-        country:
-          type: string
-          description: Alianza supports accounts in USA and CAN
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-          maxLength: 10
-    EndUserV2X_2:
+        tollFree:
+          type: boolean
+    MultipartFormDataInput:
       type: object
+    TelephoneNumberAccountBareX:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        id:
+          type: string
+        tollFree:
+          type: boolean
+    EndUserV2X:
+      type: object
+      required:
+      - timeZone
       properties:
         id:
           type: string
         username:
           type: string
-          minLength: 3
-          maxLength: 256
-          description: If the userProductPlan is ADVANCED or PROFESSIONAL, do not use an email as a username as this will result in loss of access to the softphone client.
+        password:
+          type: string
         firstName:
           type: string
-          minLength: 3
-          maxLength: 256
         lastName:
           type: string
-          minLength: 3
-          maxLength: 256
         emailAddress:
           type: string
-          minLength: 3
-          maxLength: 256
-          description: Must be a valid email address
         mustChangePassword:
           type: boolean
         languageTag:
           type: string
-          description: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">RFC-5646 Language tag</a>. Refer to <a href="#/~operation/Reference%20Resources/getLanguages">supported languages</a> for a list of supported values.
         partitionId:
           type: string
         accountId:
           type: string
         callingPlans:
           type: array
-          description: callingPlans
-          items:
-            $ref: '#/components/schemas/CallingPlanX'
-          readOnly: true
           xml:
             wrapped: true
+          description: callingPlans
+          readOnly: true
+          items:
+            xml:
+              name: callingPlan
+            originalRef: CallingPlanX
+            $ref: '#/components/schemas/CallingPlanX'
         devices:
           type: array
-          description: devices
-          items:
-            $ref: '#/components/schemas/DeviceX_2'
-          readOnly: true
           xml:
             wrapped: true
+          description: devices
+          readOnly: true
+          items:
+            xml:
+              name: device
+            originalRef: DeviceX
+            $ref: '#/components/schemas/DeviceX'
         timeZone:
           type: string
           enum:
@@ -4415,19 +2441,24 @@ components:
         extension:
           type: string
         callerIdConfig:
+          originalRef: CallerIdConfigX
           $ref: '#/components/schemas/CallerIdConfigX'
         callHandlingSettings:
-          $ref: '#/components/schemas/CallHandlingSettingsX_2'
+          originalRef: CallHandlingSettingsX
+          $ref: '#/components/schemas/CallHandlingSettingsX'
         callScreeningSettings:
-          $ref: '#/components/schemas/CallScreeningSettingsX_2'
+          originalRef: CallScreeningSettingsX
+          $ref: '#/components/schemas/CallScreeningSettingsX'
         newCppId:
           type: string
         mediaFriends:
+          originalRef: MediaFriendsX
           $ref: '#/components/schemas/MediaFriendsX'
         callHandlingSchedules:
           type: array
           items:
-            $ref: '#/components/schemas/CallHandlingScheduleX_2'
+            originalRef: CallHandlingScheduleX
+            $ref: '#/components/schemas/CallHandlingScheduleX'
         voicemailBoxId:
           type: string
         endUserType:
@@ -4462,162 +2493,212 @@ components:
         tags:
           type: string
         group:
+          originalRef: UserGroupX
           $ref: '#/components/schemas/UserGroupX'
-      required:
-      - timeZone
-    TelephoneNumberAccountV2X_2:
+    AccountActivationV2X:
       type: object
       properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          description: What kind of destination gets calls from this number.
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-          description: The id of the destination which gets calls from this number.  You can think of this as a variable refkey; what it points to depends on the referenceType.
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
+        device:
+          originalRef: DeviceX
+          $ref: '#/components/schemas/DeviceX'
+        user:
+          originalRef: EndUserV2X
+          $ref: '#/components/schemas/EndUserV2X'
+        telephoneNumberAccount:
+          originalRef: TelephoneNumberAccountV2X
+          $ref: '#/components/schemas/TelephoneNumberAccountV2X'
+        dynamicTelephoneNumberActivation:
+          originalRef: DynamicTelephoneNumberActivationX
+          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX'
+        port:
+          originalRef: PortX
+          $ref: '#/components/schemas/PortX'
+        holdActivation:
           type: boolean
-        operationalStatus:
+        account:
+          originalRef: Account
+          $ref: '#/components/schemas/Account'
+    E911AddressX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
           type: string
           enum:
-          - ACTIVE
-          - STAGED
-        portId:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
           type: string
-        servicePackageType:
+        streetSuffix:
+          type: string
+        postDirectional:
           type: string
           enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        latitude:
+          type: string
+          description: -90 through 90, 4-6 decimals
+        longitude:
+          type: string
+          description: -180 through 180, 4-6 decimals
+        language:
+          type: string
+          description: Optional, see /v2/ref/language for supported languages
+    SimultaneousRingCallHandlingX:
+      type: object
+      properties:
+        forwardToNumberList:
+          type: array
+          items:
+            type: string
+        noAnswerCallHandling:
+          originalRef: CallHandlingWithTimeoutX
+          $ref: '#/components/schemas/CallHandlingWithTimeoutX'
+    RingPhoneCallHandlingX:
+      type: object
+      properties:
+        busyCallHandling:
+          originalRef: CallHandlingX
+          $ref: '#/components/schemas/CallHandlingX'
+        noAnswerCallHandling:
+          originalRef: CallHandlingWithTimeoutX
+          $ref: '#/components/schemas/CallHandlingWithTimeoutX'
+        unregisteredCallHandling:
+          originalRef: CallHandlingX
+          $ref: '#/components/schemas/CallHandlingX'
+    DeviceX:
+      type: object
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      properties:
+        id:
+          type: string
+        deviceTypeId:
+          type: string
         accountId:
           type: string
         partitionId:
           type: string
-        customerServiceRecord:
-          $ref: '#/components/schemas/CustomerServiceRecordX_2'
-        carrierStatus:
+        macAddress:
           type: string
-          enum:
-          - ACTIVE
-          - ACTIVATION_ON_HOLD
-          - ACTIVATION_PENDING
-          - PORT_PENDING
-          - CANCEL_PORT
-          - CANCEL_PORT_EXPIDITED
-          - DELETE_PENDING
-          - DELETED
-          - CANCEL_PORT_COMPLETE
-          - PORT_REJECTED
-          - INVENTORY
-          - INVENTORY_CLAIMED
-          - COOLDOWN
-          - RECOVERED
-        orderVersion:
+        deviceName:
           type: string
-        e911Address:
-          $ref: '#/components/schemas/E911AddressX'
-        temporaryNumber:
+        emergencyNumber:
           type: string
-        directoryListing:
-          $ref: '#/components/schemas/DirectoryListingX_2'
-        assignAsCallerId:
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
           type: boolean
-        byotnCarrierId:
-          type: string
-        ringType:
-          type: string
-          description: Default ringtype for this phone
-          enum:
-          - StandardRing
-          - Ring1
-          - Ring2
-          - Ring3
-          - Ring4
-          - Ring5
-          - Ring6
-          - Ring7
-        carrierId:
-          type: string
-        tollFree:
-          type: boolean
-        id:
-          type: string
-    EndUserWithMultipleTnActivationX_2:
-      type: object
-      description: End user with multiple telephone number activation options
-      properties:
-        user:
-          $ref: '#/components/schemas/EndUserV2X_2'
-        telephoneNumberAccounts:
-          type: array
-          description: Existing telephone numbers to assign to the user
-          items:
-            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
-        dynamicTelephoneNumberActivations:
-          type: array
-          description: New telephone numbers to provision from carrier
-          items:
-            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
-        ports:
-          type: array
-          description: Port-in requests for existing numbers
-          items:
-            $ref: '#/components/schemas/PortX_2'
-        holdActivation:
-          type: boolean
-          description: Hold activation until ready
-      required:
-      - user
-      - holdActivation
-    CallHandlingScheduleX_2:
-      type: object
-      properties:
-        schedule:
-          $ref: '#/components/schemas/ScheduleX_2'
-        callHandling:
-          $ref: '#/components/schemas/CallHandlingSettingsX_2'
-    PublicApiException:
-      type: object
-      properties:
-        status:
+        lineNumber:
           type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    DeviceTypeX_2:
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+        state:
+          type: string
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
+    DeviceTypeX:
       type: object
       properties:
         id:
@@ -4678,30 +2759,714 @@ components:
         ringTypeAlertInfo:
           type: array
           items:
+            originalRef: RingTypeAlertInfoX
             $ref: '#/components/schemas/RingTypeAlertInfoX'
-        sipRegMax:
+    LatLongCustomerServiceRecordX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    AccountHistorySearchResponseX:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        accountCreatedDate:
+          type: string
+          format: date-time
+        accountLastUpdatedDate:
+          type: string
+          format: date-time
+        results:
+          type: array
+          items:
+            originalRef: AccountHistoryX
+            $ref: '#/components/schemas/AccountHistoryX'
+    EndUserWithMultipleTnActivationX:
+      type: object
+      properties:
+        user:
+          originalRef: EndUserV2X
+          $ref: '#/components/schemas/EndUserV2X'
+        telephoneNumberAccounts:
+          type: array
+          items:
+            originalRef: TelephoneNumberAccountV2X
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X'
+        dynamicTelephoneNumberActivation:
+          originalRef: DynamicTelephoneNumberActivationX
+          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX'
+        port:
+          originalRef: PortX
+          $ref: '#/components/schemas/PortX'
+        holdActivation:
+          type: boolean
+    CallHandlingX:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Forward
+          - Voicemail
+          - Busy
+        forwardToNumber:
+          type: string
+        description:
+          type: string
+    CustomScheduleX:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+        endTime:
+          type: string
+    AddressX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+    WeeklyScheduleX:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+    AccountHistoryX:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        accountNumber:
+          type: string
+        oldValue:
+          type: string
+        newValue:
+          type: string
+        userName:
+          type: string
+        userId:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        partitionName:
+          type: string
+        accountHistoryType:
+          type: string
+          enum:
+          - PHONE_NUMBER
+          - PROVISIONING
+          - CALL_FORWARDING
+          - CALL_SCREENING
+          - ADDRESS
+          - ADDRESS_CSR
+          - ADDRESS_E911
+          - ADDRESS_DIRECTORY_LISTING
+          - ACCOUNT_STATUS
+          - VOICEMAIL
+          - CALLING_PLAN
+          - INBOUND_CALLING_PLAN
+          - IVR
+          - SIP_TRUNK
+          - SIP_TRUNK_FORWARD
+          - SIP_TRUNK_GROUP
+          - DEVICE
+          - DEVICE_METADATA
+          - USER
+          - USER_API_AUTH
+          - LINE_HUNTGROUP
+          - ACCOUNT
+          - LINE_APPEARANCE
+          - LINE_HARDWARE
+          - VFAX
+          - PAGING_GROUP
+          - PICKUP_GROUP
+          - GROUP_OF_REFERENCES
+          - CALL_PARKING_SPOT
+          - ACCOUNT_USER
+          - SIP_CREDENTIALS
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - USER_DEVICE_LINE
+          - EMERGENCY_NOTIFICATION
+          - DYNAMIC_RESERVATION
+          - SPECIALTY_LINE
+          - AUTHORITY
+          - AUTO_ATTENDANT
+          - CONTACT
+          - CONTACT_CENTER
+          - CALL_RECORDING
+          - ACCOUNT_CODE
+          - SHORT_CODE
+          - MEDIA_MANAGEMENT
+          - SOUNDS
+          - USER_GROUP
+        loggedDate:
+          type: string
+          format: date-time
+        referenceType:
+          type: string
+          enum:
+          - Account
+          - LineAppearance
+          - LineHuntGroup
+          - SipTrunk
+          - SipTrunkForward
+          - Device
+          - Telephone
+          - IVR
+          - EndUser
+          - VFax
+          - VoicemailBox
+          - PagingGroup
+          - GroupOfReferences
+          - PickupGroup
+          - CallParkingSpot
+          - AccountUser
+          - SIP_CREDENTIALS
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - USER_DEVICE_LINE
+          - SIP_TRUNK
+          - SIP_TRUNK_GROUP
+          - EMERGENCY_NOTIFICATION_COMPLIANCE
+          - DYNAMIC_RESERVATION
+          - SPECIALTY_LINE
+          - AUTHORITY_ROLE
+          - AUTO_ATTENDANT
+          - END_USER_CONTACT
+          - CUSTOM_CONTACT
+          - CONTACT_CENTER
+          - CALL_RECORDING
+          - ACCOUNT_CODE
+          - SHORT_CODE
+          - MEDIA_MANAGEMENT
+          - SOUNDS
+          - USER_GROUP
+          - USER_API_AUTH
+        referenceId:
+          type: string
+        referenceName:
+          type: string
+        action:
+          type: string
+          enum:
+          - CREATE
+          - UPDATE
+          - PROVISION_REQUEST
+          - DELETE
+    FindMeFollowMeCallHandlingX:
+      type: object
+      properties:
+        findMeEndpoints:
+          type: array
+          items:
+            originalRef: FindMeEndpointX
+            $ref: '#/components/schemas/FindMeEndpointX'
+        timeoutType:
+          type: string
+          enum:
+          - Forward
+          - Voicemail
+          - Busy
+          - RingForever
+    MediaFriendsX:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        host:
+          type: string
+        toNumber:
+          type: string
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            originalRef: JobError
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: integer
+          format: int64
+        lastUpdated:
+          type: integer
+          format: int64
+    TnData:
+      type: object
+      properties:
+        tn:
+          type: string
+        rateCenter:
+          type: string
+        wireless:
+          type: boolean
+    CallHandlingSettingsX:
+      type: object
+      properties:
+        callWaitingEnabled:
+          type: boolean
+        doNotDisturbEnabled:
+          type: boolean
+        callHandlingOptionType:
+          type: string
+          enum:
+          - RingPhone
+          - ForwardAlways
+          - SimultaneousRing
+          - FindMeFollowMe
+        forwardAlwaysToNumber:
+          type: string
+        forwardAlwaysToNumberDescription:
+          type: string
+        ringPhoneCallHandling:
+          originalRef: RingPhoneCallHandlingX
+          $ref: '#/components/schemas/RingPhoneCallHandlingX'
+        simultaneousRingCallHandling:
+          originalRef: SimultaneousRingCallHandlingX
+          $ref: '#/components/schemas/SimultaneousRingCallHandlingX'
+        findMeFollowMeCallHandling:
+          originalRef: FindMeFollowMeCallHandlingX
+          $ref: '#/components/schemas/FindMeFollowMeCallHandlingX'
+    CallingPlanX:
+      type: object
+      properties:
+        id:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - ACCOUNT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        callingPlanProductId:
+          type: string
+        endDate:
+          type: string
+          format: date-time
+        startDate:
+          type: string
+          format: date-time
+        planMinutes:
           type: integer
           format: int32
-        deviceKind:
+        secondsRemaining:
+          type: integer
+          format: int64
+    AccountViewX:
+      type: object
+      properties:
+        partitionId:
           type: string
-        lineFunctionality:
+        id:
+          type: string
+        accountNumber:
+          type: string
+        accountName:
+          type: string
+        type:
+          type: string
+          enum:
+          - SIMPLE
+          - ADVANCED
+        accountStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - DISABLED
+          - DELETED
+          - DELETE_PENDING
+          - SUSPENDED
+          - PENDING
+        platformType:
+          type: string
+          enum:
+          - V2_0
+          - V2_1
+          - CPE1
+          - CPE2
+        platformChangeDate:
+          type: integer
+          format: int64
+        matches:
           type: object
           additionalProperties:
-            uniqueItems: true
-            type: array
-            items:
-              type: string
-              enum:
-              - Line
-              - AdvancedSharedLine
-              - ReferencedUser
-              - IntercomLine
-              - PresenceBlfUser
-              - SpeedDialUser
-              - SpeedDialTn
-              - CallParkingSpot
-              - SipPaging
-              - Custom
+            type: string
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    CallHandlingWithTimeoutX:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Forward
+          - Voicemail
+          - Busy
+          - RingForever
+        timeout:
+          type: integer
+          format: int32
+        forwardToNumber:
+          type: string
+        description:
+          type: string
+    SideCarTypeX:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLinesPerPage:
+          type: integer
+          format: int32
+        numPages:
+          type: integer
+          format: int32
+    CallHandlingScheduleX:
+      type: object
+      properties:
+        schedule:
+          originalRef: ScheduleX
+          $ref: '#/components/schemas/ScheduleX'
+        callHandling:
+          originalRef: CallHandlingSettingsX
+          $ref: '#/components/schemas/CallHandlingSettingsX'
+    DirectoryListingX:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX'
+    CustomerServiceRecordX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
     Account_2:
       type: object
       properties:
@@ -4858,39 +3623,185 @@ components:
       - regulatoryType
       - status
       - timeZone
-    WeeklyScheduleX_2:
+    DynamicTelephoneNumberActivationX_2:
       type: object
       properties:
-        SUN:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        MON:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        TUE:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        WED:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        THU:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        FRI:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        SAT:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-    AccountHistorySearchResponseX_2:
-      type: object
-      properties:
-        totalRecords:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        carrierId:
+          type: string
+        orderId:
+          type: string
+        tnQuantity:
           type: integer
-          format: int64
-        accountCreatedDate:
+          format: int32
+        deviceId:
           type: string
-          format: date-time
-        accountLastUpdatedDate:
+        userId:
           type: string
-          format: date-time
-        results:
+        customerServiceRecord:
+          $ref: '#/components/schemas/LatLongCustomerServiceRecordX_2'
+        directoryListing:
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          $ref: '#/components/schemas/E911AddressX'
+        tnSettings:
+          $ref: '#/components/schemas/TelephoneNumberAccountBareX'
+          required: true
+        ringType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        archived:
+          type: boolean
+        alianzaOrderId:
+          type: string
+        id:
+          type: string
+    PortX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        telephoneNumbers:
           type: array
           items:
-            $ref: '#/components/schemas/AccountHistoryX'
+            type: string
+            xml:
+              name: telephoneNumber
+          xml:
+            wrapped: true
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        sendLoa:
+          type: boolean
+        loaSaved:
+          type: boolean
+        carrierId:
+          type: string
+        carrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+          - LUMEN_VOICE_LI_ELS
+          - SINCH
+          - SERVICE_PROVIDER_CARRIER
+        customerServiceRecord:
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        crdDate:
+          type: string
+          format: date-time
+        billingTelephoneNumber:
+          type: string
+        portingWireType:
+          type: string
+          enum:
+          - Wireless
+          - Wireline
+        portingAuthorizedName:
+          type: string
+        wirelessAccountNumber:
+          type: string
+        wirelessPin:
+          type: string
+          maxLength: 15
+        focDate:
+          type: string
+          format: date-time
+        focDateTimeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        createdDate:
+          type: string
+          format: date-time
+        completedDate:
+          type: string
+          format: date-time
+        cancelType:
+          type: string
+          enum:
+          - NORMAL
+          - EXPIDITED
+          - BY_CARRIER
+        telecomSettings:
+          $ref: '#/components/schemas/TelecomSettingsX_2'
+        hotCutPortId:
+          type: string
+        portNow:
+          type: boolean
+        canAcceptSMS:
+          type: boolean
+        smsCallbackUrl:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     TelecomSettingsX_2:
       type: object
       properties:
@@ -4913,23 +3824,984 @@ components:
           type: object
           additionalProperties:
             $ref: '#/components/schemas/TnData'
-    DirectoryListingX_2:
+    SimultaneousRingEndpointX:
       type: object
       properties:
-        listed:
+        toNumber:
+          type: string
+        ringDelay:
+          type: integer
+          format: int32
+          minimum: 0
+        ringDuration:
+          type: integer
+          format: int32
+          minimum: 1
+          description: When noAnswerCallHandling.type is RingForever, this value is ignored by the service.
+        continueOnBusy:
           type: boolean
+    CallScreeningSettingsX_2:
+      type: object
+      properties:
+        anonymousCallScreen:
+          type: string
+          enum:
+          - Allow
+          - Block
+          - Voicemail
+          - Forward
+          - VipRing
+          - BlockWithPrompt
+        anonymousRingType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        tollFreeCallScreen:
+          type: string
+          enum:
+          - Allow
+          - Block
+          - Voicemail
+          - Forward
+          - VipRing
+          - BlockWithPrompt
+        tollFreeRingType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        defaultCallScreen:
+          type: string
+          enum:
+          - Allow
+          - Block
+          - Voicemail
+          - Forward
+          - VipRing
+          - BlockWithPrompt
+        defaultRingType:
+          type: string
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        customCallScreenList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomCallScreenX'
+        forwardTn:
+          type: string
+    FindMeEndpointX_2:
+      type: object
+      properties:
+        ringUserDevice:
+          type: boolean
+        toNumber:
+          type: string
+        description:
+          type: string
+        timeout:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 240
+        toUserId:
+          type: string
+        continueOnBusy:
+          type: boolean
+          description: Must be false for the last Find Me endpoint.
+    AccountDeviceDataX_2:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - LINE_HARDWARE
+          - USER
+        macAddress:
+          type: string
+        deviceType:
+          $ref: '#/components/schemas/DeviceTypeX_2'
+        sideCarType:
+          $ref: '#/components/schemas/SideCarTypeX'
+        numSideCars:
+          type: integer
+          format: int32
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceX_2'
+    MultipleActivationX_2:
+      type: object
+      description: Root object for activating multiple end users with telephone numbers in a single request
+      properties:
+        account:
+          $ref: '#/components/schemas/Account_2'
+        endUsers:
+          type: array
+          description: List of end users with telephone number activations (max 2)
+          maxItems: 2
+          items:
+            $ref: '#/components/schemas/EndUserWithMultipleTnActivationX_2'
+      required:
+      - account
+    UserProductPlanX_2:
+      type: object
+      description: 'A user product plan indicates the platform features that are available to an end user.  There are 3 types: [STANDARD, ADVANCED, PROFESSIONAL]. <p>ADVANCED and PROFESSIONAL plans are only available for ADVANCED account types once a Cymbus group has been created.</p> <span hidden><p><a href="account.html">Accounts</a></p></span> <p><a href="#/~operation/Cymbus%20User%20Product/updateCymbusAccountGroup">Create Cymbus Group</a></p> <h5>STANDARD</h5> <p>The standard plan is available to all users.  It is basic phone service.</p> <h5>ADVANCED</h5> <p>The advanced plan offers the standard phone service plus the Cymbus softphone client. Requires the user have an email address.</p> <h5>PROFESSIONAL</h5> <p>The professional plan includes phone service, Cymbus softphone client, and the Cymbus collaboration features. Requires the user have an email address.</p>'
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+        emailAddressRequired:
+          type: boolean
+    ScheduleX_2:
+      type: object
+      properties:
+        name:
+          type: string
         type:
           type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
           enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX_2'
+          - CUSTOM
+          - WEEKLY
+        weekly:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/WeeklyScheduleX_2'
+        custom:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomScheduleX_2'
+    TelephoneNumberAccountV2X_2:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        referenceType:
+          type: string
+          description: What kind of destination gets calls from this number.
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+          description: The id of the destination which gets calls from this number.  You can think of this as a variable refkey; what it points to depends on the referenceType.
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        customerServiceRecord:
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        carrierStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - ACTIVATION_ON_HOLD
+          - ACTIVATION_PENDING
+          - PORT_PENDING
+          - CANCEL_PORT
+          - CANCEL_PORT_EXPIDITED
+          - DELETE_PENDING
+          - DELETED
+          - CANCEL_PORT_COMPLETE
+          - PORT_REJECTED
+          - INVENTORY
+          - INVENTORY_CLAIMED
+          - COOLDOWN
+          - RECOVERED
+        orderVersion:
+          type: string
+        e911Address:
+          $ref: '#/components/schemas/E911AddressX'
+        temporaryNumber:
+          type: string
+        directoryListing:
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        assignAsCallerId:
+          type: boolean
+        byotnCarrierId:
+          type: string
+        ringType:
+          type: string
+          description: Default ringtype for this phone
+          enum:
+          - StandardRing
+          - Ring1
+          - Ring2
+          - Ring3
+          - Ring4
+          - Ring5
+          - Ring6
+          - Ring7
+        carrierId:
+          type: string
+        tollFree:
+          type: boolean
+        id:
+          type: string
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    EndUserV2X_2:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+          minLength: 3
+          maxLength: 256
+          description: If the userProductPlan is ADVANCED or PROFESSIONAL, do not use an email as a username as this will result in loss of access to the softphone client.
+        firstName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        lastName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        emailAddress:
+          type: string
+          minLength: 3
+          maxLength: 256
+          description: Must be a valid email address
+        mustChangePassword:
+          type: boolean
+        languageTag:
+          type: string
+          description: <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">RFC-5646 Language tag</a>. Refer to <a href="#/~operation/Reference%20Resources/getLanguages">supported languages</a> for a list of supported values.
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        callingPlans:
+          type: array
+          description: callingPlans
+          items:
+            $ref: '#/components/schemas/CallingPlanX'
+          readOnly: true
+          xml:
+            wrapped: true
+        devices:
+          type: array
+          description: devices
+          items:
+            $ref: '#/components/schemas/DeviceX_2'
+          readOnly: true
+          xml:
+            wrapped: true
+        timeZone:
+          type: string
+          enum:
+          - US/Samoa
+          - US/Hawaii
+          - US/Alaska
+          - US/Pacific
+          - US/Arizona
+          - US/Mountain
+          - US/Central
+          - US/Eastern
+          - America/St_Thomas
+          - Canada/Pacific
+          - Canada/Mountain
+          - Canada/Central
+          - Canada/Eastern
+          - Canada/Atlantic
+          - Canada/Newfoundland
+        extension:
+          type: string
+        callerIdConfig:
+          $ref: '#/components/schemas/CallerIdConfigX'
+        callHandlingSettings:
+          $ref: '#/components/schemas/CallHandlingSettingsX_2'
+        callScreeningSettings:
+          $ref: '#/components/schemas/CallScreeningSettingsX_2'
+        newCppId:
+          type: string
+        mediaFriends:
+          $ref: '#/components/schemas/MediaFriendsX'
+        callHandlingSchedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallHandlingScheduleX_2'
+        voicemailBoxId:
+          type: string
+        endUserType:
+          type: string
+          enum:
+          - ADMIN
+          - ADVANCED_ADMIN
+          - BASIC_ADMIN
+          - STANDARD
+          - STANDARD_ADMIN
+          - SUPER_ADMIN
+        userProductPlan:
+          type: string
+          enum:
+          - STANDARD
+          - ADVANCED
+          - PROFESSIONAL
+        softphoneClientType:
+          type: string
+          enum:
+          - STRETTO
+          - CYMBUS
+        pinLockedOut:
+          type: boolean
+        welcomeEmailSent:
+          type: string
+          format: date-time
+        blockEmail:
+          type: boolean
+        allowPortalAccess:
+          type: boolean
+        tags:
+          type: string
+        group:
+          $ref: '#/components/schemas/UserGroupX'
+      required:
+      - timeZone
+    ApiSingleException:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    AccountActivationV2X_2:
+      type: object
+      properties:
+        device:
+          $ref: '#/components/schemas/DeviceX_2'
+        user:
+          $ref: '#/components/schemas/EndUserV2X_2'
+        telephoneNumberAccount:
+          $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        dynamicTelephoneNumberActivation:
+          $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        port:
+          $ref: '#/components/schemas/PortX_2'
+        holdActivation:
+          type: boolean
+        account:
+          $ref: '#/components/schemas/Account_2'
+    SimultaneousRingCallHandlingX_2:
+      type: object
+      properties:
+        forwardToNumberList:
+          type: array
+          items:
+            type: string
+        forwardToTimedNumberList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SimultaneousRingEndpointX'
+          description: Mutually exclusive with forwardToNumberList; if both are sent, this list takes precedence when non-empty. Endpoint delays must be in chronological order with no gaps between active windows. The first endpoint delay must be less than or equal to noAnswerCallHandling.timeout.
+        noAnswerCallHandling:
+          $ref: '#/components/schemas/CallHandlingWithTimeoutX_2'
+        continueOnBusy:
+          type: boolean
+    RingPhoneCallHandlingX_2:
+      type: object
+      properties:
+        busyCallHandling:
+          $ref: '#/components/schemas/CallHandlingX'
+        noAnswerCallHandling:
+          $ref: '#/components/schemas/CallHandlingWithTimeoutX_2'
+        unregisteredCallHandling:
+          $ref: '#/components/schemas/CallHandlingX'
+    DeviceX_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Not required for creating a new device line
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        accountId:
+          type: string
+          description: Not required for creating a new device line
+        partitionId:
+          type: string
+          description: Not required for creating a new device line
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device.  Must not be claimed in another device request.
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+          description: Required if emergencyNumberReservationId is absent
+        emergencyNumberReservationId:
+          type: string
+          description: Required if emergencyNumber is absent
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+          format: int32
+          description: Required for POST & PUT operations only
+        userId:
+          type: string
+        sipPassword:
+          type: string
+        sipUsername:
+          type: string
+          description: Required to be globally unique if specified
+        zipcode:
+          type: string
+          deprecated: true
+        state:
+          type: string
+          deprecated: true
+        lineType:
+          type: string
+          enum:
+          - Line
+          - AdvancedSharedLine
+          - ReferencedUser
+          - IntercomLine
+          - PresenceBlfUser
+          - SpeedDialUser
+          - SpeedDialTn
+          - CallParkingSpot
+          - SipPaging
+          - Custom
+        referenceId:
+          type: string
+          description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number.
+      required:
+      - accountId
+      - deviceName
+      - deviceTypeId
+      - faxEnabled
+      - id
+      - partitionId
+      - userId
+      - lineNumber
+    DeviceTypeX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        numLines:
+          type: integer
+          format: int32
+        deviceTypeManufacturer:
+          type: string
+          enum:
+          - CISCO_LINKSYS_SIPURA
+          - POLYCOM
+          - ARRIS
+          - OBIHAI
+          - INNOMEDIA
+          - THIRD_PARTY
+          - SOFT_PHONE
+          - ZTE
+          - SCIENTIFIC_ATLANTA
+          - CALIX
+          - YEALINK
+          - SNOM
+          - SMART_RG
+          - ACROBITS
+          - GRANDSTREAM
+          - ADTRAN
+          - MEDIATRIX
+          - ALGO
+          - MITEL
+          - CLEARLY_IP
+        acceptsRemoteResync:
+          type: boolean
+        faxSupported:
+          type: boolean
+        macAddressRequired:
+          type: boolean
+        showProvisionStatus:
+          type: boolean
+        enforceUniqueAdminPassword:
+          type: boolean
+        customEncryptionKeys:
+          type: boolean
+        sipPagingEnabled:
+          type: boolean
+        distinctiveRingInfo:
+          type: string
+        smbDevice:
+          type: boolean
+        sideCarTypeIds:
+          type: array
+          items:
+            type: string
+        maxSideCars:
+          type: integer
+          format: int32
+        ringTypeAlertInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/RingTypeAlertInfoX'
+        sipRegMax:
+          type: integer
+          format: int32
+        deviceKind:
+          type: string
+        lineFunctionality:
+          type: object
+          additionalProperties:
+            uniqueItems: true
+            type: array
+            items:
+              type: string
+              enum:
+              - Line
+              - AdvancedSharedLine
+              - ReferencedUser
+              - IntercomLine
+              - PresenceBlfUser
+              - SpeedDialUser
+              - SpeedDialTn
+              - CallParkingSpot
+              - SipPaging
+              - Custom
+    WeeklyScheduleTimeX:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+      required:
+      - startTime
+      - endTime
+    LatLongCustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        middleInitial:
+          type: string
+          minLength: 3
+          maxLength: 256
+        lastName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        businessName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        streetNumber:
+          type: string
+          minLength: 3
+          maxLength: 256
+        streetNumberSuffix:
+          type: string
+          minLength: 3
+          maxLength: 256
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        streetSuffix:
+          type: string
+          minLength: 3
+          maxLength: 256
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          minLength: 3
+          maxLength: 256
+        state:
+          type: string
+          minLength: 3
+          maxLength: 256
+        country:
+          type: string
+          minLength: 3
+          maxLength: 256
+        postalCode:
+          type: string
+          minLength: 3
+          maxLength: 256
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          minLength: 0
+          maxLength: 10
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+          minLength: 3
+          maxLength: 256
+        blockCustomerName:
+          type: boolean
+        customerName:
+          type: string
+          minLength: 3
+          maxLength: 256
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    AccountHistorySearchResponseX_2:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        accountCreatedDate:
+          type: string
+          format: date-time
+        accountLastUpdatedDate:
+          type: string
+          format: date-time
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountHistoryX'
+    EndUserWithMultipleTnActivationX_2:
+      type: object
+      description: End user with multiple telephone number activation options
+      properties:
+        user:
+          $ref: '#/components/schemas/EndUserV2X_2'
+        telephoneNumberAccounts:
+          type: array
+          description: Existing telephone numbers to assign to the user
+          items:
+            $ref: '#/components/schemas/TelephoneNumberAccountV2X_2'
+        dynamicTelephoneNumberActivations:
+          type: array
+          description: New telephone numbers to provision from carrier
+          items:
+            $ref: '#/components/schemas/DynamicTelephoneNumberActivationX_2'
+        ports:
+          type: array
+          description: Port-in requests for existing numbers
+          items:
+            $ref: '#/components/schemas/PortX_2'
+        holdActivation:
+          type: boolean
+          description: Hold activation until ready
+      required:
+      - user
+      - holdActivation
+    CustomScheduleX_2:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+        endTime:
+          type: string
+      required:
+      - date
+      - startTime
+      - endTime
+    AddressX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+          minLength: 1
+          maxLength: 256
+        middleInitial:
+          type: string
+          maxLength: 256
+        lastName:
+          type: string
+          maxLength: 256
+        businessName:
+          type: string
+          maxLength: 256
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          maxLength: 256
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          maxLength: 256
+        state:
+          type: string
+          description: A two-letter state abbreviation
+        country:
+          type: string
+          description: Alianza supports accounts in USA and CAN
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          maxLength: 10
+    WeeklyScheduleX_2:
+      type: object
+      properties:
+        SUN:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        MON:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        TUE:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        WED:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        THU:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        FRI:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        SAT:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+    FindMeFollowMeCallHandlingX_2:
+      type: object
+      properties:
+        findMeEndpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/FindMeEndpointX_2'
+        timeoutType:
+          type: string
+          enum:
+          - Forward
+          - Voicemail
+          - Busy
+          - RingForever
+    Job_2:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        userId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - DONE
+          - FAILED
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobError'
+        inputKey:
+          type: string
+        outputKey:
+          type: string
+        start:
+          type: string
+          format: date-time
+        lastUpdated:
+          type: string
+          format: date-time
+      xml:
+        name: job
+    CallHandlingSettingsX_2:
+      type: object
+      properties:
+        callWaitingEnabled:
+          type: boolean
+        doNotDisturbEnabled:
+          type: boolean
+        callHandlingOptionType:
+          type: string
+          enum:
+          - RingPhone
+          - ForwardAlways
+          - SimultaneousRing
+          - FindMeFollowMe
+        forwardAlwaysToNumber:
+          type: string
+        forwardAlwaysToNumberDescription:
+          type: string
+        ringPhoneCallHandling:
+          $ref: '#/components/schemas/RingPhoneCallHandlingX_2'
+        simultaneousRingCallHandling:
+          $ref: '#/components/schemas/SimultaneousRingCallHandlingX_2'
+        findMeFollowMeCallHandling:
+          $ref: '#/components/schemas/FindMeFollowMeCallHandlingX_2'
     CallHandlingWithTimeoutX_2:
       type: object
       properties:
@@ -4947,6 +4819,134 @@ components:
         forwardToNumber:
           type: string
         description:
+          type: string
+    CallHandlingScheduleX_2:
+      type: object
+      properties:
+        schedule:
+          $ref: '#/components/schemas/ScheduleX_2'
+        callHandling:
+          $ref: '#/components/schemas/CallHandlingSettingsX_2'
+    DirectoryListingX_2:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX_2'
+    CustomerServiceRecordX_2:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+          minLength: 1
+          maxLength: 256
+        middleInitial:
+          type: string
+          maxLength: 256
+        lastName:
+          type: string
+          maxLength: 256
+        businessName:
+          type: string
+          maxLength: 256
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+          maxLength: 256
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+          maxLength: 256
+        state:
+          type: string
+          description: A two-letter state abbreviation
+        country:
+          type: string
+          description: Alianza supports accounts in the USA and Canada.
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+          maxLength: 10
+        customerType:
+          type: string
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
+          type: string
+        blockCustomerName:
+          type: boolean
+        customerName:
           type: string
   securitySchemes:
     X-Auth-Token:

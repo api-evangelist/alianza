@@ -263,26 +263,6 @@ paths:
           description: Not found
 components:
   schemas:
-    SipTrunkForwardReference:
-      type: object
-      required:
-      - referenceType
-      properties:
-        referenceId:
-          type: string
-          description: id of the entity to forward the calls to
-        referenceType:
-          $ref: '#/components/schemas/ReferenceType'
-    ReferenceType:
-      type: string
-      enum:
-      - SIP_TRUNK
-      - END_USER
-      - TELEPHONE
-      - AUTO_ATTENDANT
-      - IVR
-      - VOICEMAIL
-      - BUSY
     SipTrunkGroup:
       type: object
       required:
@@ -311,6 +291,23 @@ components:
           type: array
           items:
             type: string
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
     SipTrunkGroupForwardRules:
       type: object
       properties:
@@ -330,13 +327,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SipTrunkForwardReference'
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
+    SipTrunkForwardReference:
+      type: object
+      required:
+      - referenceType
+      properties:
+        referenceId:
+          type: string
+          description: id of the entity to forward the calls to
+        referenceType:
+          $ref: '#/components/schemas/ReferenceType'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

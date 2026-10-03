@@ -542,6 +542,13 @@ components:
           description: List of exempted identifiers
           items:
             type: string
+    ExemptionType:
+      type: string
+      description: Type of exemption target
+      enum:
+      - USER
+      - GROUP
+      - ACCOUNT
     PublicApiException:
       type: object
       properties:
@@ -594,13 +601,6 @@ components:
           - ACCOUNT_LEVEL_SSO
           - PARTITION_ENFORCED_SSO
           - PARTITION_SSO
-    ExemptionType:
-      type: string
-      description: Type of exemption target
-      enum:
-      - USER
-      - GROUP
-      - ACCOUNT
   securitySchemes:
     X-Auth-Token:
       type: apiKey

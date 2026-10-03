@@ -424,21 +424,6 @@ components:
           uniqueItems: true
           items:
             type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     CallGroupX_2:
       type: object
       properties:
@@ -467,6 +452,21 @@ components:
           items:
             type: string
           uniqueItems: true
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

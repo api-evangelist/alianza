@@ -505,6 +505,8 @@ paths:
         required: true
 components:
   schemas:
+    MultipartFormDataInput:
+      type: object
     Calling_Plan_Product:
       type: object
       properties:
@@ -562,8 +564,21 @@ components:
           type: string
         input:
           type: string
-    MultipartFormDataInput:
+    PublicApiException:
       type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     MultipartFormDataInput_2:
       type: object
       properties:
@@ -615,21 +630,6 @@ components:
           type: boolean
         rateIntraPartitionAsFree:
           type: boolean
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

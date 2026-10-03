@@ -198,6 +198,17 @@ paths:
           description: Zipcodes not found
 components:
   schemas:
+    ZipcodeX:
+      type: object
+      properties:
+        zipCode:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
     AddressValidationX:
       type: object
       properties:
@@ -214,17 +225,6 @@ components:
           type: string
         valid:
           type: boolean
-    ZipcodeX:
-      type: object
-      properties:
-        zipCode:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
     CustomerServiceRecordX:
       type: object
       properties:
@@ -334,21 +334,6 @@ components:
           type: string
         valid:
           type: boolean
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     CustomerServiceRecordX_2:
       type: object
       properties:
@@ -453,6 +438,21 @@ components:
           type: boolean
         customerName:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

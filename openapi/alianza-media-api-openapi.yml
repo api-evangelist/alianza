@@ -521,15 +521,6 @@ paths:
         required: true
 components:
   schemas:
-    HoldMusicX:
-      type: object
-      properties:
-        storageId:
-          type: string
-        url:
-          type: string
-    MultipartFormDataInput:
-      type: object
     Job:
       type: object
       properties:
@@ -561,13 +552,6 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    MediaX:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
     JobError:
       type: object
       properties:
@@ -580,12 +564,22 @@ components:
           type: string
         input:
           type: string
-    MultipartFormDataInput_2:
+    HoldMusicX:
       type: object
       properties:
-        file:
+        storageId:
           type: string
-          format: binary
+        url:
+          type: string
+    MediaX:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+    MultipartFormDataInput:
+      type: object
     Job_2:
       type: object
       properties:
@@ -633,6 +627,12 @@ components:
           example:
             key: value
             key2: value2
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
   securitySchemes:
     X-Auth-Token:
       type: apiKey

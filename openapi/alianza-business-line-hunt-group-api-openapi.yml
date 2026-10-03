@@ -730,15 +730,42 @@ paths:
           description: successful operation
 components:
   schemas:
-    PartitionStarCodes:
+    HuntGroup:
       type: object
+      required:
+      - accountId
+      - huntingConfiguration
+      - name
+      - partitionId
       properties:
-        constraintType:
+        id:
           type: string
-        constraintValue:
-          type: array
-          items:
-            type: string
+          format: uuid
+        name:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        huntingConfiguration:
+          originalRef: HuntingConfiguration
+          $ref: '#/components/schemas/HuntingConfiguration'
+        activeForwardConfigurationId:
+          type: string
+          format: uuid
+    HuntingConfiguration:
+      type: object
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LinearHuntingConfiguration
+          - SequentialHuntingConfiguration
+          - SimultaneousHuntingConfiguration
     ForwardConfiguration:
       type: object
       required:
@@ -767,6 +794,15 @@ components:
           pattern: \d+
         name:
           type: string
+    PartitionStarCodes:
+      type: object
+      properties:
+        constraintType:
+          type: string
+        constraintValue:
+          type: array
+          items:
+            type: string
     FailoverAction:
       type: object
       required:
@@ -787,26 +823,8 @@ components:
           - BusyFailoverAction
           - ForwardFailoverAction
           - VoicemailFailoverAction
-    HuntingConfiguration:
+    HuntGroup_2:
       type: object
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-      properties:
-        '@type':
-          type: string
-          enum:
-          - LinearHuntingConfiguration
-          - SequentialHuntingConfiguration
-          - SimultaneousHuntingConfiguration
-    HuntGroup:
-      type: object
-      required:
-      - accountId
-      - huntingConfiguration
-      - name
-      - partitionId
       properties:
         id:
           type: string
@@ -818,11 +836,32 @@ components:
         accountId:
           type: string
         huntingConfiguration:
-          originalRef: HuntingConfiguration
-          $ref: '#/components/schemas/HuntingConfiguration'
+          $ref: '#/components/schemas/HuntingConfiguration_2'
         activeForwardConfigurationId:
           type: string
           format: uuid
+      required:
+      - accountId
+      - huntingConfiguration
+      - name
+      - partitionId
+    BusyFailoverAction:
+      allOf:
+      - $ref: '#/components/schemas/FailoverAction_2'
+      - type: object
+    LinearMember:
+      type: object
+      properties:
+        businessLineId:
+          type: string
+          format: uuid
+        sequenceOrder:
+          type: integer
+          format: int32
+          minimum: 0
+      required:
+      - businessLineId
+      - sequenceOrder
     SequentialHuntingConfiguration:
       allOf:
       - $ref: '#/components/schemas/HuntingConfiguration_2'
@@ -834,6 +873,38 @@ components:
               $ref: '#/components/schemas/SequentialMember'
             maxItems: 2147483647
             minItems: 1
+    HuntingConfiguration_2:
+      type: object
+      properties:
+        '@type':
+          type: string
+          enum:
+          - LinearHuntingConfiguration
+          - SequentialHuntingConfiguration
+          - SimultaneousHuntingConfiguration
+      discriminator:
+        propertyName: '@type'
+      anyOf:
+      - $ref: '#/components/schemas/LinearHuntingConfiguration'
+      - $ref: '#/components/schemas/SequentialHuntingConfiguration'
+      - $ref: '#/components/schemas/SimultaneousHuntingConfiguration'
+      required:
+      - '@type'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     VoicemailFailoverAction:
       allOf:
       - $ref: '#/components/schemas/FailoverAction_2'
@@ -843,6 +914,62 @@ components:
         properties:
           voicemailBoxId:
             type: string
+    LinearHuntingConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/HuntingConfiguration_2'
+      - required:
+        - ringTimeoutSeconds
+        type: object
+        properties:
+          ringTimeoutSeconds:
+            type: integer
+            format: int32
+            minimum: 0
+          members:
+            type: array
+            items:
+              $ref: '#/components/schemas/LinearMember'
+            maxItems: 2147483647
+            minItems: 1
+    SimultaneousHuntingConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/HuntingConfiguration_2'
+      - required:
+        - members
+        - ringTimeoutSeconds
+        type: object
+        properties:
+          ringTimeoutSeconds:
+            type: integer
+            format: int32
+            minimum: 0
+          members:
+            type: array
+            items:
+              type: string
+              format: uuid
+            maxItems: 2147483647
+            minItems: 1
+    SequentialMember:
+      type: object
+      properties:
+        businessLineId:
+          type: string
+          format: uuid
+        ringTimeoutSeconds:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+        sequenceOrder:
+          type: integer
+          format: int32
+          minimum: 0
+          maximum: 2147483647
+      required:
+      - businessLineId
+      - ringTimeoutSeconds
+      - sequenceOrder
     FailoverAction_2:
       type: object
       properties:
@@ -867,19 +994,6 @@ components:
       required:
       - '@type'
       - failoverReason
-    LinearMember:
-      type: object
-      properties:
-        businessLineId:
-          type: string
-          format: uuid
-        sequenceOrder:
-          type: integer
-          format: int32
-          minimum: 0
-      required:
-      - businessLineId
-      - sequenceOrder
     ForwardFailoverAction:
       allOf:
       - $ref: '#/components/schemas/FailoverAction_2'
@@ -890,120 +1004,6 @@ components:
           forwardToPhoneNumber:
             type: string
             pattern: \d+
-    SimultaneousHuntingConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/HuntingConfiguration_2'
-      - required:
-        - members
-        - ringTimeoutSeconds
-        type: object
-        properties:
-          ringTimeoutSeconds:
-            type: integer
-            format: int32
-            minimum: 0
-          members:
-            type: array
-            items:
-              type: string
-              format: uuid
-            maxItems: 2147483647
-            minItems: 1
-    BusyFailoverAction:
-      allOf:
-      - $ref: '#/components/schemas/FailoverAction_2'
-      - type: object
-    SequentialMember:
-      type: object
-      properties:
-        businessLineId:
-          type: string
-          format: uuid
-        ringTimeoutSeconds:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-        sequenceOrder:
-          type: integer
-          format: int32
-          minimum: 0
-          maximum: 2147483647
-      required:
-      - businessLineId
-      - ringTimeoutSeconds
-      - sequenceOrder
-    HuntingConfiguration_2:
-      type: object
-      properties:
-        '@type':
-          type: string
-          enum:
-          - LinearHuntingConfiguration
-          - SequentialHuntingConfiguration
-          - SimultaneousHuntingConfiguration
-      discriminator:
-        propertyName: '@type'
-      anyOf:
-      - $ref: '#/components/schemas/LinearHuntingConfiguration'
-      - $ref: '#/components/schemas/SequentialHuntingConfiguration'
-      - $ref: '#/components/schemas/SimultaneousHuntingConfiguration'
-      required:
-      - '@type'
-    HuntGroup_2:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        huntingConfiguration:
-          $ref: '#/components/schemas/HuntingConfiguration_2'
-        activeForwardConfigurationId:
-          type: string
-          format: uuid
-      required:
-      - accountId
-      - huntingConfiguration
-      - name
-      - partitionId
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    LinearHuntingConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/HuntingConfiguration_2'
-      - required:
-        - ringTimeoutSeconds
-        type: object
-        properties:
-          ringTimeoutSeconds:
-            type: integer
-            format: int32
-            minimum: 0
-          members:
-            type: array
-            items:
-              $ref: '#/components/schemas/LinearMember'
-            maxItems: 2147483647
-            minItems: 1
   securitySchemes:
     X-Auth-Token:
       type: apiKey

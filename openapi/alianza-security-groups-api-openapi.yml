@@ -407,21 +407,6 @@ components:
           items:
             originalRef: SecurityPermissionX
             $ref: '#/components/schemas/SecurityPermissionX'
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     SecurityPermissionX_2:
       type: object
       properties:
@@ -520,6 +505,21 @@ components:
           items:
             $ref: '#/components/schemas/SecurityPermissionX_2'
           uniqueItems: true
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

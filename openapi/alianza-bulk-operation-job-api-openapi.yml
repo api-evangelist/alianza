@@ -139,6 +139,77 @@ paths:
                 $ref: '#/components/schemas/BulkOperationErrorResponse'
 components:
   schemas:
+    JobOutputCollectionDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the output collection
+      required:
+      - id
+    JobStatusDTO:
+      type: string
+      enum:
+      - CREATED
+      - STARTED
+      - ABORTED
+      - COMPLETED
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
+    JobFormDTO:
+      type: object
+      properties:
+        transformObjectType:
+          type: string
+          enum:
+          - CreateUserInput
+          - CreateTelephoneNumberInput
+          - DeleteUserInput
+          - DeleteTelephoneNumberInput
+        transformObjectFile:
+          type: string
+          format: binary
+          description: valid data file that corresponds to the transform object type definition
+        targetAccountId:
+          type: string
+          description: account that this data will go into
+        jobTypeId:
+          type: string
+          enum:
+          - create users
+          - create telephone numbers
+          - delete users
+          - delete telephone numbers
+      required:
+      - transformObjectType
+      - transformObjectFile
+      - targetAccountId
+      - jobTypeId
     JobDTO:
       type: object
       properties:
@@ -179,77 +250,6 @@ components:
       - jobTypeId
       - targetAccountId
       - inputCollectionId
-    BulkOperationErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP error status code
-        message:
-          type: string
-          description: Detailed error message
-        errors:
-          type: array
-          description: list of errors
-          items:
-            type: string
-          example:
-          - transformObjectsFile must not be null
-          - jobTypeId should be valid
-          - etc.
-        schemaErrors:
-          type: array
-          description: list of schema errors
-          items:
-            type: object
-          example:
-          - index: index (location) of the error
-            path: path
-            description: description of the schema error
-    JobStatusDTO:
-      type: string
-      enum:
-      - CREATED
-      - STARTED
-      - ABORTED
-      - COMPLETED
-    JobFormDTO:
-      type: object
-      properties:
-        transformObjectType:
-          type: string
-          enum:
-          - CreateUserInput
-          - CreateTelephoneNumberInput
-          - DeleteUserInput
-          - DeleteTelephoneNumberInput
-        transformObjectFile:
-          type: string
-          format: binary
-          description: valid data file that corresponds to the transform object type definition
-        targetAccountId:
-          type: string
-          description: account that this data will go into
-        jobTypeId:
-          type: string
-          enum:
-          - create users
-          - create telephone numbers
-          - delete users
-          - delete telephone numbers
-      required:
-      - transformObjectType
-      - transformObjectFile
-      - targetAccountId
-      - jobTypeId
-    JobOutputCollectionDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier of the output collection
-      required:
-      - id
   examples:
     CreateJobExample:
       summary: Create a Job (multipart/form-data)
