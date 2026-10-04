@@ -154,33 +154,6 @@ components:
       - STARTED
       - ABORTED
       - COMPLETED
-    BulkOperationErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP error status code
-        message:
-          type: string
-          description: Detailed error message
-        errors:
-          type: array
-          description: list of errors
-          items:
-            type: string
-          example:
-          - transformObjectsFile must not be null
-          - jobTypeId should be valid
-          - etc.
-        schemaErrors:
-          type: array
-          description: list of schema errors
-          items:
-            type: object
-          example:
-          - index: index (location) of the error
-            path: path
-            description: description of the schema error
     JobFormDTO:
       type: object
       properties:
@@ -210,6 +183,33 @@ components:
       - transformObjectFile
       - targetAccountId
       - jobTypeId
+    BulkOperationErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP error status code
+        message:
+          type: string
+          description: Detailed error message
+        errors:
+          type: array
+          description: list of errors
+          items:
+            type: string
+          example:
+          - transformObjectsFile must not be null
+          - jobTypeId should be valid
+          - etc.
+        schemaErrors:
+          type: array
+          description: list of schema errors
+          items:
+            type: object
+          example:
+          - index: index (location) of the error
+            path: path
+            description: description of the schema error
     JobDTO:
       type: object
       properties:

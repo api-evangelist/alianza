@@ -208,7 +208,7 @@ components:
           example:
             key: value
             key2: value2
-    UserGroupRequest:
+    UserGroupResponse:
       type: object
       properties:
         partitionId:
@@ -237,7 +237,7 @@ components:
               endUserType:
                 type: string
                 example: BASIC_ADMIN
-    UserGroupResponse:
+    UserGroupRequest:
       type: object
       properties:
         partitionId:

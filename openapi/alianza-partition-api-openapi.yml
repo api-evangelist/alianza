@@ -363,15 +363,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MediaFriendsX:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        host:
-          type: string
-        toNumber:
-          type: string
     Job:
       type: object
       properties:
@@ -403,108 +394,20 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    JobUploadKey:
+    SinchSettingsX:
       type: object
       properties:
-        key:
-          type: string
-    DialPlanRuleX:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        mask:
-          type: string
-        actionType:
+        serviceType:
           type: string
           enum:
-          - TranslateAndReapplyDialPlan
-          - CallOutboundNumber
-          - CallCustomerServiceHuntGroup
-          - Callback
-          - CallForwardingAlways
-          - CallForwardingOnBusy
-          - CallForwardingOnNoAnswer
-          - CallForwardingOnUnregistered
-          - CallNonEmergencyServices
-          - CallPublicServices
-          - CallCanadaHealthServices
-          - CallerIdBlockManage
-          - EnterVoiceMail
-          - DirectToVoicemail
-          - CallWaitingEnable
-          - CallWaitingDisable
-          - AnonymousCallRejectEnable
-          - AnonymousCallRejectDisable
-          - AnonymousCallRejectWithInterceptEnable
-          - AnonymousCallRejectWithInterceptDisable
-          - SelectiveCallAcceptEnable
-          - SelectiveCallAcceptDisable
-          - SpecificCallerBlock
-          - SpecificCallerBlockWithIntercept
-          - SpecificCallerAllow
-          - SpecificCallerVipRing
-          - SpecificCallerForwardEnable
-          - AccountAnonymousCallRejectEnable
-          - AccountAnonymousCallRejectDisable
-          - AccountAnonymousCallRejectWithInterceptEnable
-          - AccountAnonymousCallRejectWithInterceptDisable
-          - AccountSelectiveCallAcceptEnable
-          - AccountSelectiveCallAcceptDisable
-          - AccountSpecificCallerBlock
-          - AccountSpecificCallerAllow
-          - AccountSpecificCallerBlockWithIntercept
-          - DoNotDisturbEnable
-          - DoNotDisturbDisable
-          - PickupInDirectory
-          - CallTrace
-          - ParkCall
-          - ParkCallRetrieval
-          - DirectedCallPickUp
-          - GroupPickup
-          - ReservedForHuntGroup
-          - GroupForwarding
-          - CallPull
-          - GroupLoginLogout
-        callNumber:
+          - ALL_IN_TN
+          - USAGE_TN
+          - BYOC
+        routingOption:
           type: string
-        endingMinimumLength:
-          type: integer
-          format: int32
-        endingMaximumLength:
-          type: integer
-          format: int32
-        translationMacro:
+        apiKey:
           type: string
-        disableCallerId:
-          type: boolean
-        callerIdVisibilityOverride:
-          type: string
-          enum:
-          - UseDestinationCallerIdEnabledSetting
-          - Blocked
-          - Unblocked
-        disableCallWaiting:
-          type: boolean
-        overwriteCallerIdNumber:
-          type: string
-        bypassAuthorization:
-          type: boolean
-        outboundNumberFunction:
-          type: string
-          enum:
-          - CUSTOMER_SERVICE
-          - DIRECTORY_ASSISTANCE
-          - EMERGENCY_SERVICES
-          - ESSENTIAL_COMMUNITY_SERVICES
-          - NONURGENT_MUNICIPAL_GOVERNMENT_SERVICES
-          - NONURGENT_TELEHEALTH_SERVICES
-          - OPERATOR
-          - SPEED_DIAL
-          - TELECOMMUNICATIONS_RELAY_SERVICE
-          - TRAFFIC_INFORMATION
-          - UNDERGROUND_PUBLIC_UTILITY_LOCATION
-        id:
+        apiSecret:
           type: string
     L3SettingsX:
       type: object
@@ -541,17 +444,6 @@ components:
           type: string
         bizOrg:
           type: string
-    PartitionDataHistorySearchResponseX:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int64
-        results:
-          type: array
-          items:
-            originalRef: PartitionDataHistoryX
-            $ref: '#/components/schemas/PartitionDataHistoryX'
     JobError:
       type: object
       properties:
@@ -563,6 +455,85 @@ components:
         column:
           type: string
         input:
+          type: string
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    PartitionDataHistoryX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PARTITION
+          - PLATFORM_USER
+          - PLATFORM_USER_GROUP
+          - CALLING_PLAN
+          - INBOUND_RATE_PLAN
+          - LOCAL_CALLING_PLANS
+          - TN_INVENTORY
+          - PARTITION_SETTINGS
+          - FEATURE_TOGGLES
+          - IP_WHITELIST
+          - DIAL_PLAN_RULE
+          - ROUTE_PLAN
+        createdDate:
+          type: string
+          format: date-time
+        userId:
+          type: string
+        userName:
+          type: string
+        userType:
+          type: string
+          enum:
+          - AccountUser
+          - EndUser
+          - ManagementUser
+          - AlianzaUser
+          - BusinessLines
+        searchTags:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        actionType:
+          type: string
+        relatedDataId:
+          type: string
+        relatedDataType:
+          type: string
+        relatedDataDisplayName:
+          type: string
+        oldValue:
+          type: string
+        newValue:
+          type: string
+    PartitionDataHistorySearchResponseX:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int64
+        results:
+          type: array
+          items:
+            originalRef: PartitionDataHistoryX
+            $ref: '#/components/schemas/PartitionDataHistoryX'
+    MediaFriendsX:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        host:
+          type: string
+        toNumber:
           type: string
     InboundCarrierX:
       type: object
@@ -665,6 +636,153 @@ components:
           - LUMEN_VOICE_LI_ELS
           - SINCH
           - SERVICE_PROVIDER_CARRIER
+    PartitionSettingX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        type:
+          type: string
+          enum:
+          - IntegrationNotificationEmail
+          - CDRReportColumns
+          - SipTrunkProxyServer
+          - AllowAccountDangerousExtensions
+          - InboundRatePlanDefault
+          - SUB_DOMAINS
+          - SEND_WELCOME_EMAIL
+          - REGULATORY_TYPE
+          - ACCOUNT_HOLD_MUSIC_DEFAULT
+          - PLATFORM_TYPE_DEFAULT
+          - GENERATED_SIP_PASSWORD_LENGTH
+          - ENABLE_STAGED_CALL
+          - MAX_BURST_CALL_PERCENTAGE
+          - ALLOW_VM_MESSAGE_ACCESS
+        value:
+          type: object
+    DialPlanRuleX:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        mask:
+          type: string
+        actionType:
+          type: string
+          enum:
+          - TranslateAndReapplyDialPlan
+          - CallOutboundNumber
+          - CallCustomerServiceHuntGroup
+          - Callback
+          - CallForwardingAlways
+          - CallForwardingOnBusy
+          - CallForwardingOnNoAnswer
+          - CallForwardingOnUnregistered
+          - CallNonEmergencyServices
+          - CallPublicServices
+          - CallCanadaHealthServices
+          - CallerIdBlockManage
+          - EnterVoiceMail
+          - DirectToVoicemail
+          - CallWaitingEnable
+          - CallWaitingDisable
+          - AnonymousCallRejectEnable
+          - AnonymousCallRejectDisable
+          - AnonymousCallRejectWithInterceptEnable
+          - AnonymousCallRejectWithInterceptDisable
+          - SelectiveCallAcceptEnable
+          - SelectiveCallAcceptDisable
+          - SpecificCallerBlock
+          - SpecificCallerBlockWithIntercept
+          - SpecificCallerAllow
+          - SpecificCallerVipRing
+          - SpecificCallerForwardEnable
+          - AccountAnonymousCallRejectEnable
+          - AccountAnonymousCallRejectDisable
+          - AccountAnonymousCallRejectWithInterceptEnable
+          - AccountAnonymousCallRejectWithInterceptDisable
+          - AccountSelectiveCallAcceptEnable
+          - AccountSelectiveCallAcceptDisable
+          - AccountSpecificCallerBlock
+          - AccountSpecificCallerAllow
+          - AccountSpecificCallerBlockWithIntercept
+          - DoNotDisturbEnable
+          - DoNotDisturbDisable
+          - PickupInDirectory
+          - CallTrace
+          - ParkCall
+          - ParkCallRetrieval
+          - DirectedCallPickUp
+          - GroupPickup
+          - ReservedForHuntGroup
+          - GroupForwarding
+          - CallPull
+          - GroupLoginLogout
+        callNumber:
+          type: string
+        endingMinimumLength:
+          type: integer
+          format: int32
+        endingMaximumLength:
+          type: integer
+          format: int32
+        translationMacro:
+          type: string
+        disableCallerId:
+          type: boolean
+        callerIdVisibilityOverride:
+          type: string
+          enum:
+          - UseDestinationCallerIdEnabledSetting
+          - Blocked
+          - Unblocked
+        disableCallWaiting:
+          type: boolean
+        overwriteCallerIdNumber:
+          type: string
+        bypassAuthorization:
+          type: boolean
+        outboundNumberFunction:
+          type: string
+          enum:
+          - CUSTOMER_SERVICE
+          - DIRECTORY_ASSISTANCE
+          - EMERGENCY_SERVICES
+          - ESSENTIAL_COMMUNITY_SERVICES
+          - NONURGENT_MUNICIPAL_GOVERNMENT_SERVICES
+          - NONURGENT_TELEHEALTH_SERVICES
+          - OPERATOR
+          - SPEED_DIAL
+          - TELECOMMUNICATIONS_RELAY_SERVICE
+          - TRAFFIC_INFORMATION
+          - UNDERGROUND_PUBLIC_UTILITY_LOCATION
+        id:
+          type: string
+    BandwidthSettingsX:
+      type: object
+      properties:
+        accountId:
+          type: string
+        siteId:
+          type: string
+        peerId:
+          type: string
+    E911AccountX:
+      type: object
+      properties:
+        e911ProviderType:
+          type: string
+          enum:
+          - INTRADO
+          - WEST
+          - DISABLED
+          - BANDWIDTH
+          - SINCH
+          - INTRADO_ENTERPRISE
+        accountId:
+          type: string
+        authToken:
+          type: string
     PartitionX:
       type: object
       properties:
@@ -792,124 +910,6 @@ components:
           type: boolean
         byotnCarrierId:
           type: string
-    E911AccountX:
-      type: object
-      properties:
-        e911ProviderType:
-          type: string
-          enum:
-          - INTRADO
-          - WEST
-          - DISABLED
-          - BANDWIDTH
-          - SINCH
-          - INTRADO_ENTERPRISE
-        accountId:
-          type: string
-        authToken:
-          type: string
-    SinchSettingsX:
-      type: object
-      properties:
-        serviceType:
-          type: string
-          enum:
-          - ALL_IN_TN
-          - USAGE_TN
-          - BYOC
-        routingOption:
-          type: string
-        apiKey:
-          type: string
-        apiSecret:
-          type: string
-    PartitionDataHistoryX:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - PARTITION
-          - PLATFORM_USER
-          - PLATFORM_USER_GROUP
-          - CALLING_PLAN
-          - INBOUND_RATE_PLAN
-          - LOCAL_CALLING_PLANS
-          - TN_INVENTORY
-          - PARTITION_SETTINGS
-          - FEATURE_TOGGLES
-          - IP_WHITELIST
-          - DIAL_PLAN_RULE
-          - ROUTE_PLAN
-        createdDate:
-          type: string
-          format: date-time
-        userId:
-          type: string
-        userName:
-          type: string
-        userType:
-          type: string
-          enum:
-          - AccountUser
-          - EndUser
-          - ManagementUser
-          - AlianzaUser
-          - BusinessLines
-        searchTags:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-        actionType:
-          type: string
-        relatedDataId:
-          type: string
-        relatedDataType:
-          type: string
-        relatedDataDisplayName:
-          type: string
-        oldValue:
-          type: string
-        newValue:
-          type: string
-    PartitionSettingX:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        type:
-          type: string
-          enum:
-          - IntegrationNotificationEmail
-          - CDRReportColumns
-          - SipTrunkProxyServer
-          - AllowAccountDangerousExtensions
-          - InboundRatePlanDefault
-          - SUB_DOMAINS
-          - SEND_WELCOME_EMAIL
-          - REGULATORY_TYPE
-          - ACCOUNT_HOLD_MUSIC_DEFAULT
-          - PLATFORM_TYPE_DEFAULT
-          - GENERATED_SIP_PASSWORD_LENGTH
-          - ENABLE_STAGED_CALL
-          - MAX_BURST_CALL_PERCENTAGE
-          - ALLOW_VM_MESSAGE_ACCESS
-        value:
-          type: object
-    BandwidthSettingsX:
-      type: object
-      properties:
-        accountId:
-          type: string
-        siteId:
-          type: string
-        peerId:
-          type: string
     Job_2:
       type: object
       properties:
@@ -942,6 +942,23 @@ components:
           format: date-time
       xml:
         name: job
+    SinchSettingsX_2:
+      type: object
+      properties:
+        serviceType:
+          type: string
+          enum:
+          - ALL_IN_TN
+          - USAGE_TN
+          - BYOC
+        privateKey:
+          type: string
+        routingOption:
+          type: string
+        apiKey:
+          type: string
+        apiSecret:
+          type: string
     L3SettingsX_2:
       type: object
       properties:
@@ -979,6 +996,21 @@ components:
           type: string
         parentBizOrg:
           type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     PartitionDataHistorySearchResponseX_2:
       type: object
       properties:
@@ -1086,6 +1118,50 @@ components:
           - LUMEN_VOICE_LI_ELS
           - SINCH
           - SERVICE_PROVIDER_CARRIER
+    PartitionSettingX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        type:
+          type: string
+          enum:
+          - IntegrationNotificationEmail
+          - CDRReportColumns
+          - SipTrunkProxyServer
+          - AllowAccountDangerousExtensions
+          - InboundRatePlanDefault
+          - SUB_DOMAINS
+          - SEND_WELCOME_EMAIL
+          - REGULATORY_TYPE
+          - ACCOUNT_HOLD_MUSIC_DEFAULT
+          - PLATFORM_TYPE_DEFAULT
+          - GENERATED_SIP_PASSWORD_LENGTH
+          - ENABLE_STAGED_CALL
+          - MAX_BURST_CALL_PERCENTAGE
+          - ALLOW_VM_MESSAGE_ACCESS
+        value:
+          type: object
+          properties: {}
+    BandwidthSettingsX_2:
+      type: object
+      properties:
+        accountId:
+          type: string
+        siteId:
+          type: string
+        peerId:
+          type: string
+        apiUsername:
+          type: string
+        apiPassword:
+          type: string
+        localAccountId:
+          type: string
+        localSiteId:
+          type: string
+        localPeerId:
+          type: string
     PartitionX_2:
       type: object
       properties:
@@ -1212,82 +1288,6 @@ components:
         autoAssignCallerId:
           type: boolean
         byotnCarrierId:
-          type: string
-    SinchSettingsX_2:
-      type: object
-      properties:
-        serviceType:
-          type: string
-          enum:
-          - ALL_IN_TN
-          - USAGE_TN
-          - BYOC
-        privateKey:
-          type: string
-        routingOption:
-          type: string
-        apiKey:
-          type: string
-        apiSecret:
-          type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    PartitionSettingX_2:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        type:
-          type: string
-          enum:
-          - IntegrationNotificationEmail
-          - CDRReportColumns
-          - SipTrunkProxyServer
-          - AllowAccountDangerousExtensions
-          - InboundRatePlanDefault
-          - SUB_DOMAINS
-          - SEND_WELCOME_EMAIL
-          - REGULATORY_TYPE
-          - ACCOUNT_HOLD_MUSIC_DEFAULT
-          - PLATFORM_TYPE_DEFAULT
-          - GENERATED_SIP_PASSWORD_LENGTH
-          - ENABLE_STAGED_CALL
-          - MAX_BURST_CALL_PERCENTAGE
-          - ALLOW_VM_MESSAGE_ACCESS
-        value:
-          type: object
-          properties: {}
-    BandwidthSettingsX_2:
-      type: object
-      properties:
-        accountId:
-          type: string
-        siteId:
-          type: string
-        peerId:
-          type: string
-        apiUsername:
-          type: string
-        apiPassword:
-          type: string
-        localAccountId:
-          type: string
-        localSiteId:
-          type: string
-        localPeerId:
           type: string
   securitySchemes:
     X-Auth-Token:

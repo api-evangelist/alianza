@@ -782,6 +782,57 @@ paths:
       description: Production
 components:
   schemas:
+    ProvisioningRequestX:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+    DeviceSwapX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+        deviceName:
+          type: string
+    RegistrationStatusX:
+      type: object
+      properties:
+        registered:
+          type: boolean
+    DeviceStatusX:
+      type: object
+      properties:
+        success:
+          type: boolean
+        failureMessage:
+          type: string
+        macAddress:
+          type: string
+        request:
+          type: object
+          additionalProperties:
+            type: string
+        response:
+          type: object
+          additionalProperties:
+            type: string
+        updated:
+          type: string
+          format: date-time
     DeviceX:
       type: object
       required:
@@ -843,57 +894,131 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceSwapX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceTypeId:
-          type: string
-        deviceName:
-          type: string
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
-    DeviceStatusX:
-      type: object
-      properties:
-        success:
-          type: boolean
-        failureMessage:
-          type: string
-        macAddress:
-          type: string
-        request:
-          type: object
-          additionalProperties:
-            type: string
-        response:
-          type: object
-          additionalProperties:
-            type: string
-        updated:
-          type: string
-          format: date-time
-    ProvisioningRequestX:
+    ProvisioningRequestX_2:
       type: object
       properties:
         id:
           type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
         requestDate:
           type: string
           format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
         httpStatus:
           type: integer
           format: int32
+          description: The http status of the device's most recent request for provisioning.
         deviceId:
           type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
         ipAddress:
           type: string
         userAgent:
           type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DeviceData:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        deviceType:
+          type: string
+          description: Reference to <a href="#/~schema/DeviceX">device.deviceTypeId</a> -> <a href="#/~schema/DeviceTypeX">deviceType.id</a> -> <a href="#/~schema/DeviceTypeX">deviceType.name</a>.  For possible values, query <a href="#/~operation/Reference%20Resources/getDeviceTypes">getDevicetypes</a>.
+        lineCount:
+          type: integer
+          format: int32
+        dialPlan:
+          type: string
+          description: This is a dial plan string which instructs a phone when to consider dialing "complete"; in other words, when the phone should send the digits to the switch. For example, it usually instructs a device to immediately send 911, and can also help the phone determine that an extension is being dialed, so it should send after the extension length has been reached. These rules are encoded in a language of sorts and are only really understood by the phone itself.
+        hasFaxEnabledLine:
+          type: boolean
+        lines:
+          type: array
+          items:
+            type: object
+            properties:
+              macAddress:
+                type: string
+              lineNumber:
+                type: integer
+                format: int32
+              userId:
+                type: string
+              displayName:
+                type: string
+              sipUsername:
+                type: string
+              sipPassword:
+                type: string
+              server:
+                type: string
+              serverPort:
+                type: string
+              emergencyNumber:
+                type: string
+              enabled:
+                type: boolean
+              faxEnabled:
+                type: boolean
+    DeviceSwapX_2:
+      type: object
+      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
+      properties:
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        deviceName:
+          type: string
+      required:
+      - macAddress
+      - deviceName
+      - deviceTypeId
+    RequestedDeviceLineX:
+      type: object
+      properties:
+        macAddress:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        displayName:
+          type: string
+        sipUsername:
+          type: string
+        sipPassword:
+          type: string
+        dialPlan:
+          type: string
+        server:
+          type: string
+        serverPort:
+          type: string
+        emergencyNumber:
+          type: string
+        enabled:
+          type: boolean
+        faxEnabled:
+          type: boolean
     DeviceX_2:
       type: object
       properties:
@@ -964,94 +1089,6 @@ components:
       - partitionId
       - userId
       - lineNumber
-    RequestedDeviceLineX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        userId:
-          type: string
-        displayName:
-          type: string
-        sipUsername:
-          type: string
-        sipPassword:
-          type: string
-        dialPlan:
-          type: string
-        server:
-          type: string
-        serverPort:
-          type: string
-        emergencyNumber:
-          type: string
-        enabled:
-          type: boolean
-        faxEnabled:
-          type: boolean
-    DeviceData:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceType:
-          type: string
-          description: Reference to <a href="#/~schema/DeviceX">device.deviceTypeId</a> -> <a href="#/~schema/DeviceTypeX">deviceType.id</a> -> <a href="#/~schema/DeviceTypeX">deviceType.name</a>.  For possible values, query <a href="#/~operation/Reference%20Resources/getDeviceTypes">getDevicetypes</a>.
-        lineCount:
-          type: integer
-          format: int32
-        dialPlan:
-          type: string
-          description: This is a dial plan string which instructs a phone when to consider dialing "complete"; in other words, when the phone should send the digits to the switch. For example, it usually instructs a device to immediately send 911, and can also help the phone determine that an extension is being dialed, so it should send after the extension length has been reached. These rules are encoded in a language of sorts and are only really understood by the phone itself.
-        hasFaxEnabledLine:
-          type: boolean
-        lines:
-          type: array
-          items:
-            type: object
-            properties:
-              macAddress:
-                type: string
-              lineNumber:
-                type: integer
-                format: int32
-              userId:
-                type: string
-              displayName:
-                type: string
-              sipUsername:
-                type: string
-              sipPassword:
-                type: string
-              server:
-                type: string
-              serverPort:
-                type: string
-              emergencyNumber:
-                type: string
-              enabled:
-                type: boolean
-              faxEnabled:
-                type: boolean
-    DeviceSwapX_2:
-      type: object
-      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
-      properties:
-        macAddress:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
-        deviceTypeId:
-          type: string
-          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
-        deviceName:
-          type: string
-      required:
-      - macAddress
-      - deviceName
-      - deviceTypeId
     RequestedDeviceX:
       type: object
       properties:
@@ -1070,43 +1107,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RequestedDeviceLineX'
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    ProvisioningRequestX_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
-        requestDate:
-          type: string
-          format: date-time
-          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
-        httpStatus:
-          type: integer
-          format: int32
-          description: The http status of the device's most recent request for provisioning.
-        deviceId:
-          type: string
-          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-          description: The user agent that was used to retrieve the provisioning data.
   securitySchemes:
     X-Auth-Token:
       type: apiKey

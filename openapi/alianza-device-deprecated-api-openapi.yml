@@ -668,6 +668,31 @@ paths:
         required: true
 components:
   schemas:
+    DeviceStatusX:
+      type: object
+      properties:
+        success:
+          type: boolean
+        failureMessage:
+          type: string
+        macAddress:
+          type: string
+        request:
+          type: object
+          additionalProperties:
+            type: string
+        response:
+          type: object
+          additionalProperties:
+            type: string
+        updated:
+          type: string
+          format: date-time
+    RegistrationStatusX:
+      type: object
+      properties:
+        registered:
+          type: boolean
     DeviceX:
       type: object
       required:
@@ -729,26 +754,6 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceStatusX:
-      type: object
-      properties:
-        success:
-          type: boolean
-        failureMessage:
-          type: string
-        macAddress:
-          type: string
-        request:
-          type: object
-          additionalProperties:
-            type: string
-        response:
-          type: object
-          additionalProperties:
-            type: string
-        updated:
-          type: string
-          format: date-time
     DeviceSwapX:
       type: object
       properties:
@@ -758,11 +763,6 @@ components:
           type: string
         deviceName:
           type: string
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
     DeviceX_2:
       type: object
       properties:

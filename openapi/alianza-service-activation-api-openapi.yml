@@ -85,40 +85,6 @@ paths:
           description: Invalid partition or account
 components:
   schemas:
-    ServiceActivationEventLogX:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - REJECTED
-          - FOC_RECEIVED
-          - FOC_REMOVED
-          - CANCELLED
-          - CANCEL_PENDING
-          - CARRIER_CANCELLED
-          - DELETE_PENDING
-          - DELETE_SCHEDULED
-          - COMPLETED
-          - CORRECTED_COMPLETED
-          - COOLDOWN
-          - HOT_CUT_PORT
-          - ON_HOLD
-          - RESELLER_PENDING
-        actionDate:
-          type: string
-          format: date-time
-        code:
-          type: string
-        message:
-          type: string
-        creationDate:
-          type: string
-          format: date-time
-        generatedTicketId:
-          type: string
     ServiceActivationEventX:
       type: object
       properties:
@@ -239,6 +205,51 @@ components:
           items:
             originalRef: ServiceActivationEventLogX
             $ref: '#/components/schemas/ServiceActivationEventLogX'
+    ServiceActivationEventLogX:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - REJECTED
+          - FOC_RECEIVED
+          - FOC_REMOVED
+          - CANCELLED
+          - CANCEL_PENDING
+          - CARRIER_CANCELLED
+          - DELETE_PENDING
+          - DELETE_SCHEDULED
+          - COMPLETED
+          - CORRECTED_COMPLETED
+          - COOLDOWN
+          - HOT_CUT_PORT
+          - ON_HOLD
+          - RESELLER_PENDING
+        actionDate:
+          type: string
+          format: date-time
+        code:
+          type: string
+        message:
+          type: string
+        creationDate:
+          type: string
+          format: date-time
+        generatedTicketId:
+          type: string
+    ServiceActivationEventTypeX:
+      type: string
+      enum:
+      - ACTIVATION
+      - BYOTN_REQUEST
+      - CSR_CHANGE_REQUEST
+      - DISCONNECT
+      - DYNAMIC_RESERVATION
+      - NINE_ONE_ONE_ADDRESS
+      - PORT_REQUEST
+      - SERVICE_PROVIDER_TN
     PublicApiException:
       type: object
       properties:
@@ -373,17 +384,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ServiceActivationEventLogX'
-    ServiceActivationEventTypeX:
-      type: string
-      enum:
-      - ACTIVATION
-      - BYOTN_REQUEST
-      - CSR_CHANGE_REQUEST
-      - DISCONNECT
-      - DYNAMIC_RESERVATION
-      - NINE_ONE_ONE_ADDRESS
-      - PORT_REQUEST
-      - SERVICE_PROVIDER_TN
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -82,11 +82,6 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    DocumentContent:
-      type: object
-      properties:
-        url:
-          type: string
     PublicApiException:
       type: object
       properties:
@@ -153,6 +148,11 @@ components:
           type:
           - string
           - 'null'
+    DocumentContent:
+      type: object
+      properties:
+        url:
+          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

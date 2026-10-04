@@ -108,6 +108,14 @@ paths:
               $ref: '#/components/schemas/InboundRatePlanProductX'
 components:
   schemas:
+    InboundRate:
+      type: object
+      properties:
+        rate:
+          type: number
+          format: double
+        allowCalls:
+          type: boolean
     InboundRatePlanProductX:
       type: object
       properties:
@@ -126,14 +134,6 @@ components:
           additionalProperties:
             originalRef: InboundRate
             $ref: '#/components/schemas/InboundRate'
-    InboundRate:
-      type: object
-      properties:
-        rate:
-          type: number
-          format: double
-        allowCalls:
-          type: boolean
     InboundRatePlanProductX_2:
       type: object
       properties:

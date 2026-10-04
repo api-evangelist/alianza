@@ -549,21 +549,6 @@ components:
       - USER
       - GROUP
       - ACCOUNT
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     SSOExemptionRequest:
       type: object
       required:
@@ -601,6 +586,21 @@ components:
           - ACCOUNT_LEVEL_SSO
           - PARTITION_ENFORCED_SSO
           - PARTITION_SSO
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

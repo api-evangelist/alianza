@@ -104,6 +104,19 @@ paths:
             $ref: '#/components/schemas/RateCenterSearchViewX'
 components:
   schemas:
+    TelephoneNumberPrefixViewX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        wireless:
+          type: boolean
+        wirelessBlockNumbers:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            format: byte
     RateCenterSearchViewX:
       type: object
       properties:
@@ -140,16 +153,3 @@ components:
         distance:
           type: number
           format: double
-    TelephoneNumberPrefixViewX:
-      type: object
-      properties:
-        prefix:
-          type: string
-        wireless:
-          type: boolean
-        wirelessBlockNumbers:
-          type: array
-          uniqueItems: true
-          items:
-            type: string
-            format: byte

@@ -158,6 +158,21 @@ paths:
                 $ref: '#/components/schemas/BrandErrorResponse'
 components:
   schemas:
+    CreateBrandSettings:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        brandingEnabled:
+          type: boolean
+        selfSigningEnabled:
+          type: boolean
+        desktopHostingEnabled:
+          type: boolean
+      required:
+      - brandingEnabled
+      - partitionId
+      - selfSigningEnabled
     BrandSettingsDTO:
       type: object
       properties:
@@ -183,28 +198,6 @@ components:
       - brandingEnabled
       - partitionId
       - selfSigningEnabled
-    BrandErrorResponse:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/BrandError'
-        description:
-          type: string
-    CreateBrandSettings:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        brandingEnabled:
-          type: boolean
-        selfSigningEnabled:
-          type: boolean
-        desktopHostingEnabled:
-          type: boolean
-      required:
-      - brandingEnabled
-      - partitionId
-      - selfSigningEnabled
     BrandError:
       type: string
       format: int32
@@ -223,6 +216,13 @@ components:
       - 10008 - Brand domains setup is not completed
       - 10009 - Build cannot be published
       - 10010 - Desktop hosting feature is disabled
+    BrandErrorResponse:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/BrandError'
+        description:
+          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

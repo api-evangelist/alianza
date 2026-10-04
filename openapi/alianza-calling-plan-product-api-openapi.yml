@@ -507,6 +507,18 @@ components:
   schemas:
     MultipartFormDataInput:
       type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
     Calling_Plan_Product:
       type: object
       properties:
@@ -552,18 +564,6 @@ components:
           type: boolean
         rateIntraPartitionAsFree:
           type: boolean
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
     PublicApiException:
       type: object
       properties:

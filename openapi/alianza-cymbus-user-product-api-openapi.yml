@@ -278,15 +278,6 @@ paths:
             $ref: '#/components/schemas/SipCredentialData'
 components:
   schemas:
-    SipCredentialData:
-      type: object
-      properties:
-        sipUsernameLine1:
-          type: string
-        sipUsernameLine2:
-          type: string
-        sipPassword:
-          type: string
     CymbusAccountGroup:
       type: object
       properties:
@@ -297,6 +288,15 @@ components:
         groupName:
           type: string
         partitionId:
+          type: string
+    SipCredentialData:
+      type: object
+      properties:
+        sipUsernameLine1:
+          type: string
+        sipUsernameLine2:
+          type: string
+        sipPassword:
           type: string
     CymbusPartitionGroup:
       type: object

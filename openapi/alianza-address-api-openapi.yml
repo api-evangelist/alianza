@@ -198,33 +198,6 @@ paths:
           description: Zipcodes not found
 components:
   schemas:
-    ZipcodeX:
-      type: object
-      properties:
-        zipCode:
-          type: string
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-    AddressValidationX:
-      type: object
-      properties:
-        requiredFields:
-          type: array
-          items:
-            type: string
-        customerServiceRecord:
-          originalRef: CustomerServiceRecordX
-          $ref: '#/components/schemas/CustomerServiceRecordX'
-        latitude:
-          type: string
-        longitude:
-          type: string
-        valid:
-          type: boolean
     CustomerServiceRecordX:
       type: object
       properties:
@@ -319,7 +292,18 @@ components:
           type: boolean
         customerName:
           type: string
-    AddressValidationX_2:
+    ZipcodeX:
+      type: object
+      properties:
+        zipCode:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+    AddressValidationX:
       type: object
       properties:
         requiredFields:
@@ -327,7 +311,8 @@ components:
           items:
             type: string
         customerServiceRecord:
-          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+          originalRef: CustomerServiceRecordX
+          $ref: '#/components/schemas/CustomerServiceRecordX'
         latitude:
           type: string
         longitude:
@@ -453,6 +438,21 @@ components:
           example:
             key: value
             key2: value2
+    AddressValidationX_2:
+      type: object
+      properties:
+        requiredFields:
+          type: array
+          items:
+            type: string
+        customerServiceRecord:
+          $ref: '#/components/schemas/CustomerServiceRecordX_2'
+        latitude:
+          type: string
+        longitude:
+          type: string
+        valid:
+          type: boolean
   securitySchemes:
     X-Auth-Token:
       type: apiKey

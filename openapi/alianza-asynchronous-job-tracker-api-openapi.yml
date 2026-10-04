@@ -281,11 +281,6 @@ components:
           type: string
         input:
           type: string
-    JobOutputUrl:
-      type: object
-      properties:
-        url:
-          type: string
     InputStream:
       type: object
     JobUpload:
@@ -294,6 +289,11 @@ components:
         url:
           type: string
         key:
+          type: string
+    JobOutputUrl:
+      type: object
+      properties:
+        url:
           type: string
     Job_2:
       type: object

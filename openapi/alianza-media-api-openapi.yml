@@ -552,6 +552,13 @@ components:
         lastUpdated:
           type: integer
           format: int64
+    MediaX:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
     JobError:
       type: object
       properties:
@@ -564,6 +571,8 @@ components:
           type: string
         input:
           type: string
+    MultipartFormDataInput:
+      type: object
     HoldMusicX:
       type: object
       properties:
@@ -571,15 +580,6 @@ components:
           type: string
         url:
           type: string
-    MediaX:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-    MultipartFormDataInput:
-      type: object
     Job_2:
       type: object
       properties:

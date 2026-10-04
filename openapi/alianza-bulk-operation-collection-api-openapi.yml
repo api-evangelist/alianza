@@ -153,22 +153,6 @@ paths:
                 $ref: '#/components/schemas/BulkOperationErrorResponse'
 components:
   examples:
-    GetCollectionResponseExample:
-      summary: Get collection response object
-      value:
-        id: collectionId
-        ownerId: same as targetAccountId
-        size: 0
-        transformObjectType: CreateUserInput
-        transformObjects: []
-        createdDateTime: '2024-09-04T22:27:03.431Z'
-    CreateCollectionWithFileExample:
-      summary: Create Collection with upload file
-      value:
-        jobTypeId: create users
-        columnTypes: object with column definitions
-        transformObjectType: string
-        transformObjectsFile: csvUploadFile.csv
     CreateCollectionWithJsonRequestExample:
       summary: Create Collection with Json transformObjects
       value:
@@ -188,6 +172,22 @@ components:
           Voice Portal Access: 'NO'
           Calling Plan: ''
           Language: ENGLISH
+    GetCollectionResponseExample:
+      summary: Get collection response object
+      value:
+        id: collectionId
+        ownerId: same as targetAccountId
+        size: 0
+        transformObjectType: CreateUserInput
+        transformObjects: []
+        createdDateTime: '2024-09-04T22:27:03.431Z'
+    CreateCollectionWithFileExample:
+      summary: Create Collection with upload file
+      value:
+        jobTypeId: create users
+        columnTypes: object with column definitions
+        transformObjectType: string
+        transformObjectsFile: csvUploadFile.csv
   schemas:
     CollectionDTO:
       type: object

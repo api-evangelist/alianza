@@ -290,11 +290,6 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    JobUploadKey:
-      type: object
-      properties:
-        key:
-          type: string
     JobError:
       type: object
       properties:
@@ -307,6 +302,13 @@ components:
           type: string
         input:
           type: string
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    MultipartFormDataInput:
+      type: object
     FileImportValidationErrorX:
       type: object
       properties:
@@ -319,8 +321,6 @@ components:
           type: string
         input:
           type: string
-    MultipartFormDataInput:
-      type: object
     Job_2:
       type: object
       properties:

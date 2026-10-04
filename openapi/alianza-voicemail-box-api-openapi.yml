@@ -826,26 +826,6 @@ paths:
           description: voicemail box not found
 components:
   schemas:
-    VoicemailReferencedByX:
-      type: object
-      properties:
-        type:
-          type: string
-        id:
-          type: string
-    PinChange:
-      type: object
-      properties:
-        accountId:
-          type: string
-        voicemailBoxId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        pin:
-          type: string
     VoicemailMessageX:
       type: object
       properties:
@@ -910,6 +890,13 @@ components:
         audioFileAndType:
           type: string
           description: The type of audio file
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
     VoicemailBoxX:
       type: object
       properties:
@@ -985,6 +972,19 @@ components:
           additionalProperties:
             originalRef: VoicemailMessageX
             $ref: '#/components/schemas/VoicemailMessageX'
+    PinChange:
+      type: object
+      properties:
+        accountId:
+          type: string
+        voicemailBoxId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        pin:
+          type: string
     PublicApiException:
       type: object
       properties:

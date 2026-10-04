@@ -317,6 +317,33 @@ paths:
         required: true
 components:
   schemas:
+    IVRX:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        name:
+          type: string
+        top:
+          type: string
+        left:
+          type: string
+        fixedPosition:
+          type: boolean
+        ivrComponents:
+          type: array
+          items:
+            originalRef: IVRComponentX
+            $ref: '#/components/schemas/IVRComponentX'
+        ivrComponentMappings:
+          type: array
+          items:
+            originalRef: IVRComponentMappingX
+            $ref: '#/components/schemas/IVRComponentMappingX'
     IVRComponentX:
       type: object
       discriminator:
@@ -345,33 +372,6 @@ components:
           - USER
           - LINE_HUNTGROUP
           - FORWARD
-    IVRX:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        partitionId:
-          type: string
-        name:
-          type: string
-        top:
-          type: string
-        left:
-          type: string
-        fixedPosition:
-          type: boolean
-        ivrComponents:
-          type: array
-          items:
-            originalRef: IVRComponentX
-            $ref: '#/components/schemas/IVRComponentX'
-        ivrComponentMappings:
-          type: array
-          items:
-            originalRef: IVRComponentMappingX
-            $ref: '#/components/schemas/IVRComponentMappingX'
     IVRComponentMappingX:
       type: object
       properties:
@@ -379,175 +379,6 @@ components:
           type: string
         toIvrComponentId:
           type: string
-    MenuFailureX:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        required:
-        - menuTimeout
-        - invalidSelectionPrompt
-        - maxInvalidSelections
-        properties:
-          menuTimeout:
-            type: integer
-            format: int32
-          invalidSelectionPrompt:
-            type: string
-          maxInvalidSelections:
-            type: integer
-            format: int32
-    FORWARD:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        properties:
-          toNumber:
-            type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    GROUP:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        required:
-        - name
-        - routedToList
-        - ringType
-        - groupType
-        properties:
-          routedToList:
-            type: array
-            items:
-              $ref: '#/components/schemas/RoutedTo'
-          ringType:
-            type: string
-            enum:
-            - SIMULTANEOUS
-            - SEQUENTIAL
-            - SINGLE_DEVICE_FROM_GROUP
-          groupType:
-            type: string
-            enum:
-            - USER
-            - DEVICE
-          timeoutSeconds:
-            type: integer
-            format: int32
-          timeoutComponentId:
-            type: string
-    DTMF:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        required:
-        - digit
-        properties:
-          digit:
-            type: string
-    DIRECTORY:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        properties:
-          introPrompt:
-            type: string
-          invalidSelectionPrompt:
-            type: string
-          directoryDialType:
-            type: string
-            enum:
-            - NAME
-            - EXTENSION
-    HANGUP:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        properties:
-          goodBye:
-            type: string
-    IVRComponentMappingX_2:
-      type: object
-      description: Refers to the mapping of one IVR Component to another. The mapping is used to define the flow of the IVR.
-      properties:
-        fromIvrComponentId:
-          type: string
-          description: The id of the IVR Component that is being mapped from.  Refers to <a href="#/~schema/IVRComponentX">IVRComponent.id</a><br/><br/> RARELY may also refer to <a href="#/~schema/GROUP">GROUP.timeoutComponentId</a>
-        toIvrComponentId:
-          type: string
-          description: The id of the IVR Component that is being mapped to.  Refers to <a href="#/~schema/IVRComponentX">IVRComponent.id</a>
-      required:
-      - fromIvrComponentId
-      - toIvrComponentId
-    MENU:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        required:
-        - initPromptId
-        - allowBargeInDuringInitPrompt
-        - menuPromptId
-        - menuRepeatDelay
-        - dtmf
-        - failure
-        properties:
-          initPromptId:
-            type: string
-          allowBargeInDuringInitPrompt:
-            type: boolean
-          menuPromptId:
-            type: string
-          menuRepeatDelay:
-            type: integer
-            format: int32
-          dtmf:
-            type: array
-            items:
-              $ref: '#/components/schemas/DTMF'
-          failure:
-            $ref: '#/components/schemas/MenuFailureX'
-    USER:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        properties:
-          userId:
-            type: string
-          sendDirectlyToVoicemail:
-            type: boolean
-    SCHEDULE:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-        required:
-        - scheduleComponent
-        properties:
-          scheduleComponent:
-            type: array
-            items:
-              $ref: '#/components/schemas/SCHEDULE_RULE_COMPONENT'
-    WeeklyScheduleTimeX:
-      type: object
-      properties:
-        startTime:
-          type: string
-        endTime:
-          type: string
-      required:
-      - startTime
-      - endTime
     IVRX_2:
       type: object
       properties:
@@ -581,52 +412,46 @@ components:
       - name
       - ivrComponents
       - ivrComponentMappings
-    INCOMING:
-      allOf:
-      - $ref: '#/components/schemas/IVRComponentX_2'
-      - type: object
-    CustomScheduleX:
+    PublicApiException:
       type: object
       properties:
-        date:
-          type: string
-          format: date-time
-        startTime:
-          type: string
-        endTime:
-          type: string
-      required:
-      - date
-      - startTime
-      - endTime
-    WeeklyScheduleX:
-      type: object
-      properties:
-        SUN:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        MON:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        TUE:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        WED:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        THU:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        FRI:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-        SAT:
-          $ref: '#/components/schemas/WeeklyScheduleTimeX'
-    SCHEDULE_RULE_COMPONENT:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    HANGUP:
       allOf:
       - $ref: '#/components/schemas/IVRComponentX_2'
       - type: object
         properties:
-          weekly:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/WeeklyScheduleX'
-          custom:
-            $ref: '#/components/schemas/CustomScheduleX'
+          goodBye:
+            type: string
+    INCOMING:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+    DIRECTORY:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        properties:
+          introPrompt:
+            type: string
+          invalidSelectionPrompt:
+            type: string
+          directoryDialType:
+            type: string
+            enum:
+            - NAME
+            - EXTENSION
     IVRComponentX_2:
       type: object
       properties:
@@ -672,6 +497,114 @@ components:
       required:
       - id
       - type
+    USER:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        properties:
+          userId:
+            type: string
+          sendDirectlyToVoicemail:
+            type: boolean
+    CustomScheduleX:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+        endTime:
+          type: string
+      required:
+      - date
+      - startTime
+      - endTime
+    GROUP:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        required:
+        - name
+        - routedToList
+        - ringType
+        - groupType
+        properties:
+          routedToList:
+            type: array
+            items:
+              $ref: '#/components/schemas/RoutedTo'
+          ringType:
+            type: string
+            enum:
+            - SIMULTANEOUS
+            - SEQUENTIAL
+            - SINGLE_DEVICE_FROM_GROUP
+          groupType:
+            type: string
+            enum:
+            - USER
+            - DEVICE
+          timeoutSeconds:
+            type: integer
+            format: int32
+          timeoutComponentId:
+            type: string
+    SCHEDULE:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        required:
+        - scheduleComponent
+        properties:
+          scheduleComponent:
+            type: array
+            items:
+              $ref: '#/components/schemas/SCHEDULE_RULE_COMPONENT'
+    MENU:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        required:
+        - initPromptId
+        - allowBargeInDuringInitPrompt
+        - menuPromptId
+        - menuRepeatDelay
+        - dtmf
+        - failure
+        properties:
+          initPromptId:
+            type: string
+          allowBargeInDuringInitPrompt:
+            type: boolean
+          menuPromptId:
+            type: string
+          menuRepeatDelay:
+            type: integer
+            format: int32
+          dtmf:
+            type: array
+            items:
+              $ref: '#/components/schemas/DTMF'
+          failure:
+            $ref: '#/components/schemas/MenuFailureX'
+    MenuFailureX:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        required:
+        - menuTimeout
+        - invalidSelectionPrompt
+        - maxInvalidSelections
+        properties:
+          menuTimeout:
+            type: integer
+            format: int32
+          invalidSelectionPrompt:
+            type: string
+          maxInvalidSelections:
+            type: integer
+            format: int32
     RoutedTo:
       type: object
       properties:
@@ -683,6 +616,73 @@ components:
       required:
       - id
       - timeoutSeconds
+    FORWARD:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        properties:
+          toNumber:
+            type: string
+    IVRComponentMappingX_2:
+      type: object
+      description: Refers to the mapping of one IVR Component to another. The mapping is used to define the flow of the IVR.
+      properties:
+        fromIvrComponentId:
+          type: string
+          description: The id of the IVR Component that is being mapped from.  Refers to <a href="#/~schema/IVRComponentX">IVRComponent.id</a><br/><br/> RARELY may also refer to <a href="#/~schema/GROUP">GROUP.timeoutComponentId</a>
+        toIvrComponentId:
+          type: string
+          description: The id of the IVR Component that is being mapped to.  Refers to <a href="#/~schema/IVRComponentX">IVRComponent.id</a>
+      required:
+      - fromIvrComponentId
+      - toIvrComponentId
+    DTMF:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        required:
+        - digit
+        properties:
+          digit:
+            type: string
+    SCHEDULE_RULE_COMPONENT:
+      allOf:
+      - $ref: '#/components/schemas/IVRComponentX_2'
+      - type: object
+        properties:
+          weekly:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/WeeklyScheduleX'
+          custom:
+            $ref: '#/components/schemas/CustomScheduleX'
+    WeeklyScheduleX:
+      type: object
+      properties:
+        SUN:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        MON:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        TUE:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        WED:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        THU:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        FRI:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+        SAT:
+          $ref: '#/components/schemas/WeeklyScheduleTimeX'
+    WeeklyScheduleTimeX:
+      type: object
+      properties:
+        startTime:
+          type: string
+        endTime:
+          type: string
+      required:
+      - startTime
+      - endTime
   securitySchemes:
     X-Auth-Token:
       type: apiKey

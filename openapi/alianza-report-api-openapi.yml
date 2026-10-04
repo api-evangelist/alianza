@@ -1836,8 +1836,6 @@ paths:
           description: Not found
 components:
   schemas:
-    StreamingOutput:
-      type: object
     ReportSummaryX:
       type: object
       properties:
@@ -1847,18 +1845,8 @@ components:
         totalCount:
           type: integer
           format: int64
-    JobError:
+    StreamingOutput:
       type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
     Job:
       type: object
       properties:
@@ -1890,6 +1878,18 @@ components:
         lastUpdated:
           type: integer
           format: int64
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
     Job_2:
       type: object
       properties:

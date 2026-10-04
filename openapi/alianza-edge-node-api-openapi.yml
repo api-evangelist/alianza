@@ -384,22 +384,21 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    NodeAssignmentQueryResult:
+    PublicApiException:
       type: object
       properties:
-        pageSize:
+        status:
           type: integer
-          example: 1
-        pageNum:
-          type: integer
-          example: 1
-        entities:
+        messages:
           type: array
           items:
-            $ref: '#/components/schemas/NodeAssignment'
-        count:
-          type: integer
-          example: 1
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     NodeQueryResult:
       type: object
       properties:
@@ -430,21 +429,31 @@ components:
         deviceId:
           type: string
           description: Id of the device
-    PublicApiException:
+    Node:
       type: object
       properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+        id:
+          type: string
+          format: uuid
+          example: ed41b6ee-6e00-40d1-b159-508d283c4495
+        authToken:
+          type: string
+          format: uuid
+          description: Token used to obtain edge node file from external endpoint
+        displayName:
+          type: string
+          example: company12
+        proxyAddress:
+          type: string
+        partitionId:
+          type: string
+        default:
+          type: boolean
+          description: Default node for partition
+      required:
+      - displayName
+      - proxyAddress
+      - partitionId
     NodeAssignment:
       type: object
       properties:
@@ -481,31 +490,22 @@ components:
       - displayName
       - proxyAddress
       - partitionId
-    Node:
+    NodeAssignmentQueryResult:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          example: ed41b6ee-6e00-40d1-b159-508d283c4495
-        authToken:
-          type: string
-          format: uuid
-          description: Token used to obtain edge node file from external endpoint
-        displayName:
-          type: string
-          example: company12
-        proxyAddress:
-          type: string
-        partitionId:
-          type: string
-        default:
-          type: boolean
-          description: Default node for partition
-      required:
-      - displayName
-      - proxyAddress
-      - partitionId
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 1
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeAssignment'
+        count:
+          type: integer
+          example: 1
   securitySchemes:
     X-Auth-Token:
       type: apiKey

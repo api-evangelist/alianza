@@ -593,6 +593,37 @@ paths:
             type: boolean
 components:
   schemas:
+    ProvisioningRequestX:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+    MultipartFormDataInput:
+      type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
     DeviceX:
       type: object
       required:
@@ -679,37 +710,49 @@ components:
           - PHONISM
         id:
           type: string
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
-    MultipartFormDataInput:
-      type: object
-    ProvisioningRequestX:
+    ProvisioningRequestX_2:
       type: object
       properties:
         id:
           type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
         requestDate:
           type: string
           format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
         httpStatus:
           type: integer
           format: int32
+          description: The http status of the device's most recent request for provisioning.
         deviceId:
           type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
         ipAddress:
           type: string
         userAgent:
           type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
     DeviceX_2:
       type: object
       properties:
@@ -814,49 +857,6 @@ components:
         id:
           type: string
           description: This field always refers to the macAddress.
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    MultipartFormDataInput_2:
-      type: object
-      properties:
-        file:
-          type: string
-          format: binary
-    ProvisioningRequestX_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
-        requestDate:
-          type: string
-          format: date-time
-          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
-        httpStatus:
-          type: integer
-          format: int32
-          description: The http status of the device's most recent request for provisioning.
-        deviceId:
-          type: string
-          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-          description: The user agent that was used to retrieve the provisioning data.
   securitySchemes:
     X-Auth-Token:
       type: apiKey

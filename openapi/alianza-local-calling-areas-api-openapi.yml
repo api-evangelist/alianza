@@ -115,9 +115,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    StreamingOutput:
-      type: object
     MultipartFormDataInput:
+      type: object
+    StreamingOutput:
       type: object
     FileImportValidationErrorX:
       type: object

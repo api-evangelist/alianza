@@ -291,13 +291,6 @@ components:
           type: array
           items:
             type: string
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
     ReferenceType:
       type: string
       enum:
@@ -308,6 +301,13 @@ components:
       - IVR
       - VOICEMAIL
       - BUSY
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
     SipTrunkGroupForwardRules:
       type: object
       properties:

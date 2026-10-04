@@ -371,18 +371,6 @@ components:
       - e911CallbackNumber
       - callingPlanIds
       title: SpecialtyLine
-    SpecialtyLinesX:
-      type: array
-      items:
-        $ref: '#/components/schemas/SpecialtyLineResponseDto'
-    ValidateSipUsernameDto:
-      type: object
-      properties:
-        username:
-          type: string
-      required:
-      - username
-      title: ValidateSIPUsername
     SpecialtyLineErrorResponseDto:
       type: object
       properties:
@@ -395,6 +383,18 @@ components:
       required:
       - errorCode
       title: SpecialtyLineErrorResponse
+    ValidateSipUsernameDto:
+      type: object
+      properties:
+        username:
+          type: string
+      required:
+      - username
+      title: ValidateSIPUsername
+    SpecialtyLinesX:
+      type: array
+      items:
+        $ref: '#/components/schemas/SpecialtyLineResponseDto'
   securitySchemes:
     X-Auth-Token:
       type: apiKey

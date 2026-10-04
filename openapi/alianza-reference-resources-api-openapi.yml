@@ -850,6 +850,15 @@ paths:
                 - Canada/Newfoundland
 components:
   schemas:
+    LanguageReferenceX:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          type: string
+        language:
+          type: string
     DeviceTypeX:
       type: object
       properties:
@@ -913,15 +922,6 @@ components:
           items:
             originalRef: RingTypeAlertInfoX
             $ref: '#/components/schemas/RingTypeAlertInfoX'
-    LanguageReferenceX:
-      type: object
-      properties:
-        id:
-          type: string
-        country:
-          type: string
-        language:
-          type: string
     PermissionTypeDefaultsX:
       type: object
       properties:
@@ -988,6 +988,17 @@ components:
           - DELETE_MYUSER
           - DELETE
           - DENIED
+    SystemDefaultMediaX:
+      type: object
+      properties:
+        storageId:
+          type: string
+        subType:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
     RingTypeAlertInfoX:
       type: object
       required:
@@ -1021,17 +1032,21 @@ components:
         numPages:
           type: integer
           format: int32
-    SystemDefaultMediaX:
+    PublicApiException:
       type: object
       properties:
-        storageId:
-          type: string
-        subType:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     DeviceTypeX_2:
       type: object
       properties:
@@ -1117,21 +1132,6 @@ components:
               - CallParkingSpot
               - SipPaging
               - Custom
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

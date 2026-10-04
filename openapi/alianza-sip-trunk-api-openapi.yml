@@ -706,35 +706,6 @@ paths:
           description: Not found
 components:
   schemas:
-    SipTrunkForwardRules:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        sipTrunkId:
-          type: string
-        forwardAlways:
-          originalRef: ForwardAlwaysReference
-          $ref: '#/components/schemas/ForwardAlwaysReference'
-        forwardOnFailure:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
-        forwardOnCapacityExceeded:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
-    RegistrationStatus:
-      type: object
-      properties:
-        registered:
-          type: boolean
-        lockedOut:
-          type: boolean
     SbcEndpoint:
       type: object
       properties:
@@ -747,17 +718,6 @@ components:
           format: int32
         protocol:
           type: string
-    SetupCallingPlan:
-      type: object
-      properties:
-        referenceId:
-          type: string
-        callingPlanType:
-          type: string
-          enum:
-          - SHARED_CALLING_PLAN
-          - NEW_CALLING_PLAN
-          - UNSHARED_CALLING_PLAN
     SipTrunk:
       type: object
       properties:
@@ -830,38 +790,6 @@ components:
           format: int32
         languageTag:
           type: string
-    ForwardReference:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
-          type: string
-    ForwardAlwaysReference:
-      type: object
-      properties:
-        referenceType:
-          type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
-          type: string
-        enabled:
-          type: boolean
     CallingPlan:
       type: object
       properties:
@@ -885,33 +813,7 @@ components:
         secondsRemaining:
           type: integer
           format: int64
-    SipTrunkForwardRules_2:
-      type: object
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        sipTrunkId:
-          type: string
-        forwardAlways:
-          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
-        forwardOnFailure:
-          type: array
-          items:
-            $ref: '#/components/schemas/SipTrunkForwardReference'
-        forwardOnCapacityExceeded:
-          type: array
-          items:
-            $ref: '#/components/schemas/SipTrunkForwardReference'
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
-    SetupCallingPlan_2:
+    SetupCallingPlan:
       type: object
       properties:
         referenceId:
@@ -921,6 +823,93 @@ components:
           enum:
           - SHARED_CALLING_PLAN
           - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
+    ForwardAlwaysReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+        enabled:
+          type: boolean
+    SipTrunkForwardRules:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          originalRef: ForwardAlwaysReference
+          $ref: '#/components/schemas/ForwardAlwaysReference'
+        forwardOnFailure:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+    RegistrationStatus:
+      type: object
+      properties:
+        registered:
+          type: boolean
+        lockedOut:
+          type: boolean
+    ForwardReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
     SipTrunk_2:
       type: object
       properties:
@@ -996,31 +985,42 @@ components:
           format: int32
         languageTag:
           type: string
-    PublicApiException:
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+    SetupCallingPlan_2:
       type: object
       properties:
-        status:
-          type: integer
-        messages:
+        referenceId:
+          type: string
+        callingPlanType:
+          type: string
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+    SipTrunkForwardRules_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          $ref: '#/components/schemas/SipTrunkForwardAlwaysReference'
+        forwardOnFailure:
           type: array
           items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    ReferenceType:
-      type: string
-      enum:
-      - SIP_TRUNK
-      - END_USER
-      - TELEPHONE
-      - AUTO_ATTENDANT
-      - IVR
-      - VOICEMAIL
-      - BUSY
+            $ref: '#/components/schemas/SipTrunkForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            $ref: '#/components/schemas/SipTrunkForwardReference'
     SipTrunkForwardReference:
       type: object
       required:

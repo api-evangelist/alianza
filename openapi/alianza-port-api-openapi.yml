@@ -384,32 +384,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LOAX:
-      type: object
-      properties:
-        id:
-          type: string
-        data:
-          type: array
-          items:
-            type: string
-            format: byte
-        extension:
-          type: string
-        date:
-          type: integer
-          format: int64
-        contentType:
-          type: string
-    TnData:
-      type: object
-      properties:
-        tn:
-          type: string
-        rateCenter:
-          type: string
-        wireless:
-          type: boolean
     PortX:
       type: object
       properties:
@@ -531,31 +505,23 @@ components:
           type: boolean
         smsCallbackUrl:
           type: string
-    MultipartFormDataInput:
-      type: object
-    TelecomSettingsX:
+    LOAX:
       type: object
       properties:
-        notes:
+        id:
           type: string
-        currentCarrier:
+        data:
+          type: array
+          items:
+            type: string
+            format: byte
+        extension:
           type: string
-        currentCarrierName:
+        date:
+          type: integer
+          format: int64
+        contentType:
           type: string
-        localReseller:
-          type: string
-        loaDate:
-          type: string
-          format: date-time
-        disconnectInternetService:
-          type: boolean
-        disconnectTelevisionService:
-          type: boolean
-        tnData:
-          type: object
-          additionalProperties:
-            originalRef: TnData
-            $ref: '#/components/schemas/TnData'
     CustomerServiceRecordX:
       type: object
       properties:
@@ -650,24 +616,40 @@ components:
           type: boolean
         customerName:
           type: string
-    LOAX_2:
+    MultipartFormDataInput:
+      type: object
+    TnData:
       type: object
       properties:
-        id:
+        tn:
           type: string
-        data:
-          type: array
-          items:
-            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-            type: string
-            format: byte
-        extension:
+        rateCenter:
           type: string
-        date:
-          type: integer
-          format: int64
-        contentType:
+        wireless:
+          type: boolean
+    TelecomSettingsX:
+      type: object
+      properties:
+        notes:
           type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            originalRef: TnData
+            $ref: '#/components/schemas/TnData'
     PortX_2:
       type: object
       properties:
@@ -803,34 +785,24 @@ components:
           example:
             key: value
             key2: value2
-    MultipartFormDataInput_2:
+    LOAX_2:
       type: object
       properties:
-        file:
+        id:
           type: string
-          format: binary
-    TelecomSettingsX_2:
-      type: object
-      properties:
-        notes:
+        data:
+          type: array
+          items:
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+            format: byte
+        extension:
           type: string
-        currentCarrier:
+        date:
+          type: integer
+          format: int64
+        contentType:
           type: string
-        currentCarrierName:
-          type: string
-        localReseller:
-          type: string
-        loaDate:
-          type: string
-          format: date-time
-        disconnectInternetService:
-          type: boolean
-        disconnectTelevisionService:
-          type: boolean
-        tnData:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/TnData'
     CustomerServiceRecordX_2:
       type: object
       properties:
@@ -935,6 +907,34 @@ components:
           type: boolean
         customerName:
           type: string
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    TelecomSettingsX_2:
+      type: object
+      properties:
+        notes:
+          type: string
+        currentCarrier:
+          type: string
+        currentCarrierName:
+          type: string
+        localReseller:
+          type: string
+        loaDate:
+          type: string
+          format: date-time
+        disconnectInternetService:
+          type: boolean
+        disconnectTelevisionService:
+          type: boolean
+        tnData:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/TnData'
   securitySchemes:
     X-Auth-Token:
       type: apiKey
