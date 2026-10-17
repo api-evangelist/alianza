@@ -782,37 +782,6 @@ paths:
       description: Production
 components:
   schemas:
-    ProvisioningRequestX:
-      type: object
-      properties:
-        id:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
-        httpStatus:
-          type: integer
-          format: int32
-        deviceId:
-          type: string
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-    DeviceSwapX:
-      type: object
-      properties:
-        macAddress:
-          type: string
-        deviceTypeId:
-          type: string
-        deviceName:
-          type: string
-    RegistrationStatusX:
-      type: object
-      properties:
-        registered:
-          type: boolean
     DeviceStatusX:
       type: object
       properties:
@@ -894,43 +863,37 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    ProvisioningRequestX_2:
+    RegistrationStatusX:
+      type: object
+      properties:
+        registered:
+          type: boolean
+    ProvisioningRequestX:
       type: object
       properties:
         id:
           type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
         requestDate:
           type: string
           format: date-time
-          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
         httpStatus:
           type: integer
           format: int32
-          description: The http status of the device's most recent request for provisioning.
         deviceId:
           type: string
-          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
         ipAddress:
           type: string
         userAgent:
           type: string
-          description: The user agent that was used to retrieve the provisioning data.
-    PublicApiException:
+    DeviceSwapX:
       type: object
       properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+        macAddress:
+          type: string
+        deviceTypeId:
+          type: string
+        deviceName:
+          type: string
     DeviceData:
       type: object
       properties:
@@ -975,22 +938,6 @@ components:
                 type: boolean
               faxEnabled:
                 type: boolean
-    DeviceSwapX_2:
-      type: object
-      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
-      properties:
-        macAddress:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
-        deviceTypeId:
-          type: string
-          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
-        deviceName:
-          type: string
-      required:
-      - macAddress
-      - deviceName
-      - deviceTypeId
     RequestedDeviceLineX:
       type: object
       properties:
@@ -1089,6 +1036,59 @@ components:
       - partitionId
       - userId
       - lineNumber
+    ProvisioningRequestX_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
+        requestDate:
+          type: string
+          format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
+        httpStatus:
+          type: integer
+          format: int32
+          description: The http status of the device's most recent request for provisioning.
+        deviceId:
+          type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    DeviceSwapX_2:
+      type: object
+      description: Refers to swapping <span hidden><a href="accountDeviceLine.html">Account Device Lines</a></span>Account Device Lines.
+      properties:
+        macAddress:
+          type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer. Required if the device line refers to a physical device. Must not be claimed in another device request.
+        deviceTypeId:
+          type: string
+          description: 'Identifies the equipment as well as the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All Device Types</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">Get Device Type by ID</a>'
+        deviceName:
+          type: string
+      required:
+      - macAddress
+      - deviceName
+      - deviceTypeId
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     RequestedDeviceX:
       type: object
       properties:

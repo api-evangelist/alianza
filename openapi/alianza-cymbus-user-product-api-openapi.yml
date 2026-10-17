@@ -278,26 +278,6 @@ paths:
             $ref: '#/components/schemas/SipCredentialData'
 components:
   schemas:
-    CymbusAccountGroup:
-      type: object
-      properties:
-        id:
-          type: string
-        accountName:
-          type: string
-        groupName:
-          type: string
-        partitionId:
-          type: string
-    SipCredentialData:
-      type: object
-      properties:
-        sipUsernameLine1:
-          type: string
-        sipUsernameLine2:
-          type: string
-        sipPassword:
-          type: string
     CymbusPartitionGroup:
       type: object
       properties:
@@ -312,6 +292,26 @@ components:
         proxyHost:
           type: string
         groupName:
+          type: string
+    SipCredentialData:
+      type: object
+      properties:
+        sipUsernameLine1:
+          type: string
+        sipUsernameLine2:
+          type: string
+        sipPassword:
+          type: string
+    CymbusAccountGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountName:
+          type: string
+        groupName:
+          type: string
+        partitionId:
           type: string
     PublicApiException:
       type: object

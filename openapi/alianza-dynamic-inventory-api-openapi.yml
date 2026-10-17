@@ -157,30 +157,158 @@ paths:
         required: true
 components:
   schemas:
-    DynamicInventoryOrderX:
+    TelephoneNumberAccountBareX:
       type: object
       properties:
-        partitionId:
+        phoneNumber:
           type: string
-        accountId:
+        referenceType:
           type: string
-        customerServiceRecord:
-          originalRef: LatLongCustomerServiceRecordX
-          $ref: '#/components/schemas/LatLongCustomerServiceRecordX'
-        directoryListing:
-          originalRef: DirectoryListingX
-          $ref: '#/components/schemas/DirectoryListingX'
-        e911Address:
-          originalRef: E911AddressX
-          $ref: '#/components/schemas/E911AddressX'
-        inventory:
-          type: array
-          uniqueItems: true
-          items:
-            originalRef: DynamicInventoryX
-            $ref: '#/components/schemas/DynamicInventoryX'
+          enum:
+          - SIP_TRUNK
+          - END_USER
+          - IVR
+          - LINE_APPEARANCE
+          - LINE_HUNTGROUP
+          - TELEPHONE
+          - VFAX
+          - BUSINESS_LINE
+          - BUSINESS_LINE_HUNT_GROUP
+          - CALL_GROUP
+          - CALL_QUEUE
+          - AUTO_ATTENDANT
+          - SPECIALTY_LINE
+          - CONTACT_CENTER
+        referenceId:
+          type: string
+        functionType:
+          type: string
+          enum:
+          - ELS
+          - TollFree
+          - TemporaryNumber
+          - SPTN
+        canAcceptSMS:
+          type: boolean
+        operationalStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - STAGED
+        portId:
+          type: string
+        servicePackageType:
+          type: string
+          enum:
+          - Usage
+          - PrimaryLocalFlatRate
+          - PrimaryLocalAndDomesticLDFlatRate
+          - SecondaryLocalFlatRate
+          - SecondaryLocalAndDomesticLDFlatRate
         id:
           type: string
+        tollFree:
+          type: boolean
+    AddressX:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        middleInitial:
+          type: string
+        lastName:
+          type: string
+        businessName:
+          type: string
+        streetNumber:
+          type: string
+        streetNumberSuffix:
+          type: string
+        preDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        streetName:
+          type: string
+        streetSuffix:
+          type: string
+        postDirectional:
+          type: string
+          enum:
+          - ''
+          - N
+          - NE
+          - E
+          - SE
+          - S
+          - SW
+          - W
+          - NW
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        secondaryLocationDescription:
+          type: string
+          enum:
+          - ''
+          - APARTMENT
+          - BUILDING
+          - BASEMENT
+          - DEPARTMENT
+          - FLOOR
+          - FRONT
+          - HANGER
+          - KEY
+          - LOBBY
+          - LOT
+          - LOWER
+          - OFFICE
+          - PENTHOUSE
+          - PIER
+          - REAR
+          - ROOM
+          - SIDE
+          - SLIP
+          - SPACE
+          - SUITE
+          - STOP
+          - TRAILER
+          - UNIT
+          - UPPER
+        unit:
+          type: string
+    DirectoryListingX:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          originalRef: AddressX
+          $ref: '#/components/schemas/AddressX'
     E911AddressX:
       type: object
       properties:
@@ -278,165 +406,6 @@ components:
         language:
           type: string
           description: Optional, see /v2/ref/language for supported languages
-    DirectoryListingX:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          originalRef: AddressX
-          $ref: '#/components/schemas/AddressX'
-    DynamicInventoryOrderTelephoneNumberX:
-      type: object
-      properties:
-        tn:
-          type: string
-        id:
-          type: string
-    AddressX:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        middleInitial:
-          type: string
-        lastName:
-          type: string
-        businessName:
-          type: string
-        streetNumber:
-          type: string
-        streetNumberSuffix:
-          type: string
-        preDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        streetName:
-          type: string
-        streetSuffix:
-          type: string
-        postDirectional:
-          type: string
-          enum:
-          - ''
-          - N
-          - NE
-          - E
-          - SE
-          - S
-          - SW
-          - W
-          - NW
-        city:
-          type: string
-        state:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        secondaryLocationDescription:
-          type: string
-          enum:
-          - ''
-          - APARTMENT
-          - BUILDING
-          - BASEMENT
-          - DEPARTMENT
-          - FLOOR
-          - FRONT
-          - HANGER
-          - KEY
-          - LOBBY
-          - LOT
-          - LOWER
-          - OFFICE
-          - PENTHOUSE
-          - PIER
-          - REAR
-          - ROOM
-          - SIDE
-          - SLIP
-          - SPACE
-          - SUITE
-          - STOP
-          - TRAILER
-          - UNIT
-          - UPPER
-        unit:
-          type: string
-    TelephoneNumberAccountBareX:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        referenceType:
-          type: string
-          enum:
-          - SIP_TRUNK
-          - END_USER
-          - IVR
-          - LINE_APPEARANCE
-          - LINE_HUNTGROUP
-          - TELEPHONE
-          - VFAX
-          - BUSINESS_LINE
-          - BUSINESS_LINE_HUNT_GROUP
-          - CALL_GROUP
-          - CALL_QUEUE
-          - AUTO_ATTENDANT
-          - SPECIALTY_LINE
-          - CONTACT_CENTER
-        referenceId:
-          type: string
-        functionType:
-          type: string
-          enum:
-          - ELS
-          - TollFree
-          - TemporaryNumber
-          - SPTN
-        canAcceptSMS:
-          type: boolean
-        operationalStatus:
-          type: string
-          enum:
-          - ACTIVE
-          - STAGED
-        portId:
-          type: string
-        servicePackageType:
-          type: string
-          enum:
-          - Usage
-          - PrimaryLocalFlatRate
-          - PrimaryLocalAndDomesticLDFlatRate
-          - SecondaryLocalFlatRate
-          - SecondaryLocalAndDomesticLDFlatRate
-        id:
-          type: string
-        tollFree:
-          type: boolean
     LatLongCustomerServiceRecordX:
       type: object
       properties:
@@ -537,6 +506,21 @@ components:
         longitude:
           type: number
           format: double
+    DynamicInventoryX:
+      type: object
+      properties:
+        carrierId:
+          type: string
+        orderId:
+          type: string
+        tns:
+          type: array
+          uniqueItems: true
+          items:
+            originalRef: DynamicInventoryOrderTelephoneNumberX
+            $ref: '#/components/schemas/DynamicInventoryOrderTelephoneNumberX'
+        id:
+          type: string
     DynamicTelephoneNumberActivationX:
       type: object
       properties:
@@ -584,37 +568,14 @@ components:
           type: string
         id:
           type: string
-    DynamicInventoryX:
+    DynamicInventoryOrderTelephoneNumberX:
       type: object
       properties:
-        carrierId:
+        tn:
           type: string
-        orderId:
-          type: string
-        tns:
-          type: array
-          uniqueItems: true
-          items:
-            originalRef: DynamicInventoryOrderTelephoneNumberX
-            $ref: '#/components/schemas/DynamicInventoryOrderTelephoneNumberX'
         id:
           type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    DynamicInventoryOrderX_2:
+    DynamicInventoryOrderX:
       type: object
       properties:
         partitionId:
@@ -622,35 +583,22 @@ components:
         accountId:
           type: string
         customerServiceRecord:
-          $ref: '#/components/schemas/LatLongCustomerServiceRecordX_2'
+          originalRef: LatLongCustomerServiceRecordX
+          $ref: '#/components/schemas/LatLongCustomerServiceRecordX'
         directoryListing:
-          $ref: '#/components/schemas/DirectoryListingX_2'
+          originalRef: DirectoryListingX
+          $ref: '#/components/schemas/DirectoryListingX'
         e911Address:
+          originalRef: E911AddressX
           $ref: '#/components/schemas/E911AddressX'
         inventory:
           type: array
-          items:
-            $ref: '#/components/schemas/DynamicInventoryX_2'
           uniqueItems: true
+          items:
+            originalRef: DynamicInventoryX
+            $ref: '#/components/schemas/DynamicInventoryX'
         id:
           type: string
-    DirectoryListingX_2:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX_2'
     AddressX_2:
       type: object
       properties:
@@ -744,6 +692,23 @@ components:
         unit:
           type: string
           maxLength: 10
+    DirectoryListingX_2:
+      type: object
+      properties:
+        listed:
+          type: boolean
+        type:
+          type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX_2'
     LatLongCustomerServiceRecordX_2:
       type: object
       properties:
@@ -874,6 +839,20 @@ components:
         longitude:
           type: number
           format: double
+    DynamicInventoryX_2:
+      type: object
+      properties:
+        carrierId:
+          type: string
+        orderId:
+          type: string
+        tns:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicInventoryOrderTelephoneNumberX'
+          uniqueItems: true
+        id:
+          type: string
     DynamicTelephoneNumberActivationX_2:
       type: object
       properties:
@@ -918,17 +897,38 @@ components:
           type: string
         id:
           type: string
-    DynamicInventoryX_2:
+    PublicApiException:
       type: object
       properties:
-        carrierId:
-          type: string
-        orderId:
-          type: string
-        tns:
+        status:
+          type: integer
+        messages:
           type: array
           items:
-            $ref: '#/components/schemas/DynamicInventoryOrderTelephoneNumberX'
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DynamicInventoryOrderX_2:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        customerServiceRecord:
+          $ref: '#/components/schemas/LatLongCustomerServiceRecordX_2'
+        directoryListing:
+          $ref: '#/components/schemas/DirectoryListingX_2'
+        e911Address:
+          $ref: '#/components/schemas/E911AddressX'
+        inventory:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicInventoryX_2'
           uniqueItems: true
         id:
           type: string

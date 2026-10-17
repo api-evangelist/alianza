@@ -259,6 +259,35 @@ paths:
         description: Use Jobs API to upload file
 components:
   schemas:
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
     Job:
       type: object
       properties:
@@ -290,37 +319,8 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    JobError:
-      type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    JobUploadKey:
-      type: object
-      properties:
-        key:
-          type: string
     MultipartFormDataInput:
       type: object
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
     Job_2:
       type: object
       properties:
@@ -353,6 +353,12 @@ components:
           format: date-time
       xml:
         name: job
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
     PublicApiException:
       type: object
       properties:
@@ -368,12 +374,6 @@ components:
           example:
             key: value
             key2: value2
-    MultipartFormDataInput_2:
-      type: object
-      properties:
-        file:
-          type: string
-          format: binary
   securitySchemes:
     X-Auth-Token:
       type: apiKey

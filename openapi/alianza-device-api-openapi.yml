@@ -61,22 +61,7 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    CustomerServiceRecordX:
+    AddressX:
       type: object
       properties:
         id:
@@ -135,7 +120,7 @@ components:
           description: A two-letter state abbreviation
         country:
           type: string
-          description: Alianza supports accounts in the USA and Canada.
+          description: Alianza supports accounts in USA and CAN
         postalCode:
           type: string
         secondaryLocationDescription:
@@ -169,17 +154,34 @@ components:
         unit:
           type: string
           maxLength: 10
-        customerType:
-          type: string
-          enum:
-          - BUSINESS
-          - RESIDENTIAL
-        firstNameSecondary:
-          type: string
-        blockCustomerName:
+    DirectoryListingX:
+      type: object
+      properties:
+        listed:
           type: boolean
-        customerName:
+        type:
           type: string
+          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
+          enum:
+          - ERROR
+          - LIST_PUBLISH
+          - LIST_NOT_PUBLISH
+          - NOT_LIST_NOT_PUBLISH
+          - PORTED
+          - COMPLEX
+        address:
+          $ref: '#/components/schemas/AddressX'
+    DeviceGraphUnlimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - tnas
+        properties:
+          tnas:
+            type: array
+            items:
+              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
     E911AddressX:
       type: object
       properties:
@@ -277,34 +279,6 @@ components:
         language:
           type: string
           description: Optional, see /v2/ref/language for supported languages
-    DirectoryListingX:
-      type: object
-      properties:
-        listed:
-          type: boolean
-        type:
-          type: string
-          description: Indicates how a telephone number should be listed.  <span hidden>For more information on the directory listing process, please refer <a href="directoryListing.html#overview">here</a></span>
-          enum:
-          - ERROR
-          - LIST_PUBLISH
-          - LIST_NOT_PUBLISH
-          - NOT_LIST_NOT_PUBLISH
-          - PORTED
-          - COMPLEX
-        address:
-          $ref: '#/components/schemas/AddressX'
-    DeviceGraphUnlimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - tnas
-        properties:
-          tnas:
-            type: array
-            items:
-              $ref: '#/components/schemas/TelephoneNumberAccountV2X'
     TelephoneNumberAccountV2X:
       type: object
       properties:
@@ -408,7 +382,58 @@ components:
           type: boolean
         id:
           type: string
-    AddressX:
+    DeviceGraph:
+      type: object
+      properties:
+        deviceTypeId:
+          type: string
+        accountId:
+          type: string
+        partitionId:
+          type: string
+        macAddress:
+          type: string
+        deviceName:
+          type: string
+        emergencyNumber:
+          type: string
+        faxEnabled:
+          type: boolean
+        lineNumber:
+          type: integer
+        userId:
+          type: string
+        sipUsername:
+          type: string
+        linetype:
+          type: string
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
+    DeviceGraphLimited:
+      allOf:
+      - $ref: '#/components/schemas/DeviceGraph'
+      - type: object
+        required:
+        - telephoneNumbers
+        properties:
+          telephoneNumbers:
+            type: array
+            items:
+              type: string
+    CustomerServiceRecordX:
       type: object
       properties:
         id:
@@ -467,7 +492,7 @@ components:
           description: A two-letter state abbreviation
         country:
           type: string
-          description: Alianza supports accounts in USA and CAN
+          description: Alianza supports accounts in the USA and Canada.
         postalCode:
           type: string
         secondaryLocationDescription:
@@ -501,41 +526,16 @@ components:
         unit:
           type: string
           maxLength: 10
-    DeviceGraphLimited:
-      allOf:
-      - $ref: '#/components/schemas/DeviceGraph'
-      - type: object
-        required:
-        - telephoneNumbers
-        properties:
-          telephoneNumbers:
-            type: array
-            items:
-              type: string
-    DeviceGraph:
-      type: object
-      properties:
-        deviceTypeId:
+        customerType:
           type: string
-        accountId:
+          enum:
+          - BUSINESS
+          - RESIDENTIAL
+        firstNameSecondary:
           type: string
-        partitionId:
-          type: string
-        macAddress:
-          type: string
-        deviceName:
-          type: string
-        emergencyNumber:
-          type: string
-        faxEnabled:
+        blockCustomerName:
           type: boolean
-        lineNumber:
-          type: integer
-        userId:
-          type: string
-        sipUsername:
-          type: string
-        linetype:
+        customerName:
           type: string
   securitySchemes:
     X-Auth-Token:

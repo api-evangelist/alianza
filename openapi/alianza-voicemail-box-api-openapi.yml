@@ -826,6 +826,13 @@ paths:
           description: voicemail box not found
 components:
   schemas:
+    VoicemailReferencedByX:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
     VoicemailMessageX:
       type: object
       properties:
@@ -890,12 +897,18 @@ components:
         audioFileAndType:
           type: string
           description: The type of audio file
-    VoicemailReferencedByX:
+    PinChange:
       type: object
       properties:
-        type:
+        accountId:
           type: string
-        id:
+        voicemailBoxId:
+          type: string
+        referenceId:
+          type: string
+        referenceType:
+          type: string
+        pin:
           type: string
     VoicemailBoxX:
       type: object
@@ -972,34 +985,6 @@ components:
           additionalProperties:
             originalRef: VoicemailMessageX
             $ref: '#/components/schemas/VoicemailMessageX'
-    PinChange:
-      type: object
-      properties:
-        accountId:
-          type: string
-        voicemailBoxId:
-          type: string
-        referenceId:
-          type: string
-        referenceType:
-          type: string
-        pin:
-          type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     VoicemailBoxX_2:
       type: object
       properties:
@@ -1073,6 +1058,21 @@ components:
           description: Map of voicemail box greetings
           additionalProperties:
             $ref: '#/components/schemas/VoicemailMessageX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

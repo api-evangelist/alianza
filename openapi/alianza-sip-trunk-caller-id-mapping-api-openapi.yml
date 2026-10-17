@@ -405,6 +405,13 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    FromTelephoneNumberRequest:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        fromWildcard:
+          type: string
     CustomCallerIdNumberRequest:
       type: object
       required:
@@ -412,6 +419,41 @@ components:
       properties:
         customCallerIdNumber:
           type: string
+    CidMappingRequest:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        fromWildcard:
+          type: string
+        customCallerIdNumber:
+          type: string
+    CustomCallerIdNumberResponse:
+      type: object
+      required:
+      - customCallerIdNumber
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        customCallerIdNumber:
+          type: string
+    CidMappingResponse:
+      type: object
+      required:
+      - fromWildcard
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        fromWildcard:
+          type: string
+        customCallerIdNumber:
+          type: string
+        isCustom:
+          type: boolean
     PublicApiException:
       type: object
       properties:
@@ -440,48 +482,6 @@ components:
           type: string
         isCustom:
           type: boolean
-    CustomCallerIdNumberResponse:
-      type: object
-      required:
-      - customCallerIdNumber
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        customCallerIdNumber:
-          type: string
-    CidMappingResponse:
-      type: object
-      required:
-      - fromWildcard
-      properties:
-        partitionId:
-          type: string
-        accountId:
-          type: string
-        fromWildcard:
-          type: string
-        customCallerIdNumber:
-          type: string
-        isCustom:
-          type: boolean
-    CidMappingRequest:
-      type: object
-      required:
-      - fromWildcard
-      properties:
-        fromWildcard:
-          type: string
-        customCallerIdNumber:
-          type: string
-    FromTelephoneNumberRequest:
-      type: object
-      required:
-      - fromWildcard
-      properties:
-        fromWildcard:
-          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

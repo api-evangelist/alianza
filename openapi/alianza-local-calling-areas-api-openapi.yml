@@ -115,10 +115,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MultipartFormDataInput:
-      type: object
-    StreamingOutput:
-      type: object
     FileImportValidationErrorX:
       type: object
       properties:
@@ -131,12 +127,10 @@ components:
           type: string
         input:
           type: string
-    MultipartFormDataInput_2:
+    MultipartFormDataInput:
       type: object
-      properties:
-        file:
-          type: string
-          format: binary
+    StreamingOutput:
+      type: object
     PublicApiException:
       type: object
       properties:
@@ -152,6 +146,12 @@ components:
           example:
             key: value
             key2: value2
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -517,6 +517,21 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     SSOExemptionResponse:
       type: object
       properties:
@@ -542,13 +557,6 @@ components:
           description: List of exempted identifiers
           items:
             type: string
-    ExemptionType:
-      type: string
-      description: Type of exemption target
-      enum:
-      - USER
-      - GROUP
-      - ACCOUNT
     SSOExemptionRequest:
       type: object
       required:
@@ -586,21 +594,13 @@ components:
           - ACCOUNT_LEVEL_SSO
           - PARTITION_ENFORCED_SSO
           - PARTITION_SSO
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
+    ExemptionType:
+      type: string
+      description: Type of exemption target
+      enum:
+      - USER
+      - GROUP
+      - ACCOUNT
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -176,13 +176,6 @@ components:
           type: string
         groupName:
           type: string
-    SsoDataX:
-      type: object
-      properties:
-        clientId:
-          type: string
-        ssoUrl:
-          type: string
     PublicApiException:
       type: object
       properties:
@@ -198,6 +191,13 @@ components:
           example:
             key: value
             key2: value2
+    SsoDataX:
+      type: object
+      properties:
+        clientId:
+          type: string
+        ssoUrl:
+          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

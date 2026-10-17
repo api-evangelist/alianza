@@ -746,38 +746,30 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
-    PublicApiException:
+    SAMLRequestProtocolBinding:
+      type: string
+      enum:
+      - POST
+      - REDIRECT
+      description: SAML Request Protocol Binding.
+    UpdateSubPartitionsRequest:
       type: object
+      required:
+      - enforcedSubPartitions
       properties:
-        status:
-          type: integer
-        messages:
+        enforcedSubPartitions:
           type: array
           items:
             type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    SSOConfigCreateRequest:
-      type: object
-      required:
-      - ssoName
-      properties:
-        partitionId:
-          type: string
-          description: Partition identifier. Required for partition-enforced/partition SSO configurations.
-        accountId:
-          type: string
-          description: Account identifier. Required for account-level SSO configurations.
-        ssoName:
-          type: string
-          description: SSO configuration name.
-          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
-          minLength: 4
-          maxLength: 36
+          description: List of sub-partition IDs to enforce. Merged with existing (union).
+        allowAlianzaAuthentication:
+          type: boolean
+          description: Allow Alianza authentication. Default true.
+          default: true
+        allowSpInitiatedAuthenticationFlow:
+          type: boolean
+          description: Allow SP-initiated authentication flow. Default true.
+          default: true
     SSOConfigCreateResponse:
       type: object
       properties:
@@ -804,17 +796,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    UserValidationResponse:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/UserValidationResult'
-    SAMLRequestProtocolBinding:
-      type: string
-      enum:
-      - POST
-      - REDIRECT
-      description: SAML Request Protocol Binding.
     CompleteSSOConfigRequest:
       type: object
       required:
@@ -855,24 +836,6 @@ components:
           default: true
         allowAlianzaAuthentication:
           type: boolean
-    UpdateSubPartitionsRequest:
-      type: object
-      required:
-      - enforcedSubPartitions
-      properties:
-        enforcedSubPartitions:
-          type: array
-          items:
-            type: string
-          description: List of sub-partition IDs to enforce. Merged with existing (union).
-        allowAlianzaAuthentication:
-          type: boolean
-          description: Allow Alianza authentication. Default true.
-          default: true
-        allowSpInitiatedAuthenticationFlow:
-          type: boolean
-          description: Allow SP-initiated authentication flow. Default true.
-          default: true
     SSOConfigResponse:
       type: object
       properties:
@@ -930,6 +893,28 @@ components:
           type: array
           items:
             type: string
+    SSOConfigCreateRequest:
+      type: object
+      required:
+      - ssoName
+      properties:
+        partitionId:
+          type: string
+          description: Partition identifier. Required for partition-enforced/partition SSO configurations.
+        accountId:
+          type: string
+          description: Account identifier. Required for account-level SSO configurations.
+        ssoName:
+          type: string
+          description: SSO configuration name.
+          pattern: ^[a-z0-9][a-z0-9-]*[a-z0-9]$
+          minLength: 4
+          maxLength: 36
+    UserValidationResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/UserValidationResult'
     UserValidationResult:
       type: string
       enum:
@@ -940,6 +925,21 @@ components:
       - P_SSO_CONFIGURED
       - NO_ACTIVE_CONFIG
       - ACTIVE_CONFIG_ALZ_AUTHN_ALLOWED
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

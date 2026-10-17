@@ -706,18 +706,6 @@ paths:
           description: Not found
 components:
   schemas:
-    SbcEndpoint:
-      type: object
-      properties:
-        site:
-          type: string
-        address:
-          type: string
-        port:
-          type: integer
-          format: int32
-        protocol:
-          type: string
     SipTrunk:
       type: object
       properties:
@@ -790,6 +778,43 @@ components:
           format: int32
         languageTag:
           type: string
+    SipTrunkForwardRules:
+      type: object
+      properties:
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        sipTrunkId:
+          type: string
+        forwardAlways:
+          originalRef: ForwardAlwaysReference
+          $ref: '#/components/schemas/ForwardAlwaysReference'
+        forwardOnFailure:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+        forwardOnCapacityExceeded:
+          type: array
+          items:
+            originalRef: ForwardReference
+            $ref: '#/components/schemas/ForwardReference'
+    ForwardReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - BUSY
+          - END_USER
+          - IVR
+          - AUTO_ATTENDANT
+          - SIP_TRUNK
+          - TELEPHONE
+          - VOICE_MAIL
+        referenceId:
+          type: string
     CallingPlan:
       type: object
       properties:
@@ -813,17 +838,6 @@ components:
         secondsRemaining:
           type: integer
           format: int64
-    SetupCallingPlan:
-      type: object
-      properties:
-        referenceId:
-          type: string
-        callingPlanType:
-          type: string
-          enum:
-          - SHARED_CALLING_PLAN
-          - NEW_CALLING_PLAN
-          - UNSHARED_CALLING_PLAN
     ForwardAlwaysReference:
       type: object
       properties:
@@ -841,28 +855,17 @@ components:
           type: string
         enabled:
           type: boolean
-    SipTrunkForwardRules:
+    SetupCallingPlan:
       type: object
       properties:
-        partitionId:
+        referenceId:
           type: string
-        accountId:
+        callingPlanType:
           type: string
-        sipTrunkId:
-          type: string
-        forwardAlways:
-          originalRef: ForwardAlwaysReference
-          $ref: '#/components/schemas/ForwardAlwaysReference'
-        forwardOnFailure:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
-        forwardOnCapacityExceeded:
-          type: array
-          items:
-            originalRef: ForwardReference
-            $ref: '#/components/schemas/ForwardReference'
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+          - UNSHARED_CALLING_PLAN
     RegistrationStatus:
       type: object
       properties:
@@ -870,46 +873,18 @@ components:
           type: boolean
         lockedOut:
           type: boolean
-    ForwardReference:
+    SbcEndpoint:
       type: object
       properties:
-        referenceType:
+        site:
           type: string
-          enum:
-          - BUSY
-          - END_USER
-          - IVR
-          - AUTO_ATTENDANT
-          - SIP_TRUNK
-          - TELEPHONE
-          - VOICE_MAIL
-        referenceId:
+        address:
           type: string
-    PublicApiException:
-      type: object
-      properties:
-        status:
+        port:
           type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    ReferenceType:
-      type: string
-      enum:
-      - SIP_TRUNK
-      - END_USER
-      - TELEPHONE
-      - AUTO_ATTENDANT
-      - IVR
-      - VOICEMAIL
-      - BUSY
+          format: int32
+        protocol:
+          type: string
     SipTrunk_2:
       type: object
       properties:
@@ -985,23 +960,6 @@ components:
           format: int32
         languageTag:
           type: string
-    SipTrunkForwardAlwaysReference:
-      allOf:
-      - $ref: '#/components/schemas/SipTrunkForwardReference'
-      - type: object
-        properties:
-          enabled:
-            type: boolean
-    SetupCallingPlan_2:
-      type: object
-      properties:
-        referenceId:
-          type: string
-        callingPlanType:
-          type: string
-          enum:
-          - SHARED_CALLING_PLAN
-          - NEW_CALLING_PLAN
     SipTrunkForwardRules_2:
       type: object
       properties:
@@ -1021,6 +979,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SipTrunkForwardReference'
+    SipTrunkForwardAlwaysReference:
+      allOf:
+      - $ref: '#/components/schemas/SipTrunkForwardReference'
+      - type: object
+        properties:
+          enabled:
+            type: boolean
+    ReferenceType:
+      type: string
+      enum:
+      - SIP_TRUNK
+      - END_USER
+      - TELEPHONE
+      - AUTO_ATTENDANT
+      - IVR
+      - VOICEMAIL
+      - BUSY
     SipTrunkForwardReference:
       type: object
       required:
@@ -1031,6 +1006,31 @@ components:
           description: id of the entity to forward the calls to
         referenceType:
           $ref: '#/components/schemas/ReferenceType'
+    SetupCallingPlan_2:
+      type: object
+      properties:
+        referenceId:
+          type: string
+        callingPlanType:
+          type: string
+          enum:
+          - SHARED_CALLING_PLAN
+          - NEW_CALLING_PLAN
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

@@ -158,6 +158,24 @@ paths:
                 $ref: '#/components/schemas/BrandErrorResponse'
 components:
   schemas:
+    BrandError:
+      type: string
+      format: int32
+      example: 10404 - Resource not found
+      enum:
+      - 10001 - API hasn't been implemented yet
+      - 10404 - Resource not found
+      - 10403 - Not authorized
+      - 10500 - Internal Server Error
+      - 10002 - BrandDetails validation failed
+      - 10003 - Brand already exists for the given partition
+      - 10004 - Branding completion is readonly
+      - 10005 - Partition mismatch
+      - 10006 - File format is invalid
+      - 10007 - Active build request already exists
+      - 10008 - Brand domains setup is not completed
+      - 10009 - Build cannot be published
+      - 10010 - Desktop hosting feature is disabled
     CreateBrandSettings:
       type: object
       properties:
@@ -173,6 +191,13 @@ components:
       - brandingEnabled
       - partitionId
       - selfSigningEnabled
+    BrandErrorResponse:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/BrandError'
+        description:
+          type: string
     BrandSettingsDTO:
       type: object
       properties:
@@ -198,31 +223,6 @@ components:
       - brandingEnabled
       - partitionId
       - selfSigningEnabled
-    BrandError:
-      type: string
-      format: int32
-      example: 10404 - Resource not found
-      enum:
-      - 10001 - API hasn't been implemented yet
-      - 10404 - Resource not found
-      - 10403 - Not authorized
-      - 10500 - Internal Server Error
-      - 10002 - BrandDetails validation failed
-      - 10003 - Brand already exists for the given partition
-      - 10004 - Branding completion is readonly
-      - 10005 - Partition mismatch
-      - 10006 - File format is invalid
-      - 10007 - Active build request already exists
-      - 10008 - Brand domains setup is not completed
-      - 10009 - Build cannot be published
-      - 10010 - Desktop hosting feature is disabled
-    BrandErrorResponse:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/BrandError'
-        description:
-          type: string
   securitySchemes:
     X-Auth-Token:
       type: apiKey

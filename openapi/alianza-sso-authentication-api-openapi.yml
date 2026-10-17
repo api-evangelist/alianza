@@ -286,33 +286,6 @@ paths:
           description: Forbidden - insufficient permissions
 components:
   schemas:
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    OAuthErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: INVALID_STATE
-        message:
-          type: string
-          example: State token validation failed
-        details:
-          type: object
-          additionalProperties: true
     LoginTokenX:
       type: object
       properties:
@@ -395,6 +368,18 @@ components:
           type: string
         groupName:
           type: string
+    OAuthErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: INVALID_STATE
+        message:
+          type: string
+          example: State token validation failed
+        details:
+          type: object
+          additionalProperties: true
     SSOLinkage:
       type: object
       description: SSO linkage information
@@ -440,6 +425,21 @@ components:
           format: uri
           description: URL of the Identity Provider login page where the user should be redirected
           example: https://idp.example.com/login?SAMLRequest=abc123
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

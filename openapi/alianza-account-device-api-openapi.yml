@@ -593,36 +593,30 @@ paths:
             type: boolean
 components:
   schemas:
-    ProvisioningRequestX:
+    DeviceMetadataX:
       type: object
       properties:
+        macAddress:
+          type: string
+        partitionId:
+          type: string
+        accountId:
+          type: string
+        deviceTypeId:
+          type: string
+        sideCarTypeId:
+          type: string
+        numSideCars:
+          type: integer
+          format: int32
+        adminPassword:
+          type: string
+        provisionerType:
+          type: string
+          enum:
+          - ALIANZA
+          - PHONISM
         id:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
-        httpStatus:
-          type: integer
-          format: int32
-        deviceId:
-          type: string
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-    MultipartFormDataInput:
-      type: object
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
           type: string
     DeviceX:
       type: object
@@ -685,74 +679,71 @@ components:
         referenceId:
           type: string
           description: Changes Depending on LineType.  If LineType.Line then this should be null.   If LineType.ReferencedUser, PresenceBlfUser, or SpeedDialUser then this should be a valid userid.   If LineType.SpeedDialTn then this should be a valid phone number
-    DeviceMetadataX:
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    ProvisioningRequestX:
+      type: object
+      properties:
+        id:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        httpStatus:
+          type: integer
+          format: int32
+        deviceId:
+          type: string
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+    MultipartFormDataInput:
+      type: object
+    DeviceMetadataX_2:
       type: object
       properties:
         macAddress:
           type: string
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
         partitionId:
           type: string
+          description: ID of partition, reference to <a href="#/~schema/Account">account.partitionId</a>
         accountId:
           type: string
+          description: ID of account,  refers to <a href="#/~schema/Account">account.id</a>
         deviceTypeId:
           type: string
+          description: 'The deviceTypeId identifies the equipment and the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All DeviceType</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">GetDeviceType</a>'
         sideCarTypeId:
           type: string
+          description: 'The sideCarTypeId identifies the equipment and the features of the side car device. Refers to <a href="#/~schema/SideCarTypeX">sideCarType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getSideCarTypes">Get All SideCar types</a> and <a href="#/~operation/Reference%20Resources/getSideCarTypeById">Get SideCarType</a>'
         numSideCars:
           type: integer
           format: int32
+          description: The number of side cars assigned to this device.
         adminPassword:
           type: string
+          description: If an admin password is supplied here, it will be applied to the device if a partition level setting is not present. The partition level setting can only be modified by an Alianza Admin. The partition level setting (Devcon - short for device configuration) is almost always supplied, making most uses of this field irrelevant. The adminPassword set by Devcon is NOT reported in this field.
         provisionerType:
           type: string
+          description: Indicates what entity is responsible for provisioning the device. ALIANZA - Alianza is responsible for provisioning the device. PHONISM - Phonism, a third party service, is responsible for provisioning the device.
           enum:
           - ALIANZA
           - PHONISM
         id:
           type: string
-    ProvisioningRequestX_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
-        requestDate:
-          type: string
-          format: date-time
-          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
-        httpStatus:
-          type: integer
-          format: int32
-          description: The http status of the device's most recent request for provisioning.
-        deviceId:
-          type: string
-          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
-        ipAddress:
-          type: string
-        userAgent:
-          type: string
-          description: The user agent that was used to retrieve the provisioning data.
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    MultipartFormDataInput_2:
-      type: object
-      properties:
-        file:
-          type: string
-          format: binary
+          description: This field always refers to the macAddress.
     DeviceX_2:
       type: object
       properties:
@@ -823,40 +814,49 @@ components:
       - partitionId
       - userId
       - lineNumber
-    DeviceMetadataX_2:
+    ProvisioningRequestX_2:
       type: object
       properties:
-        macAddress:
-          type: string
-          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
-        partitionId:
-          type: string
-          description: ID of partition, reference to <a href="#/~schema/Account">account.partitionId</a>
-        accountId:
-          type: string
-          description: ID of account,  refers to <a href="#/~schema/Account">account.id</a>
-        deviceTypeId:
-          type: string
-          description: 'The deviceTypeId identifies the equipment and the features that the device supports. Refers to <a href="#/~schema/DeviceTypeX">deviceType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getDeviceTypes">Get All DeviceType</a> and <a href="#/~operation/Reference%20Resources/getDeviceTypeById">GetDeviceType</a>'
-        sideCarTypeId:
-          type: string
-          description: 'The sideCarTypeId identifies the equipment and the features of the side car device. Refers to <a href="#/~schema/SideCarTypeX">sideCarType.id</a>. See also: <a href="#/~operation/Reference%20Resources/getSideCarTypes">Get All SideCar types</a> and <a href="#/~operation/Reference%20Resources/getSideCarTypeById">Get SideCarType</a>'
-        numSideCars:
-          type: integer
-          format: int32
-          description: The number of side cars assigned to this device.
-        adminPassword:
-          type: string
-          description: If an admin password is supplied here, it will be applied to the device if a partition level setting is not present. The partition level setting can only be modified by an Alianza Admin. The partition level setting (Devcon - short for device configuration) is almost always supplied, making most uses of this field irrelevant. The adminPassword set by Devcon is NOT reported in this field.
-        provisionerType:
-          type: string
-          description: Indicates what entity is responsible for provisioning the device. ALIANZA - Alianza is responsible for provisioning the device. PHONISM - Phonism, a third party service, is responsible for provisioning the device.
-          enum:
-          - ALIANZA
-          - PHONISM
         id:
           type: string
-          description: This field always refers to the macAddress.
+          description: The 48-bit hexadecimal address assigned to the device by the manufacturer.
+        requestDate:
+          type: string
+          format: date-time
+          description: The ISO 8601 formatted date string indicating when the device last tried to retrieve provisioning data.
+        httpStatus:
+          type: integer
+          format: int32
+          description: The http status of the device's most recent request for provisioning.
+        deviceId:
+          type: string
+          description: DeviceId, reference to <a href="#/~schema/DeviceX">device.id</a>
+        ipAddress:
+          type: string
+        userAgent:
+          type: string
+          description: The user agent that was used to retrieve the provisioning data.
+    MultipartFormDataInput_2:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

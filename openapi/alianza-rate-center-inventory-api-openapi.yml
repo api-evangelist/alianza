@@ -364,6 +364,82 @@ paths:
                 $ref: '#/components/schemas/PublicApiException'
 components:
   schemas:
+    RateCenterX:
+      type: object
+      properties:
+        prefix:
+          type: string
+        reorderName:
+          type: string
+        originalReorderName:
+          type: string
+        name:
+          type: string
+        abbrName:
+          type: string
+        msa:
+          type: string
+        zips:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        wireless:
+          type: boolean
+        state:
+          type: string
+        country:
+          type: string
+        portable:
+          type: boolean
+        serviceAvailable:
+          type: boolean
+        inboundCarrierType:
+          type: string
+          enum:
+          - LEVEL_3
+          - NO_API
+          - E911
+          - TELUS
+          - TELUS_API
+          - TELUS_ONEVOICE
+          - PROVTEL
+          - VERIZON_CARIANZA
+          - ONVOY_CARIANZA
+          - LEVEL3_CARIANZA
+          - BANDWIDTH
+          - LUMEN_IMS
+    JobUploadKey:
+      type: object
+      properties:
+        key:
+          type: string
+    StreamingOutput:
+      type: object
+    FileImportValidationErrorX:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+          format: int32
+        error:
+          type: string
+        column:
+          type: string
+        input:
+          type: string
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
     Job:
       type: object
       properties:
@@ -396,56 +472,12 @@ components:
           format: date-time
       xml:
         name: job
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    JobError:
-      type: object
-      properties:
-        error:
-          type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    JobUploadKey:
-      type: object
-      properties:
-        key:
-          type: string
     MultipartFormDataInput:
       type: object
       properties:
         file:
           type: string
           format: binary
-    FileImportValidationErrorX:
-      type: object
-      properties:
-        lineNumber:
-          type: integer
-          format: int32
-        error:
-          type: string
-        column:
-          type: string
-        input:
-          type: string
     TelephoneNumberViewX:
       type: object
       properties:
@@ -508,53 +540,21 @@ components:
           type: string
         port:
           type: boolean
-    RateCenterX:
+    PublicApiException:
       type: object
       properties:
-        prefix:
-          type: string
-        reorderName:
-          type: string
-        originalReorderName:
-          type: string
-        name:
-          type: string
-        abbrName:
-          type: string
-        msa:
-          type: string
-        zips:
+        status:
+          type: integer
+        messages:
           type: array
           items:
             type: string
-          uniqueItems: true
-        wireless:
-          type: boolean
-        state:
-          type: string
-        country:
-          type: string
-        portable:
-          type: boolean
-        serviceAvailable:
-          type: boolean
-        inboundCarrierType:
-          type: string
-          enum:
-          - LEVEL_3
-          - NO_API
-          - E911
-          - TELUS
-          - TELUS_API
-          - TELUS_ONEVOICE
-          - PROVTEL
-          - VERIZON_CARIANZA
-          - ONVOY_CARIANZA
-          - LEVEL3_CARIANZA
-          - BANDWIDTH
-          - LUMEN_IMS
-    StreamingOutput:
-      type: object
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey

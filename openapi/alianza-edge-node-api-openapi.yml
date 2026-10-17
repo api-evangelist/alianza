@@ -384,51 +384,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
-    NodeQueryResult:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-          example: 1
-        pageNum:
-          type: integer
-          example: 0
-        entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/Node'
-        count:
-          type: integer
-          example: 1
-    NodeAssignmentUpsert:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Node assignment Id
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        edgeNodeId:
-          type: string
-          description: Id of Edge Node
-          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
-        deviceId:
-          type: string
-          description: Id of the device
     Node:
       type: object
       properties:
@@ -454,6 +409,22 @@ components:
       - displayName
       - proxyAddress
       - partitionId
+    NodeQueryResult:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          example: 1
+        pageNum:
+          type: integer
+          example: 0
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Node'
+        count:
+          type: integer
+          example: 1
     NodeAssignment:
       type: object
       properties:
@@ -470,6 +441,35 @@ components:
           description: Id of the device
         proxyAddress:
           type: string
+    NodeAssignmentUpsert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Node assignment Id
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        edgeNodeId:
+          type: string
+          description: Id of Edge Node
+          example: 67b7ace2-f4a1-4b6d-8d25-411bb612b946
+        deviceId:
+          type: string
+          description: Id of the device
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
     NodeUpsert:
       type: object
       properties:

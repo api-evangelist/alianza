@@ -238,6 +238,20 @@ paths:
           description: EntityNotFound when there is no job with the given Id or if the job has no output
 components:
   schemas:
+    InputStream:
+      type: object
+    JobError:
+      type: object
+      properties:
+        error:
+          type: string
+        lineNumber:
+          type: integer
+          format: int32
+        column:
+          type: string
+        input:
+          type: string
     Job:
       type: object
       properties:
@@ -269,31 +283,17 @@ components:
         lastUpdated:
           type: integer
           format: int64
-    JobError:
+    JobOutputUrl:
       type: object
       properties:
-        error:
+        url:
           type: string
-        lineNumber:
-          type: integer
-          format: int32
-        column:
-          type: string
-        input:
-          type: string
-    InputStream:
-      type: object
     JobUpload:
       type: object
       properties:
         url:
           type: string
         key:
-          type: string
-    JobOutputUrl:
-      type: object
-      properties:
-        url:
           type: string
     Job_2:
       type: object

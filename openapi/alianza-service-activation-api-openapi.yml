@@ -250,21 +250,6 @@ components:
       - NINE_ONE_ONE_ADDRESS
       - PORT_REQUEST
       - SERVICE_PROVIDER_TN
-    PublicApiException:
-      type: object
-      properties:
-        status:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        data:
-          type: object
-          additionalProperties: true
-          example:
-            key: value
-            key2: value2
     ServiceActivationEventX_2:
       type: object
       properties:
@@ -384,6 +369,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ServiceActivationEventLogX'
+    PublicApiException:
+      type: object
+      properties:
+        status:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        data:
+          type: object
+          additionalProperties: true
+          example:
+            key: value
+            key2: value2
   securitySchemes:
     X-Auth-Token:
       type: apiKey
